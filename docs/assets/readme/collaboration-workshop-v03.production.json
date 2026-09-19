@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "asset": "collaboration-workshop-v03.png",
+  "brief": "collaboration-workshop-v01.brief.json",
+  "purpose": "README hero",
+  "mode": "editorial-scene",
+  "claim": "独立资料通过共同索引连接到有层次、可追溯的工程资料，保留各自边界。",
+  "generator": "Codex built-in image_gen",
+  "visualSkill": {
+    "source": "https://github.com/lichong-a/ric-visual",
+    "commit": "c0f5fbf60c049de52f8932626e1af6c4c4ab0a8b"
+  },
+  "palette": {
+    "paper": "#F3EFE6",
+    "ink": "#171717",
+    "signal": "#E84A3C",
+    "storyPigment": "#4F7F9D"
+  },
+  "cast": {
+    "protagonist": 1,
+    "companions": {
+      "american-shorthair": 1
+    }
+  },
+  "essentialCopy": "All essential copy is in README Markdown; no text overlay is needed.",
+  "artPrompt": "Create a 1600 × 900 (16:9) editorial-scene for a zh-CN audience.\n\nViewer question: 不同成员、模型与工具，怎样围绕同一份工程规范协作，并找到逐层关联的文档？\n\nConcrete claim: 不同来源的材料保留各自边界，通过共同索引连接到有层次、可追溯的工程资料。\n\nSetting: A quiet, wide editorial cutaway of an archivist's workshop, viewed in gentle three-quarter perspective. A single large open index binder on the central workbench is the focal point. Three differently tabbed source folders stay intact at the left. Physical paper ribbons connect their tabs through the shared binder to three stepped archive compartments on the right. The continuous route is easy to follow, with no crossings. One tiny recurring protagonist fastens a single red binding clip to the shared index; one aloof silver cat observes from the top archive ledge. The evidence occupies the middle two thirds of the composition, rising gently from lower left to upper right. Leave a generous calm bone-paper band across the upper edge and clear margins on all four sides. This is a warm ink drawing of a working archive, not an interface or a factory that automatically rewrites files.\n\nUse the hero-beat composition to show a system relation. Make the relation legible through physical geometry and state change, not text.\n\nVisible evidence:\n\n1. Three intact paper folders with visibly different physical tab shapes, grouped as one source tray; state: Each folder retains its own outline and pages; only its navigation tab connects to the index; position: Left middle, fully inside the margin\n2. One oversized open ring binder with three nested, completely blank tabbed leaves; state: A single shared entry point; large page shapes and page turns are readable without any writing; position: Center foreground, the largest and highest-contrast object\n3. One stepped wooden archive with three open compartments, each containing a small stack of blank tabbed documents; state: Distinct compartments make boundaries visible; paper ribbons lead from the index to a compartment and then to one document, showing progressive navigation; position: Right middle and background, arranged along the same gentle diagonal\n4. Three narrow paper ribbons with clean black edges and occasional muted azure sections; state: Every ribbon visibly joins real tabs or binder rings, stays continuous, and does not cross another ribbon; no abstract arrows or floating icons; position: Across the central workbench, joining the physical evidence\n\nInclude exactly one recurring protagonist: a minimal stick figure with a vertical capsule head, two short forward black brush ticks on the upper-left crown, asymmetric dot eyes, a short dash mouth, thin tapered line limbs, and one tiny #E84A3C square neck knot rotated slightly. Action: Stand beside the left edge of the binder, gently attach one small red binding clip, and look at the connected pages. Keep the full body visible, the head vertically capsule-shaped, the two crown brush ticks on the viewer-left side, and the neck knot a tiny red square rather than a bow tie. The person is much smaller than the binder.. No glasses, no detailed hair, no realistic anatomy, and no duplicate protagonist anywhere.\n\nexactly one aloof silver American Shorthair with broad round cheeks, a short muzzle, small upright ears, one forehead M, three controlled stripe groups, half-lidded eyes, and a straight or gently hooked tail. Narrative role: A small independent reviewer perched on the top archive ledge, calmly observing the completed connection; show the complete body exactly once..\n\nEditorial manga-ink illustration with decisive charcoal #171717 contours, clipped dry-brush tapered endpoints, and three visibly different line weights. Use bone paper #F3EFE6 and only hard-edged square halftone dots rotated 45 degrees into diamonds, in discrete light, mid, or deep densities; no smooth tone transitions. Use fixed signal red #E84A3C only for the protagonist neck knot, proofreader-like marks, and one focal cue. Use muted azure #4F7F9D; no other story color. Keep at least 12% calm paper, use 2–5 meaningful environmental props, and keep all characters secondary to the visible evidence. No glossy gradients, 3D rendering, photorealism, fuzzy pencil, painterly wash, circular screentone, generic card grids, dashboards, random tech symbols, decorative clutter, extra panels, signatures, logos, or watermarks.\n\nDo not render any letters, words, numbers, logo, signature, or watermark.\n\nAdditional exclusions: any writing or pseudo-writing on pages or folder tabs, company logos, product names, laptops, robots, gears, screens or circuit motifs, trash bins, shredders, erased files or machinery suggesting automatic semantic reorganization, duplicate people, duplicate cats or character cameos, speech bubbles, decorative badges or separate comic panels, crossing or disconnected ribbons, cropped limbs or objects touching the image border, photorealism, gradients, soft shadows or round halftone dots.\n\nEvery listed character appears exactly once or not at all as specified. No reflections, screens, portraits, stickers, icons, distant cameos, or duplicated body parts that read as another character.",
+  "refinements": [
+    {
+      "revision": "v02",
+      "instruction": "Refine this README hero illustration while preserving its wide 16:9 composition, oversized central open blank ring binder, three source folders on the left, three stepped archive compartments on the right, bone-paper #F3EFE6 / charcoal #171717 / restrained azure #4F7F9D palette and exactly one small silver American Shorthair cat perched on the right. The image must remain completely without text, numbers or logos. Make the following specific corrections: (1) Simplify to the four meaningful props: source tray with three folders, index binder, archive, connecting ribbons. Remove all plants, lamps, window framing, scattered extra books, pen pot, loose clips tray and foreground chair. Keep the archive and all important objects comfortably inside a 6 percent safe margin. Leave at least one quarter of the canvas calm bone paper, especially at the top. (2) The protagonist must appear exactly once: vertical capsule head, exactly TWO short forward-leaning black brush ticks on viewer-left crown, asymmetric dot eyes, small dash mouth, thin line arms and legs, ONE single bowed line for the torso rather than a rectangular body, and a tiny red SQUARE neck knot, no bow tie. This small character calmly attaches the red binding clip to the binder. (3) Render shading as visibly crisp SQUARE halftone marks rotated 45 degrees into diamonds at three discrete densities; eliminate sand-like stipple, fuzzy grain and circular dots. Keep tapered dry-brush contour lines, clean paper surfaces and three deliberate line weights. (4) Make the three physical paper ribbon routes orderly and non-crossing, joining each source tab to a separate binder ring and each matching binder tab to an archive compartment. The connection through the shared index is the visual evidence. Keep azure to small accents below 12 percent of canvas and red to the neck knot and binding clip only. No photorealism, gradients, soft shadows, added decorative symbols or duplicate characters. Maintain the beautiful warm editorial ink-workshop feel, but make the evidence more legible at a GitHub README display width of 850 pixels."
+    },
+    {
+      "revision": "v03",
+      "instruction": "Make ONE localized correction only: replace the small stick-figure archivist beside the binder with the exact canonical character described below. Freeze the image dimensions, composition, binder, three source folders, archive, ribbons, palette, warm paper, halftone, and the single silver cat. The new character must have a vertical capsule head, exactly TWO short black brush ticks leaning toward the viewer's left on the LEFT crown (not three upright hairs), two slightly asymmetric dot eyes, a short dash mouth, a tiny RED SQUARE neck knot, a torso consisting of ONE SINGLE CURVED BLACK LINE from neck to hips with NO enclosing body outline, NO enclosed white torso, NO shirt, NO vest, and four thin tapered line limbs. Preserve the pose fastening the binder clip and the little stool beneath the feet. Keep this character small and exactly once. The single bowed line torso should look like an actual simple stick figure, not a cartoon person with clothing. No new text, logos, people, animals or props. This local replacement is required; do not retain the old three-hair, enclosed-torso character. Preserve the existing image everywhere else."
+    }
+  ],
+  "qualityGates": {
+    "assessment": "Visual inspection of the generated image at original size and in local Chromium README previews; not an automated image-conformance test.",
+    "G0": { "status": "PASS", "note": "Separate folders, one shared index and a layered archive carry the claim without text." },
+    "G1": { "status": "PASS", "note": "Paper, charcoal ink, blue material accents and red focal marks; varied contour weights and diamond-pattern shading retain the editorial ink identity." },
+    "G2": { "status": "PASS", "note": "One capsule-headed stick figure with two crown marks, asymmetric dot eyes, a dash mouth, single-line torso and red square neck knot; one silver American Shorthair. No duplicate cast." },
+    "G3": { "status": "PASS", "note": "Hero-beat composition, dominant shared binder and layered archive, generous calm paper, small supporting characters." },
+    "G4": { "status": "PASS", "note": "Zero required strings in the image; no generated labels, logos or watermark. All necessary copy stays in README Markdown." },
+    "G5": { "status": "PASS", "note": "Original PNG inspected at 1672 x 941 and README display widths of 960 and 358 pixels. Brief, prompts, unedited selected output and descriptive alt text accompany delivery." }
+  },
+  "renderVerification": {
+    "renderer": "Local Chromium, CommonMark with tables, GitHub-like styles; not a hosted GitHub render",
+    "viewports": [
+      { "width": 1280, "height": 1100, "theme": "light" },
+      { "width": 390, "height": 844, "theme": "light" },
+      { "width": 1280, "height": 1100, "theme": "dark" }
+    ],
+    "horizontalPageOverflow": false,
+    "imagesLoaded": true,
+    "navigationAnchorTargetsPresent": true
+  },
+  "note": "This illustration is an editorial metaphor, not evidence of automatic semantic reorganization or of delivery acceptance. Original generator outputs are preserved outside the repository; the selected output is copied here without pixel edits."
+}

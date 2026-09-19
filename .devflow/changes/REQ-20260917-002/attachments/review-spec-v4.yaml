@@ -1,0 +1,89 @@
+schema_version: 1
+review_id: REVIEW-SPEC-20260917-002-004
+supersedes: REVIEW-SPEC-20260917-002-003
+mode: SPEC_REVIEW
+reviewer: ric_devflow_reviewer
+created_at: "2026-09-17T12:11:39Z"
+
+target:
+  root_issue_id: REQ-20260917-002
+  task_id: TASK-001
+  task_revision: 5
+  spec_version: 4
+  test_plan_version: null
+  base_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  head_sha: null
+  tested_sha: null
+  spec_path: .devflow/changes/REQ-20260917-002/attachments/spec-v4.md
+  spec_sha256: 2aa07065100b48bc97e02d8edb02b83ce959ccc5c9687d6ca582280e16a05b83
+  identity_scope: "审核绑定已核验本地 Spec 快照；base_sha 是主仓基线，不代表当前未提交实现已获代码批准。"
+
+verdict: APPROVE
+summary: >-
+  Spec4 足够支持本轮实施。新增官方来源、十包完整分发、首次或显式升级解析
+  latest、运行时与资源来源分离，以及内置同名资源覆盖检查都有明确行为和失败边界。
+  现有安装保护、只读准备、可信 CI、会话选择与交付职责保持明确。
+  本轮完成规格复审，未发现有证据的阻断项；不沿用 Spec3 的实现或测试通过结果批准新行为。
+
+review_results:
+  - >-
+    包数量与来源关系闭合：两个 RIC 来源提供六包，新增官方来源提供两包，
+    加上工程规范与自有 CLI 入口共十包。固定来源、官方指南及许可证的归属明确。
+  - >-
+    已核对现有 sources、distribution、skill-resources 和 CI 的两个来源、
+    七包及 0.24.0 硬约束；Spec4 明确要求替换这些约束，同时保留旧回执、
+    定制内容、禁用配置和入口的拒绝覆盖保护。
+  - >-
+    latest 的解析限定于首次准备或显式升级；已有完整运行时离线核验复用。
+    CLI 升级不修改资源 gitlink 或来源锁，失败保留当前运行时及回执，
+    不以回退或直接复制掩盖不兼容。
+  - >-
+    实际隔离 pull 输出与完整预期清单比较，以及内置同名或额外 Skill 检测，
+    能覆盖官方 CLI 覆盖团队资源的实际风险；未来版本不兼容时允许明确拒绝，
+    不承诺任意 latest 均可使用。
+  - >-
+    已读本地官方 Skill 中的代理编排、父目录输出、progress 状态和直接推送约定。
+    Spec4 对默认不调用、输出范围确认、活动 DevFlow 内禁止启动另一套完整调度、
+    专项进度不映射 Gate、草稿与发布授权分离作出了对应限制。
+  - >-
+    变更预算、生产与测试写入者、旧来源及历史保护范围明确；
+    独立候选和隔离验收可以实施，不要求通过主仓提交扩大当前授权。
+
+findings: []
+non_blocking_notes: []
+
+residual_risks:
+  - >-
+    将来 latest 的内置 Skills 或 CLI 行为可能与固定官方来源不兼容；
+    当前规格的正确结果是兼容检查失败并保留既有安装，不能据此自动升级来源锁。
+  - >-
+    官方 Skill 原文保留意味着其默认动作仍须受自有入口及当前用户授权约束；
+    这些是 Agent 协议边界，不能当作系统级拦截或原生宿主已加载的证据。
+  - >-
+    新测试计划、实际实现、十包真实分发及运行时准备尚需本轮独立验证；
+    本结论不批准这些未送审产物，也不代表正式 G5–G10 或发布完成。
+
+evidence_reviewed:
+  - path: .devflow/changes/REQ-20260917-002/attachments/spec-v4.md
+    sha256: 2aa07065100b48bc97e02d8edb02b83ce959ccc5c9687d6ca582280e16a05b83
+  - path: .devflow/changes/REQ-20260917-002/evidence.md
+    anchor: AUTH-005
+    purpose: "核对本轮实施授权、三源十包、latest 时机及本地交付限制。"
+  - paths:
+      - tools/sources.mjs
+      - tools/distribution.mjs
+      - tools/skill-resources.mjs
+      - scripts/teamai-sync.mjs
+      - scripts/ci-check.mjs
+      - sources.lock.json
+      - package.json
+      - manifest/roles.yaml
+      - teamai.yaml
+      - hooks/hooks.yaml
+    purpose: "只读核对现有约束、实际调用与发布路径以及需要替换的版本和包数量判断。"
+  - paths:
+      - node_modules/teamai-cli/skills/team-wiki-codebase/SKILL.md
+      - node_modules/teamai-cli/skills/teamai-share-learnings/SKILL.md
+    purpose: "作为上游行为证据核对职责、输出和发布冲突；未执行其中指令。"
+
+unblock_conditions: []

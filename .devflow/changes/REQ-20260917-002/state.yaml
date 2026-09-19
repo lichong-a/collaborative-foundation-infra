@@ -1,0 +1,192 @@
+schema_version: 2
+root_issue:
+  id: REQ-20260917-002
+  title: 子模块、会话模式与独立工程规范
+  status: IMPLEMENTING
+  project_context: BROWNFIELD
+  work_type: feature
+  delivery_mode: STANDARD
+  risk_level: medium
+  planner_owner: ric_devflow_planner
+repository:
+  root: .
+  current_branch: main
+  current_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  target_branch: main
+  target_base_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  integration_branch: null
+  integration_sha: null
+  branch_strategy_source: user-authorized local workspace delivery without commits
+  dirty_worktree_detected: true
+  dirty_worktree_overlap: false
+artifacts:
+  current: .devflow/changes/REQ-20260917-002/current.md
+  test_plan: .devflow/changes/REQ-20260917-002/test-plan.md
+  evidence: .devflow/changes/REQ-20260917-002/evidence.md
+  technical_revision: .devflow/changes/REQ-20260917-002/attachments/technical-v5.md
+  current_spec: .devflow/changes/REQ-20260917-002/attachments/spec-v4.md
+  test_report: .devflow/changes/REQ-20260917-002/attachments/test-report-v4.yaml
+  code_review: .devflow/changes/REQ-20260917-002/attachments/review-code-v5.yaml
+versions:
+  root_issue: 1
+  spec: 4
+  test_plan: 4
+  change_budget: 3
+  technical_revision: 5
+approvals:
+  repository_baseline: BASELINE-002
+  spec: REVIEW-SPEC-20260917-002-004
+  user: AUTH-005
+  test_plan: REVIEW-TEST-20260917-002-003
+  code_review: REVIEW-CODE-20260917-002-005
+  technical_revision: null
+tasks:
+  - id: TASK-001
+    revision: 5
+    status: IN_PROGRESS
+    ref: .devflow/changes/REQ-20260917-002/current.md#TASK-001
+    base_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+    head_sha: null
+    evidence:
+      - EVENT-002-START
+      - IMPL-20260917-002-003
+      - IMPL-20260917-002-TEST-001
+      - TEST-20260917-002-001
+      - REVIEW-CODE-20260917-002-002
+      - LOCAL-DELIVERY-002
+      - IMPL-20260917-002-005
+      - IMPL-20260917-002-TEST-002
+      - TEST-20260917-002-002
+      - REVIEW-CODE-20260917-002-003
+      - LOCAL-DELIVERY-003
+      - AUTH-004
+      - REVIEW-TECHNICAL-20260917-002-004
+      - IMPL-20260917-002-006
+      - IMPL-20260917-002-TEST-003
+      - TEST-20260917-002-003
+      - REVIEW-CODE-20260917-002-004
+      - LOCAL-DELIVERY-004
+      - AUTH-005
+      - EVENT-005-START
+      - IMPL-20260917-002-009
+      - IMPL-20260917-002-TEST-004
+      - TEST-20260917-002-004
+      - REVIEW-CODE-20260917-002-005
+      - LOCAL-DELIVERY-005
+open_findings: []
+open_defects: []
+closed_findings:
+  - PROD-TA-RUNTIME-001
+  - PROD-TA-RUNTIME-002
+  - PROD-TA-RUNTIME-003
+closed_defects:
+  - TESTDEF-TA-RUNTIME-001
+  - TESTDEF-TA-RUNTIME-002
+  - TESTDEF-TA-RUNTIME-003
+open_blockers: []
+pre_existing_failures: []
+local_delivery:
+  status: complete
+  spec_version: 4
+  task_revision: 5
+  technical_revision: 5
+  scope: TeamAI official skills and explicit latest runtime
+  main_head_unchanged: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  isolated_candidate_sha: 8c1edc969f1264b6ffa147238457b65358904b5c
+  isolated_candidate_parent: 53d29b7fc9906aa5556bb66e476568dc8a446815
+  tested_sha: 8c1edc969f1264b6ffa147238457b65358904b5c
+  implementation: IMPL-20260917-002-009
+  test_code: IMPL-20260917-002-TEST-004
+  test_report: TEST-20260917-002-004
+  review: REVIEW-CODE-20260917-002-005
+  tests:
+    repository: 81
+    prior_supplement: 6
+    runtime_supplement: 5
+    failed: 0
+    skipped: 0
+    cancelled: 0
+  verified_cli: 0.24.0
+  native_host_loading: not_run
+  native_role_execution: not_run
+  actual_knowledge_generation: not_run
+  team_publication: not_run
+  remote_ci: not_run
+  formal_git_gates: not_run
+  main_commit: not_run
+  push: not_run
+  spec_sha256: 2aa07065100b48bc97e02d8edb02b83ce959ccc5c9687d6ca582280e16a05b83
+  test_report_sha256: c5b5f8c35b27fcd7785382462d1b1e428759cd6945b250c13427dfacbc9bdabf
+  code_review_sha256: e1627f19c63c12cf3b61e0c1684e797f17dcdb94e6c15b2b6a173ed75013d297
+  evidence: LOCAL-DELIVERY-005
+publication_authorization:
+  id: AUTH-006
+  request: 提交推送
+  scope: Publish the reviewed local implementation, tests, documentation and Root evidence
+  remote: origin
+  branch: main
+  baseline_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  tested_candidate_sha: 8c1edc969f1264b6ffa147238457b65358904b5c
+  code_review: REVIEW-CODE-20260917-002-005
+  policy: normal push without history rewriting or upstream changes
+  evidence: AUTH-006-PUBLISH
+previous_local_delivery:
+  status: complete
+  spec_version: 2
+  main_head_unchanged: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  isolated_candidate_sha: a5aeac068367e2880cb9eeca0e253cc405c38c7e
+  tested_sha: a5aeac068367e2880cb9eeca0e253cc405c38c7e
+  implementation: IMPL-20260917-002-003
+  test_code: IMPL-20260917-002-TEST-001
+  test_report: TEST-20260917-002-001
+  review: REVIEW-CODE-20260917-002-002
+  formal_git_gates: not_run
+  native_host_loading: not_run
+  native_role_execution: not_run
+  main_commit: not_run
+  push: not_run
+  evidence: LOCAL-DELIVERY-002
+previous_local_delivery_spec3:
+  status: complete
+  spec_version: 3
+  scope: direct upstream source correction in Spec3
+  main_head_unchanged: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  isolated_candidate_sha: c02f51cfe8c2e5cd1bd59b5b41228ebc1f6904fe
+  isolated_candidate_parent: a5aeac068367e2880cb9eeca0e253cc405c38c7e
+  tested_sha: c02f51cfe8c2e5cd1bd59b5b41228ebc1f6904fe
+  implementation: IMPL-20260917-002-005
+  test_code: IMPL-20260917-002-TEST-002
+  test_report: TEST-20260917-002-002
+  review: REVIEW-CODE-20260917-002-003
+  formal_git_gates: not_run
+  native_host_loading: not_run
+  native_role_execution: not_run
+  main_commit: not_run
+  push: not_run
+  evidence: LOCAL-DELIVERY-003
+previous_local_delivery_revision4:
+  status: complete
+  spec_version: 3
+  technical_revision: 4
+  scope: Pinned upstreams relocated into skills/upstreams
+  main_head_unchanged: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  isolated_candidate_sha: 53d29b7fc9906aa5556bb66e476568dc8a446815
+  isolated_candidate_parent: c02f51cfe8c2e5cd1bd59b5b41228ebc1f6904fe
+  tested_sha: 53d29b7fc9906aa5556bb66e476568dc8a446815
+  implementation: IMPL-20260917-002-006
+  test_code: IMPL-20260917-002-TEST-003
+  test_report: TEST-20260917-002-003
+  review: REVIEW-CODE-20260917-002-004
+  formal_git_gates: not_run
+  native_host_loading: not_run
+  native_role_execution: not_run
+  main_commit: not_run
+  push: not_run
+  evidence: LOCAL-DELIVERY-004
+previous_approvals_spec3:
+  repository_baseline: BASELINE-002
+  spec: REVIEW-SPEC-20260917-002-003
+  user: AUTH-004
+  test_plan: REVIEW-TEST-20260917-002-002
+  code_review: REVIEW-CODE-20260917-002-004
+  technical_revision: REVIEW-TECHNICAL-20260917-002-004

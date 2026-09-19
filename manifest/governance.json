@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "documentRoots": [
+    "docs",
+    "skills/common/collaborative-foundation-infra",
+    "skills/common/teamai-cli"
+  ],
+  "entrypoints": [
+    "README.md",
+    "skills/common/collaborative-foundation-infra/SKILL.md",
+    "skills/common/teamai-cli/SKILL.md"
+  ],
+  "metadataRoots": [
+    "docs",
+    "skills/common/collaborative-foundation-infra/references"
+  ],
+  "exclude": [],
+  "allowedTopLevel": [
+    ".gitignore",
+    ".devflow",
+    "README.md",
+    "AGENTS.md",
+    "teamai.yaml",
+    "manifest",
+    "rules",
+    "hooks",
+    "skills",
+    "docs",
+    "sources.lock.json",
+    "package.json",
+    "package-lock.json",
+    "tools",
+    "scripts",
+    "tests",
+    ".gitmodules",
+    ".collaborative-foundation-infra"
+  ],
+  "protectedPaths": [
+    "skills/upstreams",
+    ".gitmodules",
+    ".collaborative-foundation-infra"
+  ],
+  "pathRules": [],
+  "debt": [],
+  "indexEntries": [],
+  "pendingFile": "docs/pending-classification.md",
+  "linkRepairs": [],
+  "workflow": {
+    "authority": "devflow",
+    "references": [
+      ".devflow/changes/REQ-20260917-002/current.md"
+    ]
+  }
+}

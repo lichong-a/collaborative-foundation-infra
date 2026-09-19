@@ -1,0 +1,31 @@
+team: collaborative-foundation-infra
+description: TeamAI 分发、自有工程规范、RIC DevFlow 交付
+repo: https://github.com/lichong-a/collaborative-foundation-infra.git
+provider: git
+autoUpdate: false
+usageReport: false
+submodules: false
+sharing:
+  skills: {}
+  rules:
+    enforced: []
+  env:
+    injectShellProfile: false
+  hooks:
+    autoApply: false
+    requireTeamScripts: true
+  recall:
+    enabled: false
+  contributeHint:
+    enabled: false
+  mcp:
+    autoApply: false
+toolPaths:
+  codex:
+    skills: .agents/skills
+    rules: .codex/rules
+  zcode:
+    skills: .agents/skills
+  claude:
+    skills: .claude/skills
+    rules: .claude/rules

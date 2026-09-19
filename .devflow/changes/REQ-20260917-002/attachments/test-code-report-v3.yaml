@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "implementation_id": "IMPL-20260917-002-TEST-003",
+  "supersedes": "IMPL-20260917-002-TEST-002",
+  "root_issue_id": "REQ-20260917-002",
+  "task_id": "TASK-001",
+  "defect_id": null,
+  "spec_version": 3,
+  "base_sha": "c02f51cfe8c2e5cd1bd59b5b41228ebc1f6904fe",
+  "head_sha": "53d29b7fc9906aa5556bb66e476568dc8a446815",
+  "change_budget_compliance": {
+    "allowed_paths_only": true,
+    "protected_paths_untouched": true,
+    "dependency_changes": "none",
+    "public_contract_changes": "none by Tester; only approved technical4 path mapping and boundary cases",
+    "database_changes": "none"
+  },
+  "changed_files": [
+    {
+      "path": "tests/entry.test.mjs",
+      "sha256": "907063b71bc43f0358e1b924ff2a5a4045f90c7f999907bcfe380acc2ca85bf0"
+    },
+    {
+      "path": "tests/source-fixtures.mjs",
+      "sha256": "8d9108cb56536faeefe9041b1007542d0d7494528e917a86092f1e1d5d5395c3"
+    },
+    {
+      "path": "tests/sources.test.mjs",
+      "sha256": "7798848ea22ded30e7d58e7b8c8f1873a8c2a3fe8803e9c64956c960b1073195"
+    }
+  ],
+  "summary": "Tester authored only these three tests paths for TASK-001 revision4; spec_version3/test_plan_version3 remain approved. Full isolated candidate also contains Implementer production and Planner records, not claimed as Tester authorship or formal main-branch G5. Fresh execution TEST-20260917-002-003, test-report-v3.yaml SHA256 78e213823260fae517958c95cbcc22daf9f0bc5cae9d81822a8f8eaff7a0be1e;62 repository plus6 external groups PASS.",
+  "reused_existing_patterns": [
+    "Existing62 Node test groups, fixture/Git helpers, independent navigation Oracle and unchanged timeouts.",
+    "Original6 external supplemental scripts reused verbatim and reexecuted on new candidate."
+  ],
+  "design_decisions": [
+    "Keep test group structure and all previous behavior; only map canonical source paths and four exact links.",
+    "Within existing cases add both new ancestor-directory symlinks, nested-only gitlink governance and reintroduced old-root governance.",
+    "Require private TeamAI assembly to contain seven same-level packages and neither source upstream root."
+  ],
+  "tests": [
+    {
+      "report_id": "TEST-20260917-002-003",
+      "path": "test-report-v3.yaml",
+      "sha256": "78e213823260fae517958c95cbcc22daf9f0bc5cae9d81822a8f8eaff7a0be1e",
+      "tested_sha": "53d29b7fc9906aa5556bb66e476568dc8a446815",
+      "verdict": "PASS"
+    },
+    {
+      "path": "path-adaptation.json",
+      "sha256": "a03eccdcf8d50edda980d3478b908aa5e0930baa178e1d73e4ab0ea80adaaf8b"
+    },
+    {
+      "path": "correspondence-final.json",
+      "sha256": "3b93043f533df402c482ca62490d93b037bdcd381db60bcef4a0bd8c10d1eb8c"
+    }
+  ],
+  "documentation": [
+    "No test-plan or production documentation rewritten; approved technical4 mapping and TestPlan3 remain authority."
+  ],
+  "migrations": [
+    "Only test input/expectation path adaptation; no user installation or state migration."
+  ],
+  "rollback": [
+    "Prior c02 candidate and bundles remain untouched. New root and two upstream bundles verified by actual restoration; no main-repository rollback or commit performed."
+  ],
+  "known_risks": [
+    "Full candidate range contains other authors; Tester ownership is only the three named paths. Main remains uncommitted."
+  ],
+  "not_run": [
+    {
+      "check": "Native harness startup/loading and new/resumed/forked session UI/model interaction for Codex, ZCode and Claude Code",
+      "reason": "This local slice validates actual TeamAI file distribution and isolated CLI records only; no native invocation was performed."
+    },
+    {
+      "check": "Real DevFlow Planner/Reviewer/Tester/Implementer calls from newly installed packages",
+      "reason": "Resource integrity and protocol semantics are verified separately; native loading/invocation is not inferred from installation."
+    },
+    {
+      "check": "Human-operated manual-state migration, Windows/macOS behavior and remote hosted CI/branch protection",
+      "reason": "No such operation or environment is part of this authorized local Linux slice."
+    },
+    {
+      "check": "Main-repository commit/push/release and formal G5-G10 completion",
+      "reason": "User permits local changes only. Tested SHA is a recoverable isolated synthetic candidate, not main HEAD; test PASS does not grant those gates."
+    }
+  ],
+  "pre_existing_failures_observed": []
+}

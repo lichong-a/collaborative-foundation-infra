@@ -1,0 +1,92 @@
+schema_version: 1
+review_id: REVIEW-CODE-20260917-002-005
+supersedes: REVIEW-CODE-20260917-002-004
+mode: CODE_REVIEW
+reviewer: ric_devflow_reviewer
+created_at: "2026-09-17T13:48:08Z"
+
+target:
+  root_issue_id: REQ-20260917-002
+  task_id: TASK-001
+  task_revision: 5
+  spec_version: 4
+  test_plan_version: 4
+  base_sha: 53d29b7fc9906aa5556bb66e476568dc8a446815
+  head_sha: 8c1edc969f1264b6ffa147238457b65358904b5c
+  tested_sha: 8c1edc969f1264b6ffa147238457b65358904b5c
+  main_baseline_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  scope: "Spec4 授权的本地交付；隔离候选不是主仓新提交，不代表正式 G5–G10 或发布通过。"
+
+verdict: APPROVE
+summary: >-
+  已审核完整候选的生产增量、测试代码和封存执行证据。
+  三源十包、独立 CLI 准备与升级、真实输出校验、旧安装保护及可信 CI
+  符合当前批准范围。三项生产预审发现均在该精确候选上完成独立回归，
+  无剩余阻断发现。此前规格及生产预审仅作为审核背景，本次批准绑定新的完整候选。
+
+closed_findings:
+  - id: PROD-TA-RUNTIME-001
+    status: CLOSED
+    evidence: "切换后清理、close 与锁释放失败独立回归通过；旧 current 和旧安装保留，无法安全恢复时明确状态与残留。"
+  - id: PROD-TA-RUNTIME-002
+    status: CLOSED
+    evidence: "candidate/work 目录替换及锁替换回归通过；未知哨兵保留，删除前检查目录、父链和锁归属。"
+  - id: PROD-TA-RUNTIME-003
+    status: CLOSED
+    evidence: "独立读取进程在发布后、解锁前返回拒绝；写入者失败恢复旧 current，不再向读者交付随后删除的安装。"
+
+validation:
+  candidate_identity: "HEAD、真实 parent 已直接核对；审核结束时隔离候选工作树干净。"
+  production: "1374 个生产文件的字节与完整模式逐项匹配 v8 冻结清单。"
+  tests: "完整 npm test 81/81；原补充 6/6；新增计划分支补充 5/5，均无失败、跳过或取消。"
+  regression: "原 62 组的有效保护保留；七包、schema3 和裸 CLI 入口等失效假设按批准行为替换。"
+  commands: "来源准备、运行时离线复用、构建、治理检查和 diff 检查均退出 0。"
+  documents_and_skills: "治理文档 20/20 可达、0 finding；十份 Skill 结构校验通过。"
+  runtime: >-
+    实际发布版兼容结论仅绑定 TeamAI 0.24.0。
+    真实 latest 查询、固定归档 SRI、实际 npm 安装及三宿主 pull 与
+    受控元数据、合成生命周期归档和故障注入分别记录，没有混同。
+  preservation: "独立证据确认 738 个固定来源文件、12 个交付测试文件及历史记录保护；主仓 HEAD 保持，暂存逻辑差异限于授权范围。"
+  recovery: "四个 bundle 摘要已核对；实际新目录恢复的 HEAD、tree、三个上游及只读来源核验符合。"
+  evidence_integrity: "两份正式报告字段、摘要和相互引用一致；其 30 项直接证据及日志摘要核验无差异。"
+  reviewer_execution: "仅执行只读代码、身份和摘要核验；未重跑完整套件，执行结论来自独立 Tester。"
+
+findings: []
+non_blocking_notes:
+  - "五项新增外部测试资产已阅读全文并核对摘要，绑定同一候选；不冒充提交内测试或新的代码提交。"
+  - "后续 Planner 追加的流程记录不包含在该候选整体 SHA 声明中；生产及测试对应范围已单独说明。"
+
+residual_risks:
+  - "原生宿主加载、真实角色调用、实际知识库生成和团队发布未运行，文件分发成功不能替代这些证据。"
+  - "未来 CLI 发布版及其他操作系统未验证；不兼容内置资源、旧回执和定制安装仍按设计保留并拒绝自动迁移。"
+  - "部分实际 npm 依赖安装与既有运行时下载测试需要网络或适当的隔离缓存；本结论不声明完整套件天然离线。"
+
+evidence_reviewed:
+  - id: production-v8
+    path: implementer/production-manifest-v8.json
+    sha256: 28ae10c0160bcd990e575b0794fc70f721664abdb2290695a2bfa4edaef158e3
+  - id: IMPL-20260917-002-009
+    path: implementer/implementation-report-v9.yaml
+    schema_version: 2
+    sha256: b93deece3b8b85199e236f3064ec345be2e94ac2e1edf5e70b42280e1efc3c56
+  - id: TEST-20260917-002-004
+    path: tester/test-report-v4.yaml
+    schema_version: 1
+    sha256: c5b5f8c35b27fcd7785382462d1b1e428759cd6945b250c13427dfacbc9bdabf
+  - id: IMPL-20260917-002-TEST-004
+    path: tester/test-code-report-v4.yaml
+    schema_version: 1
+    sha256: ab8d05daa363c060afb07021411f6beda4c8209a176f31656092204edef084f7
+  - path: tester/supplemental.test.mjs
+    sha256: 6fd3b69697b3dae4ad3cc62a12d9fe2445146073c9fb2be0bada86c6a87246af
+  - path: tester/runtime-additional.test.mjs
+    sha256: 927776d983c8b40637680f9aa8aceca2b3c79b56abafa7c9b56eaa262cfb8442
+  - path: tester/correspondence-final.json
+    sha256: e4f22dcc0cc4843f4f1d7bfbd097b496980216e3291ed72b1c19855cb94b6ffb
+  - path: tester/recovery-receipt.json
+    sha256: c13f69638b75ebfbc8c6b9d2ce8254fa7c6bf32ee918c1fbbf495a3ad73e5342
+
+evidence_location:
+  external_archive: teamai-official-20260917T120800Z-i0e11mkg
+
+unblock_conditions: []

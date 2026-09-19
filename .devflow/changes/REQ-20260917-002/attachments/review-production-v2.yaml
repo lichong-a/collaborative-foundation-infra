@@ -1,0 +1,112 @@
+schema_version: 1
+review_id: REVIEW-PRODUCTION-20260917-002-002
+supersedes: null
+mode: CODE_REVIEW
+reviewer: ric_devflow_reviewer
+created_at: "2026-09-17T09:18:18Z"
+target:
+  root_issue_id: REQ-20260917-002
+  task_id: TASK-001
+  task_revision: 3
+  spec_version: 3
+  test_plan_version: 3
+  base_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  head_sha: null
+  tested_sha: null
+  snapshot: production-snapshot-v3
+  manifest_sha256: 47f597a9f3866afe542849b1958b71cf61f4070fc47410aa71026d26573f9998
+  tree_digest: 9a651a53fb153ebdd5340bfbb23b8e3d85e54ef937f6eab75439075cfdde0917
+  artifact_sha256: ac9aae58fe75229f3f4ac7e9662265751a08511527273c23bbb458e2c21436dd
+scope: bounded_read_only_production_pre_review
+verdict: APPROVE
+summary: >-
+  此结论仅针对固定生产 v3 快照的只读预审，不是完整候选、独立测试或正式门禁批准。
+  已核验 1145 条目类型、完整权限及文件摘要，并审核直接来源、
+  只读准备、临时资源组装、受控链接转换、分发双摘要及 schema3 CI 的实际实现。
+  未发现本轮生产差异中的 P0/P1/P2；发现一项已交 Planner 处理的 P3 文档导航问题。
+  后续 v4 文档修正与完整生产加测试候选须按其真实身份复核。
+findings: []
+non_blocking_notes:
+  - id: NOTE-VALIDATION-NAV-001
+    priority: P3
+    location: docs/validation.md:13
+    trigger: 从“当前维护记录”中的 Spec Review 或 Test Review 链接查阅当前批准依据。
+    evidence: >-
+      正文已描述直接子模块来源和 Spec3，但两个链接仍指向
+      REVIEW-SPEC-20260917-002-002 与 REVIEW-TEST-20260917-002-001；
+      当前批准实际为 REVIEW-SPEC-20260917-002-003 和 REVIEW-TEST-20260917-002-002。
+    impact: >-
+      导航指向旧版规格与计划审核，增加当前证据定位歧义。
+      页面明确区分历史候选，因此不构成将旧测试冒称新测试的阻断问题。
+    safe_fix: >-
+      仅将两处导航改为已经存在的当前审核记录，保留历史报告；
+      作为独立文档增量冻结并在最终候选中复核。
+    status: Planner 已接收，生产 v3 中尚未关闭；不将计划中的 v4 修正视为已验证。
+residual_risks:
+  - >-
+    Tester 正在独立适配和执行 TestPlan3；本审核未读取变化中的测试来作最终结论。
+    作者的 15+5 组自测仅为作者证据，不替代独立测试。
+  - >-
+    四处导航转换采用明确路径及语法验证，未知拼写、缺失映射或不支持语法会保守拒绝；
+    后续新增上游导航需要同步审查映射和测试，不能绕过拒绝。
+  - >-
+    文件系统复查和发布锁属于协作式保护，不能消除所有恶意非协作写者造成的竞态。
+  - >-
+    安装资源、入口区块匹配不证明宿主加载、角色调用或用户已选择会话模式。
+    主仓没有本轮新提交；此快照结论不表示正式 G5–G10 或发布通过。
+evidence_reviewed:
+  - identity: production-snapshot-v3
+    result: >-
+      独立计算 manifest 摘要并逐项核验 1145 条目，类型、完整 mode 和文件摘要零差异。
+      与此前生产 v2 比较，差异限于报告列明的生产文件、
+      六份持久副本及原准备状态的移出。
+  - identity: IMPL-20260917-002-004
+    path: 外部恢复归档/implementer/implementation-report-v4.yaml
+    sha256: 5e9bef257d519e0f2b6fee2a5bc2f3c745bb98d00c17df71a3f69a522a836824
+    result: >-
+      从同一份字节核验摘要并阅读报告。报告明确绑定生产 v3，
+      区分作者自测与待执行独立验收，不认领测试改动或正式门禁。
+  - identity: Direct source and read-only preparation
+    paths:
+      - tools/sources.mjs
+      - sources.lock.json
+      - .gitignore
+      - scripts/build.mjs
+      - scripts/verify.mjs
+    result: >-
+      schema3 包路径直接指向固定 upstreams；prepare 仅调用来源验证并返回 verified，
+      不创建副本、回执、缓存或共享准备锁。
+      残留旧副本、未知同级目录和旧准备状态明确拒绝且保留。
+      index gitlink、实际 HEAD、锁及干净状态继续交叉核验。
+      新旧锁中的 725 文件清单、两个上游身份和 TeamAI 身份一致。
+  - identity: Temporary assembly and navigation
+    path: tools/skill-resources.mjs
+    result: >-
+      在内存构造完整预期资源与摘要，只在本次私有空目录组装 TeamAI 扁平布局。
+      六上游包不改字节；自有 SKILL、session、adoption、design 的明确导航
+      复用原 replaceLink，检查原始目标、锚点和未知跨包引用。
+      写入使用排他创建，组装后逐项核验完整清单并重查来源；
+      不将临时位置、Git 元数据或会话状态写入资源摘要。
+  - identity: Distribution and compatibility protection
+    path: tools/distribution.mjs
+    result: >-
+      真实 TeamAI 输出以转换后预期清单核验，目标预检也使用相同预期身份；
+      sourcePackagesDigest、distributionDigest、sourceDigest 和实际工具摘要分工清楚。
+      旧回执或不一致摘要保留拒绝；全部历史入口实际匹配、
+      脏正文下完整区块不写、定制/禁用保护及发布前来源复查保持。
+  - identity: Trusted CI
+    path: scripts/ci-check.mjs
+    result: >-
+      团队及已安装布局校验适配 schema3；
+      实际执行器与策略仍从可信基线提取，候选来源、映射和入口变化继续要求独立审核。
+  - identity: Preserved behavior and documentation
+    result: >-
+      tools/session.mjs、tools/cli.mjs、tools/markdown.mjs、scripts/runtime、
+      scripts/teamai-sync.mjs 和 package-lock.json 与此前冻结生产逐字相同。
+      活动来源与接入说明改为直接 upstreams 和临时分发，四份自有 Markdown 源码导航有效；
+      未改变 basic、会话身份或原生角色所有权语义。
+  - identity: Reviewer execution boundary
+    result: >-
+      全程只读；未安装、构建、运行写入性测试、修改目标或报告文件、
+      访问其他业务仓或派生代理。
+unblock_conditions: []

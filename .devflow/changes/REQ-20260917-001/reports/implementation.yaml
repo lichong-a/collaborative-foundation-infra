@@ -1,0 +1,148 @@
+schema_version: 1
+implementation_id: IMPL-002
+supersedes: IMPL-001
+root_issue_id: REQ-20260917-001
+task_id: TASK-001
+defect_id: null
+spec_version: 1
+base_sha: d78b68779899fa9167ec24599a301902c91724cb
+head_sha: 5be7d0c5e943bcb6d4233a51e2f74516f295bf69
+change_budget_compliance:
+  allowed_paths_only: true
+  protected_paths_untouched: true
+  dependency_changes: none; npm regenerated project identity metadata only; all
+    dependency versions, resolution and integrity entries unchanged
+  public_contract_changes: Approved project-owned package, Skill, rule, receipt,
+    marker, cache, environment-variable and resource path names use
+    collaborative-foundation-infra; no compatibility aliases or automatic
+    installation migration
+  database_changes: none
+changed_files:
+  - AGENTS.md
+  - README.md
+  - docs/integration.md
+  - docs/maintenance.md
+  - docs/onboarding.md
+  - docs/validation.md
+  - manifest/governance.json
+  - package-lock.json
+  - package.json
+  - rules/collaborative-foundation-infra.md
+  - scripts/build.mjs
+  - scripts/ci-check.mjs
+  - scripts/governance
+  - scripts/runtime
+  - skills/common/collaborative-foundation-infra/SKILL.md
+  - skills/common/collaborative-foundation-infra/THIRD_PARTY_NOTICES.txt
+  - skills/common/collaborative-foundation-infra/references/adoption.md
+  - skills/common/collaborative-foundation-infra/references/code.md
+  - skills/common/collaborative-foundation-infra/references/delivery.md
+  - skills/common/collaborative-foundation-infra/references/design.md
+  - skills/common/collaborative-foundation-infra/references/documents.md
+  - skills/common/collaborative-foundation-infra/references/evidence.md
+  - skills/common/collaborative-foundation-infra/references/manual.md
+  - skills/common/collaborative-foundation-infra/references/python.md
+  - skills/common/collaborative-foundation-infra/references/structure.md
+  - skills/common/collaborative-foundation-infra/references/tools.md
+  - skills/common/collaborative-foundation-infra/references/typescript.md
+  - skills/common/collaborative-foundation-infra/scripts/governance.mjs
+  - skills/common/collaborative-foundation-infra/templates/document.md.txt
+  - skills/common/collaborative-foundation-infra/templates/handoff.md.txt
+  - skills/common/collaborative-foundation-infra/templates/policy.json
+  - skills/common/collaborative-foundation-infra/templates/project-profile.md.txt
+  - teamai.yaml
+  - tools/audit.mjs
+  - tools/distribution.mjs
+  - tools/plan.mjs
+summary: 实现者完成自有生产路径的统一命名、通用文档整理和生成物重建。已归档的专属诊断页移出，原路径清单仅在仓外保留。此真实生产候选也包含
+  Planner 的独立流程记录，作者仅署名上述生产文件；原测试代码仍未适配，Tester 在随后候选中独立交付。主仓尚无提交，以上 SHA
+  只属于仓外隔离候选。 本修订仅纠正 no-index 差异检查的退出码表达，生产候选及其他结果未变；IMPL-001 保留在仓外，不覆盖原记录。
+reused_existing_patterns:
+  - 保留 tools 的审计、策略、规划和分发模块边界
+  - 保留原子排他创建、变更前基线核验、恢复日志及可信 CI 基线流程
+design_decisions:
+  - 已在本角色读取 ric-design-patterns-skill/SKILL.md 与 DevFlow modular-design
+    参考；本次只有工程命名和文档通用性变化，没有新的 GoF 变化点，按 Spec D-001 采用直接局部重命名，不新增抽象或依赖。
+  - 自有 Skill、npm 包与 TeamAI team 使用同一 canonical 名称，规则、回执、文档标识和受管理区块同步；构建 banner
+    采用合法 camelCase JavaScript 标识符。
+  - 生成 bundle 和第三方许可通过 npm run build 维护，npm 锁及 node_modules 隐藏锁通过离线 npm
+    命令生成；未手改依赖解析结果。
+  - 维护与验证文档改为通用规则和当前任务证据导航，取消对历史候选的成功结论引用；报告缺失不意味着测试或原生宿主调用通过。
+  - 首次接入不承担旧布局迁移。文档明确核对已存在安装、定制、活动任务、来源和入口，先输出逐项迁移清单并隔离演练，不能自动创建双重入口、覆盖或删除旧包。
+  - 生产快照 SHA256
+    08df4e6f4962680dbeaab820ae9dcce1cf8a818c660ed94765e400a21505df05，43 个生产文件逐一与
+    head_sha 对照字节及 Git 执行身份一致；外部证据身份
+    migration-20260917T033224Z/implementer/candidate-binding.json。
+  - 生产变更与测试变更串行交接；实现者未修改 tests、.devflow、.git、sources.lock.json 或六份上游
+    Skill，未访问其他工程或修改全局安装。
+tests:
+  - command: npm install --package-lock-only --ignore-scripts --offline --no-audit
+      --no-fund
+    cwd: .
+    exit_code: 0
+    result: 锁文件的包名及 packages[empty].name 更新，其他 JSON 内容与原快照完全相同
+  - command: npm install --ignore-scripts --offline --no-audit --no-fund
+    cwd: .
+    exit_code: 0
+    result: 更新本地生成元数据；node_modules/.package-lock.json 名称已核对
+  - command: npm run build
+    cwd: .
+    exit_code: 0
+    result: 重建分发 bundle 与第三方许可，stderr 为空；见
+      implementer/build.stdout.txt、build.stderr.txt
+  - command: npm run check
+    cwd: .
+    exit_code: 0
+    result: 来源闭包、生成一致性、JavaScript/Bash 语法和治理检查通过；17/17 文档可达，0 findings；见
+      implementer/check.stdout.txt、check.stderr.txt
+  - command: git diff --no-index --check -- <isolated baseline file> <corresponding
+      delivered file>
+    cwd: .
+    result: 36 个最终变更路径在固定 base/head 上逐项比较，stdout/stderr 均为空，没有空白问题；no-index
+      在字节存在差异时返回 1，在字节相同时返回 0。本项如实记录两类退出码，不把“没有空白问题”改写为所有命令退出 0。见
+      implementer/diff-check-results.json。
+    exit_codes:
+      - 0
+      - 1
+  - command: python3 - (production inventory, protected inventory, dependency
+      comparison and bounded name scan)
+    cwd: .
+    exit_code: 0
+    result: 2618 个保护条目及路径集合不变；扫描隐藏/忽略内容共 3829 文件，生产与当前流程记录残留为零；5 个未适配的测试文件留给
+      Tester，不声称完整交付树已通过
+  - command: git rev-parse <production head>^; git show <production head>:<path>;
+      git ls-tree <production head> -- <path>
+    cwd: isolated candidate
+    exit_code: 0
+    result: 真实 parent 等于 base_sha，43 个生产文件与快照一致；见 candidate-binding.json
+documentation:
+  - README 与 AGENTS 统一项目入口并明确通用性和授权范围
+  - docs/onboarding.md 与分发后 references/adoption.md 说明逐项迁移、定制保护和现有安装边界
+  - docs/maintenance.md 保存通用恢复、安装和可信 CI 协议；docs/validation.md 分层记录证据并链接本次任务
+  - 自有 Skill、主题文档、元数据、模板路径和工具示例同步到新命名
+migrations:
+  - 仅改变规范源的自有标识和目录；未在任何业务项目执行接入或迁移
+  - 旧安装需要先核对事实来源与活动任务、生成具体迁移清单，在明确授权的停写窗口于隔离副本验证；不提供自动升级或兼容别名
+rollback:
+  - 完整原始内容及移出的历史资料位于仓外已验证归档，具体清单保持原字节，不复制回通用规范仓
+  - 回退时先保存当前修改并安排停写，仅恢复明确授权的对应路径；禁止全仓覆盖、重置用户文件或在其他工程恢复
+  - 生产交付的独立快照、差异与候选身份位于 migration-20260917T033224Z/implementer；完整删除及改名清单仅供仓外恢复使用
+known_risks:
+  - 新命名不是原安装的原地兼容升级，外部使用者的入口、环境变量和可信 CI 基线需要按迁移清单评审
+  - 该生产候选含尚未适配的原测试文件；完整受测候选由 Tester 后续交付，不能将本报告当成全部回归通过
+  - 本仓实际 HEAD 尚未建立，隔离候选身份不代表主仓提交、正式 Git 门禁完成或发布
+not_run:
+  - command: npm test
+    reason: 按 Planner 串行窗口要求，独立 Tester 随后适配并运行完整原 34 项及新增回归
+  - command: 真实 TeamAI 分发、可信 CI 和运行时安装行为回归
+    reason: 属于独立测试计划，未在实现者窗口重复执行
+  - command: 独立 CODE_REVIEW、宿主加载与原生角色验证、远端发布
+    reason: 分别由独立角色和实际授权环境处理，文件自检不替代这些结果
+pre_existing_failures_observed:
+  - source: 独立 Tester 提供的外部基线结果，Planner 在写入前归类
+    command: npm run check
+    base_sha: d78b68779899fa9167ec24599a301902c91724cb
+    exit_code: 1
+    classification: environment
+    detail: 基线隔离候选未包含历史流程附件，产生 1 个流程引用和 31 个文档断链；本次通过通用文档和当前证据导航消除缺口，不引回专属历史资料。基线
+      build/test 均成功，原 34 项通过。

@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "implementation_id": "IMPL-20260917-002-005",
+  "supersedes": "IMPL-20260917-002-004",
+  "root_issue_id": "REQ-20260917-002",
+  "task_id": "TASK-001",
+  "defect_id": null,
+  "spec_version": 3,
+  "test_plan_version": 3,
+  "author_role": "ric_devflow_implementer",
+  "base_ref": "main / origin/main",
+  "base_sha": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+  "head_sha": null,
+  "observed_main_head_sha": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+  "head_explanation": "No main commit is authorized. This record binds a frozen local production snapshot and makes no independent review or formal G5-G10 claim.",
+  "spec_sha256": "cb01d871b49d9f6b46ec8056c573d667af60f666de69866f31cc7e5004e579b9",
+  "test_plan_sha256": "5783c10777c9695a1a337e2ee59bec846ce69450e3aad8fdd78325090f177f11",
+  "summary": "Correct the two current Spec3 review navigation links in docs/validation.md to existing immutable review attachments.",
+  "scope": {
+    "allowed": [
+      "docs/validation.md"
+    ],
+    "changes": [
+      {
+        "path": "docs/validation.md",
+        "before": {
+          "type": "file",
+          "mode": 436,
+          "sha256": "42612481e29331c632df162d98dcf7a0f942ac801dc2b058a894fae3b016c3e0"
+        },
+        "after": {
+          "type": "file",
+          "mode": 436,
+          "sha256": "60f91712ab17637c4d7b27b7c2bf9440614060be53509b118e1a4929679f52bb"
+        }
+      }
+    ],
+    "only_this_production_file_changed": true,
+    "tests": "Current partially adapted Tester files captured at correction-window entry and retained byte-for-byte and mode-for-mode.",
+    "dependencies": "none",
+    "upstream_changes": "none",
+    "index_changes": "none"
+  },
+  "snapshot": {
+    "directory": "production-snapshot-v4",
+    "supersedes": "production-snapshot-v3",
+    "manifest_sha256": "ef56df9fc3d923ad47a0518b53aa8762aee4304d03fbd249b4953d03d49d9255",
+    "tree_digest": "9c04b3bcda066bf329b0c1f2f6c43503eec498d02e5364ec2cdcfe5142f2fcaf",
+    "entries": 1145,
+    "verified_copied_entries": 1145,
+    "delta": "production-snapshot-v4/delta.patch",
+    "full_manifest": "production-snapshot-v4/manifest.json",
+    "prior_assets_preserved": true,
+    "bundles": [
+      {
+        "file": "../production-snapshot-v3/baseline.bundle",
+        "sha256": "057f52063614323a064c893f8ee91ca31feb84be5d29084a55e70ad8bdf3ce5a",
+        "head": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1"
+      },
+      {
+        "file": "../production-snapshot-v3/ric-devflow.bundle",
+        "sha256": "7df643d96a4a7b63cabf6f2addd3527705c52b6cea0dd35e9695d7afb35df9b4",
+        "head": "9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb"
+      },
+      {
+        "file": "../production-snapshot-v3/ric-design-patterns.bundle",
+        "sha256": "391e313c279b11837c1a95e38abc4d554cb866cc91286fe3ccc19adc3d61e061",
+        "head": "46b183615afbfe3b1fffcbc9425ac3aea2c36d99"
+      }
+    ]
+  },
+  "verification": {
+    "review_targets": [
+      {
+        "target": "../.devflow/changes/REQ-20260917-002/attachments/review-spec-v3.yaml",
+        "id": "REVIEW-SPEC-20260917-002-003",
+        "sha256": "a2025e5a34d0ee91af67982811aa1dcf558fa177067e9f2b366fd90f3d89721f",
+        "status": "verified"
+      },
+      {
+        "target": "../.devflow/changes/REQ-20260917-002/attachments/review-test-v3.yaml",
+        "id": "REVIEW-TEST-20260917-002-002",
+        "sha256": "07d4073c9f0e0c94a4f8d20f586e628092701fb54074aaac4aad4d3c47896e02",
+        "status": "verified"
+      }
+    ],
+    "commands": [
+      {
+        "command": "npm run check",
+        "exit_code": 0,
+        "result": "18/18 documents reachable, 0 findings"
+      },
+      {
+        "command": "git diff --check",
+        "exit_code": 0,
+        "result": "passed"
+      },
+      {
+        "command": "git diff --cached --check",
+        "exit_code": 0,
+        "result": "passed"
+      }
+    ],
+    "freeze_command": "node $EVIDENCE/freeze-navigation.mjs",
+    "freeze_exit_code": 0,
+    "freeze_result": "1145 production entries; exactly one document differs from v3. All copied snapshot bytes and modes match the live frozen production tree.",
+    "evidence": "navigation-checks.json"
+  },
+  "unchanged_runtime_identity": {
+    "sourceDigest": "7b602afacc2cd689292916bc85ce47be9a51f0c8667e4a30dd787c4e4156f3e6",
+    "standardVersion": "656464c83859a10ab1da3bdfbfe5658fb98d5a29b3d8d6d64aa03abe30777134",
+    "sourcePackagesDigest": "e87350141a9393005e9e8c63060e510b56860cc01fdc71197f9cc7184a723343",
+    "distributionDigest": "d744c49a5536c69cd19dd4a316412511920fdf0e1dd3dd47198af08e59943ebc",
+    "sourceLockDigest": "6395ae6ca1874587273d887ec08666916e20249f73a16cda401e659c1a0422b4",
+    "artifactSha256": "ac9aae58fe75229f3f4ac7e9662265751a08511527273c23bbb458e2c21436dd"
+  },
+  "protected_checks": {
+    "testerFiles": 9,
+    "testerBytesAndModesUnchanged": true,
+    "mainHeadUnchanged": true,
+    "indexUnchanged": true,
+    "otherProductionBytesAndModesUnchanged": true,
+    "artifactSourceDigestAndStandardVersionUnchanged": true
+  },
+  "not_run": [
+    {
+      "check": "Previous 20 implementation smoke groups and build",
+      "reason": "Not rerun for this two-link documentation-only correction; runtime artifact, source/distribution digests and standardVersion are exactly unchanged. Previous smoke results remain explicitly bound to v3."
+    },
+    {
+      "check": "Full npm test and independent TestPlan3 suite",
+      "reason": "Tester retains ownership and resumes after this production window; no test file was modified."
+    },
+    {
+      "check": "Independent review and formal G5-G10",
+      "reason": "Outside Implementer authority."
+    }
+  ],
+  "observed_failures": [],
+  "known_risks": [
+    "No new runtime behavior changed. Valid review navigation does not represent implementation or acceptance approval."
+  ],
+  "evidence_hashes": {
+    "navigation-checks.json": "26023752e1a6818cb28f7fcad0e41f2236999016322d909341b5c6d87ef1bd95",
+    "navigation-tests-before.json": "48f5b8e435ee75586266bd9a8722411151865854732ea0166e5d6301ebcc182f",
+    "navigation-index-before.patch": "4313b91628a14942ea9e268953c6723e2a29bfe2d34667b828a8b86bc4e202bf",
+    "production-snapshot-v4/changes.json": "eab3d5c8631ffe877792b6a5a733378806634ce4c79d75902d8e82474d7b4eae",
+    "production-snapshot-v4/delta.patch": "38c0925a57c657e3a5ff1173e22b87007e990a46db604ec38849dac6252946f2",
+    "production-snapshot-v4/identity.json": "d6c64cd7d3f71948af09dcb49a24c6540c81ab7300e957d2d68e3e92293bb1c6"
+  },
+  "handoff": {
+    "receiver": "ric_devflow_planner",
+    "production_window": "released; production zero-write",
+    "next": "Resume Tester adaptation and independent complete-candidate review."
+  }
+}

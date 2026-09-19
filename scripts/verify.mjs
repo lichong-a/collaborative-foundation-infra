@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { execFileSync } from 'node:child_process';
+import YAML from 'yaml';
+import { verifySources } from '../tools/distribution.mjs';
+import { skillResources } from '../tools/skill-resources.mjs';
+import { audit } from '../tools/audit.mjs';
+import { loadPolicy } from '../tools/policy.mjs';
+verifySources(process.cwd());
+skillResources(process.cwd());
+execFileSync(process.execPath,['scripts/build.mjs','--check'],{stdio:'inherit'});
+const roles=YAML.parse(fs.readFileSync('manifest/roles.yaml','utf8'));
+if(roles.roles.length!==1 || roles.roles[0].id!=='engineering' || JSON.stringify(roles.roles[0].resources.skills)!=='["common"]') throw new Error('engineering must receive the complete common namespace');
+for(const folder of ['tools','scripts']) for(const name of fs.readdirSync(folder)) if(name.endsWith('.mjs')) execFileSync(process.execPath,['--check',path.join(folder,name)],{stdio:'inherit'});
+execFileSync('bash',['-n','scripts/runtime','scripts/governance'],{stdio:'inherit'});
+const report=audit(process.cwd(),loadPolicy('manifest/governance.json'));
+console.log(JSON.stringify(report,null,2));
+if(report.status==='fail') process.exitCode=1;

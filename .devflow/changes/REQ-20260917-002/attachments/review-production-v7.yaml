@@ -1,0 +1,68 @@
+schema_version: 1
+review_id: REVIEW-PRODUCTION-20260917-002-003
+supersedes: REVIEW-PRODUCTION-20260917-002-002
+mode: CODE_REVIEW
+reviewer: ric_devflow_reviewer
+created_at: "2026-09-17T13:24:00Z"
+target:
+  root_issue_id: REQ-20260917-002
+  task_id: TASK-001
+  task_revision: 5
+  spec_version: 4
+  test_plan_version: 4
+  base_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  head_sha: null
+  tested_sha: null
+  scope: bounded-production-repair-precheck
+  external_archive: teamai-official-20260917T120800Z-i0e11mkg
+  snapshot: implementer/production-snapshot-v8
+  manifest_sha256: 28ae10c0160bcd990e575b0794fc70f721664abdb2290695a2bfa4edaef158e3
+
+verdict: APPROVE
+summary: >-
+  本批准仅针对冻结生产 v8 的有界修复增量。
+  1374 个文件的摘要和完整模式逐项匹配，相对 v7 仅 runtime 与构建产物变化。
+  原三项问题的代码路径均已处理，本次未发现新增阻断。
+  不替代独立完整测试、最终候选 CODE_REVIEW 或正式 Git 门禁。
+
+prior_findings:
+  - id: PROD-TA-RUNTIME-001
+    status: production_fix_confirmed
+    evidence: >-
+      v7 的统一错误收集、清理后恢复、独立 fd close/锁释放处理在 v8 保持；
+      无法安全恢复时仍保留资源并明确报告实际 current 状态。
+  - id: PROD-TA-RUNTIME-002
+    status: production_fix_confirmed
+    evidence: >-
+      清理前的目录及父链身份、锁归属检查保持；
+      v8 没有恢复仅凭路径或布尔标志递归删除的旧行为。
+  - id: PROD-TA-RUNTIME-003
+    status: production_fix_confirmed
+    evidence: >-
+      公开 resolver 在读取前及返回前拒绝 prepare.lock，并复核 namespace、
+      current 的身份、字节和安装绑定。未完成事务中的新安装不能作为成功解析结果返回。
+      内部持锁核验使用未导出的 resolveInstallation/resolveHeldRuntime，
+      前后验证本进程锁及原 current，不提供公开绕过参数。
+      已返回的完整旧安装不会由后续升级的失败清理删除。
+    final_acceptance: "最终完整候选审核仍须绑定独立并发回归结果。"
+
+findings: []
+non_blocking_notes:
+  - "陈旧准备锁导致公开解析保守拒绝，符合未知状态保留原则；本次未引入自动删锁或权限修复。"
+  - "作者报告的回归及真实 CLI 冒烟属于作者验证，未冒充独立 Tester 结果。"
+
+residual_risks:
+  - "独立完整执行报告和包含测试的最终候选 SHA 尚未交付；本次只确认生产修复路径。"
+
+evidence_reviewed:
+  - path: implementer/production-manifest-v8.json
+    sha256: 28ae10c0160bcd990e575b0794fc70f721664abdb2290695a2bfa4edaef158e3
+    verified_files: 1374
+  - path: implementer/implementation-report-v9.yaml
+    schema_version: 2
+    implementation_id: IMPL-20260917-002-009
+    sha256: b93deece3b8b85199e236f3064ec345be2e94ac2e1edf5e70b42280e1efc3c56
+  - path: tools/teamai-runtime.mjs
+    scope: "冻结 v7 至 v8 完整差异及公开解析、内部持锁核验和恢复清理邻域。"
+
+unblock_conditions: []

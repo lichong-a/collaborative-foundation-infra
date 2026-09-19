@@ -1,0 +1,9 @@
+[submodule "ric-devflow"]
+	path = skills/upstreams/ric-devflow
+	url = https://github.com/lichong-a/ric-dev-workflow-skills
+[submodule "ric-design-patterns"]
+	path = skills/upstreams/ric-design-patterns
+	url = https://github.com/lichong-a/ric-design-patterns-skill
+[submodule "teamai-cli"]
+	path = skills/upstreams/teamai-cli
+	url = https://github.com/Tencent/teamai-cli

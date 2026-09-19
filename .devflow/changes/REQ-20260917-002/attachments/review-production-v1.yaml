@@ -1,0 +1,130 @@
+schema_version: 1
+review_id: REVIEW-PRODUCTION-20260917-002-001
+supersedes: null
+mode: CODE_REVIEW
+reviewer: ric_devflow_reviewer
+created_at: "2026-09-17T07:14:45Z"
+
+target:
+  root_issue_id: REQ-20260917-002
+  task_id: TASK-001
+  task_revision: 2
+  spec_version: 2
+  test_plan_version: 2
+  base_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  head_sha: null
+  identity_type: immutable_local_production_snapshot
+  snapshot: production-snapshot-v1
+  manifest_sha256: 3c868383bf2919dc2571a9e9cca2004a12b6b6e4ea8f88a165a7f50e6f3bb2c7
+  tree_digest: 3332c7e2379dd85c6c9fb9d8e53729cec241f9eb45ae2c0da59b62dc02ae2eeb
+  implementation_report:
+    id: IMPL-20260917-002-002
+    path: .devflow/changes/REQ-20260917-002/attachments/implementation-v2.yaml
+    sha256: 16c4b08d1049b7434c1a43b6bdd65d078868121f2c1b25dbc47df9a0c9b58db8
+
+verdict: REQUEST_CHANGES
+summary: >-
+  生产预审发现一项必须修复的证据准确性问题：
+  资源同步可能把历史入口匹配结论作为当前匹配状态返回，
+  即使对应入口已被删除或改动。
+  其余已审生产范围未发现新的阻断问题。
+  本结论不是完整生产加测试候选的最终审核。
+
+findings:
+  - id: PROD-ENTRY-001
+    severity: P2
+    category: correctness_and_evidence
+    title: 未重新验证的历史入口匹配状态被作为当前同步结果返回
+    location:
+      primary: tools/distribution.mjs:209
+      related:
+        - tools/distribution.mjs:87
+        - tools/distribution.mjs:117
+        - tools/distribution.mjs:211
+        - tools/distribution.mjs:226
+    trigger: >-
+      首次使用 --apply --install-entry 成功安装入口并生成 schemaVersion 2 回执；
+      随后用户删除入口文件或修改、移除其中的受管理区块；
+      再执行不带 --install-entry 的普通 --apply，同步资源本身仍完整且与源匹配。
+    evidence:
+      - >-
+        preflightEntry 在 requested=false 时立即返回，
+        不读取 AGENTS.md 或 CLAUDE.md。
+      - >-
+        preflightReceipt 只验证 projectEntries 中记录的字段和 blockDigest，
+        没有验证这些声明对应的入口文件及实际区块。
+      - >-
+        构建新结果时直接复制 prior.record.projectEntries，
+        并随 receipt 返回；旧 status=matched 没有历史标记或本次验证范围说明。
+      - >-
+        只读内存探针直接执行冻结源码中的 preflightEntry/preflightReceipt：
+        actualEntryExists=false 时，入口预检返回 requested=false、matched=false，
+        但回执预检接受同一路径的 status=matched。
+        此探针未写文件、未运行真实 TeamAI 发布；完整触发链由上述代码路径确认。
+    impact: >-
+      调用方获得成功或 noop 结果时，可能错误认为项目常驻入口仍然存在并匹配，
+      从而误判会话门禁接入情况。hostLoading=not-verified 只限制宿主加载结论，
+      不能修正“区块当前匹配”的错误声明。
+      同一回执含多个宿主入口时，未请求的另一个入口也可能携带陈旧结论。
+    safe_fix: >-
+      明确区分历史安装事实与本次入口验证结果。
+      对输出中作为当前 matched 宣称的每个入口进行只读实际核验；
+      未核验或不再匹配时，返回明确的历史、未验证或不匹配状态，
+      或按既有保护策略保守拒绝。
+      不得为修正证据而恢复、删除或重写用户入口；
+      不带 --install-entry 的调用必须继续保持入口零写入，
+      完整匹配且无需追加的入口继续保留脏正文。
+    required_regression:
+      - 安装入口后删除文件，再执行普通 --apply，不得返回当前 matched。
+      - 安装入口后移除或修改区块，再执行普通 --apply，原入口字节保持不变。
+      - 回执包含两个入口而本次仅涉及其中一个时，不得传播另一个入口的陈旧当前匹配结论。
+      - 完整匹配区块与用户脏正文共存时，匹配复用仍为 no-write。
+
+non_blocking_notes:
+  - id: NOTE-PROFILE-001
+    severity: P3
+    location: skills/common/collaborative-foundation-infra/templates/project-profile.md.txt:3
+    observation: >-
+      共享画像模板要求填写会话模式、根会话身份与选择记录，
+      容易被理解为将用户本地选择复制到项目文档。
+      未发现生产工具实际向画像写入会话记录，因此本轮不将其认定为已发生的数据泄露或第二状态库。
+    recommendation: >-
+      画像仅登记会话协议入口及适用规范，不填写具体根 ID、选择文件或切换历史；
+      明确这些信息只保留在用户私有状态和必要的会话交接中。
+      保留 handoff 模板已有的“仅会话交接携带”限定。
+
+checked_without_additional_blocking_findings:
+  - 来源准备以 index gitlink、子模块 HEAD、锁及完整包清单交叉核对。
+  - 无回执已有导出即使内容相同也拒绝认领；已归属导出更新前核对实际内容。
+  - 准备过程有独占锁、发布前后源核对及中断标记，不把残缺状态当作成功。
+  - status 为只读路径，根身份区分项目、宿主及 root session，子调用拒绝 select/switch。
+  - 会话写入校验私有权限和链接类型，原子发布后同步不确定时保留锁并拒绝成功查询。
+  - 人工会话记录要求完整历史、私有保全与显式接管，不允许以新 select 丢弃人工历史。
+  - 实際入口追加前整体预检，原正文作为字节前缀保留，完整匹配分支不写入口。
+  - basic 路由不准备或调用四角色、不写原流程状态；文档明确协议并非系统沙箱。
+  - CLI 保持原四动作并增加独立 session JSON 路由。
+  - CI 纳入子模块配置、gitlink、准备模块及 AGENTS/CLAUDE 治理变更。
+  - 两种模式共享结构规范，旧工程调整继续受授权和既有事实源限制。
+
+identity_verification:
+  manifest_hash_matches: true
+  recomputed_tree_digest_matches: true
+  checked_entries: 2209
+  type_mode_byte_differences: 0
+  reviewed_file_hashes:
+    tools/sources.mjs: 90d56c02c7e4752fe77640c1392a78d7b9c8c1316aacce60ec0247f0dcac0a15
+    tools/session.mjs: 6c96edf3e255b51abc36bbbeeb7b781acfd25add30f926055fe30bc3be065b7b
+    tools/distribution.mjs: b4a85727eaf7a591496fe20ed67b745db70531cf72cbc52054c819fc0f0e7ccc
+    tools/cli.mjs: 4c8c569b5afe7c0e6dc93f40b3e1ae11516a4a0f595710f323cafc534bd351ad
+    scripts/ci-check.mjs: b824716044777934f69a4517b38094e5c60c1324c5c6545e9a326b37ea795819
+
+review_boundary:
+  - 仅审核指定不可变生产快照及相关协议，未读取正在变化的测试作验收判断。
+  - 未修改文件、执行真实发布或创建会话记录，未派生代理。
+  - 未把作者自测视为独立测试通过。
+  - Tester 尚在执行不是本轮缺陷。
+  - 修复后须在包含生产、独立测试和真实 gitlink 的完整候选上复核。
+  - 不表示主仓提交、最终 CODE_REVIEW 或正式 G5–G10 已完成。
+
+unblock_conditions:
+  - 修复 PROD-ENTRY-001，并提供绑定新候选身份的独立回归证据。

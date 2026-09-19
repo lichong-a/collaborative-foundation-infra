@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "report_id": "TEST-PROTECTION-001",
+  "root_issue_id": "REQ-20260917-001",
+  "external_evidence": "migration-20260917T033224Z",
+  "timestamp": "2026-09-17T03:44:31.232973+00:00",
+  "archive": {
+    "sha256": "24135e794dbe057fb281f6fa8b97cd249d04f5ec4b7ad203a8ed175bc3a56de4",
+    "matches_receipt": true,
+    "index": {
+      "entries": 4805,
+      "missing": [],
+      "added": []
+    }
+  },
+  "manifest": {
+    "sha256": "1315306ef88d1f58e59bed3efca0067acd6ec17f039e3afca3d3e3d10bf92013",
+    "matches_receipt": true,
+    "entries": 4805
+  },
+  "restore": {
+    "entries": 4805,
+    "matches": true,
+    "difference_counts": {
+      "missing": 0,
+      "added": 0,
+      "changed": 0
+    }
+  },
+  "protected": {
+    "entries": 2612,
+    "matches": true,
+    "difference_counts": {
+      "missing": 0,
+      "added": 0,
+      "changed": 0
+    },
+    "upstream_files": 725,
+    "git_entries": 1548,
+    "source_lock_sha256": "b523e4451947f524960e629e165041c732e095c8b10f0b608358b2532eb8f70e"
+  },
+  "scope": "Current repository Git metadata is compared without rewriting captured objects or history. Other projects are not read.",
+  "verdict": "PASS"
+}

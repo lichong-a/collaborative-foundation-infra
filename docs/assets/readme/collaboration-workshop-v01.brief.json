@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "outputMode": "editorial-scene",
+  "canvas": { "width": 1600, "height": 900, "aspect": "16:9" },
+  "language": "zh-CN",
+  "viewerQuestion": "不同成员、模型与工具，怎样围绕同一份工程规范协作，并找到逐层关联的文档？",
+  "claim": "不同来源的材料保留各自边界，通过共同索引连接到有层次、可追溯的工程资料。",
+  "relation": "system",
+  "composition": "hero-beat",
+  "scene": "A quiet, wide editorial cutaway of an archivist's workshop, viewed in gentle three-quarter perspective. A single large open index binder on the central workbench is the focal point. Three differently tabbed source folders stay intact at the left. Physical paper ribbons connect their tabs through the shared binder to three stepped archive compartments on the right. The continuous route is easy to follow, with no crossings. One tiny recurring protagonist fastens a single red binding clip to the shared index; one aloof silver cat observes from the top archive ledge. The evidence occupies the middle two thirds of the composition, rising gently from lower left to upper right. Leave a generous calm bone-paper band across the upper edge and clear margins on all four sides. This is a warm ink drawing of a working archive, not an interface or a factory that automatically rewrites files.",
+  "evidence": [
+    {
+      "id": "source-folders",
+      "object": "Three intact paper folders with visibly different physical tab shapes, grouped as one source tray",
+      "state": "Each folder retains its own outline and pages; only its navigation tab connects to the index",
+      "position": "Left middle, fully inside the margin"
+    },
+    {
+      "id": "shared-index",
+      "object": "One oversized open ring binder with three nested, completely blank tabbed leaves",
+      "state": "A single shared entry point; large page shapes and page turns are readable without any writing",
+      "position": "Center foreground, the largest and highest-contrast object"
+    },
+    {
+      "id": "progressive-archive",
+      "object": "One stepped wooden archive with three open compartments, each containing a small stack of blank tabbed documents",
+      "state": "Distinct compartments make boundaries visible; paper ribbons lead from the index to a compartment and then to one document, showing progressive navigation",
+      "position": "Right middle and background, arranged along the same gentle diagonal"
+    },
+    {
+      "id": "traceable-links",
+      "object": "Three narrow paper ribbons with clean black edges and occasional muted azure sections",
+      "state": "Every ribbon visibly joins real tabs or binder rings, stays continuous, and does not cross another ribbon; no abstract arrows or floating icons",
+      "position": "Across the central workbench, joining the physical evidence"
+    }
+  ],
+  "protagonist": {
+    "present": true,
+    "count": 1,
+    "action": "Stand beside the left edge of the binder, gently attach one small red binding clip, and look at the connected pages. Keep the full body visible, the head vertically capsule-shaped, the two crown brush ticks on the viewer-left side, and the neck knot a tiny red square rather than a bow tie. The person is much smaller than the binder."
+  },
+  "companions": [
+    {
+      "id": "american-shorthair",
+      "count": 1,
+      "role": "A small independent reviewer perched on the top archive ledge, calmly observing the completed connection; show the complete body exactly once."
+    }
+  ],
+  "palette": { "storyPigment": "azure" },
+  "title": "",
+  "labels": [],
+  "exclusions": [
+    "any writing or pseudo-writing on pages or folder tabs",
+    "company logos, product names, laptops, robots, gears, screens or circuit motifs",
+    "trash bins, shredders, erased files or machinery suggesting automatic semantic reorganization",
+    "duplicate people, duplicate cats or character cameos",
+    "speech bubbles, decorative badges or separate comic panels",
+    "crossing or disconnected ribbons",
+    "cropped limbs or objects touching the image border",
+    "photorealism, gradients, soft shadows or round halftone dots"
+  ]
+}

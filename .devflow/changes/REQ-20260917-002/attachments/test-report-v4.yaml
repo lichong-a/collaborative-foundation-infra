@@ -1,0 +1,453 @@
+{
+  "schema_version": 1,
+  "test_report_id": "TEST-20260917-002-004",
+  "supersedes": "TEST-20260917-002-003",
+  "root_issue_id": "REQ-20260917-002",
+  "tested_sha": "8c1edc969f1264b6ffa147238457b65358904b5c",
+  "spec_version": 4,
+  "test_plan_version": 4,
+  "environment": {
+    "scope": "Independent local Linux integration, fault injection and protocol review; not formal main-repository G5-G10.",
+    "node": "v24.20.0",
+    "npm": "11.19.0",
+    "git": "2.53.0",
+    "platform": "Linux x86_64 non-root",
+    "isolated_home_xdg": true,
+    "candidate_directory": "candidate",
+    "candidate_parent": "53d29b7fc9906aa5556bb66e476568dc8a446815",
+    "main_head": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+    "task_revision": 5,
+    "spec_sha256": "2aa07065100b48bc97e02d8edb02b83ce959ccc5c9687d6ca582280e16a05b83",
+    "test_plan_sha256": "91b6de0e395fdccf631701511a3bb7db491e83728ab31e7e0cdd8486937d220a",
+    "production_manifest_sha256": "28ae10c0160bcd990e575b0794fc70f721664abdb2290695a2bfa4edaef158e3",
+    "production_files": 1374,
+    "test_files": 12,
+    "artifact_sha256": "951f64b0e306db7b301787b72198d9d54c10c270808da72b243344c994c9547b",
+    "standardVersion": "44040143c90c3d669397441e111611614f10cc4bb218ffb0de853f3ca7efa765",
+    "gitlinks": {
+      "skills/upstreams/ric-devflow": "9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb",
+      "skills/upstreams/ric-design-patterns": "46b183615afbfe3b1fffcbc9425ac3aea2c36d99",
+      "skills/upstreams/teamai-cli": "0c059b2da6fe0fa3206ab1ce33978601a2a832e6"
+    },
+    "teamai_runtime": {
+      "actual_published_version": "0.24.0",
+      "tarball": "https://registry.npmjs.org/teamai-cli/-/teamai-cli-0.24.0.tgz",
+      "integrity": "sha512-h8asWWBkYH1XxAKr/KzrpSgt/bhnGu9hLXisKU/6CFolknOcp1F684P3dlZqJ4RPBcSlPIIhB0lvmOBa/R7RDg==",
+      "latest_query_time": "2026-09-17T12:25:32.166456Z",
+      "query_scope": "One earlier independent live query; later runs use that verified fixed archive and controlled metadata, not a second live latest query.",
+      "synthetic_cases": "Lifecycle archive changes package.json postinstall metadata only, declares its distinct test SRI and retains actual CLI payload. Developer baseline0.22.0 is a controlled lock-data fixture, not an installed0.22.0 CLI. No future version is claimed compatible."
+    },
+    "evidence": [
+      {
+        "path": "candidate-identity.json",
+        "sha256": "c4722b2616a1b1c9604d2656cc92f5005356d35c7fe0626854c273a52bba6b66"
+      },
+      {
+        "path": "execution-records.json",
+        "sha256": "91771a8ec642f51ee7ce74fa8da61e10c19bb04317ae8f5134cd6d802dc35dca"
+      },
+      {
+        "path": "independent-source-validation.json",
+        "sha256": "f9b7ef2ad37c2e110a7f4171bd7e74b7d92ab1f653eebf1380e614580ba924dd"
+      },
+      {
+        "path": "correspondence-final.json",
+        "sha256": "e4f22dcc0cc4843f4f1d7bfbd097b496980216e3291ed72b1c19855cb94b6ffb"
+      },
+      {
+        "path": "recovery-receipt.json",
+        "sha256": "c13f69638b75ebfbc8c6b9d2ce8254fa7c6bf32ee918c1fbbf495a3ad73e5342"
+      },
+      {
+        "path": "protocol-review-v5.json",
+        "sha256": "85249d13e7b2f40c56b68daafa6c5f578ca0afc25ab35dd1cdb5bbc7224578db"
+      },
+      {
+        "path": "supplemental.test.mjs",
+        "sha256": "6fd3b69697b3dae4ad3cc62a12d9fe2445146073c9fb2be0bada86c6a87246af"
+      },
+      {
+        "path": "runtime-additional.test.mjs",
+        "sha256": "927776d983c8b40637680f9aa8aceca2b3c79b56abafa7c9b56eaa262cfb8442"
+      },
+      {
+        "path": "runtime-additional-execution.json",
+        "sha256": "5c51970f7aff45e9c384546399dc70c2e5812257ff280f72454a7a6d0fddadb8"
+      },
+      {
+        "path": "npm-input/asset-index-v2.json",
+        "sha256": "be7c3e836434c7b82bc6086a6f598d95c72f7d90619394c57093c93cbe77e61b"
+      },
+      {
+        "path": "npm-input/archive-verification.json",
+        "sha256": "765ab19eeedb81febe47145bc18745191de848f06d390fd7902a2d4d9120268a"
+      },
+      {
+        "path": "source-oracles/upstream-packages.json",
+        "sha256": "f95d801caf65e8fcd22379fdf38f2f4b68b29b193f3f1dc503993a066d5b93e8"
+      },
+      {
+        "path": "source-oracles/guide-navigation.json",
+        "sha256": "8be51624f3e5674a01c9bcfe5d58759df4fdd48b70e39241f70ecac9e8b5306c"
+      },
+      {
+        "path": "runtime-independent-prepare.json",
+        "sha256": "eefaf16aba839fc627bd834be9bfa2220e2764160cccdb329335d054d536ed47"
+      }
+    ]
+  },
+  "started_at": "2026-09-17T13:34:40.182884+00:00",
+  "finished_at": "2026-09-17T13:43:51.163295+00:00",
+  "summary": {
+    "passed": 92,
+    "failed": 0,
+    "blocked": 0
+  },
+  "commands": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "prepare:skills"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "8c1edc969f1264b6ffa147238457b65358904b5c",
+      "started_at": "2026-09-17T13:34:40.182884+00:00",
+      "finished_at": "2026-09-17T13:34:40.523963+00:00",
+      "exit_code": 0,
+      "stdout": "prepare.stdout.log",
+      "stderr": "prepare.stderr.log",
+      "stdout_sha256": "34832171b359bfb5da60144c8d5bc872ba79045263f6c677092aa9737346a1aa",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/teamai-runtime.mjs",
+        "prepare",
+        "--source",
+        "$EVIDENCE/candidate",
+        "--data-home",
+        "$EVIDENCE/runtime-data",
+        "--offline"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "8c1edc969f1264b6ffa147238457b65358904b5c",
+      "started_at": "2026-09-17T13:34:40.560195+00:00",
+      "finished_at": "2026-09-17T13:34:45.433407+00:00",
+      "exit_code": 0,
+      "stdout": "runtime-reuse.stdout.log",
+      "stderr": "runtime-reuse.stderr.log",
+      "stdout_sha256": "7ed51123a5dab237ced6bf19fe5533e6ed177610381831094b410acfcaa8c412",
+      "stderr_sha256": "30f46bcb3d65dcd00118d17c393d9c50149239b88d398d59902fc94f67198719"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "8c1edc969f1264b6ffa147238457b65358904b5c",
+      "started_at": "2026-09-17T13:34:45.470073+00:00",
+      "finished_at": "2026-09-17T13:34:45.760859+00:00",
+      "exit_code": 0,
+      "stdout": "build.stdout.log",
+      "stderr": "build.stderr.log",
+      "stdout_sha256": "8f784fa46629784ee0d32505b443c473e27d7edcb25e03ce9f35d49e475f91f0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "8c1edc969f1264b6ffa147238457b65358904b5c",
+      "started_at": "2026-09-17T13:34:45.799836+00:00",
+      "finished_at": "2026-09-17T13:37:53.760592+00:00",
+      "exit_code": 0,
+      "stdout": "full-test.stdout.log",
+      "stderr": "full-test.stderr.log",
+      "stdout_sha256": "7be7596b28e8b275ca89450e2434a3aee9443c8ac744e0871c8e42d34f0015e6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "supplemental.test.mjs"
+      ],
+      "cwd": ".",
+      "tested_sha": "8c1edc969f1264b6ffa147238457b65358904b5c",
+      "started_at": "2026-09-17T13:37:53.798077+00:00",
+      "finished_at": "2026-09-17T13:38:06.031350+00:00",
+      "exit_code": 0,
+      "stdout": "supplemental.stdout.log",
+      "stderr": "supplemental.stderr.log",
+      "stdout_sha256": "e9510a57a0e57b9b7dc6b99d3162fc612af14188125b8498efa19596c4ff0d8f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "check"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "8c1edc969f1264b6ffa147238457b65358904b5c",
+      "started_at": "2026-09-17T13:38:06.069406+00:00",
+      "finished_at": "2026-09-17T13:38:07.392748+00:00",
+      "exit_code": 0,
+      "stdout": "check.stdout.log",
+      "stderr": "check.stderr.log",
+      "stdout_sha256": "a83f743cf22d14ba76dcfd2bdda851d262f4f7c16484513e75959f262e19e120",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "8c1edc969f1264b6ffa147238457b65358904b5c",
+      "started_at": "2026-09-17T13:38:07.429235+00:00",
+      "finished_at": "2026-09-17T13:38:07.467774+00:00",
+      "exit_code": 0,
+      "stdout": "diff-check.stdout.log",
+      "stderr": "diff-check.stderr.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "runtime-additional.test.mjs"
+      ],
+      "cwd": ".",
+      "tested_sha": "8c1edc969f1264b6ffa147238457b65358904b5c",
+      "asset_sha256": "927776d983c8b40637680f9aa8aceca2b3c79b56abafa7c9b56eaa262cfb8442",
+      "started_at": "2026-09-17T13:42:51.629994+00:00",
+      "finished_at": "2026-09-17T13:43:51.163295+00:00",
+      "exit_code": 0,
+      "stdout": "runtime-additional.stdout.log",
+      "stderr": "runtime-additional.stderr.log",
+      "stdout_sha256": "6640d7bd63406387fb784130c85be92a9733cda697ab4cffd7ef17c34944d810",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "acceptance_criteria_results": [
+    {
+      "acceptance_criterion": "AC-TA-SOURCE",
+      "result": "PASS",
+      "test_cases": [
+        "TC-TA-SOURCE-001",
+        "TC-TA-SOURCE-002",
+        "TC-TA-SOURCE-003",
+        "TC-SRC-001..008"
+      ],
+      "evidence": "Three actual gitlinks/HEAD/lock identities; independent738 fixed Git blob byte/execute identities, including prior RIC725 and official13. Reference assets and unknown/dirty/linked/mismatched sources refuse writes. Read-only prepare leaves only two own source packages and no legacy export state.",
+      "artifacts": [
+        "sources.test.mjs",
+        "teamai-resources.test.mjs",
+        "independent-source-validation.json",
+        "correspondence-final.json"
+      ]
+    },
+    {
+      "acceptance_criterion": "AC-TA-SKILLS",
+      "result": "PASS",
+      "test_cases": [
+        "TC-TA-SKILLS-001",
+        "TC-TA-SKILLS-002",
+        "TC-TA-SKILLS-003",
+        "TC-TA-SKILLS-004",
+        "TC-TA-SKILLS-005",
+        "TC-TA-SKILLS-006",
+        "TC-DIST-001..006",
+        "TC-DOC-001"
+      ],
+      "evidence": "Actual npm CLI0.24.0 ten-package codex/zcode/claude pull, refresh and repeat runs; eight upstream packages remain exact and both own packages match independent relocation expectations. Guide has exactly3 pinned relative targets plus DEC005 single anchor repair; invalid mappings/targets fail. Builtin differences and unknown actual pull output reject before publication. Old schema2/3, customized/disabled official packages, stale project entries and receipt tampering preserve targets.",
+      "artifacts": [
+        "distribution.test.mjs",
+        "entry.test.mjs",
+        "teamai-resources.test.mjs",
+        "source-oracles/guide-navigation.json",
+        "supplemental.test.mjs"
+      ]
+    },
+    {
+      "acceptance_criterion": "AC-TA-RUNTIME",
+      "result": "PASS",
+      "test_cases": [
+        "TC-TA-RUNTIME-001",
+        "TC-TA-RUNTIME-002",
+        "TC-TA-RUNTIME-003",
+        "TC-TA-RUNTIME-004",
+        "TC-TA-RUNTIME-005",
+        "TC-TA-RUNTIME-006",
+        "TC-TA-RUNTIME-007",
+        "TC-TA-RUNTIME-008"
+      ],
+      "evidence": "One independent actual official latest query at12:25 and verified0.24.0 SRI archive, followed by actual npm install/CLI validation/three-harness compatibility. Counted npm boundaries prove single resolve and fixed pack/install, offline reuse/revalidation, explicit same-version upgrade, failure preservation, HOME/XDG separation, unsafe/unknown state refusal, concurrent readers/writers, directory/lock identity, IO failures, actual output mismatch/source drift, and lifecycle script suppression. Controlled developer-version mismatch does not redirect verified CLI.",
+      "artifacts": [
+        "teamai-runtime.test.mjs",
+        "teamai-fixtures.mjs",
+        "runtime-additional.test.mjs",
+        "runtime-additional-execution.json",
+        "npm-input/asset-index-v2.json",
+        "runtime-independent-prepare.json"
+      ]
+    },
+    {
+      "acceptance_criterion": "AC-TA-BOUNDARY",
+      "result": "PASS",
+      "test_cases": [
+        "TC-TA-BOUNDARY-001",
+        "TC-TA-BOUNDARY-002",
+        "TC-TA-BOUNDARY-003",
+        "TC-MODE-001/002",
+        "TC-STRUCT-001"
+      ],
+      "evidence": "Read-only instruction/configuration review and existing real session CLI tests preserve explicit root choice, child inheritance, basic/devflow boundaries, module/document ownership, authorized output and publication separation. Official progress is not a second delivery state; hooks/recall remain disabled. This is protocol/file validation, not native model compliance.",
+      "artifacts": [
+        "protocol-review-v5.json",
+        "teamai-resources.test.mjs",
+        "session.test.mjs",
+        "governance.test.mjs"
+      ]
+    },
+    {
+      "acceptance_criterion": "AC-TA-VALIDATION",
+      "result": "PASS",
+      "test_cases": [
+        "TC-TA-CI-001",
+        "TC-TA-REG-001",
+        "TC-CI-001",
+        "TC-SESSION-001..008"
+      ],
+      "evidence": "Original npm test81/81, old6 supplementary protections, additional5 planned runtime branches, ten Skill structural checks, prepare/build/check/diff0, trusted candidate weakening rejection and deployed schema4 layout without business npm lock. Governance20/20 reachable/0 findings. Four verified bundles actually restore the same HEAD and three submodules, then readonly preparation passes.",
+      "artifacts": [
+        "execution-records.json",
+        "recovery-receipt.json",
+        "correspondence-final.json"
+      ]
+    }
+  ],
+  "regression_results": [
+    {
+      "name": "Original npm test",
+      "result": "PASS",
+      "tests": 81,
+      "pass": 81,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "duration_ms": 187840.921249,
+      "detail": "All62 previous groups retained with changed two-source/seven-package/schema3/bare-CLI assumptions replaced by approved three-source/ten-package/schema4/prepared-runtime behavior. Added11 runtime and8 resource/official-boundary groups; no skipped assertions or raised old timeouts."
+    },
+    {
+      "name": "Original six independent supplementary groups",
+      "result": "PASS",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "duration_ms": 12206.825523,
+      "detail": "Same six behavioral oracles; fixture now uses verified prepared runtime and two own source folders."
+    },
+    {
+      "name": "Five planned runtime branch supplements",
+      "result": "PASS",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "duration_ms": 59504.22857,
+      "detail": "Separate versioned external asset bound by SHA256 to the same candidate; HOME/dev-baseline, writer combinations, actual output/source failures, package/permission/entry rejection and lifecycle sentinel. No full-suite repetition."
+    },
+    {
+      "name": "Protected sources and delivery correspondence",
+      "result": "PASS",
+      "detail": "1374 production and12 test files match delivery bytes/modes;738 independent upstream files exact;41 prior Root records preserved. MainHEAD unchanged and staged logical delta remains only authorized .gitmodules plus third gitlink; raw index stat-cache change separately recorded."
+    },
+    {
+      "name": "Skill and recovery checks",
+      "result": "PASS",
+      "detail": "Ten Skill frontmatter/body structural validations; four bundle verifications plus actual fresh restoration at candidateSHA, matching tree/three upstreams and readonly source preparation."
+    },
+    {
+      "name": "Resolved production defects",
+      "result": "PASS",
+      "closures": [
+        {
+          "finding": "PROD-TA-RUNTIME-001",
+          "initial": "runtime-defect-reproduction/defects.json",
+          "failure": "Cleanup EIO reported failure after selecting a new current; owned lock remained.",
+          "final": "Original regression passes on the full candidate; cleanup and lock failure recover prior current and old installation.",
+          "initial_sha256": "dc13b0bbaa9e020bf5895ffad3ecde7d63d7b7971b0f0938bc19aa5c22e4f188",
+          "verified_on_sha": "8c1edc969f1264b6ffa147238457b65358904b5c",
+          "status": "CLOSED"
+        },
+        {
+          "finding": "PROD-TA-RUNTIME-002",
+          "initial": "runtime-defect-reproduction/defects.json",
+          "failure": "Concurrent candidate/work replacement sentinels were deleted.",
+          "final": "Both identity-replacement regressions pass; unowned paths and replaced locks are preserved.",
+          "initial_sha256": "dc13b0bbaa9e020bf5895ffad3ecde7d63d7b7971b0f0938bc19aa5c22e4f188",
+          "verified_on_sha": "8c1edc969f1264b6ffa147238457b65358904b5c",
+          "status": "CLOSED"
+        },
+        {
+          "finding": "PROD-TA-RUNTIME-003",
+          "initial": "runtime-reader-race-v7-boundary/defect.json",
+          "failure": "Independent reader acquired tentative B entry, which disappeared after writer rollback.",
+          "final": "Full-suite independent reader receives exit2 while preparation remains locked; writer failure preserves old current.",
+          "initial_sha256": "481078057238bfec7a7e8606a97d9354f042f82bcedddd4eee7201f413bb14d3",
+          "verified_on_sha": "8c1edc969f1264b6ffa147238457b65358904b5c",
+          "status": "CLOSED"
+        }
+      ]
+    }
+  ],
+  "baseline_comparison": {
+    "baseline_sha": "53d29b7fc9906aa5556bb66e476568dc8a446815",
+    "pre_existing_failures": [],
+    "new_failures": [],
+    "resolved_during_implementation": [
+      "PROD-TA-RUNTIME-001",
+      "PROD-TA-RUNTIME-002",
+      "PROD-TA-RUNTIME-003"
+    ],
+    "detail": "Pre-production npm test62/62 recorded independently on exact prior candidate. Three new production findings were reproduced on frozen v6/v7 and closed by full v8 candidate regression. Test-fixture assembly mistakes are preserved separately and were not classified as product failures."
+  },
+  "open_defects": [],
+  "not_run": [
+    {
+      "check": "Native Codex/ZCode/Claude host loading, new/forked UI/model conversations and actual native DevFlow role calls",
+      "reason": "Actual TeamAI file distribution and synthetic CLI session records do not prove host/model behavior."
+    },
+    {
+      "check": "Real wiki generation and remote knowledge sharing/publication",
+      "reason": "Only authorization/protocol routing is within this local slice; no actual output/publication task was authorized."
+    },
+    {
+      "check": "A distinct future published CLI release, Windows/macOS and remote CI/branch protection",
+      "reason": "Compatibility claims bind actual0.24.0; future releases and other environments were not supplied or run."
+    },
+    {
+      "check": "Main repository commit/push/release and formal G5-G10",
+      "reason": "Main remains uncommitted as authorized; tested SHA is a recoverable isolated candidate."
+    }
+  ],
+  "residual_risks": [
+    "Unknown or customized runtime/project installations and old receipt layouts intentionally stop for explicit review; no automatic migration is claimed.",
+    "Runtime namespace locking and identity are cooperation protections, not an OS sandbox against arbitrary shell mutation.",
+    "Ordinary suite metadata is pinned; actual npm dependency installation and the existing verified Node-download integration require network unless inputs are supplied from a suitable isolated cache."
+  ],
+  "verdict": "PASS"
+}

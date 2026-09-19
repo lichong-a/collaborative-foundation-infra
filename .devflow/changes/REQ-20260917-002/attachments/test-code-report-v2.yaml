@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "implementation_id": "IMPL-20260917-002-TEST-002",
+  "supersedes": "IMPL-20260917-002-TEST-001",
+  "root_issue_id": "REQ-20260917-002",
+  "task_id": "TASK-001",
+  "defect_id": null,
+  "spec_version": 3,
+  "base_sha": "a5aeac068367e2880cb9eeca0e253cc405c38c7e",
+  "head_sha": "c02f51cfe8c2e5cd1bd59b5b41228ebc1f6904fe",
+  "change_budget_compliance": {
+    "allowed_paths_only": true,
+    "protected_paths_untouched": true,
+    "dependency_changes": "none",
+    "public_contract_changes": "none by Tester; assertions reflect approved Spec3 direct-source and receipt schema changes",
+    "database_changes": "none"
+  },
+  "changed_files": [
+    {
+      "path": "tests/acceptance-plan.md",
+      "sha256": "c2a5ef36c86fb75969d58ca67c80f45a735ef633db94074136bfaff910a45429"
+    },
+    {
+      "path": "tests/distribution.test.mjs",
+      "sha256": "2fa43caa79e93628bd3dc1eeef728f5603d7f1def8385ce48ea02b060f99c968"
+    },
+    {
+      "path": "tests/entry.test.mjs",
+      "sha256": "10b8d46425d324d26c22a7ef8aeabba58cc09ba978cd1d7abba8254f85c6463f"
+    },
+    {
+      "path": "tests/source-fixtures.mjs",
+      "sha256": "80aaddbcd32167da333b1c14470e6afeb592fb3f722d97b8f7cc10ab094edf8d"
+    },
+    {
+      "path": "tests/sources.test.mjs",
+      "sha256": "9c3b11b935ac33712a2e63fe630141e4dbee175b30251811a8ce8354bbbd6e8f"
+    }
+  ],
+  "summary": "Tester authored only the five listed tests paths for TASK-001 rev3. The isolated candidate includes Implementer production and Planner records as well; this report claims no authorship over those and is not a formal main-branch G5 report. Execution is TEST-20260917-002-002, test-report-v2.yaml SHA256 1a8598e2d55be5a186114c70d9c12555b798feed110a2fde8afd92f74ca99ae2. Current result62 repository plus6 separately hashed supplemental groups PASS.",
+  "reused_existing_patterns": [
+    "Node native test runner, existing fixture/snapshot/Git helpers and unchanged timeout policies.",
+    "Existing37 protective behaviors plus session/entry/CI/runtime fault contracts retained.",
+    "Independent explicit four-link mapping builds expected own distributed bytes without invoking production transformation to derive the Oracle."
+  ],
+  "design_decisions": [
+    "Approved obsolete export mechanics replaced by direct-source identity/no-rebuild/read-only/legacy-preservation tests; full replacement matrix is oracle-migration.json.",
+    "Actual TeamAI Git refresh uses separately assembled team source and actual member-clone byte/full-POSIX-mode identity; portable package checks retain exact bytes/executable bits.",
+    "Six external supplemental groups are independently hashed in the execution report and are not represented as committed test code."
+  ],
+  "tests": [
+    {
+      "report_id": "TEST-20260917-002-002",
+      "path": "test-report-v2.yaml",
+      "sha256": "1a8598e2d55be5a186114c70d9c12555b798feed110a2fde8afd92f74ca99ae2",
+      "tested_sha": "c02f51cfe8c2e5cd1bd59b5b41228ebc1f6904fe",
+      "verdict": "PASS"
+    },
+    {
+      "path": "oracle-migration.json",
+      "sha256": "fb56a64fd797b0496eb14bcff01060d94b49c251d4968366921c1b094b4b2572"
+    },
+    {
+      "path": "correspondence-final.json",
+      "sha256": "b44da81d8676b4d173c50128dfa2b3c16ea45d65e939dcf6292e3269bb1a1410"
+    }
+  ],
+  "documentation": [
+    "tests/acceptance-plan.md describes direct sources, temporary assembly, evidence source and independent Oracle boundaries without duplicating approval state."
+  ],
+  "migrations": [
+    "Only test fixture/source expectation migration in listed paths; no user installation migration performed."
+  ],
+  "rollback": [
+    "All prior candidate assets remain. candidate.bundle and both upstream bundles have verified restoration; production/test restoration must preserve other writers and requires its own authorization."
+  ],
+  "known_risks": [
+    "Full candidate range contains other authors; use the five listed test paths for Tester attribution. Main checkout remains intentionally uncommitted."
+  ],
+  "not_run": [
+    {
+      "check": "Native harness startup/loading and new/resumed/forked session UI/model interaction for Codex, ZCode and Claude Code",
+      "reason": "This local slice validates actual TeamAI file distribution and isolated CLI records only; no native invocation was performed."
+    },
+    {
+      "check": "Real DevFlow Planner/Reviewer/Tester/Implementer calls from newly installed packages",
+      "reason": "Resource integrity and protocol semantics are verified separately; native loading/invocation is not inferred from installation."
+    },
+    {
+      "check": "Human-operated manual-state migration, Windows/macOS behavior and remote hosted CI/branch protection",
+      "reason": "No such operation or environment is part of this authorized local Linux slice."
+    },
+    {
+      "check": "Main-repository commit/push/release and formal G5-G10 completion",
+      "reason": "User permits local changes only. Tested SHA is a recoverable isolated synthetic candidate, not main HEAD; test PASS does not grant those gates."
+    }
+  ],
+  "pre_existing_failures_observed": []
+}

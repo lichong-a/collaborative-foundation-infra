@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "implementation_id": "IMPL-20260917-002-004",
+  "supersedes": "IMPL-20260917-002-003",
+  "root_issue_id": "REQ-20260917-002",
+  "task_id": "TASK-001",
+  "defect_id": null,
+  "spec_version": 3,
+  "test_plan_version": 3,
+  "author_role": "ric_devflow_implementer",
+  "base_ref": "main / origin/main",
+  "base_sha": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+  "head_sha": null,
+  "observed_main_head_sha": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+  "head_explanation": "No main commit is authorized. This report binds the immutable local production snapshot. It is implementation self-check evidence, not independent CODE_REVIEW or formal G5-G10 approval.",
+  "spec_sha256": "cb01d871b49d9f6b46ec8056c573d667af60f666de69866f31cc7e5004e579b9",
+  "test_plan_sha256": "5783c10777c9695a1a337e2ee59bec846ce69450e3aad8fdd78325090f177f11",
+  "approved_reviews": [
+    "REVIEW-SPEC-20260917-002-003",
+    "REVIEW-TEST-20260917-002-002"
+  ],
+  "candidate_scope": {
+    "status": "frozen production scope",
+    "snapshot": "production-snapshot-v3",
+    "replaces": "production-snapshot-v2",
+    "prior_snapshot_preserved": true,
+    "scope": "Current production tree, excluding root tests, root .devflow, node_modules and every Git metadata entry. The previous candidate is superseded for the Spec3 source-layout decision only; historical evidence remains immutable."
+  },
+  "snapshot": {
+    "directory": "production-snapshot-v3",
+    "manifest_sha256": "47f597a9f3866afe542849b1958b71cf61f4070fc47410aa71026d26573f9998",
+    "tree_digest": "9a651a53fb153ebdd5340bfbb23b8e3d85e54ef937f6eab75439075cfdde0917",
+    "entries": 1145,
+    "restored_entries": 1145,
+    "bundles": [
+      {
+        "file": "baseline.bundle",
+        "sha256": "057f52063614323a064c893f8ee91ca31feb84be5d29084a55e70ad8bdf3ce5a",
+        "head": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1"
+      },
+      {
+        "file": "ric-devflow.bundle",
+        "sha256": "7df643d96a4a7b63cabf6f2addd3527705c52b6cea0dd35e9695d7afb35df9b4",
+        "head": "9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb"
+      },
+      {
+        "file": "ric-design-patterns.bundle",
+        "sha256": "391e313c279b11837c1a95e38abc4d554cb866cc91286fe3ccc19adc3d61e061",
+        "head": "46b183615afbfe3b1fffcbc9425ac3aea2c36d99"
+      }
+    ],
+    "changes_manifest": "production-snapshot-v3/changes.json",
+    "identity_file_sha256": "335dd9a263550a69c7f1c247ab3bfd5a93eccec30dbbb24fb53f8b53c29157ac"
+  },
+  "change_budget_compliance": {
+    "allowed_paths_only": true,
+    "protected_paths_untouched": true,
+    "dependency_changes": "none",
+    "database_changes": "none",
+    "index_changes_this_revision": "none",
+    "public_contract_changes": "Reviewed source schema3; prepare verified/read-only; source identity APIs and installation receipt schema3. Old source layouts and old installation receipts are conservatively refused and preserved."
+  },
+  "changed_files": [
+    "tools/skill-resources.mjs",
+    ".gitignore",
+    "AGENTS.md",
+    "docs/integration.md",
+    "docs/maintenance.md",
+    "docs/onboarding.md",
+    "docs/validation.md",
+    "manifest/governance.json",
+    "README.md",
+    "scripts/build.mjs",
+    "scripts/ci-check.mjs",
+    "scripts/verify.mjs",
+    "skills/common/collaborative-foundation-infra/references/adoption.md",
+    "skills/common/collaborative-foundation-infra/references/design.md",
+    "skills/common/collaborative-foundation-infra/references/session.md",
+    "skills/common/collaborative-foundation-infra/scripts/governance.mjs",
+    "skills/common/collaborative-foundation-infra/SKILL.md",
+    "sources.lock.json",
+    "tools/distribution.mjs",
+    "tools/sources.mjs"
+  ],
+  "archived_layout": {
+    "scope": "Six previously generated upstream package folders and the previous local source-preparation state",
+    "verified_upstream_files": 725,
+    "removed_tree_entries_including_directories": 1065,
+    "archive": "legacy-source-layout",
+    "method": "Validate complete locked bytes, file set and executable modes, then atomically move each explicit path to a new external archive without replacing existing paths. No ordinary command adopts or removes leftovers."
+  },
+  "summary": "Consume the two fixed real submodules directly. Source preparation is now read-only. Assemble a private seven-Skill TeamAI tree per distribution and validate the actual output against narrowly transformed expected bytes.",
+  "reused_existing_patterns": [
+    "Reuse strict repository path, file inventory and source pin validation.",
+    "Reuse the existing Markdown parser and replaceLink implementation for syntax-bearing link targets only.",
+    "Reuse whole-output preflight, exact matching no-write project entries, atomic entry replacement, conservative receipt validation and serial source rechecks.",
+    "Keep existing session state meaning and trusted-baseline CI; generate the bundle with the existing locked esbuild toolchain."
+  ],
+  "design_decisions": [
+    "sources.lock schema3 packages.path is the actual repository-relative upstream package path. Original 725 file identities and both upstream commits remain unchanged; redundant sourcePath is rejected.",
+    "prepareSkills and verifyUpstreams produce no folders, locks or ownership receipts and do not fetch or execute upstream code. Missing initialization produces an explicit instruction; old copies, unknown siblings and legacy preparation files remain intact and fail verification.",
+    "tools/skill-resources.mjs calculates the complete source and distribution manifests without source writes. No .git, absolute checkout location or preparation state participates in the digest.",
+    "Only SKILL.md plus references/session.md, adoption.md and design.md may relocate their registered upstream Markdown navigation targets. Internal navigation, external URLs, code and ordinary prose retain original bytes. Missing or unknown cross-package mappings fail.",
+    "Only the self Skill changes during layout relocation. Six upstream packages are copied intact from their actual source paths. Complete seven-package bytes and normalized executable modes must match the actual pinned TeamAI output.",
+    "Distribution receipt schema3 binds sourceLayoutVersion3, sourcePackagesDigest and distributionDigest. Old installation receipts are preserved and rejected; they cannot silently certify the new transformation.",
+    "Every currently matched project entry is still re-read, including noncurrent harness entries. Plain apply never writes entries; a complete block with dirty outside text remains a no-write match. Explicit disables, unknown custom resources and unsafe objects retain their earlier protections.",
+    "Project rules, onboarding, maintenance and self Skill routes now identify direct upstream consumption and read-only preparation. Session identity remains private and shared profiles do not copy mode history."
+  ],
+  "tests": [
+    {
+      "command": "npm run prepare:skills",
+      "exit_code": 0,
+      "result": "verified/read-only; six packages and 725 files",
+      "evidence": "final-checks.json"
+    },
+    {
+      "command": "npm run build",
+      "exit_code": 0,
+      "result": "passed",
+      "evidence": "final-checks.json"
+    },
+    {
+      "command": "npm run check",
+      "exit_code": 0,
+      "result": "18/18 documents reachable; 0 findings",
+      "evidence": "final-checks.json"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "passed",
+      "evidence": "final-checks.json"
+    },
+    {
+      "command": "git diff --cached --check",
+      "exit_code": 0,
+      "result": "passed",
+      "evidence": "final-checks.json"
+    },
+    {
+      "command": "node $EVIDENCE/direct-smoke.mjs",
+      "exit_code": 0,
+      "groups": 15,
+      "cases": [
+        {
+          "name": "read-only prepare repeats verified without source copies or state",
+          "status": "passed"
+        },
+        {
+          "name": "private assembly has seven complete packages without Git or outer workflow files",
+          "status": "passed"
+        },
+        {
+          "name": "four independent expected link relocations, installed navigation and 725 upstream byte/mode identities",
+          "status": "passed"
+        },
+        {
+          "name": "three real TeamAI distributions bind schema3 and transformed expectation",
+          "status": "passed"
+        },
+        {
+          "name": "repeat and ordinary apply preserve matched entries with dirty outside text",
+          "status": "passed"
+        },
+        {
+          "name": "stale noncurrent entry is rejected without target modification",
+          "status": "passed"
+        },
+        {
+          "name": "old installation receipt remains preserved and refused",
+          "status": "passed"
+        },
+        {
+          "name": "customized installed package and explicit disable still refuse without overwriting",
+          "status": "passed"
+        },
+        {
+          "name": "identical actual source at a second physical location has identical resource identity",
+          "status": "passed"
+        },
+        {
+          "name": "legacy copies and stale/corrupt preparation state are reported without consumption or cleanup",
+          "status": "passed"
+        },
+        {
+          "name": "relocation preserves code/prose/external URLs and rejects absent anchors",
+          "status": "passed"
+        },
+        {
+          "name": "unknown and missing approved cross-package mappings cannot publish",
+          "status": "passed"
+        },
+        {
+          "name": "source drift after expected manifest is frozen refuses assembly",
+          "status": "passed"
+        },
+        {
+          "name": "distributed tool keeps read-only status, persistence, switching and child restriction",
+          "status": "passed"
+        },
+        {
+          "name": "all verification and real distributions leave the source tree and index unchanged",
+          "status": "passed"
+        }
+      ],
+      "evidence": "direct-smoke-results.json"
+    },
+    {
+      "command": "node $EVIDENCE/ci-concurrency-smoke.mjs",
+      "exit_code": 0,
+      "groups": 5,
+      "cases": [
+        {
+          "name": "concurrent prepare processes remain strictly read-only",
+          "status": "passed"
+        },
+        {
+          "name": "private assembly write failure preserves source and does not create a receipt",
+          "status": "passed"
+        },
+        {
+          "name": "trusted schema3 baseline and gitlinks pass CI",
+          "status": "passed"
+        },
+        {
+          "name": "entry and source registration changes require independent review",
+          "status": "passed"
+        },
+        {
+          "name": "candidate policy cannot hide violations from trusted policy",
+          "status": "passed"
+        }
+      ],
+      "evidence": "ci-concurrency-results.json",
+      "isolated_trusted_base_sha": "b9460167757ef03c5fd547a7a6f88153d2c1c1c6"
+    },
+    {
+      "command": "node $EVIDENCE/freeze-direct.mjs",
+      "exit_code": 0,
+      "result": "1145 source, snapshot and restored production entries match in type, mode and file bytes; 9 Tester files unchanged; main HEAD and index unchanged; three source bundles independently verified.",
+      "evidence": "freeze-direct.log"
+    }
+  ],
+  "observed_failures": [
+    {
+      "phase": "external self-test harness, first attempt",
+      "failure": "ENOBUFS while capturing the existing large staged patch with the default subprocess buffer",
+      "attribution": "Evidence helper buffer limit, before behavior assertions; no production failure or mutation.",
+      "resolution": "Set the helper subprocess buffer to 64 MiB, rerun the complete script and preserve the original failed log. Final patch capture streams directly to files.",
+      "evidence": "direct-smoke-attempt-1.log"
+    }
+  ],
+  "prior_evidence_boundary": "Previous candidate test results are not relabelled as results for this revision. Only the commands and 20 self-test groups explicitly listed here ran against the current production candidate.",
+  "source_identity": {
+    "sourceDigest": "7b602afacc2cd689292916bc85ce47be9a51f0c8667e4a30dd787c4e4156f3e6",
+    "standardVersion": "656464c83859a10ab1da3bdfbfe5658fb98d5a29b3d8d6d64aa03abe30777134",
+    "sourcePackagesDigest": "e87350141a9393005e9e8c63060e510b56860cc01fdc71197f9cc7184a723343",
+    "distributionDigest": "d744c49a5536c69cd19dd4a316412511920fdf0e1dd3dd47198af08e59943ebc",
+    "sourceLockDigest": "6395ae6ca1874587273d887ec08666916e20249f73a16cda401e659c1a0422b4",
+    "artifactSha256": "ac9aae58fe75229f3f4ac7e9662265751a08511527273c23bbb458e2c21436dd"
+  },
+  "protected_checks": {
+    "testerFiles": 9,
+    "testerBytesAndModesUnchanged": true,
+    "mainHeadUnchanged": true,
+    "indexUnchanged": true,
+    "upstreamVersionsAndBytesUnchanged": true,
+    "dependenciesUnchanged": true,
+    "otherProductionBytesAndModesUnchanged": true
+  },
+  "evidence_hashes": {
+    "final-checks.json": "2e0ee3518d90264851bfbed76f5c363b14632c861ff9e94df2f70d9ca36c00ea",
+    "direct-smoke-results.json": "c0312caef2b5cd5f1b7c92206ae92821e18ff3dc1d858470c990427e9b4da50e",
+    "ci-concurrency-results.json": "af3f98b10b0b0f6486b58a8de50001bbec7bc930ab26aa40a1ceb8a6af66c369",
+    "tests-before.json": "385660c469baafe9819d7d5e28b32e029bc66aaf140396429453733a06b96cad",
+    "index-before.patch": "4313b91628a14942ea9e268953c6723e2a29bfe2d34667b828a8b86bc4e202bf",
+    "lock-before.json": "adcfa4ce96daa2b791f07c950171d5391f3f521fdbb787b172e1ef1767dfa2bc",
+    "production-snapshot-v3/changes.json": "ac3d5124f30779250c82fcf37ef20ce19a7698081283ed960d89ec835371d3e0"
+  },
+  "migration_and_recovery": [
+    "Old generated source layout and state remain in the external migration archive; earlier full backups are unchanged.",
+    "New source and installed receipt schemas intentionally refuse old artifacts. Review and explicitly authorize any migration; do not edit old receipts to claim identity.",
+    "The immutable production tree, second restoration, scoped patches and verified Git bundles support reconstruction in an isolated checkout. Never restore them over an active user worktree."
+  ],
+  "known_risks": [
+    "Cooperative filesystem checks cannot eliminate every race with a hostile noncooperative writer.",
+    "Successful distribution and matching instruction bytes do not prove native host loading, real role invocation or a user session-mode choice."
+  ],
+  "not_run": [
+    {
+      "check": "Full npm test and independently authored TestPlan3 suite",
+      "reason": "Tester owns test adaptation and execution after this production window; all 9 paused test files were preserved byte-for-byte."
+    },
+    {
+      "check": "Independent CODE_REVIEW, complete-candidate acceptance and formal G5-G10",
+      "reason": "Planner, Reviewer and Tester own those gates; this report grants no approval."
+    },
+    {
+      "check": "Native harness/role invocation and remote CI",
+      "reason": "Current validation used isolated local repositories and real local TeamAI distribution; it does not claim host execution or remote deployment."
+    }
+  ],
+  "handoff": {
+    "receiver": "ric_devflow_planner",
+    "production_window": "released; production zero-write",
+    "next": "Tester adapts source fixtures and schema/API expectations, binds the complete candidate, and performs the independently reviewed TestPlan3; Reviewer evaluates the full production and test net diff."
+  }
+}

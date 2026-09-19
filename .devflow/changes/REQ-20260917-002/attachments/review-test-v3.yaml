@@ -1,0 +1,116 @@
+schema_version: 1
+review_id: REVIEW-TEST-20260917-002-002
+supersedes: REVIEW-TEST-20260917-002-001
+mode: TEST_REVIEW
+reviewer: ric_devflow_reviewer
+created_at: "2026-09-17T08:57:49Z"
+target:
+  root_issue_id: REQ-20260917-002
+  task_id: TASK-001
+  task_revision: 3
+  spec_version: 3
+  test_plan_version: 3
+  base_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  head_sha: null
+  tested_sha: null
+  spec_path: .devflow/changes/REQ-20260917-002/attachments/spec-v3.md
+  spec_sha256: cb01d871b49d9f6b46ec8056c573d667af60f666de69866f31cc7e5004e579b9
+  test_plan_path: .devflow/changes/REQ-20260917-002/attachments/test-plan-v3.md
+  test_plan_sha256: 5783c10777c9695a1a337e2ee59bec846ce69450e3aad8fdd78325090f177f11
+verdict: APPROVE
+summary: >-
+  测试计划 v3 可用于本轮独立验收设计与执行。
+  28 个稳定追踪 ID 覆盖六项 AC，明确将已取消的持久导出机制断言
+  替换为直接来源、prepare 零写入、临时组装和双侧导航的可观察断言；
+  未以布局变化弱化内容保全、并发、权限、入口或可信 CI 保护。
+  测试层级、独立预期值、作者边界、失败归因及最终身份绑定清楚，
+  未发现阻断性测试计划缺口。本批准不表示实现或测试执行通过。
+findings: []
+non_blocking_notes: []
+residual_risks:
+  - >-
+    正式执行必须绑定本轮完整生产加测试的新候选或明确的冻结快照。
+    先前 a5aeac068367e2880cb9eeca0e253cc405c38c7e 的 59+5 结果
+    仅为 Spec2 回归锚点，不是 Spec3 验收结果。
+  - >-
+    自有包的转换后预期清单须独立构造，不得调用生产转换函数生成期望值。
+    来源及分发侧分别校验，不能重建源码副本来满足链接检查。
+  - >-
+    取消旧导出机制允许替换失效的 fixture 和断言，但不授权删除仍有效的保护回归。
+    最终测试作者报告须列明替代关系，不能靠维持旧数量或减少用例掩盖覆盖变化。
+  - >-
+    原生宿主加载、真实模式询问/恢复/fork/子调用及角色执行仍属独立环境切片；
+    文件分发、CLI 或人工协议复核不能替代。未执行项需明确 not_run。
+evidence_reviewed:
+  - identity: Test Plan v3
+    path: .devflow/changes/REQ-20260917-002/attachments/test-plan-v3.md
+    sha256: 5783c10777c9695a1a337e2ee59bec846ce69450e3aad8fdd78325090f177f11
+    result: >-
+      从同一份字节计算摘要并阅读全文，与委派身份一致；
+      活动 test-plan.md 与固定附件逐字相同。
+      主验收表包含 28 个唯一追踪 ID。
+  - identity: Source and migration coverage
+    cases:
+      - TC-SRC-001
+      - TC-SRC-002
+      - TC-SRC-003
+      - TC-SRC-004
+      - TC-SRC-005
+      - TC-SRC-006
+      - TC-SRC-007
+      - TC-SRC-008
+    result: >-
+      覆盖固定 SHA/index/HEAD/schema3锁/725文件一致性、缺失与脏来源、
+      旧副本诱饵拒绝、prepare 严格只读、各入口不重建六目录、
+      残留回执与未知内容保全、合成升级、源漂移、临时树并发及文件边界。
+      实际移出仅限经授权、核验和备份的指定目录。
+  - identity: Distribution and navigation coverage
+    cases:
+      - TC-DIST-001
+      - TC-DIST-002
+      - TC-DIST-003
+      - TC-DIST-004
+      - TC-DIST-005
+      - TC-DIST-006
+      - TC-DOC-001
+    result: >-
+      保留三 harness 的真实 TeamAI 七包分发和整体预检。
+      六上游包逐字及执行位保持，自有四份 Markdown 仅允许明确目标转换；
+      独立预期覆盖源码/安装双侧链接、锚点、代码伪链接、外部网址与未知映射拒绝。
+      schema3 回执分别验证来源包和分发摘要，旧schema2及缺失/篡改摘要拒绝且目标保全。
+      临时清理仅限工具自有目录，不扩大到源码或成员安装。
+  - identity: Preserved session and entry protections
+    cases:
+      - TC-SESSION-001
+      - TC-SESSION-002
+      - TC-SESSION-003
+      - TC-SESSION-004
+      - TC-SESSION-005
+      - TC-SESSION-006
+      - TC-SESSION-007
+      - TC-SESSION-008
+      - TC-MODE-001
+      - TC-MODE-002
+      - TC-STRUCT-001
+    result: >-
+      私有记录、根身份与worktree恢复、子调用只读、模式历史、
+      损坏与权限拒绝、并发和原子失败继续验证。
+      计划明确保留定制/禁用、脏入口、PROD-ENTRY-001、
+      运行时降级及 basic 不推进原流程的回归。
+  - identity: Trusted CI and complete regression
+    cases:
+      - TC-CI-001
+      - TC-REG-001
+    result: >-
+      覆盖来源映射、链接转换、gitlink及准备模块的治理变化，
+      使用可信基线执行，候选不能自行放宽门禁。
+      最终执行 prepare/build/完整适配后测试/check，
+      核对来源、测试、历史证据、依赖和主仓提交边界；
+      原37及Spec2新增行为的有效Oracle保留，已取消机制逐项替代。
+  - identity: Execution and evidence boundaries
+    result: >-
+      Tester 写入窗口与生产串行，Reviewer 全部只读；
+      隔离 HOME/XDG、真实本地 Git/TeamAI、并发屏障、
+      失败留痕及 PASS/FAIL/BLOCKED/not_run 边界明确。
+      本次未运行测试、修改文件或派生代理。
+unblock_conditions: []

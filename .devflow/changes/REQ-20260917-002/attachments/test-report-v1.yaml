@@ -1,0 +1,325 @@
+{
+  "schema_version": 1,
+  "test_report_id": "TEST-20260917-002-001",
+  "supersedes": null,
+  "root_issue_id": "REQ-20260917-002",
+  "tested_sha": "a5aeac068367e2880cb9eeca0e253cc405c38c7e",
+  "spec_version": 2,
+  "test_plan_version": 2,
+  "environment": {
+    "os": "Linux x86_64",
+    "node": "v24.20.0",
+    "npm": "11.19.0",
+    "git": "2.53.0",
+    "teamai": "0.24.0",
+    "isolation": "synthetic Git repositories, independent HOME/XDG_STATE_HOME and synthetic session IDs; no global Skill/config or other project writes",
+    "candidate_identity": "isolated synthetic Git commit; main HEAD remains base_sha",
+    "spec": {
+      "revision": 2,
+      "sha256": "c73d9a274b7c3a645fe340061a9584886689958e2d5be3c1a4f60e54a13c6203"
+    },
+    "test_plan": {
+      "revision": 2,
+      "sha256": "9f5ababb25d516cc454cc7e0ec860bab28fe80e3fa6237b01ccecdb59c8b01b4",
+      "independent_review": "APPROVE recorded by Planner before implementation"
+    },
+    "production_snapshot": {
+      "name": "production-snapshot-v2",
+      "manifest_sha256": "054377a8936304157d5ab479064868d09e952965ee4d7ca9b15736c3d82f75f3",
+      "tree_digest": "e6146fcf6111ccb5dfce969f9f3f73a2aa1d9e7b79aa313fe32e898bb497b1b8",
+      "artifact_sha256": "7a6ce4b6e240f6cdc2da0409ce05dd58058ed1b75afde0e55c858848f5deb259",
+      "standard_version": "531926db20d4d7d11e7dba3834ea8ce276bc729eca51c7dae133f0ab88db43d8"
+    },
+    "supplemental_asset": {
+      "path": "supplemental.test.mjs",
+      "sha256": "5630476cd87e135e94f26dc15f372ce270099c78b78c341dcb62c3271fe3ae7c"
+    },
+    "scope": "local independent validation of complete production and tests; not formal main-repository G5-G10 acceptance",
+    "correspondence": "correspondence-final.json",
+    "recovery": "recovery-receipt.json",
+    "detailed_evidence": "test-evidence-detail.json"
+  },
+  "started_at": "2026-09-17T07:37:49.535370+00:00",
+  "finished_at": "2026-09-17T07:45:11.953295+00:00",
+  "summary": {
+    "passed": 64,
+    "failed": 0,
+    "blocked": 0
+  },
+  "commands": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "prepare:skills"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "a5aeac068367e2880cb9eeca0e253cc405c38c7e",
+      "startedAt": "2026-09-17T07:37:49.535370+00:00",
+      "endedAt": "2026-09-17T07:37:50.054028+00:00",
+      "exitCode": 0,
+      "stdout": "prepare.stdout.log",
+      "stdoutSha256": "19d09fb67eda39b98f02b17ec169d26f5bd0aa5f06c4b7ecc6d8930474a8f544",
+      "stderr": "prepare.stderr.log",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "a5aeac068367e2880cb9eeca0e253cc405c38c7e",
+      "startedAt": "2026-09-17T07:37:50.054336+00:00",
+      "endedAt": "2026-09-17T07:37:50.421852+00:00",
+      "exitCode": 0,
+      "stdout": "build.stdout.log",
+      "stdoutSha256": "8f784fa46629784ee0d32505b443c473e27d7edcb25e03ce9f35d49e475f91f0",
+      "stderr": "build.stderr.log",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "a5aeac068367e2880cb9eeca0e253cc405c38c7e",
+      "startedAt": "2026-09-17T07:37:50.422151+00:00",
+      "endedAt": "2026-09-17T07:38:35.385343+00:00",
+      "exitCode": 0,
+      "stdout": "full-test.stdout.log",
+      "stdoutSha256": "af16cda8ce240ff063427ff7a1b6ec06be4ce4fd529fea68e65b393737b90810",
+      "stderr": "full-test.stderr.log",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "check"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "a5aeac068367e2880cb9eeca0e253cc405c38c7e",
+      "startedAt": "2026-09-17T07:38:35.385823+00:00",
+      "endedAt": "2026-09-17T07:38:36.355101+00:00",
+      "exitCode": 0,
+      "stdout": "check.stdout.log",
+      "stdoutSha256": "681a8f17549d07dbe1c2274bd1d13e8444e727c2944b4ec71cf9ff3c35e63121",
+      "stderr": "check.stderr.log",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "a5aeac068367e2880cb9eeca0e253cc405c38c7e",
+      "startedAt": "2026-09-17T07:38:36.355346+00:00",
+      "endedAt": "2026-09-17T07:38:36.364767+00:00",
+      "exitCode": 0,
+      "stdout": "diff-check.stdout.log",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "diff-check.stderr.log",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "supplemental.test.mjs"
+      ],
+      "cwd": "tester",
+      "tested_sha": "a5aeac068367e2880cb9eeca0e253cc405c38c7e",
+      "exitCode": 0,
+      "result": "5 passed / 0 failed / 0 skipped",
+      "scriptSha256": "5630476cd87e135e94f26dc15f372ce270099c78b78c341dcb62c3271fe3ae7c",
+      "stdout": "supplemental.stdout.log",
+      "stdoutSha256": "b7efe84195ff23776b2378d63a6671c6e164874d6ebcbb7c4324fad830a9e3ad",
+      "stderr": "supplemental.stderr.log"
+    }
+  ],
+  "acceptance_criteria_results": [
+    {
+      "ac": "AC-SOURCE",
+      "cases": [
+        "TC-SRC-001",
+        "TC-SRC-002",
+        "TC-SRC-003",
+        "TC-SRC-004",
+        "TC-SRC-005",
+        "TC-SRC-006",
+        "TC-SRC-007",
+        "TC-SRC-008"
+      ],
+      "result": "PASS",
+      "evidence": [
+        "full-test.stdout.log",
+        "supplemental.stdout.log",
+        "correspondence-final.json"
+      ],
+      "detail": "真实index/gitlink/HEAD/锁交叉验证、缺失/冲突/脏源/离线、归属/升级/并发/失败恢复、软链硬链特殊文件；725原文件及锁清单逐项保持。"
+    },
+    {
+      "ac": "AC-DISTRIBUTION",
+      "cases": [
+        "TC-DIST-001",
+        "TC-DIST-002",
+        "TC-DIST-003",
+        "TC-DIST-004",
+        "TC-DIST-005",
+        "TC-DIST-006"
+      ],
+      "result": "PASS",
+      "evidence": [
+        "full-test.stdout.log",
+        "supplemental.stdout.log"
+      ],
+      "detail": "真实TeamAI三harness七包、flags预览和显式追加、全部对象预检、正文原字节/mtime/inode幂等、Codex/ZCode共用入口、完整回执绑定、短写/EIO不改原入口。"
+    },
+    {
+      "ac": "AC-SESSION",
+      "cases": [
+        "TC-SESSION-001",
+        "TC-SESSION-002",
+        "TC-SESSION-003",
+        "TC-SESSION-004",
+        "TC-SESSION-005",
+        "TC-SESSION-006",
+        "TC-SESSION-007",
+        "TC-SESSION-008"
+      ],
+      "result": "PASS",
+      "evidence": [
+        "full-test.stdout.log",
+        "supplemental.stdout.log"
+      ],
+      "detail": "JSON与0/3/2退出码、只读status、显式选择/历史/规范版本、worktree/common-dir/新根/宿主隔离、子继承、损坏记录/私有权限/实际EACCES、manual保护、并发同异模式与原子失败。"
+    },
+    {
+      "ac": "AC-MODE",
+      "cases": [
+        "TC-MODE-001",
+        "TC-MODE-002"
+      ],
+      "result": "PASS",
+      "layer": "protocol review plus real CLI state behavior",
+      "evidence": [
+        "protocol-review.json",
+        "full-test.stdout.log"
+      ],
+      "limitation": "未验证新宿主真实模型遵循提示；不将CLI选择当作加载或角色调用。"
+    },
+    {
+      "ac": "AC-STRUCTURE",
+      "cases": [
+        "TC-STRUCT-001"
+      ],
+      "result": "PASS",
+      "layer": "independent protocol and template review",
+      "evidence": [
+        "protocol-review.json"
+      ],
+      "detail": "旧仓先画像/最小建议，新仓职责树进入既有方案；两模式共用，无自动语义迁移。"
+    },
+    {
+      "ac": "AC-CI-DOC",
+      "cases": [
+        "TC-CI-001",
+        "TC-DOC-001",
+        "TC-REG-001"
+      ],
+      "result": "PASS",
+      "evidence": [
+        "full-test.stdout.log",
+        "check.stdout.log",
+        "protocol-review.json",
+        "correspondence-final.json"
+      ],
+      "detail": "可信基线执行，不接受候选弱化；gitlink/来源/入口治理识别；移位包导航及缺失反例、依赖/原历史保护、恢复。"
+    }
+  ],
+  "regression_results": [
+    {
+      "scope": "original repository tests",
+      "passed": 37,
+      "failed": 0,
+      "oracle_changes": "none; fixture adaptation only, detailed in tests/acceptance-plan.md"
+    },
+    {
+      "scope": "new repository tests",
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "scope": "supplemental asset",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "asset_sha256": "5630476cd87e135e94f26dc15f372ce270099c78b78c341dcb62c3271fe3ae7c"
+    },
+    {
+      "id": "PROD-ENTRY-001",
+      "result": "PASS",
+      "scenarios": [
+        "安装后删除入口再普通--apply",
+        "移除区块再普通--apply",
+        "修改区块再普通--apply",
+        "双入口回执中本次未请求入口已陈旧"
+      ],
+      "oracle": "exit2且原仓/用户目录快照完全一致；完整块加脏正文仍noop、bytes/inode/mtime不变",
+      "evidence": "full-test.stdout.log"
+    },
+    {
+      "production_entries_identical": 2209,
+      "test_files_identical": 9,
+      "imported_files_identical": 725,
+      "historical_flow_files_identical": 15,
+      "dependency_changes": 0,
+      "main_head_unchanged": true,
+      "main_index_bytes_unchanged_since_v2_intake": true,
+      "main_commit_or_push": false,
+      "candidate_tracked_changes_after_commands": 0,
+      "planner_later_root_evidence": "excluded from production/test equality; candidate contains a frozen Root record snapshot"
+    }
+  ],
+  "baseline_comparison": {
+    "baseline_sha": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+    "pre_existing_failures": [],
+    "new_failures": []
+  },
+  "open_defects": [],
+  "not_run": [
+    {
+      "item": "新规范下Codex/ZCode/Claude原生宿主加载与真实同/新/fork/子Agent运行",
+      "status": "not_run",
+      "reason": "此切片验证实际CLI/文件分发与协议，未启动宿主原生新会话；不能由文本或安装证明。"
+    },
+    {
+      "item": "新规范下四个DevFlow原生角色真实调用/权限等价",
+      "status": "not_run",
+      "reason": "原包完整性和所有权保持通过不替代原生调用；本轮没有将历史调用记录复用成新规范证据。"
+    },
+    {
+      "item": "远端CI平台、远端发布、多操作系统",
+      "status": "not_run",
+      "reason": "授权仅本地隔离Linux验证，无远端写入。"
+    },
+    {
+      "item": "正式主仓G5-G10、主仓提交或推送",
+      "status": "not_run",
+      "reason": "用户未授权本轮主仓commit；独立候选SHA仅为本地验收身份。"
+    }
+  ],
+  "residual_risks": [
+    "PASS仅覆盖声明的本地自动检查、真实TeamAI文件分发、协议审阅和恢复；不证明原生宿主遵循新会话入口。",
+    "曾有高负载诊断超时，失败日志与一次有界环境复核保存在diagnostic-followup.json；最终原npm test命令59/59通过，未扩大超时。",
+    "测试代码在同一Task串行编写；主仓无新commit。完整隔离候选用于本地审核，不可自动授予正式G5-G10。",
+    "外部5组补充资产已摘要固定与保全；它们未被伪装为候选提交内的测试。"
+  ],
+  "verdict": "PASS"
+}

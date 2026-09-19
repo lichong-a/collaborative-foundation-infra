@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "report_id": "TEST-TREE-001",
+  "tested_sha": "c0830203fbb5a00b3a76f9e3e69d439e5320dd09",
+  "external_evidence": "migration-20260917T033224Z",
+  "timestamp": "2026-09-17T03:56:04.132164+00:00",
+  "scan": {
+    "case_insensitive": true,
+    "hidden_and_ignored_included": true,
+    "scope": "Relative paths, regular-file bytes and symlink targets; physical checkout prefix is excluded; links are not followed. Current Git metadata is preserved without unpacking or rewriting historical objects.",
+    "delivery_counts": {
+      "files": 3830,
+      "directories": 887,
+      "symlinks": 9
+    },
+    "delivery_matches": 0,
+    "candidate_matches": 0,
+    "git_raw_byte_matches": 0,
+    "git_historical_contents_purged": false
+  },
+  "protection": {
+    "entries": 2612,
+    "differences": {
+      "missing": [],
+      "added": [],
+      "changed": []
+    }
+  },
+  "candidate_delivery_comparison": {
+    "exclusions": [
+      ".git",
+      ".devflow",
+      "node_modules"
+    ],
+    "reason": "Current delivery is unborn; process evidence is appended after candidate fixation; installed dependencies are verified by lock and integration tests.",
+    "differences": {
+      "missing": [],
+      "added": [],
+      "changed": []
+    }
+  },
+  "verdict": "PASS"
+}

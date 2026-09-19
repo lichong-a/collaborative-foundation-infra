@@ -1,0 +1,23 @@
+{
+  "report_id": "TEST-GUIDE-001",
+  "tested_sha": "c0830203fbb5a00b3a76f9e3e69d439e5320dd09",
+  "files": [
+    "skills/common/collaborative-foundation-infra/references/adoption.md",
+    "skills/common/collaborative-foundation-infra/references/delivery.md",
+    "docs/onboarding.md",
+    "docs/maintenance.md",
+    "docs/validation.md",
+    "tests/acceptance-plan.md"
+  ],
+  "observations": [
+    "Diagnosis is default when adoption mode is unspecified.",
+    "Existing rules, user changes, prior workflow authority and state are preserved.",
+    "Direct business code, database, dependencies, globals and other worktrees remain outside the adoption delegation.",
+    "Tool refusal is not bypassed with manual writes or weakened policy.",
+    "Automatic repairs are limited to explicit index entries, pending registration and mapped broken links.",
+    "Prior installation layout requires manual inventory and a separately authorized migration window; current preflight does not claim automatic cross-version discovery.",
+    "Resource installation, host loading and native invocation are explicitly separated.",
+    "Current process references resolve in candidate governance check; old results are not rebound."
+  ],
+  "verdict": "PASS"
+}

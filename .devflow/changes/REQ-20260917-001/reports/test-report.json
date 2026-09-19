@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "test_report_id": "TEST-FINAL-001",
+  "supersedes": null,
+  "root_issue_id": "REQ-20260917-001",
+  "tested_sha": "c0830203fbb5a00b3a76f9e3e69d439e5320dd09",
+  "spec_version": 1,
+  "test_plan_version": 1,
+  "environment": {
+    "authority": "Linux x86_64 isolated local candidate with real Git, TeamAI subprocess and Node user installation",
+    "node": "24.20.0",
+    "npm": "11.19.0",
+    "git": "2.53.0",
+    "python": "3.14.4",
+    "uv": "0.12.9",
+    "teamai": "0.24.0",
+    "test_plan_review": "REVIEW-TEST-20260917-001 APPROVE",
+    "test_plan_sha256": "f61a45e4d2d74c7972b746af0ad848da62203741c2afd21e207b90843fd97881",
+    "external_evidence": "migration-20260917T033224Z",
+    "external_assets": {
+      "test_code": "Included in tested_sha",
+      "protection_script_sha256": "89508a6ffbc5720f9ec10f0556aafe114297d740f782418e1d024a08a885a8ca",
+      "tree_script_sha256": "e0aaeb5528f5feb9593f23cdb85b707e6f3e3d8451309a75292fe8c5d8542c2f"
+    },
+    "evidence_paths": "Raw outputs and scan manifests are retained externally. This report uses neutral archive identities and relative artifact paths; no raw log has been relabeled as normalized output.",
+    "delivery_correspondence": "Paths, types, full modes and bytes match candidate outside .git, .devflow and node_modules. Git is protected separately, process records are appended separately, and installed dependency identity is checked against the lock."
+  },
+  "started_at": "2026-09-17T03:54:43.902534+00:00",
+  "finished_at": "2026-09-17T03:58:33.054243+00:00",
+  "summary": {
+    "passed": 37,
+    "failed": 0,
+    "blocked": 0
+  },
+  "commands": [
+    {
+      "command": "npm ci --ignore-scripts --offline",
+      "cwd": ".",
+      "tested_sha": "c0830203fbb5a00b3a76f9e3e69d439e5320dd09",
+      "started": "2026-09-17T03:54:43.902534+00:00",
+      "ended": "2026-09-17T03:54:44.662156+00:00",
+      "exit_code": 0,
+      "tracked_and_untracked_status": ""
+    },
+    {
+      "command": "npm run build",
+      "cwd": ".",
+      "tested_sha": "c0830203fbb5a00b3a76f9e3e69d439e5320dd09",
+      "started": "2026-09-17T03:54:44.662338+00:00",
+      "ended": "2026-09-17T03:54:44.836033+00:00",
+      "exit_code": 0,
+      "tracked_and_untracked_status": ""
+    },
+    {
+      "command": "npm test",
+      "cwd": ".",
+      "tested_sha": "c0830203fbb5a00b3a76f9e3e69d439e5320dd09",
+      "started": "2026-09-17T03:54:44.836199+00:00",
+      "ended": "2026-09-17T03:54:57.273599+00:00",
+      "exit_code": 0,
+      "tracked_and_untracked_status": ""
+    },
+    {
+      "command": "npm run check",
+      "cwd": ".",
+      "tested_sha": "c0830203fbb5a00b3a76f9e3e69d439e5320dd09",
+      "started": "2026-09-17T03:54:57.273805+00:00",
+      "ended": "2026-09-17T03:54:57.831478+00:00",
+      "exit_code": 0,
+      "tracked_and_untracked_status": ""
+    },
+    {
+      "command": "git diff --check BASE_SHA TESTED_SHA",
+      "cwd": ".",
+      "parameters": {
+        "BASE_SHA": "d78b68779899fa9167ec24599a301902c91724cb",
+        "TESTED_SHA": "c0830203fbb5a00b3a76f9e3e69d439e5320dd09"
+      },
+      "exit_code": 0,
+      "evidence": "tester-final/dependency-comparison.json"
+    },
+    {
+      "command": "python3 verify-protection.py --archive ARCHIVE --repository REPOSITORY",
+      "cwd": ".",
+      "parameter_note": "Rendered with logical locations; actual command and script are retained in the external evidence context.",
+      "exit_code": 0,
+      "evidence": "tester-verification/protection-report.json"
+    },
+    {
+      "command": "python3 verify-tree.py --archive ARCHIVE --repository REPOSITORY",
+      "cwd": ".",
+      "parameter_note": "Rendered with logical locations; script is fixed by its SHA256 above.",
+      "exit_code": 0,
+      "evidence": "tester-final/tree-report.json"
+    }
+  ],
+  "acceptance_criteria_results": [
+    {
+      "id": "AC-001",
+      "cases": [
+        "TC-MIGRATION-001"
+      ],
+      "result": "PASS",
+      "observation": "Full external archive and actual restore contain 4805 matching entries; current 1548 Git entries are unchanged."
+    },
+    {
+      "id": "AC-002",
+      "cases": [
+        "TC-IDENTITY-001",
+        "TC-CLEAN-TREE-001",
+        "TC-NAMESPACE-001"
+      ],
+      "result": "PASS",
+      "observation": "Canonical package/team/skill/rule/receipt/metadata and managed markers pass. Case-insensitive current-file scan has zero findings."
+    },
+    {
+      "id": "AC-003",
+      "cases": [
+        "TC-MIGRATION-001",
+        "TC-CLEAN-TREE-001",
+        "TC-EVIDENCE-001"
+      ],
+      "result": "PASS",
+      "observation": "Prior project-specific records remain only in the external archive. Current documentation refers to current evidence and does not reuse historical PASS to prove the new candidate."
+    },
+    {
+      "id": "AC-004",
+      "cases": [
+        "TC-PROVENANCE-001",
+        "TC-IDENTITY-001",
+        "TC-BUILD-001"
+      ],
+      "result": "PASS",
+      "observation": "All 725 imported Skill files and source lock are unchanged; dependency lock differs only in project name fields; build is reproducible."
+    },
+    {
+      "id": "AC-005",
+      "cases": [
+        "TC-REGRESSION-001",
+        "TC-NAMESPACE-001",
+        "TC-DISTRIBUTION-001",
+        "TC-TRUSTED-CI-001",
+        "TC-RUNTIME-001"
+      ],
+      "result": "PASS",
+      "observation": "All 34 original automated cases and 3 new cases pass. Real TeamAI distribution, trusted CI, runtime install/failure/offline behavior and write protections are exercised."
+    },
+    {
+      "id": "AC-006",
+      "cases": [
+        "TC-NAVIGATION-001",
+        "TC-EVIDENCE-001"
+      ],
+      "result": "PASS",
+      "observation": "Actual distributed Skill works from relocated Unicode/space paths; removing a required topic yields a real broken-link failure. Manual guide review confirms bounded additive adoption and separately authorized migration."
+    },
+    {
+      "id": "AC-007",
+      "cases": [
+        "TC-BUILD-001",
+        "TC-EVIDENCE-001"
+      ],
+      "result": "PASS",
+      "observation": "Build/test/check all exit 0 on the complete SHA. Independent plan review is approved; final code review is a separate Reviewer decision. Native loading/calls are not inferred from distribution."
+    },
+    {
+      "id": "AC-008",
+      "cases": [
+        "TC-CLEAN-TREE-001",
+        "TC-PROVENANCE-001",
+        "TC-EVIDENCE-001"
+      ],
+      "result": "PASS",
+      "observation": "Scan includes 3830 regular files, 887 directories, 9 symlinks, hidden and ignored entries. Zero current-file matches, 2612 protected entries unchanged, and delivery/candidate core trees match exactly."
+    }
+  ],
+  "regression_results": [
+    {
+      "scope": "Original automated cases",
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "tester-final/test-retention.json"
+    },
+    {
+      "scope": "New identity, relocation and runtime-variable cases",
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "tester-final/test.stdout"
+    },
+    {
+      "scope": "Governance navigation",
+      "documents": 17,
+      "reachable": 17,
+      "findings": 0,
+      "result": "PASS",
+      "evidence": "tester-final/check.stdout"
+    },
+    {
+      "scope": "Readonly backup recovery and protected tree",
+      "result": "PASS",
+      "evidence": "tester-verification/protection-report.json"
+    },
+    {
+      "scope": "Final residual/protection/candidate correspondence",
+      "result": "PASS",
+      "evidence": "tester-final/tree-report.json"
+    }
+  ],
+  "baseline_comparison": {
+    "baseline_sha": "d78b68779899fa9167ec24599a301902c91724cb",
+    "pre_existing_failures": [],
+    "new_failures": []
+  },
+  "open_defects": [],
+  "not_run": [
+    {
+      "scope": "New native host loading and role calls for installed resources",
+      "reason": "Not exercised by this rename test; three harness file-distribution paths do not imply native loading or invocation."
+    },
+    {
+      "scope": "Other operating systems, Linux arm64, remote CI platform protection and production/live project acceptance",
+      "reason": "Outside the current local x86_64 rename validation scope; no external business project was accessed."
+    },
+    {
+      "scope": "Formal delivery-repository Git gates",
+      "reason": "Delivery HEAD remains unborn and no commit or push authorization exists for that repository."
+    }
+  ],
+  "residual_risks": [
+    "Existing earlier installation namespaces are not automatically discovered or migrated. The guide requires an explicit inventory, reviewed migration and authorized serial window.",
+    "The baseline governance command had an environment assembly gap: omitted historical process records produced 32 findings. Current candidate includes its own process records and has zero findings; lifecycle closure of the baseline diagnostic remains Planner-owned.",
+    "The physical checkout location is intentionally retained. Current Git metadata is byte-preserved; historical Git objects were not purged or rewritten."
+  ],
+  "verdict": "PASS"
+}

@@ -1,0 +1,169 @@
+schema_version: 1
+implementation_id: IMPL-20260917-002-003
+supersedes: IMPL-20260917-002-002
+root_issue_id: REQ-20260917-002
+task_id: TASK-001
+defect_id: null
+spec_version: 2
+test_plan_version: 2
+author_role: ric_devflow_implementer
+base_ref: main / origin/main
+base_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+head_sha: null
+observed_main_head_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+head_explanation: No main commit is authorized. This report binds the immutable local production snapshot, not a new commit or formal G5–G10 approval.
+spec_sha256: c73d9a274b7c3a645fe340061a9584886689958e2d5be3c1a4f60e54a13c6203
+test_plan_sha256: 9f5ababb25d516cc454cc7e0ec860bab28fe80e3fa6237b01ccecdb59c8b01b4
+review_trigger:
+  id: REVIEW-PRODUCTION-20260917-002-001
+  findings:
+    - PROD-ENTRY-001
+    - NOTE-PROFILE-001
+  state: implementation addressed; independent verification pending
+candidate_scope:
+  status: frozen production scope
+  snapshot: production-snapshot-v2
+  replaces: production-snapshot-v1
+  prior_snapshot_preserved: true
+  scope: Full production candidate with five bounded correction files; root tests and root .devflow are excluded from tree and production patch. Independent test author work is retained unchanged.
+snapshot:
+  directory: production-snapshot-v2
+  manifest_sha256: 054377a8936304157d5ab479064868d09e952965ee4d7ca9b15736c3d82f75f3
+  tree_digest: e6146fcf6111ccb5dfce969f9f3f73a2aa1d9e7b79aa313fe32e898bb497b1b8
+  entries: 2209
+  restored_entries: 2209
+  bundles:
+    - file: baseline.bundle
+      sha256: 057f52063614323a064c893f8ee91ca31feb84be5d29084a55e70ad8bdf3ce5a
+      head: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+    - file: ric-devflow.bundle
+      sha256: 7df643d96a4a7b63cabf6f2addd3527705c52b6cea0dd35e9695d7afb35df9b4
+      head: 9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb
+    - file: ric-design-patterns.bundle
+      sha256: 391e313c279b11837c1a95e38abc4d554cb866cc91286fe3ccc19adc3d61e061
+      head: 46b183615afbfe3b1fffcbc9425ac3aea2c36d99
+change_budget_compliance:
+  allowed_paths_only: true
+  protected_paths_untouched: true
+  dependency_changes: none
+  public_contract_changes: No new interface/schema; stale recorded project-entry claims now trigger read-only conservative refusal.
+  database_changes: none
+changed_files:
+  - docs/onboarding.md
+  - skills/common/collaborative-foundation-infra/references/adoption.md
+  - skills/common/collaborative-foundation-infra/scripts/governance.mjs
+  - skills/common/collaborative-foundation-infra/templates/project-profile.md.txt
+  - tools/distribution.mjs
+changed_files_identity:
+  - path: docs/onboarding.md
+    before: 4b3a536638bab8b53f7b4fd943260e082e91a527d691b2fcb7f5949ef6ba5b7b
+    after: 04c348ef19c53a95c47349c6f7a9b4dd2b2b3b568dca6bd99e3de54efba976b3
+  - path: skills/common/collaborative-foundation-infra/references/adoption.md
+    before: bcd12d24e4806844d4c77b27dacb494baf9fc66a8cf7f522f6c0f21f98b7580d
+    after: 2d91c9d68242898cd5472ec30abaf22044912c4c840963ffbe5630ac87152de0
+  - path: skills/common/collaborative-foundation-infra/scripts/governance.mjs
+    before: f88e8801fbe498acdb579e8c8d43f233d89f34fb7aee51259ad7653fb8d1fb1e
+    after: 7a6ce4b6e240f6cdc2da0409ce05dd58058ed1b75afde0e55c858848f5deb259
+  - path: skills/common/collaborative-foundation-infra/templates/project-profile.md.txt
+    before: e92866db185f099ad088b482f6dae9e458a496a82af2fb4dc6f2259efcc867a5
+    after: e1c82b29d204622dbef234ab10494fcd34b63e13ed345ff17d5e0510f2ca61b4
+  - path: tools/distribution.mjs
+    before: b4a85727eaf7a591496fe20ed67b745db70531cf72cbc52054c819fc0f0e7ccc
+    after: 9b5496b38279e222a68e32669aba213b67be5c758eac6d71763f3cd3faef87c5
+summary: Reverify every project entry claimed as currently matched, including the other harness entry and ordinary sync without --install-entry. Remove private session identity requirements from shared project profiles and adoption reports.
+reused_existing_patterns:
+  - Reuse the existing read-only preflightEntry matcher and its exact-block/no-write branch.
+  - Preserve existing whole-output preflight, repeated publication checks and conservative failure behavior.
+  - Continue using the approved esbuild generator; no dependency or index changes.
+design_decisions:
+  - preflightReceipt now verifies actual entry files for every recorded projectEntries key; absence, altered/removed markers or unsafe object types refuse before target publication.
+  - Before receipt commit and return, verify all current matched claims again, including newly installed or noncurrent-harness entries.
+  - The verifier reads only; ordinary --apply never repairs or restores an entry. Complete matched blocks preserve dirty outside text and leave receipt/entry bytes unchanged on noop.
+  - Shared project profile and adoption report only identify the governing protocol and standard links. Concrete root IDs, selection files and history stay in private state or explicitly scoped session handoffs.
+tests:
+  - command: npm run prepare:skills
+    exit_code: 0
+    result: noop; same pinned source and exports
+    evidence: repair-checks.json
+  - command: npm run build
+    exit_code: 0
+    result: passed
+    evidence: repair-checks.json
+  - command: npm run check
+    exit_code: 0
+    result: 18/18 reachable; 0 findings
+    evidence: repair-checks.json
+  - command: git diff --check
+    exit_code: 0
+    result: passed
+    evidence: repair-checks.json
+  - command: git diff --cached --check
+    exit_code: 0
+    result: passed
+    evidence: repair-checks.json
+  - command: node $EVIDENCE/entry-repair-smoke.mjs
+    exit_code: 0
+    result: 10 directly related cases passed; includes real v1 false-matched reproduction and corrected v2 refusal with zero target changes.
+    cases:
+      - name: "v1 regression reproduced: deleted entry falsely reported matched"
+        status: passed
+      - name: deleted primary entry is rejected by ordinary apply
+        status: passed
+      - name: deleted primary entry is also rejected in read-only preview
+        status: passed
+      - name: modified block is preserved and rejected
+        status: passed
+      - name: removed complete block is preserved and rejected
+        status: passed
+      - name: noncurrent CLAUDE entry missing from a dual receipt is rejected
+        status: passed
+      - name: install-entry for AGENTS cannot hide stale CLAUDE evidence
+        status: passed
+      - name: noncurrent CLAUDE block change is preserved and rejected
+        status: passed
+      - name: ordinary apply verifies both matched dirty entries without writing
+        status: passed
+      - name: explicit matching entry remains no-write with dirty outside text
+        status: passed
+    evidence: entry-repair-results.json
+  - command: node $EVIDENCE/freeze-repair.mjs
+    exit_code: 0
+    result: 2209 production entries matched; exactly five approved production files differ from v1; paused Tester bytes/modes, main HEAD and index unchanged; three bundles verified.
+    evidence: freeze-repair.log
+documentation:
+  - onboarding.md describes revalidation of every receipt entry and zero-write conservative refusal.
+  - project-profile template and adoption report exclude concrete private selection identity/history.
+  - Existing handoff template remains unchanged with its session-only identity constraint.
+migrations:
+  - No new migration. Existing stale-entry installations now require explicit review instead of silently claiming current matched status.
+  - No user entry is restored, modified or deleted to satisfy revalidation.
+rollback:
+  - v1 snapshot and all earlier immutable reports remain preserved.
+  - v2 keeps its exact production tree, manifest, verified bundles and scoped production patches outside the repository. Never restore it over an active worktree.
+known_risks:
+  - Cooperative serial filesystem checks do not eliminate all races with hostile noncooperative writers.
+  - Matching entry bytes still does not prove native host loading or user mode selection.
+not_run:
+  - check: Full npm test and in-progress independent task suite
+    reason: Explicitly left to Tester; current test bytes captured at repair-window entry and preserved.
+  - check: Independent finding closure and complete-candidate CODE_REVIEW
+    reason: Planner/Reviewer responsibility; this report records implementation and self-check only.
+  - check: Native harness/role invocation, remote CI and formal G5–G10
+    reason: Not claimed by this local correction.
+pre_existing_failures_observed: []
+prior_evidence_boundary: The earlier 22 self-test groups apply to production snapshot v1 only. This report does not relabel them as rerun on v2; current repair checks and ten targeted cases are listed above.
+source_identity:
+  source_digest: 37f0478aafc4c9da621193cd8f59542651782481101acb2b768240c51b74835f
+  source_lock_digest: adcfa4ce96daa2b791f07c950171d5391f3f521fdbb787b172e1ef1767dfa2bc
+  exports_digest: 6a945f580b4c4233758c10ccffff354ab1c33f5b5fa317f196bd07427d20c136
+  artifact_sha256: 7a6ce4b6e240f6cdc2da0409ce05dd58058ed1b75afde0e55c858848f5deb259
+  standard_version: 531926db20d4d7d11e7dba3834ea8ce276bc729eca51c7dae133f0ab88db43d8
+protected_checks:
+  testerBytesAndModesUnchanged: true
+  mainHeadUnchanged: true
+  indexUnchanged: true
+  otherProductionBytesAndModesUnchanged: true
+handoff:
+  receiver: ric_devflow_planner
+  production_window: released; production zero-write
+  next: Resume Tester ownership, bind the complete candidate, then independent review of PROD-ENTRY-001 and NOTE-PROFILE-001.

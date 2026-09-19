@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "implementation_id": "IMPL-20260917-002-006",
+  "supersedes": "IMPL-20260917-002-005",
+  "root_issue_id": "REQ-20260917-002",
+  "task_id": "TASK-001",
+  "task_revision": 4,
+  "spec_version": 3,
+  "test_plan_version": 3,
+  "technical_revision": 4,
+  "author_role": "ric_devflow_implementer",
+  "base_ref": "main / origin/main",
+  "base_sha": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+  "head_sha": null,
+  "observed_main_head_sha": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+  "prior_isolated_candidate_sha": "c02f51cfe8c2e5cd1bd59b5b41228ebc1f6904fe",
+  "head_explanation": "No main commit is authorized or created. This report binds the frozen local production snapshot; the prior isolated candidate is lineage context only and is not current execution evidence.",
+  "spec_sha256": "cb01d871b49d9f6b46ec8056c573d667af60f666de69866f31cc7e5004e579b9",
+  "test_plan_sha256": "5783c10777c9695a1a337e2ee59bec846ce69450e3aad8fdd78325090f177f11",
+  "technical_sha256": "1877bfddde81eabae6fa05e739e9b5cc22ab1ffb1440d95835eb4e277b235f76",
+  "approved_review": "REVIEW-TECHNICAL-20260917-002-004",
+  "summary": "Move the two fixed submodules into skills/upstreams with Git-aware relocation; update source mappings, four source navigation links, governed paths and current documentation, retaining the original package identities and installed sibling layout.",
+  "scope": {
+    "changed_files": [
+      ".gitmodules",
+      "AGENTS.md",
+      "docs/integration.md",
+      "docs/maintenance.md",
+      "docs/onboarding.md",
+      "docs/validation.md",
+      "manifest/governance.json",
+      "README.md",
+      "scripts/ci-check.mjs",
+      "skills/common/collaborative-foundation-infra/references/adoption.md",
+      "skills/common/collaborative-foundation-infra/references/design.md",
+      "skills/common/collaborative-foundation-infra/references/session.md",
+      "skills/common/collaborative-foundation-infra/scripts/governance.mjs",
+      "skills/common/collaborative-foundation-infra/SKILL.md",
+      "sources.lock.json",
+      "tools/sources.mjs"
+    ],
+    "submodules": [
+      {
+        "id": "ric-devflow",
+        "path": "skills/upstreams/ric-devflow",
+        "head": "9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb",
+        "tree": "b3cb6733ee8bd311feda1892e06a8cbf6d620c6a",
+        "gitfile": "gitdir: ../../../.git/modules/ric-devflow",
+        "gitdir": ".git/modules/ric-devflow",
+        "coreWorktree": "../../../skills/upstreams/ric-devflow"
+      },
+      {
+        "id": "ric-design-patterns",
+        "path": "skills/upstreams/ric-design-patterns",
+        "head": "46b183615afbfe3b1fffcbc9425ac3aea2c36d99",
+        "tree": "cc62c518c67a7e975bad087f4e21dcb5ac458423",
+        "gitfile": "gitdir: ../../../.git/modules/ric-design-patterns",
+        "gitdir": ".git/modules/ric-design-patterns",
+        "coreWorktree": "../../../skills/upstreams/ric-design-patterns"
+      }
+    ],
+    "allowed_paths_only": true,
+    "dependency_changes": "none",
+    "main_commit_or_push": "none",
+    "network_or_upstream_update": "none",
+    "tests_or_flow_edits": "none"
+  },
+  "implementation": [
+    "git mv updated the two stage-0 gitlinks, .gitmodules paths, submodule Git pointers and internal core.worktree. Names, official URLs, fixed commits, Git trees and all package bytes/executable modes remain unchanged. The former root directory is absent.",
+    "Source lock schema3 keeps its fields and file identities; only the two upstream and six package paths gain the skills/ prefix. Strict source validation and trusted CI use those exact paths.",
+    "The new source paths remain governed through the existing skills scope. CI also retains recognition of the former root upstreams scope to prevent an unreviewed reintroduction. Governance no longer permits that former root directory and protects skills/upstreams.",
+    "Four source Markdown navigations use their new actual relative depths. Independently asserted installed navigation targets remain the same sibling Skill links. No distribution, session or source-copy mechanism was added.",
+    "README now shows skills/common and skills/upstreams as siblings. Active maintenance/adoption/integration instructions use the new paths; validation links to the frozen technical revision and its review, preserving prior reports as historical.",
+    "The generated governance artifact was produced by the existing build command. Source and distribution identities were recomputed from the actual new candidate rather than copied from prior results."
+  ],
+  "snapshot": {
+    "directory": "production-snapshot-v5",
+    "supersedes": "production-snapshot-v4",
+    "manifest_sha256": "088cd444b393eaa020ad1af5c0b140f9c36f78facd93990ed8c3eb2ab05c4820",
+    "tree_digest": "9c06f673ceafcfc9ab06ce686d6a849795c59f8a3c238b3a7171b080fb2a25fa",
+    "entries": 1145,
+    "verified_copied_entries": 1145,
+    "scope": "Production only, excluding root tests, .devflow, node_modules and every Git metadata entry",
+    "narrow_delta": "production-snapshot-v5/production-delta.patch",
+    "delta_against": "This migration recovery before/ copies, not the original main baseline",
+    "relocation_manifest": "production-snapshot-v5/changes.json",
+    "index_after": "production-snapshot-v5/index-after.txt",
+    "prior_assets_preserved": true
+  },
+  "verification": [
+    {
+      "command": "npm run prepare:skills",
+      "exit_code": 0,
+      "result": "verified/read-only, six packages and 725 files",
+      "evidence": "author-checks.json"
+    },
+    {
+      "command": "npm run build",
+      "exit_code": 0,
+      "result": "passed",
+      "evidence": "author-checks.json"
+    },
+    {
+      "command": "npm run check",
+      "exit_code": 0,
+      "result": "18/18 documents reachable, 0 findings",
+      "evidence": "author-checks.json"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "result": "passed",
+      "evidence": "author-checks.json"
+    },
+    {
+      "command": "git diff --cached --check",
+      "exit_code": 0,
+      "result": "passed",
+      "evidence": "author-checks.json"
+    },
+    {
+      "command": "node $EVIDENCE/freeze-nested.mjs",
+      "exit_code": 0,
+      "result": "Verified exact allowed changes and both complete relocated upstream trees, 725 locked file identities, four unchanged installed navigation targets, Git location metadata, all unrelated index entries and 9 protected test files; copied and compared 1145 production entries.",
+      "evidence": "freeze-nested.log"
+    },
+    {
+      "command": "Targeted repository-wide rg search including hidden readable files, excluding Git metadata, node_modules, upstream bodies, historical flow records and Tester-owned fixtures",
+      "result": "No active former-root source locator remains. Source-lock property names, the CI former-root guard, nested relative links and explicitly historical explanations retain their intended meaning.",
+      "evidence": "legacy-path-search.txt"
+    }
+  ],
+  "source_identity": {
+    "sourceDigest": "88f242e8813b8b2e6013bc5de5cb61079cd64da3a75d21283e8dafe2855290fe",
+    "sourcePackagesDigest": "217f8d3b53169b723df106a0cf1a75e8c05f084a8ba3f9c3191199b2daaef23b",
+    "distributionDigest": "d25f8358382a5ae7acbc360245b9313f7d812c54fa3c72c8d2765ebbe95bd6ae",
+    "sourceLockDigest": "7058fdbffc796f5dff7ef277084d9152778d5566d79e7df38a40713738f4eec6",
+    "standardVersion": "5e7e6f992baeac30cc6be01788201be107d7e57db2eec925e039404c1d995b7d",
+    "artifactSha256": "25bc55abe31d445a7093fa76aa4a31d5697e85e25596a62f9809b5839b60fe88"
+  },
+  "protected_checks": {
+    "testerFiles": 9,
+    "testerBytesAndModesUnchanged": true,
+    "mainHeadUnchanged": true,
+    "unrelatedIndexEntriesUnchanged": true,
+    "upstreamFullTreesAnd725FilesUnchanged": true,
+    "otherProductionBytesAndModesUnchanged": true,
+    "dependenciesUnchanged": true,
+    "installedNavigationTargetsUnchanged": true
+  },
+  "preflight_scope_note": "The initial all-backup comparison encountered a Planner-updated current.md. Before any production mutation, Planner confirmed that active flow records are outside this production/test correspondence set. Frozen technical/review inputs, 60 production/test backup files, index and both upstream identities matched; active Planner records were neither edited nor rolled back.",
+  "not_run": [
+    {
+      "check": "Earlier 20 smoke groups and full npm test",
+      "reason": "Not rerun by Implementer for the approved narrow path migration. Tester adapts the three affected fixture files and runs the full independent suite on a new complete candidate."
+    },
+    {
+      "check": "Independent CODE_REVIEW, formal G5-G10, native host loading and role invocation, remote CI or release",
+      "reason": "Outside this author self-check; no such approval or execution is claimed."
+    }
+  ],
+  "known_risks": [
+    "Earlier installation receipts bind earlier source identities and retain the existing conservative refusal behavior. This migration does not authorize automatic member installation upgrades.",
+    "The copied production tree excludes Git metadata. Reconstruct in an isolated checkout using the recorded gitlinks and retained recovery assets; never overlay an active user worktree."
+  ],
+  "recovery": "The bounded pre-migration file copies, full prior index and both submodule location records remain intact in this recovery root. Earlier full archives and immutable snapshots remain unchanged. Current snapshot and exact narrow delta preserve the new production state without repeating the earlier large restore exercise.",
+  "evidence_hashes": {
+    "author-checks.json": "9c3aa0c8b4d617457d052a3cbf6abbe73524391fb338687fea76714a8c2d2f59",
+    "production-before.json": "dc59a8bb0eeff86f502c3cbc22d7c6c86b779e1c0a5506354f7ca1581130699e",
+    "production-snapshot-v5/manifest.json": "088cd444b393eaa020ad1af5c0b140f9c36f78facd93990ed8c3eb2ab05c4820",
+    "production-snapshot-v5/identity.json": "ccf5dc0561f760772e407914afd1a60f473684b82f2f0aae1ebbdc19e30b3675",
+    "production-snapshot-v5/changes.json": "8b66d340a92f8bae068a8bbd0c80132da6391bf2c257967b9f255f90e735a66d",
+    "production-snapshot-v5/production-delta.patch": "3a6c3abfa24bb7dba7f66310eff00383a6eef9624de8b15fc049f133529994a9",
+    "production-snapshot-v5/index-after.txt": "1d36cfe4e7804f0f8b199dbcfd54e409ffc2f9629137587c9bb2cda012e42478"
+  },
+  "handoff": {
+    "receiver": "ric_devflow_planner",
+    "production_window": "released; production zero-write",
+    "next": "Tester resumes ownership, adapts the approved path constants and validates the new complete candidate; Reviewer evaluates the combined production and test diff."
+  }
+}

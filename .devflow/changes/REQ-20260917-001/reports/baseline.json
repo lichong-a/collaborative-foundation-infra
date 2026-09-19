@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "test_report_id": "TEST-BASELINE-001",
+  "supersedes": null,
+  "root_issue_id": "REQ-20260917-001",
+  "tested_sha": "d78b68779899fa9167ec24599a301902c91724cb",
+  "spec_version": 1,
+  "test_plan_version": 1,
+  "scope": "Brownfield baseline diagnostics before production changes; not formal acceptance",
+  "environment": {
+    "node": "24.20.0",
+    "npm": "11.19.0",
+    "git": "2.53.0",
+    "python": "3.14.4",
+    "uv": "0.12.9",
+    "authority": "isolated local candidate"
+  },
+  "started_at": "2026-09-17T03:40:15.208735+00:00",
+  "finished_at": "2026-09-17T03:40:29.395161+00:00",
+  "summary": {
+    "passed": 34,
+    "failed": 0,
+    "blocked": 1
+  },
+  "commands": [
+    {
+      "command": "npm run build",
+      "cwd": ".",
+      "tested_sha": "d78b68779899fa9167ec24599a301902c91724cb",
+      "started": "2026-09-17T03:40:15.208735+00:00",
+      "ended": "2026-09-17T03:40:15.381707+00:00",
+      "exit_code": 0,
+      "tracked_and_untracked_status": ""
+    },
+    {
+      "command": "npm test",
+      "cwd": ".",
+      "tested_sha": "d78b68779899fa9167ec24599a301902c91724cb",
+      "started": "2026-09-17T03:40:15.381854+00:00",
+      "ended": "2026-09-17T03:40:28.809421+00:00",
+      "exit_code": 0,
+      "tracked_and_untracked_status": ""
+    },
+    {
+      "command": "npm run check",
+      "cwd": ".",
+      "tested_sha": "d78b68779899fa9167ec24599a301902c91724cb",
+      "started": "2026-09-17T03:40:28.809636+00:00",
+      "ended": "2026-09-17T03:40:29.395161+00:00",
+      "exit_code": 1,
+      "tracked_and_untracked_status": ""
+    }
+  ],
+  "acceptance_criteria_results": [],
+  "regression_results": [
+    {
+      "command": "npm test",
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0,
+      "classification": "clean"
+    }
+  ],
+  "baseline_comparison": {
+    "baseline_sha": "d78b68779899fa9167ec24599a301902c91724cb",
+    "pre_existing_failures": [],
+    "new_failures": [],
+    "environment_failures": [
+      "Historical process records were intentionally omitted from the isolated candidate, yielding 1 workflow reference and 31 document link findings."
+    ]
+  },
+  "open_defects": [
+    "DEFECT-BASELINE-001"
+  ],
+  "not_run": [],
+  "residual_risks": [
+    "Baseline governance check cannot establish a clean original documentation graph from this isolated assembly."
+  ],
+  "verdict": "BLOCKED"
+}

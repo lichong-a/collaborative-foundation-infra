@@ -1,0 +1,63 @@
+schema_version: 1
+review_id: REVIEW-TEST-20260917-002-003
+supersedes: REVIEW-TEST-20260917-002-002
+mode: TEST_REVIEW
+reviewer: ric_devflow_reviewer
+created_at: "2026-09-17T12:22:23Z"
+target:
+  root_issue_id: REQ-20260917-002
+  task_id: TASK-001
+  task_revision: 5
+  spec_version: 4
+  test_plan_version: 4
+  base_sha: 53d29b7fc9906aa5556bb66e476568dc8a446815
+  head_sha: null
+  tested_sha: null
+  main_baseline_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  test_plan_path: .devflow/changes/REQ-20260917-002/test-plan.md
+  test_plan_sha256: 91b6de0e395fdccf631701511a3bb7db491e83728ab31e7e0cdd8486937d220a
+verdict: APPROVE
+summary: >-
+  TestPlan4 对 Spec4 和 technical-v5 的新增行为具有可执行、可观察的验收标准。
+  已完成全部相关维度审核，未发现阻断项。批准的是计划及其 Oracle，
+  不代表新实现、运行时安装或十包分发已经通过。
+review_results:
+  - >-
+    首装固定一次 latest 解析、完整安装离线复用、规范更新后离线重核、
+    显式升级原子切换、失败保旧及并发/中断分别有命名用例。
+  - >-
+    runNpm 注入限于 npm 进程边界；身份、SRI、文件校验及真实 pull
+    不允许绕过。真实用户配置和缓存哨兵、安装脚本禁用及清理归属均有 Oracle。
+  - >-
+    三宿主十包实际输出与独立期望比较，覆盖内置同名覆盖、额外内置 Skill、
+    未知输出、缺件和漂移；直接复制或模拟 pull 不能替代真实分发。
+  - >-
+    固定来源和指南转换期望由测试者独立建立；源码与安装导航分别检查，
+    保留原包字节及有效执行位，未知、歧义和越界链接不能静默放行。
+  - >-
+    保留原 28 个追踪 ID、62 组中的有效行为及 6 组补充保护；
+    两源、七包、schema3 和固定 CLI 版本的失效假设有明确替代矩阵，
+    不以保留组数代替保护断言。
+  - >-
+    既有安装、禁用配置、入口原文与陈旧回执、会话身份、可信 CI、
+    只读准备及主仓保护均继续覆盖，新增包纳入整体预检。
+  - >-
+    旧基线与新验收明确分离；live latest 不兼容或不可验证时有准确退出标准，
+    拒绝行为通过不能冒充安装成功或整体闭环通过。
+findings: []
+non_blocking_notes: []
+residual_risks:
+  - "新候选身份及实际执行结果尚未产生，须按本计划另行验证；旧 62/62 不构成 Spec4 验收。"
+  - "合成版本、故障注入和协议审阅仅证明各自层级；原生调用、远端和正式 Git 门禁未运行时仍须明确标记。"
+evidence_reviewed:
+  - path: .devflow/changes/REQ-20260917-002/test-plan.md
+    sha256: 91b6de0e395fdccf631701511a3bb7db491e83728ab31e7e0cdd8486937d220a
+  - path: .devflow/changes/REQ-20260917-002/attachments/spec-v4.md
+    sha256: 2aa07065100b48bc97e02d8edb02b83ce959ccc5c9687d6ca582280e16a05b83
+    prior_review: REVIEW-SPEC-20260917-002-004
+  - path: .devflow/changes/REQ-20260917-002/attachments/technical-v5.md
+    sha256: 03fed80eb0bbad59fdf34ef59bbbe48c0c5ad7476a313c54a8651019688cadac
+  - path: .devflow/changes/REQ-20260917-002/attachments/review-test-v3.yaml
+    review_id: REVIEW-TEST-20260917-002-002
+    use: "沿用未变保护的审核背景；新增行为按本轮计划独立复审。"
+unblock_conditions: []

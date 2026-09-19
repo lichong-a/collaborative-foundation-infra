@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "implementation_id": "IMPL-TEST-001",
+  "supersedes": null,
+  "root_issue_id": "REQ-20260917-001",
+  "task_id": "TASK-001",
+  "defect_id": null,
+  "spec_version": 1,
+  "base_sha": "5be7d0c5e943bcb6d4233a51e2f74516f295bf69",
+  "head_sha": "c0830203fbb5a00b3a76f9e3e69d439e5320dd09",
+  "change_budget_compliance": {
+    "allowed_paths_only": true,
+    "protected_paths_untouched": true,
+    "dependency_changes": "none",
+    "public_contract_changes": "Test fixture names follow the approved project identity; no production API changes authored by Tester.",
+    "database_changes": "none"
+  },
+  "changed_files": [
+    "tests/acceptance-plan.md",
+    "tests/ci-runtime.test.mjs",
+    "tests/distribution.test.mjs",
+    "tests/governance.test.mjs",
+    "tests/helpers.mjs"
+  ],
+  "summary": "Tester-authored test delivery: retain all 34 original test cases, adapt approved naming, add 3 independent behavior cases, strengthen distributed receipt/rule, managed marker and authority-conflict assertions. No production files or process state were edited.",
+  "reused_existing_patterns": [
+    "Node native test runner, existing isolated fixtures and bounded command executor."
+  ],
+  "design_decisions": [
+    "Keep the reviewed test plan as the single acceptance authority; tests/acceptance-plan.md is only an entry and ownership guide.",
+    "Use real TeamAI output, physically relocated distributed packages, and a no-download sentinel for the new offline variable."
+  ],
+  "tests": [
+    {
+      "command": "npm ci --ignore-scripts --offline",
+      "exit_code": 0,
+      "tested_sha": "c0830203fbb5a00b3a76f9e3e69d439e5320dd09"
+    },
+    {
+      "command": "npm run build",
+      "exit_code": 0,
+      "tested_sha": "c0830203fbb5a00b3a76f9e3e69d439e5320dd09"
+    },
+    {
+      "command": "npm test",
+      "exit_code": 0,
+      "tested_sha": "c0830203fbb5a00b3a76f9e3e69d439e5320dd09"
+    },
+    {
+      "command": "npm run check",
+      "exit_code": 0,
+      "tested_sha": "c0830203fbb5a00b3a76f9e3e69d439e5320dd09"
+    }
+  ],
+  "documentation": [
+    "tests/acceptance-plan.md now links to the current reviewed plan and evidence without copying task state."
+  ],
+  "migrations": [],
+  "rollback": [
+    "The tests-only delta is independently recoverable from the preserved production candidate; no delivery-repository history was changed."
+  ],
+  "known_risks": [
+    "Final code review must assess the complete production plus test candidate; this report does not self-approve test code."
+  ],
+  "not_run": [
+    {
+      "scope": "New native host loading and role calls for installed resources",
+      "reason": "Not exercised by this rename test; three harness file-distribution paths do not imply native loading or invocation."
+    },
+    {
+      "scope": "Other operating systems, Linux arm64, remote CI platform protection and production/live project acceptance",
+      "reason": "Outside the current local x86_64 rename validation scope; no external business project was accessed."
+    },
+    {
+      "scope": "Formal delivery-repository Git gates",
+      "reason": "Delivery HEAD remains unborn and no commit or push authorization exists for that repository."
+    }
+  ],
+  "pre_existing_failures_observed": [
+    "Baseline-only omitted-process-record assembly gap; current governance check exits 0."
+  ]
+}

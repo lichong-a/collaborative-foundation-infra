@@ -1,0 +1,93 @@
+schema_version: 1
+review_id: REVIEW-SPEC-20260917-002-003
+supersedes: REVIEW-SPEC-20260917-002-002
+mode: SPEC_REVIEW
+reviewer: ric_devflow_reviewer
+created_at: "2026-09-17T08:54:59Z"
+target:
+  root_issue_id: REQ-20260917-002
+  task_id: TASK-001
+  task_revision: 3
+  spec_version: 3
+  test_plan_version: null
+  base_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  head_sha: null
+  tested_sha: null
+  spec_path: .devflow/changes/REQ-20260917-002/attachments/spec-v3.md
+  spec_sha256: cb01d871b49d9f6b46ec8056c573d667af60f666de69866f31cc7e5004e579b9
+verdict: APPROVE
+summary: >-
+  Spec v3 覆盖用户删除持久副本、源码直接引用固定子模块的修正，
+  同时保留完整七包分发、原生角色所有权、会话选择与入口保护。
+  只读来源核验、私有临时组装、确定性导航重定位、真实 TeamAI 结果核验、
+  旧内容保全与版本拒绝形成可实施、可独立验证的闭环。
+  任务及变更预算未扩大至上游修改、全局安装、其他工程或远端操作。
+  未发现阻断性规格缺陷。
+findings: []
+non_blocking_notes: []
+residual_risks:
+  - >-
+    本结论只批准固定 Spec v3，不批准测试计划、实现或验收。
+    前一隔离候选 a5aeac068367e2880cb9eeca0e253cc405c38c7e
+    及其 59+5 测试结果仅属于 Spec2，不能转用为新布局通过证据。
+  - >-
+    导航重定位必须保持受控文件和目标映射边界；
+    源码侧与安装侧分别验证。现有 replaceLink 对不支持语法的安全拒绝
+    不应被静默跳过或退化成全文字符串替换。
+  - >-
+    来源布局和安装回执变化会使旧安装不再直接匹配。
+    规格明确要求保留并拒绝覆盖，未授权普通同步执行自动升级、清理或兼容迁移。
+  - >-
+    原生宿主加载和实际角色调用仍须独立证据；
+    本地候选身份不表示主仓新增提交或正式 G5–G10、发布通过。
+evidence_reviewed:
+  - identity: Spec v3
+    path: .devflow/changes/REQ-20260917-002/attachments/spec-v3.md
+    sha256: cb01d871b49d9f6b46ec8056c573d667af60f666de69866f31cc7e5004e579b9
+    result: 从同一份文件字节计算摘要并阅读全部正文，与委派身份一致。
+  - identity: Spec2 to Spec3 delta
+    paths:
+      - .devflow/changes/REQ-20260917-002/attachments/spec-v2.md
+      - .devflow/changes/REQ-20260917-002/attachments/spec-v3.md
+    result: >-
+      行为变化集中于 AC-SOURCE、AC-DISTRIBUTION、相关 CI/文档及 TASK-001 revision 3。
+      会话身份、显式选择、basic 模式、既有入口保护和结构规范保持；
+      Spec2 交付记录明确标为历史，未改绑为本轮结果。
+  - identity: Source ownership and migration contract
+    locations:
+      - spec-v3.md#AC-SOURCE
+      - spec-v3.md#DECISIONS
+      - spec-v3.md#TASK-001
+    result: >-
+      固定两个上游 SHA 和原 725 文件身份；准备命令只读、不落副本或回执。
+      旧副本和准备状态仅在此次授权迁移中经逐项核验后保全至仓外；
+      普通命令保留并报告旧或未知内容，不自动清理、收编或重建。
+  - identity: Distribution and digest contract
+    locations:
+      - spec-v3.md#AC-DISTRIBUTION
+      - tools/distribution.mjs
+      - tools/sources.mjs
+      - scripts/build.mjs
+      - scripts/ci-check.mjs
+    result: >-
+      已对照现有持久导出依赖与分发调用点。
+      新方案以临时扁平团队树适配 TeamAI，核验变换后的完整预期清单，
+      保留上游原字节及所有安装冲突保护。
+      使用可区分的新锁/回执版本、区分来源与实际分发身份，
+      并同步可信 CI，是该已批准布局变化的必要实现范围。
+  - identity: Bounded Markdown relocation
+    locations:
+      - tools/markdown.mjs:72
+      - skills/common/collaborative-foundation-infra/SKILL.md
+      - skills/common/collaborative-foundation-infra/references/session.md
+      - skills/common/collaborative-foundation-infra/references/design.md
+      - skills/common/collaborative-foundation-infra/references/adoption.md
+    result: >-
+      已核对四份自有 Markdown 的现有上游导航与 replaceLink 的语法排除、
+      链接集合及语义校验机制。可通过明确映射完成本次局部重定位，
+      无需改写上游包或引入通用指令编辑器。
+  - identity: Repository baseline
+    result: >-
+      只读核验主仓 HEAD 仍为 e094623ea9dd21b5d5ac69fcbaec093220cbb5e1。
+      本次未修改文件、运行写入命令、重跑测试或派生代理。
+unblock_conditions: []

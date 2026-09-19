@@ -1,0 +1,171 @@
+schema_version: 1
+review_id: REVIEW-CODE-20260917-002-003
+supersedes: REVIEW-CODE-20260917-002-002
+mode: CODE_REVIEW
+reviewer: ric_devflow_reviewer
+created_at: "2026-09-17T09:37:22Z"
+target:
+  root_issue_id: REQ-20260917-002
+  task_id: TASK-001
+  task_revision: 3
+  spec_version: 3
+  test_plan_version: 3
+  base_sha: a5aeac068367e2880cb9eeca0e253cc405c38c7e
+  head_sha: c02f51cfe8c2e5cd1bd59b5b41228ebc1f6904fe
+  tested_sha: c02f51cfe8c2e5cd1bd59b5b41228ebc1f6904fe
+  main_baseline_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  production_snapshot: production-snapshot-v4
+  production_manifest_sha256: ef56df9fc3d923ad47a0518b53aa8762aee4304d03fbd249b4953d03d49d9255
+  production_tree_digest: 9c04b3bcda066bf329b0c1f2f6c43503eec498d02e5364ec2cdcfe5142f2fcaf
+  artifact_sha256: ac9aae58fe75229f3f4ac7e9662265751a08511527273c23bbb458e2c21436dd
+verdict: APPROVE
+summary: >-
+  批准此精确隔离候选在 Spec3 授权范围内的本地代码交付。
+  已核验真实父提交、生产 v4 全部 1145 条目、完整测试差异、
+  独立作者报告及同一候选的执行证据。
+  源码直接读取固定子模块，准备命令保持只读；
+  七包临时组装、受控导航重定位及 schema3 来源/分发身份形成完整闭环。
+  原会话、入口、定制内容和可信 CI 保护保持，文档导航问题已关闭。
+  未发现剩余 P0/P1/P2。
+  本批准不表示主仓新增提交、原生宿主验收、正式 G5–G10 或发布通过。
+findings: []
+non_blocking_notes: []
+resolved_findings:
+  - id: NOTE-VALIDATION-NAV-001
+    disposition: closed
+    location: docs/validation.md:13
+    evidence: >-
+      v3 至 v4 唯一生产差异是两处审核导航。
+      当前链接分别指向 attachments/review-spec-v3.yaml 和 review-test-v3.yaml；
+      已读取目标，确认它们为 REVIEW-SPEC-20260917-002-003、
+      REVIEW-TEST-20260917-002-002，均绑定 Spec3 并为 APPROVE。
+preserved_prior_fixes:
+  - id: PROD-ENTRY-001
+    result: >-
+      所有已登记入口仍在同步时实际复查，陈旧入口保留并拒绝；
+      原四类失效回归及完整区块外脏正文 no-write 断言保留并在本候选通过。
+  - id: NOTE-PROFILE-001
+    result: >-
+      共享画像仍仅登记规范链接，不复制根身份、选择文件或私有模式历史。
+residual_risks:
+  - >-
+    本次为本地隔离 Linux 验证。新规范下原生宿主加载、真实询问/恢复/fork/子调用、
+    四角色实际调用、人工状态接管、其他操作系统及远端 CI 仍明确 not_run。
+    文件安装、入口匹配、CLI 和协议复核不能替代这些证据。
+  - >-
+    旧 schema2 安装或定制资源被保留并拒绝；本次源码布局迁移不授权自动迁移成员安装。
+  - >-
+    会话身份参数和文件系统复查属于协作式约束，
+    不构成防止任意 shell 调用、伪造身份或恶意非协作写者的系统权限沙箱。
+  - >-
+    主仓仍为 main_baseline_sha。base_sha 是上一隔离候选，
+    本轮 head_sha 的真实父提交为 base_sha，不是主仓基线。
+    后续 Planner 流程证据不属于生产/测试同一性范围；
+    新的生产或测试变更须重新绑定候选和受影响验证。
+evidence_reviewed:
+  - identity: Spec v3
+    path: .devflow/changes/REQ-20260917-002/attachments/spec-v3.md
+    sha256: cb01d871b49d9f6b46ec8056c573d667af60f666de69866f31cc7e5004e579b9
+  - identity: Test Plan v3
+    path: .devflow/changes/REQ-20260917-002/attachments/test-plan-v3.md
+    sha256: 5783c10777c9695a1a337e2ee59bec846ce69450e3aad8fdd78325090f177f11
+  - identity: Production review continuity
+    prior_review: REVIEW-PRODUCTION-20260917-002-002
+    result: >-
+      复用已审生产 v3 的精确身份及完整相关代码阅读，
+      独立核验 v4 唯一文档差异和完整候选。
+      候选的 1145 条生产记录与 v4 清单逐一类型、完整 mode、摘要零差异。
+  - identity: IMPL-20260917-002-004
+    path: 外部恢复归档/implementer/implementation-report-v4.yaml
+    sha256: 5e9bef257d519e0f2b6fee2a5bc2f3c745bb98d00c17df71a3f69a522a836824
+    result: >-
+      生产 v3 作者报告及范围已核对；作者自测未被替代或标记为独立验收。
+  - identity: IMPL-20260917-002-005
+    path: .devflow/changes/REQ-20260917-002/attachments/implementation-v5.yaml
+    sha256: 082378451b5974ebd1f47883c2a5e1a5f91f42761e7580af1aa787f269ed1bbd
+    result: >-
+      文档修正作者报告与唯一差异一致；工具制品、来源摘要及规范版本保持。
+  - identity: Git lineage and fixed sources
+    result: >-
+      独立读取 HEAD、HEAD^、祖先关系和最终 status：
+      c02f51cfe8c2e5cd1bd59b5b41228ebc1f6904fe 的真实父提交为
+      a5aeac068367e2880cb9eeca0e253cc405c38c7e，
+      e094623ea9dd21b5d5ac69fcbaec093220cbb5e1 是其祖先；
+      最终候选工作树干净。
+      两个 160000 gitlink 分别保持
+      9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb 和
+      46b183615afbfe3b1fffcbc9425ac3aea2c36d99。
+  - identity: Production implementation
+    paths:
+      - tools/sources.mjs
+      - tools/skill-resources.mjs
+      - tools/distribution.mjs
+      - scripts/build.mjs
+      - scripts/verify.mjs
+      - scripts/ci-check.mjs
+      - sources.lock.json
+    result: >-
+      直接来源核验不落副本或准备回执；旧副本和未知残留保全拒绝。
+      私有临时组装只转换自有四份 Markdown 的明确目标，
+      六上游包保持原字节及执行位；完整预期清单用于真实 TeamAI 结果和目标预检。
+      来源与分发摘要、旧回执拒绝、发布前源复查及可信基线执行保持一致。
+      源码 skills/common 仅含自有规范包。
+  - identity: IMPL-20260917-002-TEST-002
+    path: 外部验收归档/tester/test-code-report-v2.yaml
+    schema_version: 1
+    sha256: d263af20585da8678bc359b9dd37cc7889989a80f5bbfb9a6402fe61cc7df77b
+    result: >-
+      从同一份字节核验字段与摘要，报告正确绑定 base_sha..head_sha，
+      仅认领五个测试路径；五份文件摘要均与候选匹配。
+      已读取全部测试差异。自有导航期望由独立明确映射构造，
+      不调用生产转换器；六上游包直接与真实来源比较。
+  - identity: Oracle migration
+    path: 外部验收归档/tester/oracle-migration.json
+    sha256: fb56a64fd797b0496eb14bcff01060d94b49c251d4968366921c1b094b4b2572
+    result: >-
+      独立核对原37测试标题全部保留。
+      原59项变为62项：已取消机制的9组来源用例按批准矩阵替换为11组，
+      另增1组旧布局及摘要篡改回执拒绝。
+      会话、入口、运行时、写入失败和可信CI的有效保护断言保留，
+      未发现 Skip、超时放宽或检查弱化。
+  - identity: TEST-20260917-002-002
+    path: 外部验收归档/tester/test-report-v2.yaml
+    schema_version: 1
+    sha256: 1a8598e2d55be5a186114c70d9c12555b798feed110a2fde8afd92f74ca99ae2
+    result: >-
+      从同一份字节核验 test_report_id、schema、摘要与 tested_sha。
+      新候选原 npm test 为62/62，外部补充6/6，零失败、零跳过、零取消。
+      npm ci --ignore-scripts --offline、prepare、build、check、diff均退出0；
+      文档18/18可达、0 finding。报告68通过明确区分仓内62和外部6，
+      不冒充68组提交内测试。
+  - identity: Sealed execution assets
+    path: 外部验收归档/tester/artifacts.sha256.json
+    sha256: 7660162d7b7efd10891498b3a0c61858af59e144b30c9d34e156b5ffbf1a64d1
+    result: >-
+      独立核验全部32个封存资产摘要，零不一致。
+      已读取实际测试/检查日志、六组补充测试源码、协议复核及对应记录；
+      补充测试独立绑定摘要，未冒充候选内测试。
+  - identity: Correspondence and protected scope
+    path: 外部验收归档/tester/correspondence-final.json
+    sha256: b44da81d8676b4d173c50128dfa2b3c16ea45d65e939dcf6292e3269bb1a1410
+    result: >-
+      1145生产条目、9测试文件与交付工作区对应，17个保护路径无差异；
+      725上游文件与固定身份保持，主仓HEAD/index不变，
+      六旧副本及准备状态未重建。
+  - identity: Legacy archive verification
+    path: 外部验收归档/tester/legacy-archive-verification.json
+    sha256: f5416f359bf6732ecb064a926c4b9525bf4b7ff9abb34d07581ab8f40c01cdd9
+    result: >-
+      独立Tester记录确认六份已授权移出的副本仍在仓外可恢复，
+      725文件的类型、字节及完整权限与原清单一致；未自动清理成员安装。
+  - identity: Actual candidate recovery
+    path: 外部验收归档/tester/recovery-receipt.json
+    sha256: a70e82d2f2b2b9f0cecd075b7cbf748ab57b600d010bc82272a4d1fb59ed1a2b
+    result: >-
+      候选及两个上游bundle已验证并实际恢复，HEAD/tree一致；
+      恢复后prepare返回verified，工作树干净，不重建旧副本或准备状态。
+  - identity: Reviewer independence
+    result: >-
+      本轮保持只读，未修改代码、测试、规格或报告；
+      未重复执行写入性套件、安装依赖、访问其他业务仓或派生代理。
+unblock_conditions: []

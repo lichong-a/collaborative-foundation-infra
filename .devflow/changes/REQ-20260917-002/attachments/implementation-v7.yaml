@@ -1,0 +1,218 @@
+{
+  "schema_version": 2,
+  "implementation_id": "IMPL-20260917-002-007",
+  "root_issue_id": "REQ-20260917-002",
+  "task_id": "TASK-001",
+  "task_revision": 5,
+  "author": "ric_devflow_implementer",
+  "recipient_role": "ric_devflow_planner",
+  "status": "IMPLEMENTER_VERIFIED_LOCAL_CANDIDATE",
+  "supersedes": "IMPL-20260917-002-006 for the current Spec4 candidate only; historical evidence retained",
+  "spec": {
+    "path": ".devflow/changes/REQ-20260917-002/attachments/spec-v4.md",
+    "sha256": "2aa07065100b48bc97e02d8edb02b83ce959ccc5c9687d6ca582280e16a05b83",
+    "technical_sha256": "03fed80eb0bbad59fdf34ef59bbbe48c0c5ad7476a313c54a8651019688cadac",
+    "test_plan_sha256": "91b6de0e395fdccf631701511a3bb7db491e83728ab31e7e0cdd8486937d220a"
+  },
+  "git": {
+    "base_ref": "main",
+    "base_sha": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+    "head_sha": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+    "head_semantics": "Main HEAD unchanged; the implementation is the explicit uncommitted production snapshot, not a new commit. Independent candidate commit and CODE_REVIEW remain pending.",
+    "stage_delta": "stage-delta-v6.json",
+    "stage_delta_sha256": "6865d501da90ca2e4d582c9145d7c9132b8ac4fec5301e6a05615802858e0ac6",
+    "approved_stage_paths": [
+      ".gitmodules",
+      "skills/upstreams/teamai-cli"
+    ]
+  },
+  "candidate": {
+    "path": "production-snapshot-v6",
+    "manifest": "production-manifest-v6.json",
+    "manifest_sha256": "f2ea9478629649c2156d55d1a7c12c544d2e3ac63d0e100cc09a08247945740d",
+    "files": 1374,
+    "restore_comparison": "all file bytes and full modes match",
+    "identity": {
+      "sourceLockDigest": "7ee19aac52e73df6748b0192518de8eefda1d84e3854effa8d478d0d8e128530",
+      "sourcePackagesDigest": "ef995776beb2cb1be1ece62d96a14c99bbd551da5edb5bf1f782ab1adc4ac3a5",
+      "sourceDigest": "6523db301e332b0a893c45303c46a45213c19213c33eb72c7da9c2d037ef7f0b",
+      "distributionDigest": "58255c65a2fe828ad22d59c1f8dd79b322c326582f80e0104a7f1c7ed2b0ab31",
+      "standardVersion": "6a3419c49c4e6647a49df7af3d26a906a314e2e259f5e178cb1fcbb731ca9b71",
+      "artifactSha256": "4b71b251cc801781c94a1b1dc9db4daa24956b8bf57eef3672663179f2396147",
+      "upstreams": [
+        {
+          "id": "ric-devflow",
+          "path": "skills/upstreams/ric-devflow",
+          "url": "https://github.com/lichong-a/ric-dev-workflow-skills",
+          "commit": "9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb"
+        },
+        {
+          "id": "ric-design-patterns",
+          "path": "skills/upstreams/ric-design-patterns",
+          "url": "https://github.com/lichong-a/ric-design-patterns-skill",
+          "commit": "46b183615afbfe3b1fffcbc9425ac3aea2c36d99"
+        },
+        {
+          "id": "teamai-cli",
+          "path": "skills/upstreams/teamai-cli",
+          "url": "https://github.com/Tencent/teamai-cli",
+          "commit": "0c059b2da6fe0fa3206ab1ce33978601a2a832e6"
+        }
+      ],
+      "skills": {
+        "ric-devflow": {
+          "files": 77
+        },
+        "ric-devflow-implementer": {
+          "files": 5
+        },
+        "ric-devflow-planner": {
+          "files": 4
+        },
+        "ric-devflow-reviewer": {
+          "files": 8
+        },
+        "ric-devflow-tester": {
+          "files": 6
+        },
+        "ric-design-patterns-skill": {
+          "files": 625
+        },
+        "team-wiki-codebase": {
+          "files": 12
+        },
+        "teamai-share-learnings": {
+          "files": 1
+        },
+        "collaborative-foundation-infra": {
+          "files": 19
+        },
+        "teamai-cli": {
+          "files": 3
+        }
+      }
+    }
+  },
+  "changes": {
+    "manifest": "production-changes-v6.json",
+    "sha256": "cab532d179cbda8da3e1e6359ca9f0212eb227aaa687af391156693f276b93b5",
+    "modified": 23,
+    "added_self_files": 6,
+    "new_official_submodule_files": 580,
+    "deleted": 0,
+    "self_paths": [
+      ".gitmodules",
+      "AGENTS.md",
+      "README.md",
+      "docs/integration.md",
+      "docs/maintenance.md",
+      "docs/onboarding.md",
+      "docs/teamai-runtime.md",
+      "docs/validation.md",
+      "manifest/governance.json",
+      "manifest/roles.yaml",
+      "package-lock.json",
+      "package.json",
+      "rules/collaborative-foundation-infra.md",
+      "scripts/ci-check.mjs",
+      "scripts/teamai-runtime.mjs",
+      "scripts/teamai-sync.mjs",
+      "skills/common/collaborative-foundation-infra/SKILL.md",
+      "skills/common/collaborative-foundation-infra/references/adoption.md",
+      "skills/common/collaborative-foundation-infra/references/session.md",
+      "skills/common/collaborative-foundation-infra/scripts/governance.mjs",
+      "skills/common/teamai-cli/SKILL.md",
+      "sources.lock.json",
+      "tools/distribution.mjs",
+      "tools/markdown.mjs",
+      "tools/skill-resources.mjs",
+      "tools/sources.mjs",
+      "tools/teamai-config.mjs",
+      "tools/teamai-execution.mjs",
+      "tools/teamai-runtime.mjs"
+    ],
+    "scope": "All self production, documents, generated artifact and approved third gitlink. Excludes tests and workflow records."
+  },
+  "implemented": [
+    "Schema4 directly binds three fixed real Git submodules, eight unchanged upstream packages and two fixed official references; prepare:skills stays offline and read-only.",
+    "Private temporary assembly distributes exactly ten Skills; official guide and license are generated only in the CLI package. Real TeamAI output bytes and modes must equal the full expected 760-file manifest.",
+    "Pinned guide relative navigations are rewritten to fixed-commit GitHub URLs. DEC005 permits exactly the proven project-scope anchor correction, bound to the fixed source digest; unknown and stale mappings fail.",
+    "Runtime first prepare resolves latest once, verifies npm SRI/archive/installation/bin/version/official builtins, validates actual three-harness pull, then atomically publishes a private current pointer.",
+    "Existing prepared CLI is reused offline against current norms without rewriting its old receipt; explicit upgrade installs an independent candidate and preserves the previous usable installation on failure.",
+    "Explicit CLI entry requires prepared provenance; bare development node_modules is rejected. User npm configuration, cache and global install are isolated from preparation.",
+    "Schema4 business receipt records actual CLI provenance and all three upstreams; protected entries, custom content, disabled configuration and session behavior retain their prior contracts.",
+    "CI uses trusted source or installation identities and keeps governance change review; official method boundaries and actual CLI help/version limitations are documented."
+  ],
+  "validation": [
+    {
+      "command": "npm run build",
+      "exit_code": 0,
+      "result": "generated artifact updated through the build tool"
+    },
+    {
+      "command": "npm run prepare:skills",
+      "exit_code": 0,
+      "result": "schema4; three clean pinned sources; eight upstream packages / 738 files plus guide and license"
+    },
+    {
+      "command": "npm run check",
+      "exit_code": 0,
+      "result": "20 documents reachable, 0 findings; script syntax and reproducible artifact checks pass"
+    },
+    {
+      "command": "node scripts/teamai-runtime.mjs prepare --source <source> --data-home <isolated-data>",
+      "exit_code": 0,
+      "evidence": "prepare-live-attempt-1.log",
+      "result": "Actual registry latest 0.24.0; SRI/archive and two official builtin packages verified; actual Codex, ZCode and Claude ten-package pull verified against the then-current source"
+    },
+    {
+      "command": "node author-smoke.mjs",
+      "exit_code": 0,
+      "evidence": "author-smoke-results.json",
+      "evidence_sha256": "2d19aa60d783264ffa8bf85bd7553968ab1d320bba10cb645433a1bd39b1629c",
+      "result": "8 author checks; current final source offline compatibility, unchanged old receipt, missing offline no-write, failed upgrade preservation, bare entry refusal, prepared entry acceptance, three actual harness distributions and protected repeated entry behavior"
+    },
+    {
+      "command": "git diff --check; git diff --cached --check",
+      "exit_code": 0
+    },
+    {
+      "command": "freeze.py / independent file and index comparison",
+      "exit_code": 0,
+      "evidence": "freeze-checks-v6.json",
+      "result": "9 root test files and 733 RIC source files unchanged; all dependency versions and SRI unchanged; main HEAD unchanged; only approved two stage paths changed; full production snapshot bytes/modes verified"
+    },
+    {
+      "command": "read-only Git HEAD / gitdir / core.worktree / porcelain checks for all three submodules",
+      "exit_code": 0,
+      "evidence": "git-location-verification.json",
+      "result": "All fixed commits clean and correctly registered"
+    }
+  ],
+  "expected_failures_and_adjustments": [
+    "Missing offline runtime returns an error without creating the data root.",
+    "Injected npm registry failure on explicit upgrade returns an error and leaves previous current/receipt usable and unchanged.",
+    "Bare development CLI entry and deleted previously recorded project entry are rejected with target entry unmodified.",
+    "Author freeze comparison initially treated npm resolved URL as a dependency version change; inspection proved only the TeamAI URL moved from mirror to official registry while version and integrity remained identical. Comparison now separates this approved metadata change from versions; production was not altered to hide it."
+  ],
+  "not_run": [
+    "Independent adapted full test suite: Tester owns it after production release.",
+    "Independent CODE_REVIEW: Reviewer owns it after candidate identity is fixed.",
+    "Host model loading and native role invocation: actual TeamAI pull is not host loading.",
+    "Remote CI, main commits, push, merge and formal G5-G10: not authorized in this local delivery."
+  ],
+  "residual_limits": [
+    "Future CLI latest may be rejected when official builtins or output differ from pinned upstreams; source update requires review.",
+    "Official guide is pinned independently from installed CLI; actual --help remains the command/parameter check.",
+    "Existing schema2/3 or different-provenance business installations need separately reviewed migration."
+  ],
+  "production_window": "released; no further production writes without a new bounded handoff",
+  "test_handoff": {
+    "runtime_module": "tools/teamai-runtime.mjs",
+    "injected_boundary": "synchronous runNpm only; no verification or real-pull bypass",
+    "guide_destination": "teamai-cli/references/usage-guide.zh-CN.md",
+    "license_destination": "teamai-cli/LICENSE",
+    "npm_fixture": "Tester already captured and verified official 0.24.0 archive/SRI independently",
+    "input_boundary": "CLI version 0.24.0 is the actually resolved test input, not a permanent production allowlist"
+  }
+}

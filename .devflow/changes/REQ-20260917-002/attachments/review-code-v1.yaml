@@ -1,0 +1,126 @@
+schema_version: 1
+review_id: REVIEW-CODE-20260917-002-001
+supersedes: REVIEW-PRODUCTION-20260917-002-001
+mode: CODE_REVIEW
+reviewer: ric_devflow_reviewer
+created_at: "2026-09-17T07:46:13Z"
+target:
+  root_issue_id: REQ-20260917-002
+  task_id: TASK-001
+  task_revision: 2
+  spec_version: 2
+  test_plan_version: 2
+  base_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  head_sha: a5aeac068367e2880cb9eeca0e253cc405c38c7e
+  tested_sha: a5aeac068367e2880cb9eeca0e253cc405c38c7e
+verdict: APPROVE
+summary: >-
+  批准此精确隔离候选的本地代码交付。已核验真实父提交、两个固定 gitlink、
+  完整生产快照同一性、测试作者范围及独立执行证据。
+  原入口回执缺陷和画像边界说明均已修正；未发现剩余 P0/P1/P2。
+  本结论不表示主仓新增提交、正式 G5–G10 或发布通过。
+findings: []
+resolved_findings:
+  - id: PROD-ENTRY-001
+    disposition: closed
+    location: tools/distribution.mjs
+    evidence: >-
+      preflightReceipt 调用 verifyProjectEntries，对历史回执中所有入口进行实际匹配；
+      发布前及返回前再次核验完整入口集合。缺失或陈旧入口拒绝同步且不恢复用户正文。
+      tests/entry.test.mjs 独立覆盖删除入口、移除区块、改写区块、
+      另一宿主已登记入口失效四种场景，均断言 exit 2 和目标/用户目录原字节保全。
+      完整相同区块外的未提交正文仍保持 noop、原 bytes/inode/mtime。
+  - id: NOTE-PROFILE-001
+    disposition: closed
+    location: skills/common/collaborative-foundation-infra/templates/project-profile.md.txt
+    evidence: >-
+      共享画像仅登记规范和协议链接，明确不复制根身份、选择文件或模式历史；
+      具体选择保留在用户私有状态和必要会话交接中，相关接入说明一致。
+non_blocking_notes:
+  - id: NOTE-EVIDENCE-001
+    priority: P3
+    location: "外部验收归档/tester/test-code-report-v1.yaml"
+    trigger: 按测试作者报告 summary 中的执行报告 ID 查找证据。
+    evidence: >-
+      summary 引用 TEST-20260917-002-001；实际封存的执行报告 ID 为
+      TEST-REPORT-20260917-002-001，schema_version 为 2。
+      实际文件摘要和完整执行日志均已核验，测试对象身份没有歧义。
+    impact: 自动索引或模板消费者可能无法按该文字引用定位执行报告，不影响本次代码行为结论。
+    safe_fix: >-
+      Planner 索引使用本审核列明的真实原始 ID 和摘要。
+      如需模板格式补录，由原 Tester 发布新 ID 和 supersedes；不要改写已封存原报告。
+residual_risks:
+  - >-
+    会话选择属于 Agent 协议及本地记录约束，不是阻止伪造身份参数或任意 shell 调用的系统权限沙箱。
+  - >-
+    未验证新规范下 Codex、ZCode、Claude 的原生宿主加载、真实恢复/fork/子调用行为，
+    也未验证四个原生角色的实际调用与权限等价。文件分发和 CLI 检查不能替代这些证据。
+  - >-
+    验证范围为本地隔离 Linux 环境；未执行远端 CI、远端发布或其他操作系统验收。
+  - >-
+    主仓 HEAD 仍为 base_sha；隔离候选不是主仓新提交。
+    Planner 后续流程证据不属于此候选的生产/测试同一性范围。
+    后续生产或测试改动须重新绑定版本及受影响验证。
+evidence_reviewed:
+  - identity: Spec v2
+    path: .devflow/changes/REQ-20260917-002/attachments/spec-v2.md
+    sha256: c73d9a274b7c3a645fe340061a9584886689958e2d5be3c1a4f60e54a13c6203
+  - identity: Test Plan v2
+    path: .devflow/changes/REQ-20260917-002/attachments/test-plan-v2.md
+    sha256: 9f5ababb25d516cc454cc7e0ec860bab28fe80e3fa6237b01ccecdb59c8b01b4
+  - identity: IMPL-20260917-002-003
+    path: .devflow/changes/REQ-20260917-002/attachments/implementation-v3.yaml
+    sha256: 8e740738b33611ead402788b9665413158c27e58efadc25609b8e38fb4de6969
+  - identity: production-snapshot-v2
+    manifest_sha256: 054377a8936304157d5ab479064868d09e952965ee4d7ca9b15736c3d82f75f3
+    tree_digest: e6146fcf6111ccb5dfce969f9f3f73a2aa1d9e7b79aa313fe32e898bb497b1b8
+    result: >-
+      Reviewer 逐一核对候选与清单中的 2209 条目，类型、完整权限和文件摘要零差异；
+      v1 至 v2 仅包含实现报告列明的五个文件。
+  - identity: Git candidate
+    result: >-
+      HEAD 和真实 parent 分别匹配 head_sha、base_sha，最终只读复核工作树干净。
+      两个 gitlink 均为 160000，分别绑定
+      9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb 和
+      46b183615afbfe3b1fffcbc9425ac3aea2c36d99。
+  - identity: Complete production and test review
+    result: >-
+      复用已审生产 v1 的精确身份，审核 v2 差异及受影响邻域；
+      核对来源归属、锁与展开源一致性、中断/并发保护、私有会话持久化、
+      basic 模式边界、整体入口预检、可信 CI 和渐进式路由。
+      独立读取新增测试与全部既有测试差异，原 37 个测试标题全部保留；
+      fixture 调整未弱化原保护断言。
+  - identity: IMPL-20260917-002-TEST-001
+    path: 外部验收归档/tester/test-code-report-v1.yaml
+    sha256: dec87aef4fe236a6948205c71bf0c06dbcd52f0da045bc0399de7070a860152e
+    result: >-
+      Tester 仅认领七个 tests 路径，明确不认领完整候选中的生产和 Planner 记录；
+      作者范围与实际差异一致。
+  - identity: TEST-REPORT-20260917-002-001
+    path: 外部验收归档/tester/test-report-v1.yaml
+    sha256: 4740d578554b96fb9e2b11a89d8f7f41e960057374981a4a22f5173994ed9fe7
+    result: >-
+      同一 tested_sha 的原始 npm test 为 59/59、0 fail、0 skip、0 cancelled；
+      prepare、build、check、diff 检查均退出 0。
+      文档 18/18 可达、0 finding。逐项核对报告中十一份已绑定摘要的日志，全部匹配。
+  - identity: Supplemental and protocol evidence
+    paths:
+      - 外部验收归档/tester/supplemental.test.mjs
+      - 外部验收归档/tester/supplemental.stdout.log
+      - 外部验收归档/tester/protocol-review.json
+      - 外部验收归档/tester/diagnostic-followup.json
+    result: >-
+      额外五组通过，覆盖冲突 gitlink、特殊文件/祖先软链、
+      同模式并发、真实不可写目录、入口短写和 I/O 失败。
+      外部补充测试未冒充提交内测试；协议阅读未冒充模型执行。
+      早期 fixture 错误和高负载超时保留，最终原命令通过，未提高原超时或跳过测试。
+  - identity: Correspondence and recovery
+    paths:
+      - 外部验收归档/tester/correspondence-final.json
+      - 外部验收归档/tester/recovery-receipt.json
+    result: >-
+      记录确认 2209 生产条目及 9 个测试文件与交付工作区一致，
+      原 725 个导入文件、15 个历史流程文件和依赖保持；
+      候选执行后干净。候选及两个上游 bundle 已验证并实际恢复至相同 HEAD/tree，
+      恢复后的 prepare 成功。
+unblock_conditions: []

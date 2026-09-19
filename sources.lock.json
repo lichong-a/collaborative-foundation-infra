@@ -1,0 +1,3087 @@
+{
+  "schemaVersion": 4,
+  "teamai": {
+    "package": "teamai-cli",
+    "selection": "latest-on-first-prepare-or-explicit-upgrade",
+    "registry": "https://registry.npmjs.org"
+  },
+  "packages": [
+    {
+      "name": "ric-devflow",
+      "source": "https://github.com/lichong-a/ric-dev-workflow-skills",
+      "commit": "9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb",
+      "path": "skills/upstreams/ric-devflow/skills/ric-devflow",
+      "files": {
+        "SKILL.md": {
+          "sha256": "76bbc6e30535b587b487cfe1ef75969be5ee4c4386dadbd5b9d62c39d07e9e81",
+          "mode": 436
+        },
+        "agents/openai.yaml": {
+          "sha256": "8576da4d13a43b7de47859e8063b5bc1efbcf3f5c1b2d99fd009f47fc58615da",
+          "mode": 436
+        },
+        "assets/agents/claude-code/ric-devflow-implementer.md": {
+          "sha256": "2c38a32848c14b7ec949eab67cb9a2a7008659f223cf30fb0c2b0b9957e47bad",
+          "mode": 436
+        },
+        "assets/agents/claude-code/ric-devflow-planner.md": {
+          "sha256": "0539471315edb3a5a1db484dd5c570c35a973b50b4d41cf7f7b11047c13d1e3a",
+          "mode": 436
+        },
+        "assets/agents/claude-code/ric-devflow-reviewer.md": {
+          "sha256": "11a78a221ceb63e10fafb3c3dbe82de75f6d20b55278141396ceafb15b75569b",
+          "mode": 436
+        },
+        "assets/agents/claude-code/ric-devflow-tester.md": {
+          "sha256": "541a0448c52a03fc2103dd19188f714cb8bdcb7a8ee73949f651eec63bee2b09",
+          "mode": 436
+        },
+        "assets/agents/codex/config.toml": {
+          "sha256": "e56b0956f9f7995a9822eba397572d3d691bacb8f5618e70dff749b9a5a91419",
+          "mode": 436
+        },
+        "assets/agents/codex/ric-devflow-implementer.toml": {
+          "sha256": "c3b0ecadf0ed25b4870c193efb12533101903bf49e14f39e28b4c747c714eb96",
+          "mode": 436
+        },
+        "assets/agents/codex/ric-devflow-planner.toml": {
+          "sha256": "9d2ddc6f10703e6474237a33c2692d53d4d069b5e7d27819d4002941a162876a",
+          "mode": 436
+        },
+        "assets/agents/codex/ric-devflow-reviewer.toml": {
+          "sha256": "326a62b56e25993cf907f82791bf30938194f1c6740102af5a51133f504159ef",
+          "mode": 436
+        },
+        "assets/agents/codex/ric-devflow-tester.toml": {
+          "sha256": "cd55c3a13c6df9edc3740ca78141922e227db188ea2f84da166dcf873d0de1d1",
+          "mode": 436
+        },
+        "assets/agents/zcode/ric-devflow-implementer.md": {
+          "sha256": "e51e43614acb83b9aeb1142506cb1ff964635fd2a8daee8bab38a7c341b33add",
+          "mode": 436
+        },
+        "assets/agents/zcode/ric-devflow-planner.md": {
+          "sha256": "25d548a9ea045fd3c9ca8bf2b3b626541729355c8ede116b50c92719fcc07dab",
+          "mode": 436
+        },
+        "assets/agents/zcode/ric-devflow-reviewer.md": {
+          "sha256": "812b25d0f5b58311bea445b4448c672b36ec6f00e469a38ba8f5821baf9b71a0",
+          "mode": 436
+        },
+        "assets/agents/zcode/ric-devflow-tester.md": {
+          "sha256": "652541c210dcd36833ddfffee111799c027cb7907b9af1668eea512802608122",
+          "mode": 436
+        },
+        "assets/templates/compact/current.md": {
+          "sha256": "574d9bca4f7bd8abe55810576b8593349d472d48e47e51f1c95857df89c2cdcb",
+          "mode": 436
+        },
+        "assets/templates/compact/evidence.md": {
+          "sha256": "f0e3f0502d1e56b744ffa46bbcc5fe79e51f37f2b58abe4ffdbcd98faaf012b0",
+          "mode": 436
+        },
+        "assets/templates/compact/state.yaml": {
+          "sha256": "16298fb1e00ac6ef101674a25236c038662f2f83344cf6fcc4ff74662b7a912e",
+          "mode": 436
+        },
+        "assets/templates/compact/test-plan.md": {
+          "sha256": "fd4f6342b0ef839b3661e000d2c595d8077544d5f285c3f783bbb241d97f95d2",
+          "mode": 436
+        },
+        "assets/templates/decision.md": {
+          "sha256": "6e8f942ce220a2433ddd1ea0f18cdf3cf702e5d52541d3ccba1dd7230f6e80a6",
+          "mode": 436
+        },
+        "assets/templates/defect.yaml": {
+          "sha256": "6e6a6ceec80f781be9f2872b2a4d856da87030618bcef9121b518f2caec7b0e3",
+          "mode": 436
+        },
+        "assets/templates/implementation-report.yaml": {
+          "sha256": "3a987f1c28b768afa66728594579cc324f7ab47efaf61c4e49ccb063d4c28c19",
+          "mode": 436
+        },
+        "assets/templates/intake.md": {
+          "sha256": "fe866a9631e446b130ff86d99d1289dc53c23eff409f0a18e4c6219818d553f8",
+          "mode": 436
+        },
+        "assets/templates/repository-profile.md": {
+          "sha256": "576a7b7112143dc36f895a73ae4a6644f3627508a6c296a4d5e812d2d122bf61",
+          "mode": 436
+        },
+        "assets/templates/review.yaml": {
+          "sha256": "09f5b03879f5ca735b7282b61f4a1461489c1bcec5f8da74f7c660711388fa17",
+          "mode": 436
+        },
+        "assets/templates/risk-acceptance.md": {
+          "sha256": "501f3ef12b80b3ae16114c4976d5110707a2cfe3913bb145ba742589ae4c2c15",
+          "mode": 436
+        },
+        "assets/templates/root-issue.md": {
+          "sha256": "ab911e109c73325191a8df9ab30d20efca7a962e8f6712b60ccb6729a6349649",
+          "mode": 436
+        },
+        "assets/templates/spec.md": {
+          "sha256": "c9b9a317f11bbc3742870dbec7b8fe8609edf6e9f022e7a18d269356086b6b78",
+          "mode": 436
+        },
+        "assets/templates/state.yaml": {
+          "sha256": "ef11f88518c3cefb962d0194cd5741029751bc8f0f4a5bb479981d961c760b3c",
+          "mode": 436
+        },
+        "assets/templates/takeover-assessment.md": {
+          "sha256": "9d1867920df2f1911d6171abc3bbfe91c6417247470538d89b5c7317bd1ba80e",
+          "mode": 436
+        },
+        "assets/templates/task.yaml": {
+          "sha256": "c101d0fa1d9ebc7301272b65d80fe3a48edaa54270152251d60107221375c77a",
+          "mode": 436
+        },
+        "assets/templates/test-case.yaml": {
+          "sha256": "0aa66a76f92f9d9ddb642c9fd5f7a987c01086511ff6cb0f1d8dd3a8686c25b1",
+          "mode": 436
+        },
+        "assets/templates/test-plan.md": {
+          "sha256": "527257fd2b92b164d4ec16584108967eb47a71bfa0ff32d0f11bfc87ca7a5a96",
+          "mode": 436
+        },
+        "assets/templates/test-report.yaml": {
+          "sha256": "828138d296acc062936515d69e9f655bc13489943a8e45329de609133493a305",
+          "mode": 436
+        },
+        "assets/templates/ui-spec.md": {
+          "sha256": "79b42170ce2cc31fe8fdcb79f13e2dd1fa44831f4d124c274483542beb943ca7",
+          "mode": 436
+        },
+        "references/bootstrap.md": {
+          "sha256": "a3a2bf974fde9c8cfc5211db30c05f92a7541966b31d86057fb3102e690cad8e",
+          "mode": 436
+        },
+        "references/contracts/artifact-lifecycle.md": {
+          "sha256": "c64198b13ddc735ded4a9d486650024d29c3a4d4dfa7664f7edd984b6b3c4077",
+          "mode": 436
+        },
+        "references/contracts/brownfield-policy.md": {
+          "sha256": "497b8afe7385ecf7ae231da1f1006d4c93b7df4a8a9511c81500330b2f20a587",
+          "mode": 436
+        },
+        "references/contracts/change-control.md": {
+          "sha256": "cbe479aabffa46383e140255db86adf063ed2b19bd1e337eb87410520247aed9",
+          "mode": 436
+        },
+        "references/contracts/gate-policy.md": {
+          "sha256": "093feffd7b2b78e4b12168585e363b49a610cfac53626b070824865c34f29e02",
+          "mode": 436
+        },
+        "references/contracts/git-policy.md": {
+          "sha256": "ebd8ebb32b9fd9aa5309d8cf2e3460dfd8e83af223bf5cbaa6395e5751f8e698",
+          "mode": 436
+        },
+        "references/contracts/review-severity.md": {
+          "sha256": "078e41dddd6f444dab3f1df7226616629050ea4587b1e504d27530fcf582dc05",
+          "mode": 436
+        },
+        "references/contracts/role-boundaries.md": {
+          "sha256": "ec62a288c0733b34a627c6819d1286dc0cace46102ed85fbcc6ef32526439e95",
+          "mode": 436
+        },
+        "references/contracts/workflow-state.md": {
+          "sha256": "340710796f3eabbb2a87711da62b6a25ed0187ed01379ba16e680cecb6fa4ad3",
+          "mode": 436
+        },
+        "references/evals/brownfield-cases.md": {
+          "sha256": "236f4f3e8a119ef468465edd612b6f33435e92d19db4b73d4c2310ade546c1a5",
+          "mode": 436
+        },
+        "references/evals/trigger-cases.md": {
+          "sha256": "22f4f3be7744f8bd79a4cb5616548e025ed81e54076e471c53b2334f9ae4cb5d",
+          "mode": 436
+        },
+        "references/evals/workflow-cases.md": {
+          "sha256": "3da9f9f2c24543f32d8e5854f8736e23cef2b54f799ca8bf0fbb76370524cfcb",
+          "mode": 436
+        },
+        "references/platforms/claude-code.md": {
+          "sha256": "8769c3311d0c6660b1552347ee9c7977f99e3a89ea2585753299e14c4879b961",
+          "mode": 436
+        },
+        "references/platforms/codex.md": {
+          "sha256": "6ba68ce67bac4225f5dce904b5bfdf399ee53011cb21bbc64ff6c0dad6205df1",
+          "mode": 436
+        },
+        "references/platforms/zcode.md": {
+          "sha256": "72c04b596892579e13bea141c92f0b41034945d1d99a38154461c77270eeab98",
+          "mode": 436
+        },
+        "references/shared/ai-agent-review.md": {
+          "sha256": "6f59514e32b0ac8a6b6a6a9254459323a33a8d1abd9eebd30dd8a9fa2c96e2f7",
+          "mode": 436
+        },
+        "references/shared/api-review.md": {
+          "sha256": "3f270a5fceb5b1341deb4e492a0d0bf76b26bc9ccd90d375e8adf713ad312668",
+          "mode": 436
+        },
+        "references/shared/architecture-review.md": {
+          "sha256": "6361f3cfa93b62d85a414f7d75de3959b3a2ed97049d2a038584451fadaab776",
+          "mode": 436
+        },
+        "references/shared/backend-review.md": {
+          "sha256": "fb92a6a734f2f4533d0e6b6da643dfe55e610e45f9831e8c530b246be7ac212b",
+          "mode": 436
+        },
+        "references/shared/characterization-testing.md": {
+          "sha256": "b9015482fb7642db35a81d951090e34e71b7921f6e0f0c58d06fa386020bdb06",
+          "mode": 436
+        },
+        "references/shared/compact-layout.md": {
+          "sha256": "8e8daf2eb81826101a6ccd8f50ffcaf150767453d7f367fd5bb7250c0f5beb03",
+          "mode": 436
+        },
+        "references/shared/database-review.md": {
+          "sha256": "644b984f49e19708b393ab5fa844cf93bceb4e5fe3c9c5f2178c00e86beffec9",
+          "mode": 436
+        },
+        "references/shared/devops-review.md": {
+          "sha256": "cc1b20e38d6ea54191fd9d130ad7f0792bba1821b2f8afe7c3f0ab4d0ba4b429",
+          "mode": 436
+        },
+        "references/shared/distributed-systems-review.md": {
+          "sha256": "213a260d8ca572c7bc2c80a192ae7ceefb0f63b07cdda71a6e6f80d2c9584974",
+          "mode": 436
+        },
+        "references/shared/frontend-review.md": {
+          "sha256": "9db848a487e56ec9e05e9dc97e7b8c0d9cdfc0bc3ac5ec3f68962477ff37fe5f",
+          "mode": 436
+        },
+        "references/shared/languages/csharp.md": {
+          "sha256": "e75eec074e06a53fa07bfe7bda62615f6aa8a671efa82adf6c1526d9472f965f",
+          "mode": 436
+        },
+        "references/shared/languages/go.md": {
+          "sha256": "719566797a9fa8d0d357ad0a2df52f92e56b70fb96d33f84b0c6d4e1fe1c7980",
+          "mode": 436
+        },
+        "references/shared/languages/java-kotlin.md": {
+          "sha256": "5dbe7c5d15786f643ffc91d7ba6e481f27d209bc267ec8b7f2616a3bc8406f29",
+          "mode": 436
+        },
+        "references/shared/languages/javascript-typescript.md": {
+          "sha256": "4ee8d8ed044873753321d289554c823248ed1f2cf76d7dc66cdbea6c7fac46e6",
+          "mode": 436
+        },
+        "references/shared/languages/php-ruby.md": {
+          "sha256": "13849b4f26db0dfccc8972dbf337d18b854029a7b9bc80145e4881de1e6c3208",
+          "mode": 436
+        },
+        "references/shared/languages/python.md": {
+          "sha256": "50c866d36f021cd76eb9b94cb2508d300531b93dfd047f836d43ab9cbf935e63",
+          "mode": 436
+        },
+        "references/shared/languages/rust.md": {
+          "sha256": "0d0282081dadbadc65193218417451fc5eb15d9387efe4749c836b072a733cb7",
+          "mode": 436
+        },
+        "references/shared/languages/shell.md": {
+          "sha256": "800109410876379d333f9e8b86fa7621ca7c22e0de855b7a3f1eb530885497e1",
+          "mode": 436
+        },
+        "references/shared/languages/sql.md": {
+          "sha256": "f082058d6ffd3c5aa089e71b56e211d4f7269c3dd366cde0c7366a4901a5c870",
+          "mode": 436
+        },
+        "references/shared/legacy-migration.md": {
+          "sha256": "8e353e1429d18452d2615aafb58710835650605df0c6ee7f21c61d6800784d92",
+          "mode": 436
+        },
+        "references/shared/minimal-change.md": {
+          "sha256": "42bed23b00fd0848bd63b1baa5988877df671baca07f135980e239e832d91fe6",
+          "mode": 436
+        },
+        "references/shared/modular-design.md": {
+          "sha256": "1fb7b207d6d752e128ebb172f94981576eb8ad67eb38d371eb88db47a3de963c",
+          "mode": 436
+        },
+        "references/shared/orchestration.md": {
+          "sha256": "275ecf20ed74a074e4561268256560f4620f5155f7f4a833e767d584e875c130",
+          "mode": 436
+        },
+        "references/shared/repository-discovery.md": {
+          "sha256": "ca8c8fe2612ec5d8f10892d66b482696993d647beb243e622ef44e75a76bd67c",
+          "mode": 436
+        },
+        "references/shared/security-review.md": {
+          "sha256": "eb519d9670acd3326745cd96b3c3bda67d804fc8e5e116ded40be247902a5b76",
+          "mode": 436
+        },
+        "references/shared/task-decomposition.md": {
+          "sha256": "03eae51a2c36c73d8be0d6212efa4171447e1210cad54df5b6b7aa7b7b9b0cd3",
+          "mode": 436
+        },
+        "references/shared/test-code-delivery.md": {
+          "sha256": "be44f30a9c751be8b1ad694c1f59386fe8d9aea19c63c80b748edc34afd6dc7d",
+          "mode": 436
+        }
+      },
+      "upstream": "ric-devflow"
+    },
+    {
+      "name": "ric-devflow-implementer",
+      "source": "https://github.com/lichong-a/ric-dev-workflow-skills",
+      "commit": "9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb",
+      "path": "skills/upstreams/ric-devflow/skills/ric-devflow-implementer",
+      "files": {
+        "SKILL.md": {
+          "sha256": "dab01c652df8f03fe05a954ae5c50f9db57aca639659c44d33913c59d75aa423",
+          "mode": 436
+        },
+        "agents/openai.yaml": {
+          "sha256": "de3088396a1bcbb63f34af6e67ea0e741550e2d7258bc509fcfb25f28cbc3e86",
+          "mode": 436
+        },
+        "references/brownfield-implementation.md": {
+          "sha256": "28317604240647d29edf14d2f690135de64ddb2b8b2cddec5d06c0ea7cc17715",
+          "mode": 436
+        },
+        "references/implementation-workflow.md": {
+          "sha256": "1606a2641e5f44f6f2fe9ae42a023fa00e972b54c887b8537088484fd6845de0",
+          "mode": 436
+        },
+        "references/self-review.md": {
+          "sha256": "153408aad5fc7d0ab647f87ff3521af3eb171a347d56d8e363b3f44e7426f2a2",
+          "mode": 436
+        }
+      },
+      "upstream": "ric-devflow"
+    },
+    {
+      "name": "ric-devflow-planner",
+      "source": "https://github.com/lichong-a/ric-dev-workflow-skills",
+      "commit": "9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb",
+      "path": "skills/upstreams/ric-devflow/skills/ric-devflow-planner",
+      "files": {
+        "SKILL.md": {
+          "sha256": "3e6323424a15e0f724e4fb461ff04df1ff36cb6001a6ab7ca74672402618fe3f",
+          "mode": 436
+        },
+        "agents/openai.yaml": {
+          "sha256": "b9fba0409ccd1abc3415b344961f27bef5f642d11d7d61bc943d121f3c22a46c",
+          "mode": 436
+        },
+        "references/planning-workflow.md": {
+          "sha256": "e8a2cbeb967da2af13bc7c7b467f6964a019b851b0ca6090e141f6fdf6548b7b",
+          "mode": 436
+        },
+        "references/requirement-analysis.md": {
+          "sha256": "5584e15b586f3a0878152ac4234c81b0499ed93d41e8e1833f58033ece0399bc",
+          "mode": 436
+        }
+      },
+      "upstream": "ric-devflow"
+    },
+    {
+      "name": "ric-devflow-reviewer",
+      "source": "https://github.com/lichong-a/ric-dev-workflow-skills",
+      "commit": "9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb",
+      "path": "skills/upstreams/ric-devflow/skills/ric-devflow-reviewer",
+      "files": {
+        "SKILL.md": {
+          "sha256": "d4dfbac616d9927b701c2377f4891973284b2486a4e71d10e3789a17198614d8",
+          "mode": 436
+        },
+        "agents/openai.yaml": {
+          "sha256": "1a4c6eea4d0c51bf0d50258fa3c1af9f039f6e961c1872cc713aa158b0588aad",
+          "mode": 436
+        },
+        "references/baseline-review.md": {
+          "sha256": "7860cfa8d6931bc9b23ee0454993a6d20a647a8f66cb2eda43671294494e2dc8",
+          "mode": 436
+        },
+        "references/code-review.md": {
+          "sha256": "610c267fb5ef0e4af1f5c4fcfb4b79fd91bdc3bc6dd67602958a9ccf5162426a",
+          "mode": 436
+        },
+        "references/release-review.md": {
+          "sha256": "761372f8b15097518931e6cf0ad499a7175d88b3fb3450baa3f2c6499c088974",
+          "mode": 436
+        },
+        "references/review-protocol.md": {
+          "sha256": "d020fa05b331dcd6ff16d37873faf0b55bb5e7516569e22155f6a3f57130df9c",
+          "mode": 436
+        },
+        "references/spec-review.md": {
+          "sha256": "f3bb3becb79df958dd7c3dbb82cb653da28115b17c08e45eb5092081317d819d",
+          "mode": 436
+        },
+        "references/test-review.md": {
+          "sha256": "def7c6ee28ba4fad5777c634e10f5bece8b640c9461c019a6a4d700d86d4cd8e",
+          "mode": 436
+        }
+      },
+      "upstream": "ric-devflow"
+    },
+    {
+      "name": "ric-devflow-tester",
+      "source": "https://github.com/lichong-a/ric-dev-workflow-skills",
+      "commit": "9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb",
+      "path": "skills/upstreams/ric-devflow/skills/ric-devflow-tester",
+      "files": {
+        "SKILL.md": {
+          "sha256": "e67a17645ad85ba504305a21551718d2ead448e1b92dac5d69db20711e53e9fa",
+          "mode": 436
+        },
+        "agents/openai.yaml": {
+          "sha256": "2c9ea7205f496275cbd17ec3ebcb27a6085d74481248c0efe90f0b510c64de49",
+          "mode": 436
+        },
+        "references/defect-reporting.md": {
+          "sha256": "06453801ec36fcb8e42a41be9360c3a74fd5d5bfef8ee51182ecb1545b75f941",
+          "mode": 436
+        },
+        "references/integration-testing.md": {
+          "sha256": "5e809a7f03294d967ff15c5581596ab5dda509028ecb4de4604b9ea73d2df3b4",
+          "mode": 436
+        },
+        "references/test-strategy.md": {
+          "sha256": "4ac59477bc456eac69c536348e5714deee3915d08263f1ec29672c09229c9027",
+          "mode": 436
+        },
+        "references/testing-workflow.md": {
+          "sha256": "335c4712a42a0d79cdc0e25de286476b702c44207565e19ee4fe859372da5095",
+          "mode": 436
+        }
+      },
+      "upstream": "ric-devflow"
+    },
+    {
+      "name": "ric-design-patterns-skill",
+      "source": "https://github.com/lichong-a/ric-design-patterns-skill",
+      "commit": "46b183615afbfe3b1fffcbc9425ac3aea2c36d99",
+      "path": "skills/upstreams/ric-design-patterns",
+      "files": {
+        ".github/workflows/build.yml": {
+          "sha256": "212dbbd89e331ed4c4af91cb62f9b9c26f071918e0464e0bed650db3d2ba1e51",
+          "mode": 436
+        },
+        ".gitignore": {
+          "sha256": "f9937571fd17ddfa7ef8881a04a195aefd2bbbbb5598d5e766c1162cb13e845a",
+          "mode": 436
+        },
+        "CONTRIBUTING.md": {
+          "sha256": "ba73eb7aaeaf1185cf5e0f9878be78183d05a44ecf420ffe6f8e931ba96df2d0",
+          "mode": 436
+        },
+        "NOTICE.md": {
+          "sha256": "0ab85da0415a6efc54bbbbf0fe0e3a62663d31733705bf28d2cfed57a6f9bb1f",
+          "mode": 436
+        },
+        "README.md": {
+          "sha256": "0d98b9513c3ffef8d11e07c40833e481b60da5b8c3293a9ef208ed24646e0630",
+          "mode": 436
+        },
+        "SKILL.md": {
+          "sha256": "16a15f254e1ffe4526072c4d1d1151482470b3a2201dbed35d707f206b676184",
+          "mode": 436
+        },
+        "assets/hero.svg": {
+          "sha256": "1ed898c090c5844fa0701966abdc7f09a077880a9ae5e1ad8219f010611b2a66",
+          "mode": 436
+        },
+        "assets/navigation.svg": {
+          "sha256": "89fa17239ce529b9b26fed12d474a3f0469a12ed9b140dca0d7a3d3b25a2ae29",
+          "mode": 436
+        },
+        "catalog.json": {
+          "sha256": "ef2adfdb466837717293976ba81c722ccc8c0a9bf81ac3f987f89060e9a1d7bc",
+          "mode": 436
+        },
+        "data/code/cpp.json": {
+          "sha256": "3f6b5a9ea40ba504df0ab9456f3cea83be290aa503f722b6a2627b3afb907407",
+          "mode": 436
+        },
+        "data/code/csharp.json": {
+          "sha256": "68367ed350cf3dce90e3f346a40d4ffa8a6fcf72f519504a08b0e3e31cd8a34a",
+          "mode": 436
+        },
+        "data/code/go.json": {
+          "sha256": "7a9837a1fad9e210f7a8f6282b2bcea19b12e6361994d65d252de7a9e7db872f",
+          "mode": 436
+        },
+        "data/code/java.json": {
+          "sha256": "9a01d18724007c571c49ae29c555d91ed4680756af65bc1b452eb66f106cda7c",
+          "mode": 436
+        },
+        "data/code/javascript.json": {
+          "sha256": "d191f3707b90472dbf577d7c7291e22d038d94c180c10f598f9161f89a347783",
+          "mode": 436
+        },
+        "data/code/kotlin.json": {
+          "sha256": "537a3516f97872a54c678f8c2ec012118dfd9a9f049121d038ec662ee9405476",
+          "mode": 436
+        },
+        "data/code/php.json": {
+          "sha256": "13a4ff1279028f96b530bf7db7d4dd183e6bb73964e297fc9e8b8616aca4b3ef",
+          "mode": 436
+        },
+        "data/code/python.json": {
+          "sha256": "336b977362b49f1f6909db3d929bd75d29221814794788a333f6bfdd02a33666",
+          "mode": 436
+        },
+        "data/code/ruby.json": {
+          "sha256": "a8ce6358bd3c4c90762d7889a9eb6418ab6dee7a5788e1e24fa89d795c599e8e",
+          "mode": 436
+        },
+        "data/code/rust.json": {
+          "sha256": "2bd244ab55b58b5d330c6ae337a7ee4faaac3fc15b868171274aa7762e04d278",
+          "mode": 436
+        },
+        "data/code/swift.json": {
+          "sha256": "c02cb8e1a8ca5e2a2fde0154025a27a3510feb79459cc5105e07d0ee04576abc",
+          "mode": 436
+        },
+        "data/code/typescript.json": {
+          "sha256": "69b4937d6445a7b9617c5baa45afb50ec0ac17fdcefc0af9072e0213ea30dae5",
+          "mode": 436
+        },
+        "data/languages.json": {
+          "sha256": "fb2c205e5cb290c228d681fbf7ec862dc7b2f0646940c66095de3262602f81bd",
+          "mode": 436
+        },
+        "data/patterns.json": {
+          "sha256": "0976fd5392dcafc18912ba44c62b740ba971effb8b3fa67237035c7ec98a018c",
+          "mode": 436
+        },
+        "data/release.json": {
+          "sha256": "d0ce09c1f3f5320c0c6e8a7d4f194d2ffd5e450d8032a138941c5422dc0ec381",
+          "mode": 436
+        },
+        "data/sources.json": {
+          "sha256": "b705a59ba5e2c2aee2a1d245d1bc6b07055184f66c7369e93d01f6d12bac1efc",
+          "mode": 436
+        },
+        "data/verification.json": {
+          "sha256": "24885bbae860fc8d856da52c96782df5c975e1b3239aa1d95bf464b5fc51e3c4",
+          "mode": 436
+        },
+        "docs/ARCHITECTURE.md": {
+          "sha256": "c666951c0ed9821080fcb079dbcb86da29a62c4c4ac508cda774968127a85967",
+          "mode": 436
+        },
+        "docs/CHANGELOG.md": {
+          "sha256": "ffde419ce25427d43044946ec8ecc4426fe014912bda3401f039be1943473b72",
+          "mode": 436
+        },
+        "docs/SOURCES.md": {
+          "sha256": "91278ec07c1024920052cdcf496627855d73dd1768c907e9dffae95598ca261a",
+          "mode": 436
+        },
+        "docs/VERIFICATION.md": {
+          "sha256": "6f877978e4359768786e355a5d693d5e934e00bfcbae01e259716eb00031d4ca",
+          "mode": 436
+        },
+        "examples/cpp/abstract-factory/main.cpp": {
+          "sha256": "bc96a94208477239edc45a538e51044f8324fb557e0e1051c1d05de2a11d488b",
+          "mode": 436
+        },
+        "examples/cpp/adapter/main.cpp": {
+          "sha256": "db87ddbbe9d6a908be4152809248000941cab2a88c3075f8a0f3051a5a6be516",
+          "mode": 436
+        },
+        "examples/cpp/bridge/main.cpp": {
+          "sha256": "6fdeec5a2b7b8e1d975e379c9641ac5b77ace2c85edcdc5552978686a8f10bf0",
+          "mode": 436
+        },
+        "examples/cpp/builder/main.cpp": {
+          "sha256": "be4fdc5ab5c048c93c3dcd1772fab983e2b4f38426a3a481285389096408c901",
+          "mode": 436
+        },
+        "examples/cpp/chain-of-responsibility/main.cpp": {
+          "sha256": "f8a704f592de7770ca7121d93dbbda2fdb266a444013da9242d26bb9f0b1c87d",
+          "mode": 436
+        },
+        "examples/cpp/command/main.cpp": {
+          "sha256": "58211eeb7dcd041171d5e02d1ddd55b3e7ec1540b4561e2cdbc675f85a06104b",
+          "mode": 436
+        },
+        "examples/cpp/composite/main.cpp": {
+          "sha256": "78a2f8a0d3f1008ca45493c83d89c3d183be4259887dae0fca49efc257332a3a",
+          "mode": 436
+        },
+        "examples/cpp/decorator/main.cpp": {
+          "sha256": "d8f072684645c4f34c52dba390e7054879b1718041dfe2e804671356e42c044c",
+          "mode": 436
+        },
+        "examples/cpp/facade/main.cpp": {
+          "sha256": "a8140e281ff2fe81ca30c1101ee99ac7a51591395ada3d654b640ca28de7488a",
+          "mode": 436
+        },
+        "examples/cpp/factory-method/main.cpp": {
+          "sha256": "4ee27bc7d601e2b1fb6cc7f0525894ee76d317d249b84dd1e6ef0ebab7a5fb1d",
+          "mode": 436
+        },
+        "examples/cpp/flyweight/main.cpp": {
+          "sha256": "c40c1fe821814238647de4755dcdd1af48967bc28752be265dfe67bcdf78646b",
+          "mode": 436
+        },
+        "examples/cpp/interpreter/main.cpp": {
+          "sha256": "ca976e185c5cf4c6081ad44640d85ec720bbb708f1ec303340c07ce6ed5a1d1a",
+          "mode": 436
+        },
+        "examples/cpp/iterator/main.cpp": {
+          "sha256": "57fc9abe43987fef335d7b497d1e4fa5172c74f8af9bfc771fe4647b2f7a2523",
+          "mode": 436
+        },
+        "examples/cpp/mediator/main.cpp": {
+          "sha256": "1f0414738f77f44edd10ec02da54ac24836942ce384089fcc633c2e6c982dffe",
+          "mode": 436
+        },
+        "examples/cpp/memento/main.cpp": {
+          "sha256": "9ed6072fa0406a863e3c0352192d5ff78e369fecca94d27970dbf0e1243e7812",
+          "mode": 436
+        },
+        "examples/cpp/observer/main.cpp": {
+          "sha256": "e8bdc837de144c5b90f5c1c8d799135422e73fea98249de12297258a1dba90a9",
+          "mode": 436
+        },
+        "examples/cpp/prototype/main.cpp": {
+          "sha256": "e3dd60d2dce29c65bd9bedd0c61314a8008ad25bb091abf2898f1882ae6047dd",
+          "mode": 436
+        },
+        "examples/cpp/proxy/main.cpp": {
+          "sha256": "0df45b46fab9adadc2909ba91046e6e0a4e2f52bc6c9f19ec6f562f1a181733a",
+          "mode": 436
+        },
+        "examples/cpp/singleton/main.cpp": {
+          "sha256": "e772946455b05194e74dcc3e56df5293a993393ac9ce5f0ef511e7664be0459e",
+          "mode": 436
+        },
+        "examples/cpp/state/main.cpp": {
+          "sha256": "7f874151fad92afc8ac9dc4a6bdc9760e329df8ba53f5a326cd0ef14b3667132",
+          "mode": 436
+        },
+        "examples/cpp/strategy/main.cpp": {
+          "sha256": "5477d265c030ffd9ff24a83c5ecbad8a859cd7e7e445c3ce2da121ed4eef61e7",
+          "mode": 436
+        },
+        "examples/cpp/template-method/main.cpp": {
+          "sha256": "b325ea12d26b783f06f02c4c4009d705ff80c33796c18e3a5a9e4b3d0a107378",
+          "mode": 436
+        },
+        "examples/cpp/visitor/main.cpp": {
+          "sha256": "10cc2c8624ab1a5c7a85046bb840c236eed1469b8c9cf340b821aad28695a766",
+          "mode": 436
+        },
+        "examples/csharp/abstract-factory/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/abstract-factory/Program.cs": {
+          "sha256": "fd0c4880117cce8ff2505cc54ea079fc048c635063681157aa50489fb49fe822",
+          "mode": 436
+        },
+        "examples/csharp/adapter/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/adapter/Program.cs": {
+          "sha256": "d484ff27bd35a18470cd85f725bda1177dcbfff85df955b3e656285630812b06",
+          "mode": 436
+        },
+        "examples/csharp/bridge/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/bridge/Program.cs": {
+          "sha256": "f6249bb737922fed843aad3864553c8009e78ece1496f9a76c602b4dd8534e8b",
+          "mode": 436
+        },
+        "examples/csharp/builder/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/builder/Program.cs": {
+          "sha256": "dd213f3ee1097836bbb2f1ef644387da83b4389999ffebc1efa57a0368b642ab",
+          "mode": 436
+        },
+        "examples/csharp/chain-of-responsibility/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/chain-of-responsibility/Program.cs": {
+          "sha256": "8110abcc293ae0238554d8d2879991d61907c0937b1c619bb5b5e9c4c098f32e",
+          "mode": 436
+        },
+        "examples/csharp/command/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/command/Program.cs": {
+          "sha256": "47a21e3c02d1b131bdc8fb5eacdea4a506d923bea978f51101bfb7b5ea4bca9e",
+          "mode": 436
+        },
+        "examples/csharp/composite/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/composite/Program.cs": {
+          "sha256": "b95b6894557a91be586d8cfbfcd47ad3894338ce3f49b9a5ec53489541549038",
+          "mode": 436
+        },
+        "examples/csharp/decorator/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/decorator/Program.cs": {
+          "sha256": "2a5f905763ee307ada087c9d28a5606083efe892756ad8f859e1609aafa1f531",
+          "mode": 436
+        },
+        "examples/csharp/facade/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/facade/Program.cs": {
+          "sha256": "b341de4cd9f7d992dcd80b3b9e6cc17b27a939f1c3a15348fab05e7fe664035e",
+          "mode": 436
+        },
+        "examples/csharp/factory-method/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/factory-method/Program.cs": {
+          "sha256": "abea4593d0cd6f910fe58d21afe41cfce375a178789e816ff4a07b539b2badfa",
+          "mode": 436
+        },
+        "examples/csharp/flyweight/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/flyweight/Program.cs": {
+          "sha256": "0aaa0b4e7e0c5f4495f08be4113a582b3837bfff93da6659e09ab9e5892fdbe7",
+          "mode": 436
+        },
+        "examples/csharp/interpreter/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/interpreter/Program.cs": {
+          "sha256": "e20810565f4db00549f11fddd12896022f0d3013b021d14b73dc4537779646cb",
+          "mode": 436
+        },
+        "examples/csharp/iterator/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/iterator/Program.cs": {
+          "sha256": "db33233a2bd4e86b3c880a9182ec7895a4ff2ae8f8ae30bf246da6649bd1cfb3",
+          "mode": 436
+        },
+        "examples/csharp/mediator/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/mediator/Program.cs": {
+          "sha256": "b8fd6ef2fb18ec93a137f541ea94d357c4d6305fd7a7ac133b5a7cd6447ee939",
+          "mode": 436
+        },
+        "examples/csharp/memento/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/memento/Program.cs": {
+          "sha256": "00f64208669d9ddcb2da1143840c4a8c24999f664eab5748f3c88773b940279e",
+          "mode": 436
+        },
+        "examples/csharp/observer/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/observer/Program.cs": {
+          "sha256": "48e15a0ccec71b81c7d8c2f04d1c0ac1e207a3259584274a126c945b55650cc8",
+          "mode": 436
+        },
+        "examples/csharp/prototype/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/prototype/Program.cs": {
+          "sha256": "b8610600101cc63730f5dde1e6562c7c7ee9f9be142750662850efbd70e0aee5",
+          "mode": 436
+        },
+        "examples/csharp/proxy/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/proxy/Program.cs": {
+          "sha256": "48b4c6a67e3e8673675b07888bdf9b2a5e2c99fc032028358fe01e3e71320d4c",
+          "mode": 436
+        },
+        "examples/csharp/singleton/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/singleton/Program.cs": {
+          "sha256": "05fe86a193ea5a27cbea2db7c0c2f8ed252a5cc9135eb30eb99a3876cdd99732",
+          "mode": 436
+        },
+        "examples/csharp/state/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/state/Program.cs": {
+          "sha256": "777a828e25fd580fe5d9356e4bdca5c64e3df8053a5b03215535dee3d4257651",
+          "mode": 436
+        },
+        "examples/csharp/strategy/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/strategy/Program.cs": {
+          "sha256": "473306bbbdbb113a6dcb5a5a9e2aa993332e537c4d9ecc3a2be0c50f8261339b",
+          "mode": 436
+        },
+        "examples/csharp/template-method/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/template-method/Program.cs": {
+          "sha256": "438273d79a7c71d988d0f72ab1347045eb6dedf02f0bc97d2dbc903fb64465a4",
+          "mode": 436
+        },
+        "examples/csharp/visitor/Example.csproj": {
+          "sha256": "91f47b952273a781bee0e21008ed72f0ae62864cf9acb364d9f339c91faa9de2",
+          "mode": 436
+        },
+        "examples/csharp/visitor/Program.cs": {
+          "sha256": "b64a5e71e2a2ad618a641e44a0dea4991e7cbd44b9d7900ae1b621b1b2ad34a8",
+          "mode": 436
+        },
+        "examples/go/abstract-factory/main.go": {
+          "sha256": "d41b42fea23d64ddc7dbb4e72b62b34d586d37e6cc3f7224ebd4b298d9eb905f",
+          "mode": 436
+        },
+        "examples/go/adapter/main.go": {
+          "sha256": "3fe4c824a27f7a918229e5f0388fe3245f3abd21c93653982bafdcadd6528897",
+          "mode": 436
+        },
+        "examples/go/bridge/main.go": {
+          "sha256": "5daa4cbc49659c6dc1688f6f3dd866ee30fffaf4c703ae73aea9ff1a4f61627c",
+          "mode": 436
+        },
+        "examples/go/builder/main.go": {
+          "sha256": "7c44e0fd7a924e55c446ec3faf2ee0c3b42432c21ccba8d0b8419861a75d8f7d",
+          "mode": 436
+        },
+        "examples/go/chain-of-responsibility/main.go": {
+          "sha256": "a4b2d9c47857ffe8f401f3fdb4929f447798b90986f6d6bdaa1fdc30ad49f4b2",
+          "mode": 436
+        },
+        "examples/go/command/main.go": {
+          "sha256": "ff184bfccf82393b71b2b9d27bb4ae0d335548e6758bad1676f69a14edf58e62",
+          "mode": 436
+        },
+        "examples/go/composite/main.go": {
+          "sha256": "5f2be0cb1507ca640a797eb6dc8ae44cb0dea9df73e97a8d296c21bb4e5d0c9d",
+          "mode": 436
+        },
+        "examples/go/decorator/main.go": {
+          "sha256": "8b2cef93d23203f9828082681b2fabf227f9d40bd02324b811ef4daa629c1e4a",
+          "mode": 436
+        },
+        "examples/go/facade/main.go": {
+          "sha256": "e768e3e91511c3cbdba707083e3a88dd122ad9d76d1a871d9c17833af89a6103",
+          "mode": 436
+        },
+        "examples/go/factory-method/main.go": {
+          "sha256": "ed19915d411f1762eed6149893d1881ca77e702f2dfff156bdcf3e54bb023a2b",
+          "mode": 436
+        },
+        "examples/go/flyweight/main.go": {
+          "sha256": "e6023c90f07cf83d87f6db857a5262f5650b6909cdd04cc8a4991ce69e935132",
+          "mode": 436
+        },
+        "examples/go/interpreter/main.go": {
+          "sha256": "8f6bd4cd47cf01637ab9b02459e529471781a5f6e4a96d2852c28f62faa19a44",
+          "mode": 436
+        },
+        "examples/go/iterator/main.go": {
+          "sha256": "149b1f90f9fba65ffe7fc5f3da944fb096d4c52d82ee752d4f0972892653c7b1",
+          "mode": 436
+        },
+        "examples/go/mediator/main.go": {
+          "sha256": "ba5288031f7862d3b7d7610de71768eb8a359587cd048429dec3dc78b49066a7",
+          "mode": 436
+        },
+        "examples/go/memento/main.go": {
+          "sha256": "a0a88955130e6646f0e9753ca5c58d5fc446efeaef1354f1f0fdc79905455794",
+          "mode": 436
+        },
+        "examples/go/observer/main.go": {
+          "sha256": "89cd0c610be5b2f9a148b079167995c2e7e5e477752ef3c5603b5606a630117f",
+          "mode": 436
+        },
+        "examples/go/prototype/main.go": {
+          "sha256": "488f09d761e35e354d71f905524a14d3c4cf78ec0a58edcd6c311cfe28794be7",
+          "mode": 436
+        },
+        "examples/go/proxy/main.go": {
+          "sha256": "0face92180b3a087608900f623d53d0cec03a8891086fd485d98ec54ae6e32eb",
+          "mode": 436
+        },
+        "examples/go/singleton/main.go": {
+          "sha256": "d6a30f4864c9fef7eb3c5eae483661667038b5ebf6989ac15ef1d7896bb14bf6",
+          "mode": 436
+        },
+        "examples/go/state/main.go": {
+          "sha256": "6a93c6025bbefd62055c6ae437feaa9eb15b0a7ce6b920181c575c351458175d",
+          "mode": 436
+        },
+        "examples/go/strategy/main.go": {
+          "sha256": "d7caff5d14f2bcdf48eae0317e97b47476a657a24835ba7cf61621880b50b36f",
+          "mode": 436
+        },
+        "examples/go/template-method/main.go": {
+          "sha256": "19480a8085e3c4e40b0b133f7f7d7849752d828c42a2ae47e20023eabbfcb884",
+          "mode": 436
+        },
+        "examples/go/visitor/main.go": {
+          "sha256": "693ec48927e662e803818d6e69111565b7918f84493ee12ca97843d56342bef6",
+          "mode": 436
+        },
+        "examples/java/abstract-factory/Main.java": {
+          "sha256": "abcd2c1ed8acb1696739d9292aae5d6167629b55b3d9a5fea65b851ef524c348",
+          "mode": 436
+        },
+        "examples/java/adapter/Main.java": {
+          "sha256": "1c1eb5b1ad0deda0ca36519791113bb0c6851901bdb5f6980bfbc7259ca54c51",
+          "mode": 436
+        },
+        "examples/java/bridge/Main.java": {
+          "sha256": "34d113a7a29849b584e9d66068643c4c517f7b92957140e3a73dad90edb59b09",
+          "mode": 436
+        },
+        "examples/java/builder/Main.java": {
+          "sha256": "8266984856e6ff8ad84558dcb14f61a7b6165867fe22d5347b4aba398484c5c1",
+          "mode": 436
+        },
+        "examples/java/chain-of-responsibility/Main.java": {
+          "sha256": "3664eb4a17efaec0ffa357828c282d2dc77318e761392135faf0936fe9a4231b",
+          "mode": 436
+        },
+        "examples/java/command/Main.java": {
+          "sha256": "aa8cdb049f7dd5e26cabc60c6b8af8455b17d9304d7698cf6cfddb4f1db5b662",
+          "mode": 436
+        },
+        "examples/java/composite/Main.java": {
+          "sha256": "64e35b0235d70ac1dc95e11af7d1f92e08150da780200b52f3cdc40f92389303",
+          "mode": 436
+        },
+        "examples/java/decorator/Main.java": {
+          "sha256": "baa421612c400c60ecc3405bc13bfa44f0e4b53dc4d9d3c7965ea2ac87d5e8a4",
+          "mode": 436
+        },
+        "examples/java/facade/Main.java": {
+          "sha256": "ffa601a4d1b98a767c3e8370a3b05f7577046bc1c6972fbe7cf99ac7964fb6f4",
+          "mode": 436
+        },
+        "examples/java/factory-method/Main.java": {
+          "sha256": "f425246fbc77cefd7119c265eea04a83e0adbee1b9ce459be99a3e20815b9064",
+          "mode": 436
+        },
+        "examples/java/flyweight/Main.java": {
+          "sha256": "bd03c86d550cdf393c6cae21988ba99612ddc5f6980ea8ca4215df9bb6b0eb1b",
+          "mode": 436
+        },
+        "examples/java/interpreter/Main.java": {
+          "sha256": "5d33d8a3ae18defed5fc3e9e6ca8e6328606d313a2fffb249a654463f1529d99",
+          "mode": 436
+        },
+        "examples/java/iterator/Main.java": {
+          "sha256": "a5b34c0e90adf3787984beda340945a07f8bc0cefe66c52453431f7f6772b5ce",
+          "mode": 436
+        },
+        "examples/java/mediator/Main.java": {
+          "sha256": "e1d97666c71174249820e5c9101ab1f04836b704d9b3594c726eb0a00c007cd8",
+          "mode": 436
+        },
+        "examples/java/memento/Main.java": {
+          "sha256": "4b4a67c510266bd0fe01ee3939aba9238c27fca5fd75b5fbbc51fa7065dc2ce4",
+          "mode": 436
+        },
+        "examples/java/observer/Main.java": {
+          "sha256": "4620405419aec35b7bca59dce9e7b4855e1bb952155acf360f486f877994d3d7",
+          "mode": 436
+        },
+        "examples/java/prototype/Main.java": {
+          "sha256": "80e4e6692a04a3f35620efaa6c48c7949eb5ee0458fe5d010f16f71f36f4559c",
+          "mode": 436
+        },
+        "examples/java/proxy/Main.java": {
+          "sha256": "d1f2447171b35c925a1164d7fe177d764e372801037883f814b4b1809be8c863",
+          "mode": 436
+        },
+        "examples/java/singleton/Main.java": {
+          "sha256": "30ba1a0eb80d3b98a5848af95160aa9a63a2210e50e49f206cd211209929333c",
+          "mode": 436
+        },
+        "examples/java/state/Main.java": {
+          "sha256": "746b1f1a8397d8ec47c12e3399baeafa4b865185cfd9762c50ced564cc4ce01e",
+          "mode": 436
+        },
+        "examples/java/strategy/Main.java": {
+          "sha256": "6e42ffe99a3db159077614fb5651a054aa1f62506b68fbaf1b2be5e138ed9705",
+          "mode": 436
+        },
+        "examples/java/template-method/Main.java": {
+          "sha256": "c3ee9852d4c0a2a07e99065116a61ba4d307f2839980d8308f0a17124d6cac48",
+          "mode": 436
+        },
+        "examples/java/visitor/Main.java": {
+          "sha256": "5b42ec8e32bfac176812bfdfc91ce3edec35ef676ef0cb7e5e9c5b21c558dd06",
+          "mode": 436
+        },
+        "examples/javascript/abstract-factory/main.mjs": {
+          "sha256": "d8d08272b8c8cb493f5e48b82a293ec1e7b758b361539b701b86dd93b2b51693",
+          "mode": 436
+        },
+        "examples/javascript/adapter/main.mjs": {
+          "sha256": "137717bbd9b194315c1b70106f3b4e930f698c772bb0825229f02b38756c3464",
+          "mode": 436
+        },
+        "examples/javascript/bridge/main.mjs": {
+          "sha256": "0ad3a7ebb4bdcf948d61b6a97465c57ea764534e0441aaa75bd7b5db296e7ae0",
+          "mode": 436
+        },
+        "examples/javascript/builder/main.mjs": {
+          "sha256": "a100f6ca476f97f0621ccf5198de343a72ffd077828965d44ca2623c0c00961e",
+          "mode": 436
+        },
+        "examples/javascript/chain-of-responsibility/main.mjs": {
+          "sha256": "e6961d9d1eb8fbfd4dce4154bb950b7cc40f7a6693a72692ae4f113423cd56a2",
+          "mode": 436
+        },
+        "examples/javascript/command/main.mjs": {
+          "sha256": "eb7a3c1f6b204f5660eba9aab30575f9c2d355527f614e9747d546032dc2f517",
+          "mode": 436
+        },
+        "examples/javascript/composite/main.mjs": {
+          "sha256": "1518b837d8e1164af118643120174cd52c9c179ff3ff7ee3af13ffaddaee30c0",
+          "mode": 436
+        },
+        "examples/javascript/decorator/main.mjs": {
+          "sha256": "c816e02baa1098fd4d8404a417b3e5f985d525eaa71386ced95a6321bac60334",
+          "mode": 436
+        },
+        "examples/javascript/facade/main.mjs": {
+          "sha256": "5dd39dd86269ca270f0284894703595d7ff837fec6e70230a07f3db4008fe4cf",
+          "mode": 436
+        },
+        "examples/javascript/factory-method/main.mjs": {
+          "sha256": "6b0df682b204ef983945ac867beee8128e810e51c27320e57608eec00ed38c18",
+          "mode": 436
+        },
+        "examples/javascript/flyweight/main.mjs": {
+          "sha256": "95adbf3563398aa8d85acde87e453211f7c97081b928aae96354c04a4940b3f9",
+          "mode": 436
+        },
+        "examples/javascript/interpreter/main.mjs": {
+          "sha256": "270135f3245ed14a5312b41fd64e507dc26fad4f5c92c7b25827b24f5692e150",
+          "mode": 436
+        },
+        "examples/javascript/iterator/main.mjs": {
+          "sha256": "d4130955bc1ecaa6a83c9d2118a88d0594f92b8329d72b39a2a4838a5c2e29b0",
+          "mode": 436
+        },
+        "examples/javascript/mediator/main.mjs": {
+          "sha256": "2d32fbc96809aa8c8b2e7dd45b8330bd1a71c3a35befaec70046b469825c33bc",
+          "mode": 436
+        },
+        "examples/javascript/memento/main.mjs": {
+          "sha256": "ac1f62a39187df81b96b1d3a1b1ffad1073f5c94ae40c57331d483b9b4048c3e",
+          "mode": 436
+        },
+        "examples/javascript/observer/main.mjs": {
+          "sha256": "b21b8877c5d6b61a4bf9ce5dbce0a0230d6b3f8e6efb9e192a5c388c3b00812e",
+          "mode": 436
+        },
+        "examples/javascript/prototype/main.mjs": {
+          "sha256": "0891611a10c2bbb1a2bf0cd55969714814edb45e2d136946ca61394e31c0e3ae",
+          "mode": 436
+        },
+        "examples/javascript/proxy/main.mjs": {
+          "sha256": "4ab0740859397bd035b811ad3c83bcab16c9793cbafd78b652670da7a4bc0a62",
+          "mode": 436
+        },
+        "examples/javascript/singleton/main.mjs": {
+          "sha256": "1d3472cc2e6039bb70e37503daef7405766d29313f8928506687a09d687e77eb",
+          "mode": 436
+        },
+        "examples/javascript/state/main.mjs": {
+          "sha256": "ec6a0b4321fa979fd24b32f76aeeec6b91cf65e933b133ebdb1b62d22eaca357",
+          "mode": 436
+        },
+        "examples/javascript/strategy/main.mjs": {
+          "sha256": "81e781e9a6524a8617716d07f2f3789ff1ae7272a507910bc446e7d39c7e36e9",
+          "mode": 436
+        },
+        "examples/javascript/template-method/main.mjs": {
+          "sha256": "fc02391aa657fd0498194814e9a4eaed8f4646d2947f5c58f4ca984a7824777b",
+          "mode": 436
+        },
+        "examples/javascript/visitor/main.mjs": {
+          "sha256": "a1db8f85484559f9dfa75672ad55e3fc0e7797120a64939f91634d308c921b79",
+          "mode": 436
+        },
+        "examples/kotlin/abstract-factory/Main.kt": {
+          "sha256": "39e42e3a118a082a3da10deda238a5f3ce5fd6db09284f1e6e95ae522944a832",
+          "mode": 436
+        },
+        "examples/kotlin/adapter/Main.kt": {
+          "sha256": "0cd89a40b69d175ed77f3c7e28365a542e847d1e7be69a6171ac7f6395ed2d30",
+          "mode": 436
+        },
+        "examples/kotlin/bridge/Main.kt": {
+          "sha256": "7c83b5304d4a2dfc2906365532526252b6f74ab0eaf885ee8b445f8ef92f59a5",
+          "mode": 436
+        },
+        "examples/kotlin/builder/Main.kt": {
+          "sha256": "92a49093d011d7f5f29608206d383a161f23dd73560e68fbec659e06ca569701",
+          "mode": 436
+        },
+        "examples/kotlin/chain-of-responsibility/Main.kt": {
+          "sha256": "538f3c316a237b83f6761c99a9f774e1f645fb90173eeeafd327bba24fc5570c",
+          "mode": 436
+        },
+        "examples/kotlin/command/Main.kt": {
+          "sha256": "f617ba3b3e5bb2cce77f473d3269b2b6036af55709516123e818bc196ccdd63b",
+          "mode": 436
+        },
+        "examples/kotlin/composite/Main.kt": {
+          "sha256": "0c407a1f6f75cfb64a5accfbd5a4489b21d2e4d78b5fee80ef27d5629735f069",
+          "mode": 436
+        },
+        "examples/kotlin/decorator/Main.kt": {
+          "sha256": "62a3e215fa2631647f9d3389dcd159b002c753c8684bc9682f8b5f2759136d70",
+          "mode": 436
+        },
+        "examples/kotlin/facade/Main.kt": {
+          "sha256": "79f6b26458cdfddf4479bb1a9f2c7ba4452a817b45509d7bc1152c4d8dbe8807",
+          "mode": 436
+        },
+        "examples/kotlin/factory-method/Main.kt": {
+          "sha256": "e538138803607845881e350db163a65665adba0ebff83acf3a39209945fa7078",
+          "mode": 436
+        },
+        "examples/kotlin/flyweight/Main.kt": {
+          "sha256": "20f5d220bdafd9a3d9595c7e85903b67c38867a15b0121d4fe1292795ba36927",
+          "mode": 436
+        },
+        "examples/kotlin/interpreter/Main.kt": {
+          "sha256": "e2a6ba7d5309c2d0c947331e8fb315605d9ae6d1654d9ad4791fb1bd97265b65",
+          "mode": 436
+        },
+        "examples/kotlin/iterator/Main.kt": {
+          "sha256": "33cd84c1bada173777f275ed57e9cf6cefa0771ebb37dacb08c5b90d62649580",
+          "mode": 436
+        },
+        "examples/kotlin/mediator/Main.kt": {
+          "sha256": "2aa70167e2d4964c6daa20a1d426a6a4c8a251ece4063754b358f7b98236f802",
+          "mode": 436
+        },
+        "examples/kotlin/memento/Main.kt": {
+          "sha256": "32df9bc3671f30b0ec69c43760e59daecf97f035968f2305971e5fb10c0ebc1a",
+          "mode": 436
+        },
+        "examples/kotlin/observer/Main.kt": {
+          "sha256": "d1ff4ce806ba475ce8b53c05050312005b8b6a8a3c619c81cdd280a788970e9d",
+          "mode": 436
+        },
+        "examples/kotlin/prototype/Main.kt": {
+          "sha256": "e70931276e47255b9cd490c1699bc89cf143afa25c0486b7bb5b9733fb05dd86",
+          "mode": 436
+        },
+        "examples/kotlin/proxy/Main.kt": {
+          "sha256": "6169ffcd3d0c1bd00032559be16845487b42edf2e041522f5edfa85864acabbb",
+          "mode": 436
+        },
+        "examples/kotlin/singleton/Main.kt": {
+          "sha256": "4355c74b753699556d2e953c63a94a9a022525a6ba1f211b9c307305b9c17cc5",
+          "mode": 436
+        },
+        "examples/kotlin/state/Main.kt": {
+          "sha256": "a8483011ab57470e947401b48a984e9e79c67b6c082863d5393ac7e12ce1ff52",
+          "mode": 436
+        },
+        "examples/kotlin/strategy/Main.kt": {
+          "sha256": "4eb8770e6e7658036661b9172b229ab5f9ec6ba3459d2f295c836c6d6c50b5af",
+          "mode": 436
+        },
+        "examples/kotlin/template-method/Main.kt": {
+          "sha256": "5713d098180e9a1f777f469e0519c1ad9e07d13c31ad7c71fffbed1c590d8d4d",
+          "mode": 436
+        },
+        "examples/kotlin/visitor/Main.kt": {
+          "sha256": "67aaedce6f1d50d8212273cf0b10bf0b215a9afecd2beb073266d7ea40083632",
+          "mode": 436
+        },
+        "examples/php/abstract-factory/main.php": {
+          "sha256": "d0c7b9771e3a00599e44eaacfa5a157ae34b0889eb763ba70c23edcd57cd722c",
+          "mode": 436
+        },
+        "examples/php/adapter/main.php": {
+          "sha256": "9cb13bd775a85505e83955f0b70ca1587215d12164474ebb42863bd66fa55818",
+          "mode": 436
+        },
+        "examples/php/bridge/main.php": {
+          "sha256": "15088ae4ad0aca05f6d4e42114b0cd85784cb0f5285171cd38a0ed6274a093c2",
+          "mode": 436
+        },
+        "examples/php/builder/main.php": {
+          "sha256": "49f14ebcb2809f0994ee978368be57e2a312effb81c0c4992d9abd038786f6fe",
+          "mode": 436
+        },
+        "examples/php/chain-of-responsibility/main.php": {
+          "sha256": "478cb1a9869ce63e3c3680769b8040c36f92a6455ebe41f72f3b263b61ec1a8b",
+          "mode": 436
+        },
+        "examples/php/command/main.php": {
+          "sha256": "5ee9699355ded289459ae411ff6bfd216eee6c67b7832096d1983b1ae1764b53",
+          "mode": 436
+        },
+        "examples/php/composite/main.php": {
+          "sha256": "fe58565181b38b19629dc997585770182af785af1d5ee8ba165796325153a825",
+          "mode": 436
+        },
+        "examples/php/decorator/main.php": {
+          "sha256": "c81886706307b90956bf1aa6b8922ec11aca9870d731b9e2cc0c15bec5ba91eb",
+          "mode": 436
+        },
+        "examples/php/facade/main.php": {
+          "sha256": "a7a886a88ceb9b6e9074c95bb177c166482ed69414978b03eab0dfbb79fc9c13",
+          "mode": 436
+        },
+        "examples/php/factory-method/main.php": {
+          "sha256": "bb3104156d585f2f9302185c924b7cf3ca6ea02647211e0da5a70f9564454488",
+          "mode": 436
+        },
+        "examples/php/flyweight/main.php": {
+          "sha256": "33f9f4fc3032c0764aeea9abb757eabb2d213ade4c498d5ecffe6668a9b2ca2d",
+          "mode": 436
+        },
+        "examples/php/interpreter/main.php": {
+          "sha256": "830fabe4feaed83d374792ca6fcc0e8d4f64f62d7e4d5e0878711774363b0e05",
+          "mode": 436
+        },
+        "examples/php/iterator/main.php": {
+          "sha256": "f5644a90e02cf0df0b7ad2460d6e94f1933793e1b02243c009122b7efa30aedf",
+          "mode": 436
+        },
+        "examples/php/mediator/main.php": {
+          "sha256": "0e0fc1117671319aefae428298a34d90d2a7df1067fad79eff336172cdd6aba3",
+          "mode": 436
+        },
+        "examples/php/memento/main.php": {
+          "sha256": "2feee1d0156d91b9b82ec3ac23eea54ba800be5a79c18f44029ee1a7f121f95c",
+          "mode": 436
+        },
+        "examples/php/observer/main.php": {
+          "sha256": "e751abb97f5fe41a33872dee293c0b5193ed340ea7836df8b53c0ca4eceb227b",
+          "mode": 436
+        },
+        "examples/php/prototype/main.php": {
+          "sha256": "61e946b370c7c18672064f687065e483182bd026235262b3563e25d4fc6f6383",
+          "mode": 436
+        },
+        "examples/php/proxy/main.php": {
+          "sha256": "503b42210d0fa1a60884a3d6c8186395f4fbf785541c1c6242d4bdaef8a82b8e",
+          "mode": 436
+        },
+        "examples/php/singleton/main.php": {
+          "sha256": "2ef0ae5228562374e04e5d0fe7de9ebde76d83fdbf025cd871a4711d7e5f2fb7",
+          "mode": 436
+        },
+        "examples/php/state/main.php": {
+          "sha256": "c15a0d9b2b39d744649854d634b6da01bb2016f207b5bd13290b03caf28b018e",
+          "mode": 436
+        },
+        "examples/php/strategy/main.php": {
+          "sha256": "736fbf89b64a7d2686b942947f2292374dab2a779573771d6dfc3ddd18fea35e",
+          "mode": 436
+        },
+        "examples/php/template-method/main.php": {
+          "sha256": "05726004e3fee04840e5aef26cae7c06edccf7e2f9ec5b8653eea646192cf5ce",
+          "mode": 436
+        },
+        "examples/php/visitor/main.php": {
+          "sha256": "f2d3f99823b80e39e8d470c3b5506a9ca55e73ab548a3c195ef070df03f57fd7",
+          "mode": 436
+        },
+        "examples/python/abstract-factory/main.py": {
+          "sha256": "862fcad8def525d237e2dbcf054a0c7b3ee639967ff55866d53da7bbefdcb59d",
+          "mode": 436
+        },
+        "examples/python/adapter/main.py": {
+          "sha256": "50c704684f5718114bfff44fabe75290a8a4cffdd8c927be0e40ea60febe6077",
+          "mode": 436
+        },
+        "examples/python/bridge/main.py": {
+          "sha256": "1a03e3d6ed4ff77b0fc9f93048817e9e826216ed43272dd48dd7d3a6234e4756",
+          "mode": 436
+        },
+        "examples/python/builder/main.py": {
+          "sha256": "4430654f7293d84bf3e2f3e8aab0835f05c5476871bdff27d709fc596c5901a3",
+          "mode": 436
+        },
+        "examples/python/chain-of-responsibility/main.py": {
+          "sha256": "7c3a947268e2925f9af516d62c5a9dcc96ba802f414ef7013fb25632df473f35",
+          "mode": 436
+        },
+        "examples/python/command/main.py": {
+          "sha256": "8b6bba230dfde9a42c8f1e84ea687ce23e4d14cfb4e2abd70809068e148fdb19",
+          "mode": 436
+        },
+        "examples/python/composite/main.py": {
+          "sha256": "4ca1a25200b7c7c66c2f18b92416928cda1aa182bb9f5d5e74d9189fbf8a3552",
+          "mode": 436
+        },
+        "examples/python/decorator/main.py": {
+          "sha256": "5c245f24be33ac101f7f68a59ddff8542a525f90758c7259a5e5fe1a1cff37f3",
+          "mode": 436
+        },
+        "examples/python/facade/main.py": {
+          "sha256": "5a1933f60cb18c5464fcc4f68c3fa71a7039273ac11585a0a18a7faf29e4bdfc",
+          "mode": 436
+        },
+        "examples/python/factory-method/main.py": {
+          "sha256": "cb36d1e987afa3dfde0d13db2b19db5507a51a4d6c30ef8ee43c0a0909082534",
+          "mode": 436
+        },
+        "examples/python/flyweight/main.py": {
+          "sha256": "2e05b145c7b4ed5bd3c6c1699de7cbff6efc124f7612fd1950d77e2e45a22ce0",
+          "mode": 436
+        },
+        "examples/python/interpreter/main.py": {
+          "sha256": "807821179360a871051492bc6ab7a8af8326d98375af6bd797dbba24ddc809ea",
+          "mode": 436
+        },
+        "examples/python/iterator/main.py": {
+          "sha256": "6879097a9fe49d821fae8123c320584f6955982189ca96a7fe0581828474a8de",
+          "mode": 436
+        },
+        "examples/python/mediator/main.py": {
+          "sha256": "1355f04aebd8d4622eac83ad3c75e4d0d91d14eda47fa04b6b6a9cb243f562b4",
+          "mode": 436
+        },
+        "examples/python/memento/main.py": {
+          "sha256": "f7c6a4cfc1ee46258546147ef68fbe0ae2f3beccc9691740d2ca799dc450b9b0",
+          "mode": 436
+        },
+        "examples/python/observer/main.py": {
+          "sha256": "44093e66f834d5f82159e447a9b33715b91ae13b6cf0e4992440d528aa050d16",
+          "mode": 436
+        },
+        "examples/python/prototype/main.py": {
+          "sha256": "b69ffded1c2e61efc73a494b82b2cf058693fd8166df903695b4aea819c03b81",
+          "mode": 436
+        },
+        "examples/python/proxy/main.py": {
+          "sha256": "19f3293bbf991827847f1e0d4247dda43336d633228657e255b38a5ee9cb770e",
+          "mode": 436
+        },
+        "examples/python/singleton/main.py": {
+          "sha256": "191062cac60d1f7230f3642257ecbd4f38399ffc3adb7c76f6e4433c21cf92bb",
+          "mode": 436
+        },
+        "examples/python/state/main.py": {
+          "sha256": "c80cab89ad0006a0c10632d561e596a918610c59f5140c227688434e36d25ccc",
+          "mode": 436
+        },
+        "examples/python/strategy/main.py": {
+          "sha256": "7bf482b3758a6d3ae53e46a33c8d0661e4cbb992b228497c2fbdccc8cc729ea5",
+          "mode": 436
+        },
+        "examples/python/template-method/main.py": {
+          "sha256": "504f2925b9755269c8c86dfa66a2d22d3c9588ed9087365592bdf7db42cc44ef",
+          "mode": 436
+        },
+        "examples/python/visitor/main.py": {
+          "sha256": "9a80de9627634afdbf1066353c691f5f53ffc269e65161e8982a4a40586b3161",
+          "mode": 436
+        },
+        "examples/ruby/abstract-factory/main.rb": {
+          "sha256": "e6e39f7f40c708e75cc907d2b18e79fc375094a82bc87e05efed6efd4f4738cc",
+          "mode": 436
+        },
+        "examples/ruby/adapter/main.rb": {
+          "sha256": "a8927d185df29ad7d1f7af72dc867afd91881cfabe82b55de7c924f30f4a5ac6",
+          "mode": 436
+        },
+        "examples/ruby/bridge/main.rb": {
+          "sha256": "59a6e2da42c259612fa94539824dc8ca6a0b718d80b30a61713d1c4f1fbf2512",
+          "mode": 436
+        },
+        "examples/ruby/builder/main.rb": {
+          "sha256": "33f3f9adc6be887ed12668d0fbb17730233d5d412cb1f21accce76dd74a54343",
+          "mode": 436
+        },
+        "examples/ruby/chain-of-responsibility/main.rb": {
+          "sha256": "55ca09cb11dcebe72ab7e2932aa186e8dd344f2bd973a2305e420869575515af",
+          "mode": 436
+        },
+        "examples/ruby/command/main.rb": {
+          "sha256": "18fce2d52c5dc3edf1deb1b754272c76d58e6c0d3ba0cce07292aca56725a21d",
+          "mode": 436
+        },
+        "examples/ruby/composite/main.rb": {
+          "sha256": "359cf8d4e622f0a429d915b2686a1a8ed22806d38af5ce877ca3d1078cad7077",
+          "mode": 436
+        },
+        "examples/ruby/decorator/main.rb": {
+          "sha256": "4b93b576c334e29f2bcd8181a83308b7d585f2c43b290c8883fbe1958772c397",
+          "mode": 436
+        },
+        "examples/ruby/facade/main.rb": {
+          "sha256": "09588b1e3309f6e328be41f6bee9c3c1c250ff29777da4ffee118069218c7cab",
+          "mode": 436
+        },
+        "examples/ruby/factory-method/main.rb": {
+          "sha256": "87ee793a9bc5cc73cd9684f125345d3e94a9ffb4b7e5034745c625adb108d781",
+          "mode": 436
+        },
+        "examples/ruby/flyweight/main.rb": {
+          "sha256": "64c0bc042b6cc1fff54dc14162cf8c9b19373be42563213d84d46c553796573b",
+          "mode": 436
+        },
+        "examples/ruby/interpreter/main.rb": {
+          "sha256": "da70b627f1be6601da3343f9197d2c441b8cd2228fed6fd15ae29a7a9514364c",
+          "mode": 436
+        },
+        "examples/ruby/iterator/main.rb": {
+          "sha256": "a3a4ddbdc73776c639bca859ed78ae3fb1a77bf65d08d52a37a28392af152bd3",
+          "mode": 436
+        },
+        "examples/ruby/mediator/main.rb": {
+          "sha256": "8d3c4329fca1c153664b1385101a5e6a9493334fd95d235bfbd812f9005903ba",
+          "mode": 436
+        },
+        "examples/ruby/memento/main.rb": {
+          "sha256": "40dd6849bd0f66720a5bd573fa0bc1ee61540f45db5ea37bbe467d0a163ea370",
+          "mode": 436
+        },
+        "examples/ruby/observer/main.rb": {
+          "sha256": "15136ae02b94efc0e808760255c74e5b545abed83163264ecef8887dac1cc675",
+          "mode": 436
+        },
+        "examples/ruby/prototype/main.rb": {
+          "sha256": "e3fd4cfa9d68c63d6a5084336428e759fb5bfe8928263ee5291938cd87921c65",
+          "mode": 436
+        },
+        "examples/ruby/proxy/main.rb": {
+          "sha256": "9c3aa38a94b9a82aaf0ddf5ef1cfc7dabad0981e0c32f6ca8c173a85084e3671",
+          "mode": 436
+        },
+        "examples/ruby/singleton/main.rb": {
+          "sha256": "261ecc26eb642f07bac4b1e02a61cc878f4234854b4dbdc70a4b0e182a1f98f9",
+          "mode": 436
+        },
+        "examples/ruby/state/main.rb": {
+          "sha256": "19b4c0943cb8f4962188017cdcd294452accbc4b2344c6304b27022b7ca6c7bb",
+          "mode": 436
+        },
+        "examples/ruby/strategy/main.rb": {
+          "sha256": "0b68e1489f936c3e238bda7159b1ac484089f89ac7837791d04c1ae9f641669b",
+          "mode": 436
+        },
+        "examples/ruby/template-method/main.rb": {
+          "sha256": "395aa447b6afbe736d894af5c73cd82279aba27988c8ea7697588649fef6c7ba",
+          "mode": 436
+        },
+        "examples/ruby/visitor/main.rb": {
+          "sha256": "42bc105c9855b3d0a2754d961996e51b31f7b0a2732978958f86f4e97a06d91c",
+          "mode": 436
+        },
+        "examples/rust/abstract-factory/main.rs": {
+          "sha256": "46e343664f3e4f017da568e388e50ea1bf6fcfd68207b50d9486faaac0e432d5",
+          "mode": 436
+        },
+        "examples/rust/adapter/main.rs": {
+          "sha256": "acf2535ccf46daba1754213c20572c01feb972cbd4593bfb335ac1758894d560",
+          "mode": 436
+        },
+        "examples/rust/bridge/main.rs": {
+          "sha256": "0ca988f1adada7d1bcdf781f63c6421951b628bc4c823ccd3f751132ce745829",
+          "mode": 436
+        },
+        "examples/rust/builder/main.rs": {
+          "sha256": "1b09d04e4ae27978393ce58ad45e6c35192afdd17d9694dfc7a636d4119f3955",
+          "mode": 436
+        },
+        "examples/rust/chain-of-responsibility/main.rs": {
+          "sha256": "dee4b3cd5be9cdbcf2b7867d0422eaba8979c5aa5cff0eb2409a76fe8bf1c74f",
+          "mode": 436
+        },
+        "examples/rust/command/main.rs": {
+          "sha256": "069c0f9a14ec6263292893db932425e652d1e69b45cc00e7490b7c418ff52e9b",
+          "mode": 436
+        },
+        "examples/rust/composite/main.rs": {
+          "sha256": "3f53780b3c4004bc437932dc01508dae44befa34f513ef00defbce6271650737",
+          "mode": 436
+        },
+        "examples/rust/decorator/main.rs": {
+          "sha256": "1d71d1e104b682c66d4028daf809077dc46677b901d48fb2321a48bb0a551f76",
+          "mode": 436
+        },
+        "examples/rust/facade/main.rs": {
+          "sha256": "d1234683fc1414509c84610c5cd03853727e41f51425375deca2f75c63e70825",
+          "mode": 436
+        },
+        "examples/rust/factory-method/main.rs": {
+          "sha256": "e1871b3feeac23eb7b09a0496a05be2b94a81682402519ce0ffa9c997e836db0",
+          "mode": 436
+        },
+        "examples/rust/flyweight/main.rs": {
+          "sha256": "2aed95fd1b36ee0500266038f754fa5e53e1a34e35fe2707a037d4f2f758f6a8",
+          "mode": 436
+        },
+        "examples/rust/interpreter/main.rs": {
+          "sha256": "d9771f382c57375ad263105a9649019d5901fe1c4ec7c0ba8b7a32d51451fce4",
+          "mode": 436
+        },
+        "examples/rust/iterator/main.rs": {
+          "sha256": "ac24787fe26701428ec19a63f5d45cf43b1e4882e290a7ade70c05351251978d",
+          "mode": 436
+        },
+        "examples/rust/mediator/main.rs": {
+          "sha256": "410ad58d44665b7326c73d54de983279ccbb768ca7c01142ba4e057543f46455",
+          "mode": 436
+        },
+        "examples/rust/memento/main.rs": {
+          "sha256": "a0a5ea1519f02ddb7ec8f9b9ab3157538c92f5e98ab4135ffbb6f9f367885cc0",
+          "mode": 436
+        },
+        "examples/rust/observer/main.rs": {
+          "sha256": "95c5b74f8a17c19559c82d4a04eb07b16542630bcc4ee19b7c41cc8dd9c5c3d4",
+          "mode": 436
+        },
+        "examples/rust/prototype/main.rs": {
+          "sha256": "7fdba5ce2fa33310034726376743027bd31c0478e4c8f0c740f3de9a9b6f267a",
+          "mode": 436
+        },
+        "examples/rust/proxy/main.rs": {
+          "sha256": "dd580a5e8e8fcfa4e6027dac63d67250b2615543c9c8e01ccd3f37d47745419f",
+          "mode": 436
+        },
+        "examples/rust/singleton/main.rs": {
+          "sha256": "f3c03a9d4eb5cfd933085ac35c9c4fa54c6fdb9de0165d610f816a8c79f18313",
+          "mode": 436
+        },
+        "examples/rust/state/main.rs": {
+          "sha256": "a58b3349eb6197dfae50944ec2238a3b0e011792aa0009b997ff302090cf320f",
+          "mode": 436
+        },
+        "examples/rust/strategy/main.rs": {
+          "sha256": "94adaf744b649ea55038435690e65ddeaf48ac9628ee34d2de966dd374599810",
+          "mode": 436
+        },
+        "examples/rust/template-method/main.rs": {
+          "sha256": "70ff445311712531a7d47110adad0e3acea69daba9a0920caceb9fd0c725fc24",
+          "mode": 436
+        },
+        "examples/rust/visitor/main.rs": {
+          "sha256": "0d516e23ec2a49271240a819ae3128f2808bbbd1bfac5fd4e6fbe404040adb2e",
+          "mode": 436
+        },
+        "examples/swift/abstract-factory/main.swift": {
+          "sha256": "890958690562d2cd534d35876b4f65da0ddb65111634acfef0496e665738a79b",
+          "mode": 436
+        },
+        "examples/swift/adapter/main.swift": {
+          "sha256": "34304ab511f9812a914a96e8c93d6d2236f6bd27224620d7d18ab0596c10a3ec",
+          "mode": 436
+        },
+        "examples/swift/bridge/main.swift": {
+          "sha256": "7058db4d43d75328f67f79965b311ac9d34b8d8bbab345f2365e5d8c93f6879e",
+          "mode": 436
+        },
+        "examples/swift/builder/main.swift": {
+          "sha256": "8b994ba96e55024d31293e74eb76b4bf63d28daa3682b447ea19718b9647f4be",
+          "mode": 436
+        },
+        "examples/swift/chain-of-responsibility/main.swift": {
+          "sha256": "8367a46fea0164a1fb46b74f34f687432b65c6912d2f71810f3b3a25abb1d798",
+          "mode": 436
+        },
+        "examples/swift/command/main.swift": {
+          "sha256": "b544c4ba11dada5d619f70fd47a9b92f59a2f9a65097bfcd3abbf95374474d55",
+          "mode": 436
+        },
+        "examples/swift/composite/main.swift": {
+          "sha256": "1b3ac0d3a442f50e186b1dd5ed02e24ab944eaca9e8abf42ee42c0333d89aeaa",
+          "mode": 436
+        },
+        "examples/swift/decorator/main.swift": {
+          "sha256": "2379db02211ee11373a04a2501bc49237a9920c0cb1148a3e578fc521e2b4b67",
+          "mode": 436
+        },
+        "examples/swift/facade/main.swift": {
+          "sha256": "71769ef6a631b7c3db33e4d07e1b4e1bbeed8ac593b905ecb6f7b65f9635cb36",
+          "mode": 436
+        },
+        "examples/swift/factory-method/main.swift": {
+          "sha256": "7977b416e4cb42fe5dcb6ea47d1472b2a16d4bc8110b4505338c9aa92c342893",
+          "mode": 436
+        },
+        "examples/swift/flyweight/main.swift": {
+          "sha256": "cf772152741a232d8c78d0a279eaf6e7d131c36efe4b5e6794ad62eff3ff8a71",
+          "mode": 436
+        },
+        "examples/swift/interpreter/main.swift": {
+          "sha256": "bb6f0f71699a7d7de53f4c80ce970f6bd77ece50b6e101a9a2b083c35977784c",
+          "mode": 436
+        },
+        "examples/swift/iterator/main.swift": {
+          "sha256": "375866621e5c52af3cfd11c061fa0bf90fae2d36c80edeff9446396112d56dfd",
+          "mode": 436
+        },
+        "examples/swift/mediator/main.swift": {
+          "sha256": "69d36daa5301a037fd07eaf5f85a8124cc52c7ba849f0484cff1ad67c5582817",
+          "mode": 436
+        },
+        "examples/swift/memento/main.swift": {
+          "sha256": "96aff856bb311621049f06eab902296894273a0877f28507af002868d6daac72",
+          "mode": 436
+        },
+        "examples/swift/observer/main.swift": {
+          "sha256": "0e475132b468e8a1648a6bf0ef385a2cf024f7aae6d99e4d4ec2e7fa98b32264",
+          "mode": 436
+        },
+        "examples/swift/prototype/main.swift": {
+          "sha256": "8b2c8b64190473837f16336272c9716d68b7088ac468beaa2d63ef0b223daf62",
+          "mode": 436
+        },
+        "examples/swift/proxy/main.swift": {
+          "sha256": "f4f439e0b6e12d3b7c71cdfb1b25a217af3054dd38cd608577dd7b4b9b3b4e4c",
+          "mode": 436
+        },
+        "examples/swift/singleton/main.swift": {
+          "sha256": "4b3155fd5a839851962157630f5ca7b1f849ea971658647abe53e6a94aea7998",
+          "mode": 436
+        },
+        "examples/swift/state/main.swift": {
+          "sha256": "f939b859872a67d5351275a26c8213b6db45b2927ecf83e030082d44b719969e",
+          "mode": 436
+        },
+        "examples/swift/strategy/main.swift": {
+          "sha256": "aa07522ceb32eec645f4e8a365f1878198bec73e2e8bf2a568530fdfde2788f3",
+          "mode": 436
+        },
+        "examples/swift/template-method/main.swift": {
+          "sha256": "5e9d3cab7fd84f72c8d38413884ad962429ed2be70e79976916f30cf0b8e76fc",
+          "mode": 436
+        },
+        "examples/swift/visitor/main.swift": {
+          "sha256": "530f195772cc06720db1ac7482951d43721ed0f3bf1e41893d2d353ec5d92e28",
+          "mode": 436
+        },
+        "examples/typescript/abstract-factory/main.ts": {
+          "sha256": "b9a2de1662eac344900033854f284d594f0e874d1dd0965a58940dfd4687d80e",
+          "mode": 436
+        },
+        "examples/typescript/adapter/main.ts": {
+          "sha256": "275a36e40cc5520d5fd7bf83e43713b693e3e08dcdf9bb25242ad531eceb9abc",
+          "mode": 436
+        },
+        "examples/typescript/bridge/main.ts": {
+          "sha256": "c1c6a3d12040234612d65a3873c2808f27d68ec537e47b5501c5ddaaa62dac66",
+          "mode": 436
+        },
+        "examples/typescript/builder/main.ts": {
+          "sha256": "c670e2b238783a2318e97722bc47458e861a1073ea436075d3775581702b3759",
+          "mode": 436
+        },
+        "examples/typescript/chain-of-responsibility/main.ts": {
+          "sha256": "b01235c0dcc03c2f378ea19f7c54c8c61f412555570ea654d2a07baa6db4e95c",
+          "mode": 436
+        },
+        "examples/typescript/command/main.ts": {
+          "sha256": "6a81e97c7a8f31b219ce20137f2635786843b2f1a5bcf4248f3d340843026836",
+          "mode": 436
+        },
+        "examples/typescript/composite/main.ts": {
+          "sha256": "987fa198f599974621ff7d5b943448278d13162ac576ee62f79a587edc34688b",
+          "mode": 436
+        },
+        "examples/typescript/decorator/main.ts": {
+          "sha256": "33add4363d391d26fce9459fd987f30d906d999ef15bd3fb382edeb3fd0fc3b0",
+          "mode": 436
+        },
+        "examples/typescript/facade/main.ts": {
+          "sha256": "0fa763035c6df3a925b5ca31d5dfd69682d2e457be335ae3a9992943958e062d",
+          "mode": 436
+        },
+        "examples/typescript/factory-method/main.ts": {
+          "sha256": "1f3b5b2ad4af048f3ae7f05a632a019df1c6924b59b35fe006f5f1691325f137",
+          "mode": 436
+        },
+        "examples/typescript/flyweight/main.ts": {
+          "sha256": "a7d59e4cfac9b3f6a1b957ed18f85b9dbfb6fe9540ccd2a1d81783856b704222",
+          "mode": 436
+        },
+        "examples/typescript/interpreter/main.ts": {
+          "sha256": "6cdab2ba8b682da8e0550b4f0ad59d2bf61a2e4876912eb6ea38c730f788351a",
+          "mode": 436
+        },
+        "examples/typescript/iterator/main.ts": {
+          "sha256": "fc81386b220a0882fe902611e92347ac7e6909545ff02b8d482218103dff0ec0",
+          "mode": 436
+        },
+        "examples/typescript/mediator/main.ts": {
+          "sha256": "50ab469887292c1029796d13b85afefa14c8a1d33c90582b29bdf4dd67214d33",
+          "mode": 436
+        },
+        "examples/typescript/memento/main.ts": {
+          "sha256": "aab14b7b638a433b24f258a21485fb8fc8223dba5e9db2a12a1f12b5c82fe312",
+          "mode": 436
+        },
+        "examples/typescript/observer/main.ts": {
+          "sha256": "ec18ea7520f8afa3cbf8c90e231084fe6d249c98cc20c95d5cca950b14482f9c",
+          "mode": 436
+        },
+        "examples/typescript/prototype/main.ts": {
+          "sha256": "4a21cc22d2cd10c5a1c38acf12d924ca7016c7ca5fe8f90cdf99d53d5f3ed092",
+          "mode": 436
+        },
+        "examples/typescript/proxy/main.ts": {
+          "sha256": "5c955283390fb982dfb7b3cf454c28342fb37356bcf9400db6b1528e740d1d0b",
+          "mode": 436
+        },
+        "examples/typescript/singleton/main.ts": {
+          "sha256": "97213e7d730dd73f6032c0d140d7ee8329d782df4579fb1c274c71302eb1b4cc",
+          "mode": 436
+        },
+        "examples/typescript/state/main.ts": {
+          "sha256": "56232916216cdb97ffc5cd7082a2f8b54be2eaada20a96ea7d3255c349b25192",
+          "mode": 436
+        },
+        "examples/typescript/strategy/main.ts": {
+          "sha256": "4babb90c143bc97e3d8f28d7c3ca812aca0a7f349cc87bfae2b0f4802c754c80",
+          "mode": 436
+        },
+        "examples/typescript/template-method/main.ts": {
+          "sha256": "d064cd0348983d1dab6344e25a421073af2f20252ebe897aa0e44f316aba77e8",
+          "mode": 436
+        },
+        "examples/typescript/visitor/main.ts": {
+          "sha256": "965410eebab697037696b1b675b568d5d79779bbeb9809108c26e5d8fc7abb2d",
+          "mode": 436
+        },
+        "references/cpp/README.md": {
+          "sha256": "d6b5120662f3497ba72a62422557b78a05031aecb92a1682159a7dc826385ec4",
+          "mode": 436
+        },
+        "references/cpp/abstract-factory.md": {
+          "sha256": "7c64985777deba8f05322cb36ca869bdde3e8babbf54cd32bc55899e8b39b528",
+          "mode": 436
+        },
+        "references/cpp/adapter.md": {
+          "sha256": "b4489a381f20c79ed033e4f2c7df7b8d0614ab74c8df220c020f3c69520b88c5",
+          "mode": 436
+        },
+        "references/cpp/bridge.md": {
+          "sha256": "90986b8de8b72b596c37595f7b2ed8665e5f82d8dd55171b304744e27a400e92",
+          "mode": 436
+        },
+        "references/cpp/builder.md": {
+          "sha256": "8401d76ffd15db01a0aea63cb452be67aa3844a063c889e3d0081df2afcca70b",
+          "mode": 436
+        },
+        "references/cpp/chain-of-responsibility.md": {
+          "sha256": "54231709c8c838ab4d7607df8c0fb415d35474d2ac1cd07c7f35b6f1edbbac2e",
+          "mode": 436
+        },
+        "references/cpp/command.md": {
+          "sha256": "6fd494431916d011c70c6609fba39d4832ed8328cb49049f6af1dc5c3eceb7d8",
+          "mode": 436
+        },
+        "references/cpp/composite.md": {
+          "sha256": "834c81bd8e8fcfb9afc5b090d3bde0a669e2e3021b91ad230c9919ce68e03989",
+          "mode": 436
+        },
+        "references/cpp/decorator.md": {
+          "sha256": "06daa2bb2e2c1dd5c64d93498a7e7e31cf991a5a7d23bc47164a3506b2c3489f",
+          "mode": 436
+        },
+        "references/cpp/facade.md": {
+          "sha256": "1703fef651161b35a057d1355a9840f3576b43a40941f4dd2ca878d3e93e6cfe",
+          "mode": 436
+        },
+        "references/cpp/factory-method.md": {
+          "sha256": "2e489a6770de04f23086e8f65d6efc7b401991fc120ad1345f0960006b263858",
+          "mode": 436
+        },
+        "references/cpp/flyweight.md": {
+          "sha256": "0739e202e1d0ec3ae168ad7a1e3dc26b48365a5de36f314ebdb9c4568f76a23d",
+          "mode": 436
+        },
+        "references/cpp/interpreter.md": {
+          "sha256": "9860001e98e7b8ab87f1ba40e45d359e340f6cdfb003a44661353685b32159ab",
+          "mode": 436
+        },
+        "references/cpp/iterator.md": {
+          "sha256": "e78ede292645b17e544ebbbbe97cd0dfa626a767daf35edc1283c8ab10c0919d",
+          "mode": 436
+        },
+        "references/cpp/mediator.md": {
+          "sha256": "02673bea7c6d102dbbae9408dc475c7c15b53e8c35303e370a6cef9b592f78e3",
+          "mode": 436
+        },
+        "references/cpp/memento.md": {
+          "sha256": "1fd5079d957f21343a3700ab89c6d47b48f2c2d88f8bbbf92edcb7472ecb0782",
+          "mode": 436
+        },
+        "references/cpp/observer.md": {
+          "sha256": "451d7df326fe016626132c32ebf84f9e05a427cf2872c113a15c90e8d241f75c",
+          "mode": 436
+        },
+        "references/cpp/prototype.md": {
+          "sha256": "d7db24bd11f4ce57af87080b154d050507b00b322e1a66074282f2f969afd76b",
+          "mode": 436
+        },
+        "references/cpp/proxy.md": {
+          "sha256": "c6ea6d692c195bb31166a097c2a1bb46281e036032279ecaf41e3e6b5d005d25",
+          "mode": 436
+        },
+        "references/cpp/singleton.md": {
+          "sha256": "747c5c70030511136a617eea70cc4c596954f3f0fc392f5bac8d5430d3aa8921",
+          "mode": 436
+        },
+        "references/cpp/state.md": {
+          "sha256": "56a6ab6528a46700b726f442119cc41d6f7ad8d72cc8808b5393ffb26ec1e06c",
+          "mode": 436
+        },
+        "references/cpp/strategy.md": {
+          "sha256": "4f3eab3cf22fc614ac6f62617bd459a4ebd918549bf74a5f234cf277963567ac",
+          "mode": 436
+        },
+        "references/cpp/template-method.md": {
+          "sha256": "7aaa314235369752b5a88ae20867a8851cf3652d1e94de038430316e0d738275",
+          "mode": 436
+        },
+        "references/cpp/visitor.md": {
+          "sha256": "658cb998a626ab5d379ef9edb13bcee5405535c653631638cab5e2f6209c41a3",
+          "mode": 436
+        },
+        "references/csharp/README.md": {
+          "sha256": "1e31e1a24d4a8a4ee04849f51e41961cf4204ff201218ca4456c949604d01ff7",
+          "mode": 436
+        },
+        "references/csharp/abstract-factory.md": {
+          "sha256": "53c34d0712d2cc72c7e52c27645015083bd74f8f1cba2ae9f52f896cf9f9a5fa",
+          "mode": 436
+        },
+        "references/csharp/adapter.md": {
+          "sha256": "ebd28d6d19076f7bf15414260287f3bddf1ae792122662d1bb59eafe8a03f217",
+          "mode": 436
+        },
+        "references/csharp/bridge.md": {
+          "sha256": "488f65a59acf8cf6669c1530b8b8347ed02651b76f50314265d8b355c69de874",
+          "mode": 436
+        },
+        "references/csharp/builder.md": {
+          "sha256": "e18855799dce5ca43872eb34b02d7419d57b21b0d799d8b4adaa9c31f3ee5b28",
+          "mode": 436
+        },
+        "references/csharp/chain-of-responsibility.md": {
+          "sha256": "889f5c2e3f61504cc07bb79674dade5040af2a526227297a7178be799bff9670",
+          "mode": 436
+        },
+        "references/csharp/command.md": {
+          "sha256": "f372cd145523ea0f484ce5004e6cabb06a7778265b3e83feb35438426e681482",
+          "mode": 436
+        },
+        "references/csharp/composite.md": {
+          "sha256": "d9c21f679da3900406d05607aa0b1c8674317905d3bc6fb08cbdad7f68d334f6",
+          "mode": 436
+        },
+        "references/csharp/decorator.md": {
+          "sha256": "848efbe674850bc80d8684c1f4ee26cb50e45214c2b07f843d2ed7ac8273038e",
+          "mode": 436
+        },
+        "references/csharp/facade.md": {
+          "sha256": "098facb5b07695b9bb51ccd2c8ff4f06c692e21ea2a62bdbe2020ffb60537924",
+          "mode": 436
+        },
+        "references/csharp/factory-method.md": {
+          "sha256": "011d88bef174048b0a64abce40295625945e2bbe6438fafd8fb629e2fc201db1",
+          "mode": 436
+        },
+        "references/csharp/flyweight.md": {
+          "sha256": "9aa2b9ecacf699c4eb929b19eeb14325856681a9d6adc5700a547447ee39e20f",
+          "mode": 436
+        },
+        "references/csharp/interpreter.md": {
+          "sha256": "ebd9c2f039eb7625fbcc7e5f50b1bddaf511c79936c35af1894d9d20207210a8",
+          "mode": 436
+        },
+        "references/csharp/iterator.md": {
+          "sha256": "71b20f65f93e3bb471355d0ec793e49133956597f3196cadff576d7625a1f842",
+          "mode": 436
+        },
+        "references/csharp/mediator.md": {
+          "sha256": "11fd7fbc1074efdc56a93a4ac76867933e2c1bbbba55f8f6a0c59840f04ccd31",
+          "mode": 436
+        },
+        "references/csharp/memento.md": {
+          "sha256": "96cf97092875eda479d7f8649960c34d453c2ad236ed35e1496e5fa10b37ffe9",
+          "mode": 436
+        },
+        "references/csharp/observer.md": {
+          "sha256": "5d10bb3f4bf604bc255f4b9cafa8099598e67c571f90e29731f12e27611e39ae",
+          "mode": 436
+        },
+        "references/csharp/prototype.md": {
+          "sha256": "166f56ff79e8eaea28179d270f9fd8e9e0236777fe276c241954ebfd1ca52e9e",
+          "mode": 436
+        },
+        "references/csharp/proxy.md": {
+          "sha256": "67e3ac901bfba5ff6576f323e99de4e2b2338079684ff4b89fe0c5ace356d197",
+          "mode": 436
+        },
+        "references/csharp/singleton.md": {
+          "sha256": "630eca6ee36874f4a8e86d400a828d334f6736a654a70bd315c7c81b050d7663",
+          "mode": 436
+        },
+        "references/csharp/state.md": {
+          "sha256": "121e49a0eac9a034c357b75a5a17f35bb45ef1e26ef8eee8360e46a071c35ac2",
+          "mode": 436
+        },
+        "references/csharp/strategy.md": {
+          "sha256": "df19202b92d34ad6e235e2f6f803edbb9c07757e351e9b4f440d52c85f2a352c",
+          "mode": 436
+        },
+        "references/csharp/template-method.md": {
+          "sha256": "3165fb13c7d76d7a1998eb5e33a584a0fdac8ae64f328bdb6e31f9abfed468c3",
+          "mode": 436
+        },
+        "references/csharp/visitor.md": {
+          "sha256": "ec4b6138142f473607eb9bc171d73dcce3862cea663a324ed9970b31bcd96d0e",
+          "mode": 436
+        },
+        "references/go/README.md": {
+          "sha256": "902e6a721b3ce289b134cc0e94cf918dab8d9a6b431a635133003a94f63e89c7",
+          "mode": 436
+        },
+        "references/go/abstract-factory.md": {
+          "sha256": "17666f370b047583efdf2c9ce0455fd8cca36b1f556a5ebe14652d177a6e4fc7",
+          "mode": 436
+        },
+        "references/go/adapter.md": {
+          "sha256": "b9a789e8678a05b46aa9d027b9bc7380102a04d0921cd9202458b655461a1414",
+          "mode": 436
+        },
+        "references/go/bridge.md": {
+          "sha256": "3b9dbe15cde4c1b38f8ac1b7853798d54a8e75978708c50353a38deb8ada2e2b",
+          "mode": 436
+        },
+        "references/go/builder.md": {
+          "sha256": "4b51b30eaa216b05f808cc188e1199991832bfa0fe7906a197ffaa3cda07708b",
+          "mode": 436
+        },
+        "references/go/chain-of-responsibility.md": {
+          "sha256": "0d2c50ff064956431804d0f730e6b9a35f649b1704ca675dba2fde7ef8ca8657",
+          "mode": 436
+        },
+        "references/go/command.md": {
+          "sha256": "9cb9eb01c10e00e4345dc85a2e4668aa0045113e944a8593d6294d323bafc732",
+          "mode": 436
+        },
+        "references/go/composite.md": {
+          "sha256": "00ecca03e38456d72f996ddab0cac2f35df7a01e172defdeeacdb4334c2b165a",
+          "mode": 436
+        },
+        "references/go/decorator.md": {
+          "sha256": "4bb0b97abdf5f1b1eeae450d0675fe5dfc9f7be7c39ef9b0279aa7442ce4bac0",
+          "mode": 436
+        },
+        "references/go/facade.md": {
+          "sha256": "97bbebc5a71991904ab5fb68d09f346e2b88d8b8481ba2ad2a3b96c5723119a5",
+          "mode": 436
+        },
+        "references/go/factory-method.md": {
+          "sha256": "dc592ee69736a4ba3219d4fcfd90d92f702d90108da978bbf21a8d88a5bf2e65",
+          "mode": 436
+        },
+        "references/go/flyweight.md": {
+          "sha256": "9be5c2e68952720802b380761974441c8637ac704d2be3951373f2e0055b3152",
+          "mode": 436
+        },
+        "references/go/interpreter.md": {
+          "sha256": "c416e3317e0986b4cbbb077675eaa8d4e09eb3df194382734c4033ccbe1a77c7",
+          "mode": 436
+        },
+        "references/go/iterator.md": {
+          "sha256": "4796a933e502fddce45a35847fb20451c986de9b9fa600c5653def8f7af0ebf6",
+          "mode": 436
+        },
+        "references/go/mediator.md": {
+          "sha256": "d0c5026d1da19608c2df685105eda60ef371c3cb4e7444988623f2a66666ccd3",
+          "mode": 436
+        },
+        "references/go/memento.md": {
+          "sha256": "ea137ee36905682e2a5d80734355fb9ea020e10517b3a3c0f5a695078b9fe994",
+          "mode": 436
+        },
+        "references/go/observer.md": {
+          "sha256": "1307146394915350e8416816dc51b95a9d959f572cd8a9581bf74bd6e732a142",
+          "mode": 436
+        },
+        "references/go/prototype.md": {
+          "sha256": "9664da90ddaa2a7234421a73fcdf6ecf545c3691ece8670007f4b26815bc942c",
+          "mode": 436
+        },
+        "references/go/proxy.md": {
+          "sha256": "045540413dd2d380228fe0382df69157d96bf5fe6c5f1a6bad6b1258653ce41d",
+          "mode": 436
+        },
+        "references/go/singleton.md": {
+          "sha256": "0e751ad24609f1ae6a0a3092ad603f8e1b3e35496d76f3e9fcec7546c2a5b25c",
+          "mode": 436
+        },
+        "references/go/state.md": {
+          "sha256": "cd28dec73af4890a85429473428b039c2b3c888e092bd39569f5962f0afd4936",
+          "mode": 436
+        },
+        "references/go/strategy.md": {
+          "sha256": "2bf662367a5802d0f02cae9a4e8f1856754045f633eff003d59dffe550c57b86",
+          "mode": 436
+        },
+        "references/go/template-method.md": {
+          "sha256": "5f6a8c4dd36a7096bd5efe1e8dbbbb82106f19876a97f971e9684b605ba22e97",
+          "mode": 436
+        },
+        "references/go/visitor.md": {
+          "sha256": "70a65b5a79fe6f634521c06c20f85f2ab0c06e8ccc821f97ef507457e15191a1",
+          "mode": 436
+        },
+        "references/java/README.md": {
+          "sha256": "ba1a2734311a8decb2a06115bc480e3e059092db276633ba8f5df3a3e77ea5ff",
+          "mode": 436
+        },
+        "references/java/abstract-factory.md": {
+          "sha256": "b2dca8b17e5cb3b62e4acb536e34f1964e9e9a7ef050740108b40268d3e6ed15",
+          "mode": 436
+        },
+        "references/java/adapter.md": {
+          "sha256": "0e80e44cd223c3e0ac881698a502ea6d293af5ee3bc06c650822d6836c706dad",
+          "mode": 436
+        },
+        "references/java/bridge.md": {
+          "sha256": "c1a4a4ed5831abd971dd62cacd4c4e468240e2998ccd03f90dfbe92dafd1b42c",
+          "mode": 436
+        },
+        "references/java/builder.md": {
+          "sha256": "834f9769b85b6418b6222d191700274b01a5051d31739d3f3fb06681ea19b7c7",
+          "mode": 436
+        },
+        "references/java/chain-of-responsibility.md": {
+          "sha256": "b6efd23a96365c503822be16ced370c7a72c25a224ba78c18bf3e31bcf376d4b",
+          "mode": 436
+        },
+        "references/java/command.md": {
+          "sha256": "a8d238ffefb91afde58d7edb7777cb12ba8647e5c50d609ef6e1ae4ee98b092a",
+          "mode": 436
+        },
+        "references/java/composite.md": {
+          "sha256": "c178d33ca80bc385296e521295da13e7af5f776f48d6ea2538eb15cf2ddc3a40",
+          "mode": 436
+        },
+        "references/java/decorator.md": {
+          "sha256": "56e997aedd74363aa95335dea7e16a94090d92049161fc52f607b709645bf8b0",
+          "mode": 436
+        },
+        "references/java/facade.md": {
+          "sha256": "bb7a38959840dac230b66d7a2e390217c7963f917364f31629fa3abf6d6592c4",
+          "mode": 436
+        },
+        "references/java/factory-method.md": {
+          "sha256": "1b028b51ced67242686aff7606091f4ed527873d7de407f3dc05c2870de5a904",
+          "mode": 436
+        },
+        "references/java/flyweight.md": {
+          "sha256": "b5ae0ac883d605556a1349bbb72caaf0d0a4a3a0bac7e431a6eed02cbd203ee1",
+          "mode": 436
+        },
+        "references/java/interpreter.md": {
+          "sha256": "a9a68cfbd6991d6597c6fc73033524cf62cde3dd5e92fd53846747cbc707f1af",
+          "mode": 436
+        },
+        "references/java/iterator.md": {
+          "sha256": "39a6b160c3299981596fa7887d94e2054c7379bfba74f6cecc304d5d86212bf2",
+          "mode": 436
+        },
+        "references/java/mediator.md": {
+          "sha256": "86ce181aa4bd8146a12bc0696c0e2b3b9ce34f69bfecc311c888a2dda8264f00",
+          "mode": 436
+        },
+        "references/java/memento.md": {
+          "sha256": "005a58dc49bd9cc8613f87e503d663a02136a51e948e214f71b99ce0c3464cbe",
+          "mode": 436
+        },
+        "references/java/observer.md": {
+          "sha256": "88a93d2630f24eac9c13c0d142e2ea3a1632adf684a57bdcccd0b46e0abd952a",
+          "mode": 436
+        },
+        "references/java/prototype.md": {
+          "sha256": "82c731c34cbd602bafa3ee520db6b5ae8639b03b4fa4c55bb7ff61336135f6f4",
+          "mode": 436
+        },
+        "references/java/proxy.md": {
+          "sha256": "95a71d53c8b3a7f2b4d3481bba5192ec2e4b687aee56bf339fbd965dfd18c9f2",
+          "mode": 436
+        },
+        "references/java/singleton.md": {
+          "sha256": "640a99be9f4653e2fe51608470bf1dfc9afda7fcae0b2bd78fdfb7d07e37e07a",
+          "mode": 436
+        },
+        "references/java/state.md": {
+          "sha256": "d396cae7e499551e5a19c79e2f39887143699998ccfa17123ccddbdd5b3ef2f4",
+          "mode": 436
+        },
+        "references/java/strategy.md": {
+          "sha256": "0d31a2c3580f7c10c1dc1f982798dd91218ff5d991c9d3bce4bb772864d94169",
+          "mode": 436
+        },
+        "references/java/template-method.md": {
+          "sha256": "e317ba2dd30d4658da6f51fd67e01b73c058c568b071b70f3bef981a17854adb",
+          "mode": 436
+        },
+        "references/java/visitor.md": {
+          "sha256": "835a545a904c5784a51855f7ba5221a275b7c7e9c94a2c21487eb56120ce1f2e",
+          "mode": 436
+        },
+        "references/javascript/README.md": {
+          "sha256": "c3acf233730fa626ea53fae63fae6e125c7cbce96f07f3862087bf743eb03db3",
+          "mode": 436
+        },
+        "references/javascript/abstract-factory.md": {
+          "sha256": "d4d9bbd7d26a5a215c2c56f7e368ecd8750e4df9493d1895708a5a82fb120364",
+          "mode": 436
+        },
+        "references/javascript/adapter.md": {
+          "sha256": "1d12f5b06fb24b206eccdce792ff9cf9e21516051f021d70475537d35ba9d38f",
+          "mode": 436
+        },
+        "references/javascript/bridge.md": {
+          "sha256": "523a4b043e0dbbdcbfff4c0a03ecf813d16138b3c3439f23cdbc4967a56a6698",
+          "mode": 436
+        },
+        "references/javascript/builder.md": {
+          "sha256": "e93b5c83be4172d9ab3f727d64d1feebc76666d00d80222f4f7c87349e15505b",
+          "mode": 436
+        },
+        "references/javascript/chain-of-responsibility.md": {
+          "sha256": "dac6b5cb2d16f181688c32af7f48162a3ff296e109bb683fd25da44b2c94728a",
+          "mode": 436
+        },
+        "references/javascript/command.md": {
+          "sha256": "c07453008ed669a3550fe6456e87915fc126f8b954cb0f2221393e5f0c003d7b",
+          "mode": 436
+        },
+        "references/javascript/composite.md": {
+          "sha256": "b365c3960705ba8ee11201ee558159124e8b2e456ec7168ef29f20c8a1d54e1a",
+          "mode": 436
+        },
+        "references/javascript/decorator.md": {
+          "sha256": "6fa65bca08d1e9e8578f86219c9fdf0c0cbbf4b8553945095545e071ce69c265",
+          "mode": 436
+        },
+        "references/javascript/facade.md": {
+          "sha256": "39feec69c6588249a57db55d46c175f0765c5df2f831b18e92d4443cdb14a7c6",
+          "mode": 436
+        },
+        "references/javascript/factory-method.md": {
+          "sha256": "d912da045ed69f6807fcbc85f4fefca951508a3f9d66d30d3b41c842cc06c555",
+          "mode": 436
+        },
+        "references/javascript/flyweight.md": {
+          "sha256": "2149d157725226dcc934624cbcfa670804cdccb2cf68be2ed430d6f3598f369d",
+          "mode": 436
+        },
+        "references/javascript/interpreter.md": {
+          "sha256": "3686a31ae08f3ec964d93d88e4d567106c82b12182b20e6e7e185da31270b3b4",
+          "mode": 436
+        },
+        "references/javascript/iterator.md": {
+          "sha256": "c93c685aca30075a5cb6cd80cd75dfc8d4b466aec2bca934c9990449cc98b41b",
+          "mode": 436
+        },
+        "references/javascript/mediator.md": {
+          "sha256": "31f9c61b5f356ba97103b2e84f9120b892c3d489e423df392b5511415b5be622",
+          "mode": 436
+        },
+        "references/javascript/memento.md": {
+          "sha256": "14ecab6c6354cf42cdf68135b7173d0dcf8cf58217a448ba0842947f17224714",
+          "mode": 436
+        },
+        "references/javascript/observer.md": {
+          "sha256": "f3e8ca1ef6a173302092f33e4e2189561548cedec2174975b39de2de8de7faf7",
+          "mode": 436
+        },
+        "references/javascript/prototype.md": {
+          "sha256": "8f8a3a93b9111b919670d034571f22a8f6cbb7f87329f0b902e3523a872e9206",
+          "mode": 436
+        },
+        "references/javascript/proxy.md": {
+          "sha256": "286dfb4b4b9aedca52e02efa1828488f8534b6aa9ad55b99a7cfb67441d038e0",
+          "mode": 436
+        },
+        "references/javascript/singleton.md": {
+          "sha256": "418c66879516371fc65a762daf5be33ece99556cf490eaedcfcd7fb1e7b06f06",
+          "mode": 436
+        },
+        "references/javascript/state.md": {
+          "sha256": "a12dc5f0bffb8a65d865ef577efbf644e577b75917cd7b57c3c92d03a00066f5",
+          "mode": 436
+        },
+        "references/javascript/strategy.md": {
+          "sha256": "d83fbaef7028a667316def81baef5f1308d9257e62b50f799e86c9fb3d7dd5a1",
+          "mode": 436
+        },
+        "references/javascript/template-method.md": {
+          "sha256": "9954cbfa5f5313d08b1005d68bb86c9cd6f58086e9321e84b51ced246e96aa65",
+          "mode": 436
+        },
+        "references/javascript/visitor.md": {
+          "sha256": "c06c94001d3102eacd6392a0ddd3cf6b91c65e89d29c376d50d0d2acfcc2d1ff",
+          "mode": 436
+        },
+        "references/kotlin/README.md": {
+          "sha256": "393ef4e210754b57c993d78fcf288550e023f235709ce2909beccba96d99707d",
+          "mode": 436
+        },
+        "references/kotlin/abstract-factory.md": {
+          "sha256": "e14193f73962f6887fcc171438b774faf4464e42ba11616a49c98fd24046adaa",
+          "mode": 436
+        },
+        "references/kotlin/adapter.md": {
+          "sha256": "d0aeba36e37617bd5fb4b8f44e2135ddd8c4b942bab94d8eff72210d233a6dd5",
+          "mode": 436
+        },
+        "references/kotlin/bridge.md": {
+          "sha256": "67ed9b422dce92ef9e1131e17ab1f20fbf1316296eb8ecd729392dfb06e20e88",
+          "mode": 436
+        },
+        "references/kotlin/builder.md": {
+          "sha256": "900980c75a45c522ad4ec11de442adfa2d3d9fa68918d90cc87e5395917b5750",
+          "mode": 436
+        },
+        "references/kotlin/chain-of-responsibility.md": {
+          "sha256": "2b199a7d844622d00d58c2a4440e7e45fa05bb1a2be52f935e9598d58e851dad",
+          "mode": 436
+        },
+        "references/kotlin/command.md": {
+          "sha256": "bf4413399ae58ad852b8d8f29ca93107f2182ce28df90a12a1503eb6a0b29e61",
+          "mode": 436
+        },
+        "references/kotlin/composite.md": {
+          "sha256": "c3607fd16f2456f9b45a5579baa460833fb176045964d16a00eace53e6bd012c",
+          "mode": 436
+        },
+        "references/kotlin/decorator.md": {
+          "sha256": "e3f378e642ff22405a173317c39e289840f70e1dda2777a9100fb349d816824c",
+          "mode": 436
+        },
+        "references/kotlin/facade.md": {
+          "sha256": "0dae4dfb1ab8e5616e530111d4b8ccaa173b3904c4e38aa5d234462c48ea2a7b",
+          "mode": 436
+        },
+        "references/kotlin/factory-method.md": {
+          "sha256": "889e2fa557c9f070efb351a037e313734b71b9e0c19cf493d29b0eb783bd13d7",
+          "mode": 436
+        },
+        "references/kotlin/flyweight.md": {
+          "sha256": "2fbabfbe25bcef4d8e6ee07433340b22354ae8f81ecb244c27b5fd39a9a0168a",
+          "mode": 436
+        },
+        "references/kotlin/interpreter.md": {
+          "sha256": "9adb55bf6c929c274a24f6693eb3a0794a01c1a748f7c9a84fd29466c4dd379a",
+          "mode": 436
+        },
+        "references/kotlin/iterator.md": {
+          "sha256": "0875d3e478ab84e969894a71bd42cad67259e5183ccf0146cf0174256bb06e9c",
+          "mode": 436
+        },
+        "references/kotlin/mediator.md": {
+          "sha256": "2445543215372be3b3b7626673cdf19cc949153efa9c3360a8a5423fbb4ce1af",
+          "mode": 436
+        },
+        "references/kotlin/memento.md": {
+          "sha256": "b6517c1a7883565eff4835ae9e7673061ef4b4070f7719641b9e34350b09db33",
+          "mode": 436
+        },
+        "references/kotlin/observer.md": {
+          "sha256": "725ab383810f28d5b48f6fddb5160f59e9c1189802cbe897b6f6b53744353e78",
+          "mode": 436
+        },
+        "references/kotlin/prototype.md": {
+          "sha256": "11a71b8e774b41326fb9481cd3bbe9ad7fa8e74485d71601a96db239ef98ad86",
+          "mode": 436
+        },
+        "references/kotlin/proxy.md": {
+          "sha256": "29cc29ad028944ff42e59aba12e248f7fcfd26941b7f52190457ac40d268c53c",
+          "mode": 436
+        },
+        "references/kotlin/singleton.md": {
+          "sha256": "f4b9d76c3e57594f5b3909ecdeb10fe334369f7d283890f1c48f98b017dff0d9",
+          "mode": 436
+        },
+        "references/kotlin/state.md": {
+          "sha256": "3fd158e99d4168efcdae6d1cc957c0034cb286a9f46ae8b84ebdb8c7dfdb9342",
+          "mode": 436
+        },
+        "references/kotlin/strategy.md": {
+          "sha256": "1ce3482b805af493a9be8fb3a1ab3c0bd41438abd715b4961f6ecfd8df62d551",
+          "mode": 436
+        },
+        "references/kotlin/template-method.md": {
+          "sha256": "5c220bef39e86cf45bf39ea98976cbb540f78613a550fd75dcaf30e6226cc3fe",
+          "mode": 436
+        },
+        "references/kotlin/visitor.md": {
+          "sha256": "53727f3d637dc96d78da3bdc69ef54e5235303cbb0bdc2a7aa00f89f0f7404ea",
+          "mode": 436
+        },
+        "references/php/README.md": {
+          "sha256": "bdc7157ed1cd350589f247762c644a47adc360506fc8c3232cfee411bc4e6454",
+          "mode": 436
+        },
+        "references/php/abstract-factory.md": {
+          "sha256": "0603bb0adef513ab252927e3fba0289d26d1a02df3e8f26a01ec77157f5b799c",
+          "mode": 436
+        },
+        "references/php/adapter.md": {
+          "sha256": "c7ff24168988a6ea033873a8da80c321d771bcdae94cb922eb691972226bb809",
+          "mode": 436
+        },
+        "references/php/bridge.md": {
+          "sha256": "1914f1e8ffcfe86004cd34584398414f7af31ed47a2c2cf6437a338c02596f89",
+          "mode": 436
+        },
+        "references/php/builder.md": {
+          "sha256": "e712e42c39251162794edb75b38477228abcf973722f3d393ec6c5cf45e70872",
+          "mode": 436
+        },
+        "references/php/chain-of-responsibility.md": {
+          "sha256": "b742e2c03c8f6f1e39d96d17de88ad969e15aed378e1df45a36a3cc7126ddfc5",
+          "mode": 436
+        },
+        "references/php/command.md": {
+          "sha256": "43e8cc7d496f5e3eb8009da81733a1242f2b7cdad19bb21b3975e64659195fb3",
+          "mode": 436
+        },
+        "references/php/composite.md": {
+          "sha256": "f4cc4ef72e40e15ffc10a539fcdf561c6f3bb5e4c143d500f986951c7ad6c4c4",
+          "mode": 436
+        },
+        "references/php/decorator.md": {
+          "sha256": "3010eb1dadd330272b0edf85bb7ed90aee5382b5754ca326be1e882db6e0e828",
+          "mode": 436
+        },
+        "references/php/facade.md": {
+          "sha256": "c649de5a4d61c11560c69304063770edf968427589b59401490922b021cbd313",
+          "mode": 436
+        },
+        "references/php/factory-method.md": {
+          "sha256": "9764e5b0af0542ace9e2e2b3f77b57f1086a2c9f62cf797e148261d4f035ab4d",
+          "mode": 436
+        },
+        "references/php/flyweight.md": {
+          "sha256": "ddd7d1639db985f485b20d67bff929fbf38f55c54de49196b899b49476de4107",
+          "mode": 436
+        },
+        "references/php/interpreter.md": {
+          "sha256": "44bfcb8c2eccd4e59bde8e165d2580bfb179f66a03a3d4de1d1c5e2bc2df9ed6",
+          "mode": 436
+        },
+        "references/php/iterator.md": {
+          "sha256": "1b358b78bd988f323ba7ea419652a853673ae1a36707602b83ac4c941aff2821",
+          "mode": 436
+        },
+        "references/php/mediator.md": {
+          "sha256": "46f0dc139940d10f60c7d2389d11d94f1b5151ebd283e7b99871aadae43798df",
+          "mode": 436
+        },
+        "references/php/memento.md": {
+          "sha256": "4483c5e0f22766df5f0f89c8e64148bb4153b61ac3a3e42cffcd3857ab29752e",
+          "mode": 436
+        },
+        "references/php/observer.md": {
+          "sha256": "f2df084f8b68d25f2fcb75eb6c1d737c599cd8699c01fa677bd9628200ae21ed",
+          "mode": 436
+        },
+        "references/php/prototype.md": {
+          "sha256": "7a4d04076cd465845d0a77b2e1c9678f26eddfb2b45923d5ee2a5e3ebbe550d8",
+          "mode": 436
+        },
+        "references/php/proxy.md": {
+          "sha256": "a03732f914b240a2e4f6e34169adf3311559278c788fbaf4028bdd87a2a7cae8",
+          "mode": 436
+        },
+        "references/php/singleton.md": {
+          "sha256": "4166ea17158f39ffe0beab45211ec3aec27dea6e037aab8f9905a981d635560a",
+          "mode": 436
+        },
+        "references/php/state.md": {
+          "sha256": "d3cad3e6eb18507fa6de926bbee68179b26c31e82fe55016fee46ea9bdfa90e1",
+          "mode": 436
+        },
+        "references/php/strategy.md": {
+          "sha256": "5f44005d3c56f49b809c287df68717e28c8c11bc03a456f83305f84e93f72f9b",
+          "mode": 436
+        },
+        "references/php/template-method.md": {
+          "sha256": "5720d8b7023caf93e51834541bec5f635e1e1864ec565315429313de27bb9c33",
+          "mode": 436
+        },
+        "references/php/visitor.md": {
+          "sha256": "57186bd323682ba8518ee9170eaa728369ff9ae90a1fcfd1ec3e6fcb0e65b56a",
+          "mode": 436
+        },
+        "references/python/README.md": {
+          "sha256": "da3416932c854a4b8b4532ff7524ba68a6b2999707ba47e4294b5d4ce7502968",
+          "mode": 436
+        },
+        "references/python/abstract-factory.md": {
+          "sha256": "5053a67d24b689eebc20962827ddf5286ef5c8d06e54d5e9ba14651d25bd940f",
+          "mode": 436
+        },
+        "references/python/adapter.md": {
+          "sha256": "dc7a46db10c6aa7d99e0946c6d0622c023ec116b151294a0af24445014443669",
+          "mode": 436
+        },
+        "references/python/bridge.md": {
+          "sha256": "506d7618db15b6b3245b02c3920f8fdf5725f4f20f84e14562423b6868ab6c17",
+          "mode": 436
+        },
+        "references/python/builder.md": {
+          "sha256": "a5a7f33689d8d9fa1b691e122c4e95327e568cbbef29551f72d2b1128c15dea4",
+          "mode": 436
+        },
+        "references/python/chain-of-responsibility.md": {
+          "sha256": "8fa2e751dfc34a39ff5f4efc6a73df676bc01132c14f13749f4a3f9e2873ebe0",
+          "mode": 436
+        },
+        "references/python/command.md": {
+          "sha256": "f3cb3d7558b9883254712fe65323423bdf93bc688c70d9af091e5fbc97332e34",
+          "mode": 436
+        },
+        "references/python/composite.md": {
+          "sha256": "2861e9355cf1b2a1e663c13dde84f2147b2cfcc3e654e88c8e2992c62417f2a3",
+          "mode": 436
+        },
+        "references/python/decorator.md": {
+          "sha256": "b5f9c1b385592656931f180c72b72f3d68c754d5b76424876d9dd05368a0bb3c",
+          "mode": 436
+        },
+        "references/python/facade.md": {
+          "sha256": "1fd83df8e12580f5a2a5021d7d38f7bb9e2dc63d962ce5cc50a1612d266d311b",
+          "mode": 436
+        },
+        "references/python/factory-method.md": {
+          "sha256": "ac5cde61d64131623969c83d5b0397efe2b1b141200b9454b4af9f8cca3aca9f",
+          "mode": 436
+        },
+        "references/python/flyweight.md": {
+          "sha256": "d8e4023469267719fadd69f7d4c45fd16145ee146d4a391ee19d05759c7dacdf",
+          "mode": 436
+        },
+        "references/python/interpreter.md": {
+          "sha256": "487f1afb7d33a5c60883d20ae3b313aa2a565f3aa5f98e01fe51459eb0f2c0cc",
+          "mode": 436
+        },
+        "references/python/iterator.md": {
+          "sha256": "572979cea0f40d5eae16951cdd0dfbd2a33e258eb7f6e5c703d49f926467a665",
+          "mode": 436
+        },
+        "references/python/mediator.md": {
+          "sha256": "38506da4e1c5a4e02705dad75984d831f3b13bc17a19c6cfa645076980ed4887",
+          "mode": 436
+        },
+        "references/python/memento.md": {
+          "sha256": "7975ec7a3c86cdae1067640c3ae178465b01f878b779ccb098867f97512afae7",
+          "mode": 436
+        },
+        "references/python/observer.md": {
+          "sha256": "445db69414c4d48b6ccbd2b9643e9e4041f8ef770d8a3b2a33637b63fda07316",
+          "mode": 436
+        },
+        "references/python/prototype.md": {
+          "sha256": "ce1784777d653cec9395accf92a42a2f61f4d255750c9ea15f925156316a142e",
+          "mode": 436
+        },
+        "references/python/proxy.md": {
+          "sha256": "c314c49d6968445464ff9d09f7d7fa3407f436304715d762b9404f2a8495c4b9",
+          "mode": 436
+        },
+        "references/python/singleton.md": {
+          "sha256": "6db32ae35c1a21d4277dc79bef3b714b3820e94e3e789bbd0d846363c51d4630",
+          "mode": 436
+        },
+        "references/python/state.md": {
+          "sha256": "c4549e7f03095a856a47aaf50c80218b82527c6b3dc91fce3f30b02af9b4b0e1",
+          "mode": 436
+        },
+        "references/python/strategy.md": {
+          "sha256": "56af31db783824ac70ac1434d2257f886513f0b563bb9213c2771a23be4f20ea",
+          "mode": 436
+        },
+        "references/python/template-method.md": {
+          "sha256": "2a3892f7ff6392964c8e3952d3b08b6be353472e523400f0d7ef3a78160347ef",
+          "mode": 436
+        },
+        "references/python/visitor.md": {
+          "sha256": "2d4746e051fadfcb57b6725281f431d25cffa2841b5bb4108086c482ab8e0565",
+          "mode": 436
+        },
+        "references/ruby/README.md": {
+          "sha256": "43138a05e2774b91f50dc59c414c0f5e653b5e395ff51dec80c8be52589d3a62",
+          "mode": 436
+        },
+        "references/ruby/abstract-factory.md": {
+          "sha256": "fb99e0e993e08f0815d10a8dbca7f7d17984422afd3b7a6b75e304294f23db48",
+          "mode": 436
+        },
+        "references/ruby/adapter.md": {
+          "sha256": "49eaa0c8996dc5724162790d4db435d537388cf20b50a445c67b5848a3210fbb",
+          "mode": 436
+        },
+        "references/ruby/bridge.md": {
+          "sha256": "97d70cf14fea4b5d0cb86719988c9346746f64692aae467f6be4acc5e5a9353f",
+          "mode": 436
+        },
+        "references/ruby/builder.md": {
+          "sha256": "c88fce9512cb259cf44b27a3d8e869c85f790a0eeee77de97702dd94d3d9d7a3",
+          "mode": 436
+        },
+        "references/ruby/chain-of-responsibility.md": {
+          "sha256": "1ebc8bd9642e93310fb925178775acbfb3cb4704d70ee18d9312d3c108cc5d3d",
+          "mode": 436
+        },
+        "references/ruby/command.md": {
+          "sha256": "d367dc915455d4184bab3f5967350b432d49fe8b77f5fdf505bd8abf348e9235",
+          "mode": 436
+        },
+        "references/ruby/composite.md": {
+          "sha256": "40472bc6b2c7d25939644bfb5f8b2a84deec7476db6321d9ae8028c2aa5c439f",
+          "mode": 436
+        },
+        "references/ruby/decorator.md": {
+          "sha256": "14e07e1fe533fb3293799db0517437049b61441435ce9dcc9c7b64f7b1b8788b",
+          "mode": 436
+        },
+        "references/ruby/facade.md": {
+          "sha256": "141503b6fe3967bb6d191e09120eb1806d3d072f38f54edd4b60f8171e8abaa9",
+          "mode": 436
+        },
+        "references/ruby/factory-method.md": {
+          "sha256": "4e2a2072836e1d1e2c87405bb429cd2552cc2b90e491369c5652ac6c60f30301",
+          "mode": 436
+        },
+        "references/ruby/flyweight.md": {
+          "sha256": "8d2a6ca3a23a78bb1dc8605f6b96bf8c1ffac719e99b9bcf2ec79707781c2987",
+          "mode": 436
+        },
+        "references/ruby/interpreter.md": {
+          "sha256": "bd9fe5135cb9efe291876c421b9995004b1efc8920a229c280f92c517c7de697",
+          "mode": 436
+        },
+        "references/ruby/iterator.md": {
+          "sha256": "f713022a5b9b5a87f9c307b42f2df0a61e8022fb320d08045f8a8480b9cc330e",
+          "mode": 436
+        },
+        "references/ruby/mediator.md": {
+          "sha256": "9f19cfd0e1be84f5e8bf1b0ebd10a537f9a862f5af3564ae6b2f31459d725c4c",
+          "mode": 436
+        },
+        "references/ruby/memento.md": {
+          "sha256": "0bf60dfd72735fa8ffcb6d0498b258c6b1f4c7e5c40bf4fc30648f4724d2a2dc",
+          "mode": 436
+        },
+        "references/ruby/observer.md": {
+          "sha256": "78987f555da663ac415274cae8811936c2a91c5ccfb8e93dc18535d410940164",
+          "mode": 436
+        },
+        "references/ruby/prototype.md": {
+          "sha256": "e63390457365e6483f484fb00cee9eace46954fad0359cf69147af39eedbb9d0",
+          "mode": 436
+        },
+        "references/ruby/proxy.md": {
+          "sha256": "dfa8e907a9623e10db797925aed37047e39ac262c73d522ceff41dc0ea01bc40",
+          "mode": 436
+        },
+        "references/ruby/singleton.md": {
+          "sha256": "96d18bad69c5e493ed5bf5410f526a363c3c29cab4fd972376696b1d1991bddc",
+          "mode": 436
+        },
+        "references/ruby/state.md": {
+          "sha256": "33fc6e5091fb94cbd0c7f71c7089a9e37c1bd81e93370953f46cfdc7b5f93a5e",
+          "mode": 436
+        },
+        "references/ruby/strategy.md": {
+          "sha256": "773ac557283275ec6d10bf616af35b32ed8b655fcab047ed809afe584c1d547c",
+          "mode": 436
+        },
+        "references/ruby/template-method.md": {
+          "sha256": "987c31c6e60b6b158b217693de2387cb1e96ed38af5dc631bf8e151524d358ef",
+          "mode": 436
+        },
+        "references/ruby/visitor.md": {
+          "sha256": "c4f85630763359b378679830fa0da5a6236587d229e6c61bf91163808ad0ab81",
+          "mode": 436
+        },
+        "references/rust/README.md": {
+          "sha256": "7f9f945f00442448d744a6ab86c7117621a2efe866585989390ba71780ee64a3",
+          "mode": 436
+        },
+        "references/rust/abstract-factory.md": {
+          "sha256": "4a649f7873d7260bd3ee096b97dd690bd9f8f3cad8bd48c29add6fc760ce3a9c",
+          "mode": 436
+        },
+        "references/rust/adapter.md": {
+          "sha256": "b12dc91e9ef7694eaa61b68fb55801506f2aa04526539ba51e52327d63f52a00",
+          "mode": 436
+        },
+        "references/rust/bridge.md": {
+          "sha256": "5c885bddacfe26ea391cf060c9a45a6900954b89ad56172ed5a7d50f391fe149",
+          "mode": 436
+        },
+        "references/rust/builder.md": {
+          "sha256": "4a71b34a00858231f7c566d97a3bcf38224aba2c62ee62f089d5ff23456d1d6e",
+          "mode": 436
+        },
+        "references/rust/chain-of-responsibility.md": {
+          "sha256": "18d60056a59bf55bf412904dd717c5b3fd94ee7336a0f444363080d2f5857a5c",
+          "mode": 436
+        },
+        "references/rust/command.md": {
+          "sha256": "f372d9d7d510635a315a6d696a36a0e06a2d4dc36d9139d1a78220733fc3a288",
+          "mode": 436
+        },
+        "references/rust/composite.md": {
+          "sha256": "9a761edd175afb4db3409629752647df8f0f6cfda7751d93bb76b18c8c6ba3dd",
+          "mode": 436
+        },
+        "references/rust/decorator.md": {
+          "sha256": "053a07b033f24a7a5b6eda3afe673b6b96edee2da3bdd2658e50e608c707a4ab",
+          "mode": 436
+        },
+        "references/rust/facade.md": {
+          "sha256": "7b1087bd22efbda4a731c4893a5de353805ca107f9eaf784c75f8b4dc74eb9f2",
+          "mode": 436
+        },
+        "references/rust/factory-method.md": {
+          "sha256": "36670d3964bea513ffdd3eb42bb0756b69b8ec5fca6992f00cbcfd6078e3d1ad",
+          "mode": 436
+        },
+        "references/rust/flyweight.md": {
+          "sha256": "02aeef4a5cbd8972e07194a6a3176162f13030c2d0e4329857676c9fdb3cf0e0",
+          "mode": 436
+        },
+        "references/rust/interpreter.md": {
+          "sha256": "570ce1fcb1b07bd3c970450e2d93495704046ca67a34b795669bafdf99cf1ba2",
+          "mode": 436
+        },
+        "references/rust/iterator.md": {
+          "sha256": "4312668b3e46206cf79c1a7cb69f9369bcfb8e62231050e17914b54fa50fb525",
+          "mode": 436
+        },
+        "references/rust/mediator.md": {
+          "sha256": "934c18c7a580cb68c48899b0810ba110dfa3e487f47f42ee1beacc636c56d75d",
+          "mode": 436
+        },
+        "references/rust/memento.md": {
+          "sha256": "426d891327dc2622a9d75d15c9e6dabf41afff77aea28a0cd4f3bc107d88a846",
+          "mode": 436
+        },
+        "references/rust/observer.md": {
+          "sha256": "9a57ec6a172fc14967d92391bf9be46e8f6503839e48c7bba088c741b6c2d06a",
+          "mode": 436
+        },
+        "references/rust/prototype.md": {
+          "sha256": "1d923e6debc2e4f036b99b684c5d9e80088500f2d9588b58707f3b1923b1b7ac",
+          "mode": 436
+        },
+        "references/rust/proxy.md": {
+          "sha256": "50435de127bcd3b5179b31c938639a2f4931e4acfd8c2fd1cbf1fa172ab75900",
+          "mode": 436
+        },
+        "references/rust/singleton.md": {
+          "sha256": "e96d701a2e35448bb2f731c4ee9b9ed1c14d8d25dc43f73293e8ef7be0b70e2d",
+          "mode": 436
+        },
+        "references/rust/state.md": {
+          "sha256": "83bff2c2db5209dfc486ab4a2832bb3021effa9cb09f3d0cd477cabd24dc3b91",
+          "mode": 436
+        },
+        "references/rust/strategy.md": {
+          "sha256": "82f7f6fe01878866887c64910f3e78e2b6d4dce1e66db232c3ad173fee53a4c9",
+          "mode": 436
+        },
+        "references/rust/template-method.md": {
+          "sha256": "c6bde0b22e8de98f8a2fef0a6e79fbdbba0775318d1249676d256ee8727832d9",
+          "mode": 436
+        },
+        "references/rust/visitor.md": {
+          "sha256": "700832b411ab00ff8bee3e7017e90ce9055ea17ad25aefda76dd0b9329d0a193",
+          "mode": 436
+        },
+        "references/swift/README.md": {
+          "sha256": "447316fb1502a3df7e0c7a2ee4383856da6d1975be6927f3d8187ca24ebdbf84",
+          "mode": 436
+        },
+        "references/swift/abstract-factory.md": {
+          "sha256": "318c08378eb78edb6f96e44b8f064f68c7033769b4cd6a8bac25acc8578d2c22",
+          "mode": 436
+        },
+        "references/swift/adapter.md": {
+          "sha256": "f3ce67df44d4dcc62648e2c1a5687ca9b2ee5bab5a1c0a4599c0f37f38267579",
+          "mode": 436
+        },
+        "references/swift/bridge.md": {
+          "sha256": "374b31deaee1849ce78c42c4bc98cfec62ad0640236359929e0552e5ad033160",
+          "mode": 436
+        },
+        "references/swift/builder.md": {
+          "sha256": "d8de824887fad342ed98c78738a7562dea1c1356e2db4628190a2f2a89fbd68f",
+          "mode": 436
+        },
+        "references/swift/chain-of-responsibility.md": {
+          "sha256": "93500fc43604d93109b21ba4405a704b467422124c2ca80642cf00f9afd685cf",
+          "mode": 436
+        },
+        "references/swift/command.md": {
+          "sha256": "f29ea7db084806996700d49f2f76d3386063f25ed4998743b03665900eb65e35",
+          "mode": 436
+        },
+        "references/swift/composite.md": {
+          "sha256": "6a5176b15a4838f2165bc4d405ec64490f9afd2d4f511aa75f40d1865985629a",
+          "mode": 436
+        },
+        "references/swift/decorator.md": {
+          "sha256": "8064c3a6fd4d39f1c60333d19d2f37bbfc00f9e3f54b8b7fe646c6dc7da965f4",
+          "mode": 436
+        },
+        "references/swift/facade.md": {
+          "sha256": "fc52d5f17a2ceff5a1dcd5fb8505fab93028daa6293a8c28c48f5bcb61a15178",
+          "mode": 436
+        },
+        "references/swift/factory-method.md": {
+          "sha256": "a0932dd8453caca19dab82598abac321e9b6f487c616e4028b7d29b6856c0c32",
+          "mode": 436
+        },
+        "references/swift/flyweight.md": {
+          "sha256": "b51b9d1314e908f09650a8f43e65c1c3857e8df9f286bb4d71208dc93b73efb6",
+          "mode": 436
+        },
+        "references/swift/interpreter.md": {
+          "sha256": "a5b3b054259bba52daaca2ec3d0ee367fe887cf3b7144f22a71cf0b32a2cf606",
+          "mode": 436
+        },
+        "references/swift/iterator.md": {
+          "sha256": "437cea96718bc595fb977c6bfacb9f52f06989aaa98f66fe04f5191cc0a5111f",
+          "mode": 436
+        },
+        "references/swift/mediator.md": {
+          "sha256": "31cd93344abd49ad382fb20b69e1b5d78f6d598d06a22512ce0665d2fba43a8d",
+          "mode": 436
+        },
+        "references/swift/memento.md": {
+          "sha256": "daf28ab2478f06016f5655ffd79639f3dfb1da6e743a6a50ec46419a8de34e8e",
+          "mode": 436
+        },
+        "references/swift/observer.md": {
+          "sha256": "e34c972e00f2541b2495c8faecc52e95ef9107da4e3a2d1effa303d914fa373c",
+          "mode": 436
+        },
+        "references/swift/prototype.md": {
+          "sha256": "e77dd7eb3a5d9e7022d2a25fb52f00e7998d7c3a375cac060ab4758d8154802d",
+          "mode": 436
+        },
+        "references/swift/proxy.md": {
+          "sha256": "e9674f47ad1d51c0a8a6a8f0257014784d02ab922ad6b4a6875540cb9a9b0501",
+          "mode": 436
+        },
+        "references/swift/singleton.md": {
+          "sha256": "f62890126650bf0b42c8a22bc259fd274659956dcd3ff9ccbedeac724333eeba",
+          "mode": 436
+        },
+        "references/swift/state.md": {
+          "sha256": "a3d28f19744388f60eac0db4b307d7611b192f0e111a82ad94d424c5e40afe28",
+          "mode": 436
+        },
+        "references/swift/strategy.md": {
+          "sha256": "a76290418e11a6cfab8188614623974009a5b664b558216ad2a9ef93bedeaf00",
+          "mode": 436
+        },
+        "references/swift/template-method.md": {
+          "sha256": "aa6059f7182b2da4a0b51135043024dd3599718be284b5c2a7229b0792f7ec6f",
+          "mode": 436
+        },
+        "references/swift/visitor.md": {
+          "sha256": "3b16920c95c37636186708ad310642fdded4adc884ef29d708dcf4fb66a7e2ac",
+          "mode": 436
+        },
+        "references/typescript/README.md": {
+          "sha256": "925411bd935c238889683ca78e30d716278040e496b8b436c13098e73670f4d3",
+          "mode": 436
+        },
+        "references/typescript/abstract-factory.md": {
+          "sha256": "aabe7ce70ba81bc4db4c05130ed6ba11fc72c651532133db32bd675d69ff6caf",
+          "mode": 436
+        },
+        "references/typescript/adapter.md": {
+          "sha256": "260ef704823137357562e5ec251b6b35148119340523c55abe406a3048235b7a",
+          "mode": 436
+        },
+        "references/typescript/bridge.md": {
+          "sha256": "187a33558342bb6ae9086d81015b7a3463886238105eb843d1871e2b07ec7d46",
+          "mode": 436
+        },
+        "references/typescript/builder.md": {
+          "sha256": "cf0864736a2e2de87ee4191212fed1449c46c5a794dd90c3f81ff035676eca83",
+          "mode": 436
+        },
+        "references/typescript/chain-of-responsibility.md": {
+          "sha256": "74267a71793770ad7808b2edfefc3b9e9f3f93be1d818bb92745305a1d091256",
+          "mode": 436
+        },
+        "references/typescript/command.md": {
+          "sha256": "c56871edd00656f568fbc729832f5c9025ddfdbace7d6a73668b4af5b7d9c474",
+          "mode": 436
+        },
+        "references/typescript/composite.md": {
+          "sha256": "203129b30ad177f825f72fe5fd7be1dcc5c9b5c19dbb2ce90513c766d14f73a0",
+          "mode": 436
+        },
+        "references/typescript/decorator.md": {
+          "sha256": "d645bb38afcf59497a3d7bc1f6e3b30c0373342d04d92a0c3c5a99b9cf1926b3",
+          "mode": 436
+        },
+        "references/typescript/facade.md": {
+          "sha256": "94bd10d347b15df54f676596391fee30f84be64899d0c4f96e6dac0c97a754e6",
+          "mode": 436
+        },
+        "references/typescript/factory-method.md": {
+          "sha256": "4e46260a7d93bec9b345fe9827057b5f20956f1efc8cbeab1e498ffa2a07d6c1",
+          "mode": 436
+        },
+        "references/typescript/flyweight.md": {
+          "sha256": "1522b527061136eea38bd115e7bff2247afcc61709635f23602b26b567ce4fdb",
+          "mode": 436
+        },
+        "references/typescript/interpreter.md": {
+          "sha256": "5f7c3f72fa45bb7f9807b58c8e2c88f6d641d866f42cf4bc15485d8e4f193162",
+          "mode": 436
+        },
+        "references/typescript/iterator.md": {
+          "sha256": "a3ce5c0386de3236864f4d6888d5767cae527cc2d147a2f0b00ac9d5286fee20",
+          "mode": 436
+        },
+        "references/typescript/mediator.md": {
+          "sha256": "e7b486cf9e2a0566e48d41b36df5dedee7d50e5acaf7da2e600b69556150afb6",
+          "mode": 436
+        },
+        "references/typescript/memento.md": {
+          "sha256": "b75cd4ac4250141d6ac4b073f94ed0d36db6ccf096239ca01b3797963c076610",
+          "mode": 436
+        },
+        "references/typescript/observer.md": {
+          "sha256": "aa7f58e91a35e86abd665f52816e0c244c72dccd30d18ea83e0759db70aa45a1",
+          "mode": 436
+        },
+        "references/typescript/prototype.md": {
+          "sha256": "b48c5dbcb5f95ffebb0317ca3743cb3a7f69c3d9a08843a6fa2206a89059d271",
+          "mode": 436
+        },
+        "references/typescript/proxy.md": {
+          "sha256": "efb9b227ff8576ed173c0d7c1090c287ad2f0793a835f8f6a03ce399394bca9c",
+          "mode": 436
+        },
+        "references/typescript/singleton.md": {
+          "sha256": "345ce398b89c7c3e319f4d94ac60a230687bcbc7be17b6892ad9b294b10c221e",
+          "mode": 436
+        },
+        "references/typescript/state.md": {
+          "sha256": "11f8fb5bf03764e9970eea7f2e8b87ea36ab68f3b6c1c4cf067aaa33ae86b233",
+          "mode": 436
+        },
+        "references/typescript/strategy.md": {
+          "sha256": "c41edfb6d632f93996ba4a2a21b86b93177736ee57943c43a543dceb44e1188b",
+          "mode": 436
+        },
+        "references/typescript/template-method.md": {
+          "sha256": "2ebb5f4efcb317e6961e4b0232cc8bd6831fa450820602ce8603e216c875df94",
+          "mode": 436
+        },
+        "references/typescript/visitor.md": {
+          "sha256": "da4e5cc49b2372487cc19e31d5ed615b0bb89cf186c01c4f22e1d287b1af56d3",
+          "mode": 436
+        },
+        "scripts/build.py": {
+          "sha256": "d22fbfa2a421baea813955e8fc5abf52131b19e482cb67ec074c8d1d5414b3a5",
+          "mode": 436
+        },
+        "scripts/import_example.py": {
+          "sha256": "bc0c2180435c08cfb2fca298ac61fa298413d55eaab4a971cc1c664a6190b188",
+          "mode": 436
+        },
+        "scripts/lookup.py": {
+          "sha256": "3b5889e344246e68777916f2d23f703514c7100fe069d6a6cb592ce419f0c8a4",
+          "mode": 436
+        },
+        "scripts/package.py": {
+          "sha256": "ec54e0e324531e7fe72df11f87db0a5fe5147536bbf84b1de36e54cd6373a208",
+          "mode": 436
+        },
+        "scripts/run_examples.py": {
+          "sha256": "5a0cfbb49202c66568b7dbb18f4169cec13a769fce2fa99836a587ff8fcb3e37",
+          "mode": 436
+        },
+        "scripts/validate.py": {
+          "sha256": "4dc19d41e22fa82a9731543b0454d52921b2d5bc5873c8b8003450efa51e2ff1",
+          "mode": 436
+        },
+        "tests/routing-cases.json": {
+          "sha256": "8f10cd3c48f8b4586397baf4d520840dc88a6a8f256ece83bc5480448f25e452",
+          "mode": 436
+        },
+        "tests/skill-evals.json": {
+          "sha256": "b6b2c3218586ffe9d826a3557f5ac21ed14ac6bf579dd9fa605cd66e6f8e9380",
+          "mode": 436
+        }
+      },
+      "upstream": "ric-design-patterns"
+    },
+    {
+      "name": "team-wiki-codebase",
+      "source": "https://github.com/Tencent/teamai-cli",
+      "commit": "0c059b2da6fe0fa3206ab1ce33978601a2a832e6",
+      "path": "skills/upstreams/teamai-cli/skills/team-wiki-codebase",
+      "files": {
+        "README.md": {
+          "sha256": "4e1ab336bfa6d78085572b4e0fc0e345bda0ec2be065279f189a8f2939f242b8",
+          "mode": 436
+        },
+        "SKILL.md": {
+          "sha256": "4d7e728e0c821404d760a63f994e6d0fe81519bd875e2d4297d178bffd292266",
+          "mode": 436
+        },
+        "references/agents/graph-rag-agent.md": {
+          "sha256": "d79e52cfec1e131877f7fa28bb14993b937fb643ed6778fde6bf569dbd0ba2d3",
+          "mode": 436
+        },
+        "references/agents/kb-doc-generator.md": {
+          "sha256": "8dc1f1ef5e5d270223586567629b66333a07c42ae103ac5cdef6c755364587d5",
+          "mode": 436
+        },
+        "references/methodology/phase0-collection.md": {
+          "sha256": "89caa5e6e5135b19e39ebf48224a31ae6ea80bbef84c7c2e4cf50b6391220cf6",
+          "mode": 436
+        },
+        "references/methodology/phase1-reverse-engineering.md": {
+          "sha256": "9d709e09a30ca198020fe7f2470980a4d2f4889a685dc33f71c79f6433110a59",
+          "mode": 436
+        },
+        "references/methodology/phase2-document-types.md": {
+          "sha256": "62eee3e3290cbc1a4a7c40bcac5e7d8f2100989b438726b867af448dfda67b7b",
+          "mode": 436
+        },
+        "references/methodology/phase3-ai-enhancement.md": {
+          "sha256": "efe1536f1ea4a2ffeb9ab69409ce1cb172fe8a5b8efb583a46ed69ed976bc6d0",
+          "mode": 436
+        },
+        "references/methodology/phase4-quality.md": {
+          "sha256": "a7b536ab120a8c4bc3fbd53256675309a399e53b4d0d202abd5df1b82c985754",
+          "mode": 436
+        },
+        "references/templates/project-overview.md": {
+          "sha256": "296c15c827ae7798bf9f3112b84d1bdd69b0807bb80286cfc78f1a0d956e66ec",
+          "mode": 436
+        },
+        "scripts/scan_repo.py": {
+          "sha256": "a941f3ac9a260c860cfeded26eb6c6f3d55cc5af748e1e5f673a94278c6a9c36",
+          "mode": 436
+        },
+        "scripts/validate_kb.py": {
+          "sha256": "c6e08b03b80a60048374637b4de20afdd21b552892e915b8301efb368316522f",
+          "mode": 436
+        }
+      },
+      "upstream": "teamai-cli"
+    },
+    {
+      "name": "teamai-share-learnings",
+      "source": "https://github.com/Tencent/teamai-cli",
+      "commit": "0c059b2da6fe0fa3206ab1ce33978601a2a832e6",
+      "path": "skills/upstreams/teamai-cli/skills/teamai-share-learnings",
+      "files": {
+        "SKILL.md": {
+          "sha256": "f2d7c437520d8707182fbd3b4ca0dd453315d5210d924abb7dfa25aee651a94f",
+          "mode": 436
+        }
+      },
+      "upstream": "teamai-cli"
+    }
+  ],
+  "upstreams": [
+    {
+      "id": "ric-devflow",
+      "path": "skills/upstreams/ric-devflow",
+      "url": "https://github.com/lichong-a/ric-dev-workflow-skills",
+      "commit": "9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb"
+    },
+    {
+      "id": "ric-design-patterns",
+      "path": "skills/upstreams/ric-design-patterns",
+      "url": "https://github.com/lichong-a/ric-design-patterns-skill",
+      "commit": "46b183615afbfe3b1fffcbc9425ac3aea2c36d99"
+    },
+    {
+      "id": "teamai-cli",
+      "path": "skills/upstreams/teamai-cli",
+      "url": "https://github.com/Tencent/teamai-cli",
+      "commit": "0c059b2da6fe0fa3206ab1ce33978601a2a832e6"
+    }
+  ],
+  "references": [
+    {
+      "id": "teamai-guide-zh",
+      "upstream": "teamai-cli",
+      "path": "skills/upstreams/teamai-cli/docs/usage-guide.zh-CN.md",
+      "source": "https://github.com/Tencent/teamai-cli",
+      "commit": "0c059b2da6fe0fa3206ab1ce33978601a2a832e6",
+      "sha256": "7395e242c3d267906cdd200595d78e423483493f19c5a4f9bb0970f4566cac99",
+      "mode": 436,
+      "destination": {
+        "skill": "teamai-cli",
+        "path": "references/usage-guide.zh-CN.md"
+      },
+      "transform": "pinned-markdown-links",
+      "anchorRepairs": {
+        "#项目级project-scope": "#项目级project-scope默认"
+      }
+    },
+    {
+      "id": "teamai-license",
+      "upstream": "teamai-cli",
+      "path": "skills/upstreams/teamai-cli/LICENSE",
+      "source": "https://github.com/Tencent/teamai-cli",
+      "commit": "0c059b2da6fe0fa3206ab1ce33978601a2a832e6",
+      "sha256": "31154d9c1a8bd8d37b449bdbb8a04f9b4618e5d330b52b0fdb7c452414d75a41",
+      "mode": 436,
+      "destination": {
+        "skill": "teamai-cli",
+        "path": "LICENSE"
+      },
+      "transform": "identity"
+    }
+  ]
+}

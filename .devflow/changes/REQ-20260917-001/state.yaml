@@ -1,0 +1,57 @@
+schema_version: 2
+root_issue:
+  id: REQ-20260917-001
+  title: collaborative-foundation-infra 名称与通用性维护
+  status: PLANNED
+  project_context: BROWNFIELD_CONTINUATION
+  work_type: refactor
+  delivery_mode: STANDARD
+  risk_level: medium
+  planner_owner: ric_devflow_planner
+repository:
+  root: .
+  current_branch: main
+  current_sha: null
+  target_branch: main
+  target_base_sha: null
+  integration_branch: null
+  integration_sha: null
+  branch_strategy_source: existing unborn main; local-only delivery
+  dirty_worktree_detected: true
+  dirty_worktree_overlap: true
+artifacts:
+  current: .devflow/changes/REQ-20260917-001/current.md
+  test_plan: .devflow/changes/REQ-20260917-001/test-plan.md
+  evidence: .devflow/changes/REQ-20260917-001/evidence.md
+versions:
+  root_issue: 1
+  spec: 1
+  test_plan: 1
+  change_budget: 1
+approvals:
+  repository_baseline: BACKUP-001
+  spec: REVIEW-SPEC-20260917-001
+  user: AUTH-001
+  test_plan: REVIEW-TEST-20260917-001
+  code_review: REVIEW-CODE-20260917-001
+tasks:
+  - id: TASK-001
+    revision: 1
+    status: PLANNED
+    ref: .devflow/changes/REQ-20260917-001/current.md#TASK-001
+    base_sha: null
+    head_sha: null
+    evidence: [IMPL-002, IMPL-TEST-001, TEST-FINAL-001, REVIEW-CODE-20260917-001]
+open_findings: []
+open_defects: []
+open_blockers: []
+pre_existing_failures: []
+local_delivery:
+  status: complete
+  external_base_sha: d78b68779899fa9167ec24599a301902c91724cb
+  formal_git_gates: not_run
+  production_sha: 5be7d0c5e943bcb6d4233a51e2f74516f295bf69
+  tested_sha: c0830203fbb5a00b3a76f9e3e69d439e5320dd09
+  test_report: TEST-FINAL-001
+  review: REVIEW-CODE-20260917-001
+  evidence: LOCAL-DELIVERY-001

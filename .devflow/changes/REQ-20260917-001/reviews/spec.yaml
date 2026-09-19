@@ -1,0 +1,57 @@
+schema_version: 1
+review_id: REVIEW-SPEC-20260917-001
+mode: SPEC_REVIEW
+reviewer: ric_devflow_reviewer
+target:
+  root_issue_id: REQ-20260917-001
+  task_id: TASK-001
+  path: .devflow/changes/REQ-20260917-001/current.md
+  revision: 1
+  sha256: c3f3bef80efe3a2e1a1312f8f3db654c3f305ebfd0dc78e56a62b2ec42e63f7a
+  isolated_baseline_sha: d78b68779899fa9167ec24599a301902c91724cb
+verdict: APPROVE
+summary: >-
+  规格覆盖用户授权的整体命名统一、特定业务内容移出和历史证据保全，
+  保持导入包、依赖版本、治理写保护及通用接入流程的边界。
+  验收标准可观察，任务与写入职责明确，未发现需要阻断实施的规格缺口。
+
+findings: []
+
+verified:
+  - >-
+    AC-001、AC-003 明确先完整备份并实际恢复比对，
+    历史记录按原字节移至仓外，不重写历史结果或摘要。
+  - >-
+    AC-002、AC-008 覆盖名称、目录、隐藏内容、忽略条目及流程记录；
+    新报告使用相对路径与中性外部证据身份。
+  - >-
+    D-002 明确新命名空间的兼容边界，不暗示自动兼容旧安装；
+    AC-006 要求既有安装提供可审阅迁移方法，禁止自动删除或建立平行流程。
+  - >-
+    AC-004 与 TASK-001 保护六份导入包及来源锁原字节，
+    不升级固定来源或依赖，通过构建和包管理器维护生成物。
+  - >-
+    AC-005、AC-006 保留定制与禁用保护、治理写保护、
+    工具失败语义及增量接入约束，没有扩大业务仓或全局安装权限。
+  - >-
+    单一 Task 完整覆盖 AC-001 至 AC-008；
+    生产、测试、流程记录分属明确所有者并串行写入。
+  - >-
+    AC-007 区分安装、宿主加载与真实调用，
+    要求独立回归及精确候选绑定，不将仓外 SHA 冒充原仓 HEAD。
+
+evidence_reviewed:
+  - path: .devflow/changes/REQ-20260917-001/current.md
+    sha256: c3f3bef80efe3a2e1a1312f8f3db654c3f305ebfd0dc78e56a62b2ec42e63f7a
+  - path: .devflow/changes/REQ-20260917-001/evidence.md
+    sections:
+      - BACKUP-001
+      - AUTH-001
+
+review_boundary:
+  - 本结论只批准上述固定版本规格，不表示实现或独立测试已通过。
+  - 备份恢复记录作为规格前置证据读取，本轮未重新执行恢复。
+  - 未修改文件，未访问其他业务仓，未创建代理。
+  - 正式 G5–G10、提交、推送和发布不在本次批准范围。
+
+unblock_conditions: []

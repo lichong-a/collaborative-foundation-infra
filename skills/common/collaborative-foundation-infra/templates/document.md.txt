@@ -1,0 +1,12 @@
+---
+id: replace-with-stable-document-id
+status: proposal
+---
+# 文档标题
+
+上级入口：相对路径
+关联需求 / 设计 / 计划 / 实现依据 / 验收证据：
+
+当前事实及证据：
+目标或待决事项：
+适用版本与替代关系：

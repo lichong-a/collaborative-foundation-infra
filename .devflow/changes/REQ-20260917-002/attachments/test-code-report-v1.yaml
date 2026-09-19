@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "implementation_id": "IMPL-20260917-002-TEST-001",
+  "supersedes": null,
+  "root_issue_id": "REQ-20260917-002",
+  "task_id": "TASK-001",
+  "defect_id": null,
+  "spec_version": 2,
+  "base_sha": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+  "head_sha": "a5aeac068367e2880cb9eeca0e253cc405c38c7e",
+  "change_budget_compliance": {
+    "allowed_paths_only": true,
+    "protected_paths_untouched": true,
+    "dependency_changes": "none",
+    "public_contract_changes": "none; tests only",
+    "database_changes": "none"
+  },
+  "changed_files": [
+    "tests/acceptance-plan.md",
+    "tests/ci-runtime.test.mjs",
+    "tests/distribution.test.mjs",
+    "tests/entry.test.mjs",
+    "tests/session.test.mjs",
+    "tests/source-fixtures.mjs",
+    "tests/sources.test.mjs"
+  ],
+  "summary": "Tester 的测试代码交付，作者 ric_devflow_tester。仅修改上述7个 tests 路径，新增22组独立行为测试并保留37个原Oracle。本地用户禁止主仓commit，因此base..head是经授权隔离组装的完整生产加测试候选，含Implementer生产快照与Planner冻结记录；本作者报告仅覆盖列明tests文件，不认领其余生产变更，也不宣称正式G5已满足。生产输入为 production-snapshot-v2，manifest 054377a8936304157d5ab479064868d09e952965ee4d7ca9b15736c3d82f75f3；candidate-identity/correspondence记录逐字对应。此署名交付不等同于测试执行PASS，执行结论见TEST-20260917-002-001。",
+  "reused_existing_patterns": [
+    "Node原生node:test、assert/strict，既有fixture与真实Git/TeamAI CLI，无新增依赖或框架。",
+    "恢复原37测试行为；旧可信CI/umask fixture适配真实gitlink，Git刷新完整snapshot以实际member-clone作为源。"
+  ],
+  "design_decisions": [
+    "只有 tests 路径写入，生产与测试窗口串行，发现生产问题交Planner/Implementer修复。",
+    "会话使用隔离HOME/XDG与合成根身份；来源升级使用合成上游提交，不改固定上游。",
+    "保留完整错误/超时日志，修正测试输入与文案不弱化保护断言；原30/60秒限制不变。"
+  ],
+  "tests": [
+    {
+      "command": "npm test",
+      "tested_sha": "a5aeac068367e2880cb9eeca0e253cc405c38c7e",
+      "result": "exit0; 59 passed / 0 failed / 0 skipped"
+    },
+    {
+      "command": "node --test supplemental.test.mjs",
+      "result": "外部摘要绑定资产5/5通过，不计入仓内新增22组"
+    },
+    {
+      "command": "npm run prepare:skills && npm run build && npm run check",
+      "result": "各命令单独执行记录exit0；18/18文档可达，0发现"
+    }
+  ],
+  "documentation": [
+    "tests/acceptance-plan.md路由到当前权威计划/证据，说明真实分发权限比较层级，不复制第二套状态。"
+  ],
+  "migrations": [],
+  "rollback": [
+    "主仓未提交；候选与两个上游bundle均verify并实际恢复，HEAD/tree/准备可读已核对。",
+    "需要撤回测试时由Planner按授权检查列明7文件，先保全后定向处理，勿覆盖其他角色工作。"
+  ],
+  "known_risks": [
+    "完整隔离提交base..head同时含其他作者生产；署名范围仅changed_files，生产报告保持其原快照绑定。",
+    "当前Root后补证据不属于生产/测试同一性比较；既有15历史流程文件未变。"
+  ],
+  "not_run": [
+    {
+      "item": "新规范下Codex/ZCode/Claude原生宿主加载与真实同/新/fork/子Agent运行",
+      "status": "not_run",
+      "reason": "此切片验证实际CLI/文件分发与协议，未启动宿主原生新会话；不能由文本或安装证明。"
+    },
+    {
+      "item": "新规范下四个DevFlow原生角色真实调用/权限等价",
+      "status": "not_run",
+      "reason": "原包完整性和所有权保持通过不替代原生调用；本轮没有将历史调用记录复用成新规范证据。"
+    },
+    {
+      "item": "远端CI平台、远端发布、多操作系统",
+      "status": "not_run",
+      "reason": "授权仅本地隔离Linux验证，无远端写入。"
+    },
+    {
+      "item": "正式主仓G5-G10、主仓提交或推送",
+      "status": "not_run",
+      "reason": "用户未授权本轮主仓commit；独立候选SHA仅为本地验收身份。"
+    }
+  ],
+  "pre_existing_failures_observed": []
+}

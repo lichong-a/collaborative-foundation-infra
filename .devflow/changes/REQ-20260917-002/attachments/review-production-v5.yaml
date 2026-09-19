@@ -1,0 +1,117 @@
+schema_version: 1
+review_id: REVIEW-PRODUCTION-20260917-002-001
+supersedes: null
+mode: CODE_REVIEW
+reviewer: ric_devflow_reviewer
+created_at: "2026-09-17T12:55:09Z"
+
+target:
+  root_issue_id: REQ-20260917-002
+  task_id: TASK-001
+  task_revision: 5
+  spec_version: 4
+  test_plan_version: 4
+  base_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  head_sha: null
+  tested_sha: null
+  scope: production-risk-precheck
+  external_archive: teamai-official-20260917T120800Z-i0e11mkg
+  snapshot: implementer/production-snapshot-v6
+  manifest: implementer/production-manifest-v6.json
+  manifest_sha256: f2ea9478629649c2156d55d1a7c12c544d2e3ac63d0e100cc09a08247945740d
+
+verdict: REQUEST_CHANGES
+summary: >-
+  已逐项核验冻结清单的 1374 个文件摘要和完整权限模式，零差异。
+  只读审查发现两处运行时失败恢复及清理归属问题。
+  本结论仅针对冻结生产预审，不审批正在编写的测试，也不构成最终 CODE_REVIEW 或正式 Git 门禁。
+
+findings:
+  - id: PROD-TA-RUNTIME-001
+    severity: P1
+    category: atomicity-and-failure-reporting
+    location:
+      path: tools/teamai-runtime.mjs
+      lines: "141-158"
+    trigger: >-
+      已有完整安装 A，升级 B 完成身份与兼容检查并成功切换 current；
+      随后 finally 中删除 work 或释放锁抛出 EIO、EACCES 或其他异常。
+    evidence: >-
+      143 行执行 current 原子替换；146-154 行的恢复 catch 只覆盖切换和读回。
+      155 行返回成功值后，157-158 行仍执行可能抛错的清理。
+      此处异常不会进入恢复 catch，scripts/teamai-runtime.mjs 会统一输出
+      status:error 并退出 2，但 current 已指向 B。
+    impact: >-
+      升级报告失败却已改变当前运行时，违反失败保留旧 current 原字节的契约。
+      清理中断还可能留下 .prepare-* 和 prepare.lock，使后续解析或准备拒绝运行。
+    safe_fix: >-
+      明确且统一处理提交与收尾的失败路径，使清理异常不能落入
+      “报升级失败但已悄然切换”的状态。按当前契约在可恢复且身份未漂移时恢复旧指针；
+      异常导致无法安全恢复时，保留相关安装和证据并明确报告真实提交状态及恢复缺口。
+      将锁释放置于独立的可靠收尾路径，避免前一项清理失败阻断其执行。
+    validation: >-
+      TC-TA-RUNTIME-006 在 current 成功读回之后分别注入 work 清理失败和锁清理失败；
+      核对返回结果、current、旧安装及残留状态，不仅断言退出非零。
+
+  - id: PROD-TA-RUNTIME-002
+    severity: P1
+    category: concurrent-object-ownership
+    location:
+      path: tools/teamai-runtime.mjs
+      lines: "124,131,157-158"
+    trigger: >-
+      本进程创建 candidate 或 work 后，其目录被另一写入者改名并在原路径放入
+      未知目录；随后 npm 安装或兼容检查失败，进入 finally。
+    evidence: >-
+      candidate 只以 ownedCandidate 布尔值记录所有权，work 只保留路径字符串。
+      157-158 行直接对当前路径执行 recursive rm，没有核对创建时的目录身份。
+      prepare.lock 的 inode/dev 核对位于这两项删除之后。
+      可在 runNpm install 故障边界将 candidate 改名、在原位置放入哨兵目录后抛错，
+      该控制流仍会删除替换后的目录。
+    impact: >-
+      失败清理可能删除并非本进程创建的并发内容，违反未知内容保全和仅清理自身资源的约束；
+      事后发现锁被替换也无法恢复已删除数据。
+    safe_fix: >-
+      创建时记录目录身份，清理前先核对锁和待清理目录的归属、类型及安全父路径。
+      发现路径替换或不能证明归属时保留对象并报告，不执行递归删除。
+      不得以放宽未知目录识别或扩大删除范围处理残留。
+    validation: >-
+      对 candidate 和 work 分别加入目录替换及锁替换故障场景，
+      核对未知哨兵逐字保留、旧安装与 current 不变，并明确测试清理归属。
+
+non_blocking_notes:
+  - >-
+    已读路径中的 SRI、归档与安装内容比较、bin 归属、内置同名包、
+    十包实际输出以及发布前身份复核未发现其他具体阻断。
+  - >-
+    npm HOME、配置和缓存采用私有路径；来源准备与可信 CI 保持离线。
+    DEC-005 的指南锚点修复限定于登记目标和分发副本，没有改写上游指南。
+  - >-
+    两条 finding 均基于冻结代码的确定控制流；审核者未运行写入式复现，
+    独立复现与回归由 Tester 完成。
+
+residual_risks:
+  - "本轮没有完整候选 SHA 或独立新执行报告，不对最终实现、测试或原生宿主层作通过结论。"
+
+evidence_reviewed:
+  - path: implementer/production-manifest-v6.json
+    sha256: f2ea9478629649c2156d55d1a7c12c544d2e3ac63d0e100cc09a08247945740d
+    verified_files: 1374
+  - paths:
+      - tools/teamai-runtime.mjs
+      - tools/teamai-execution.mjs
+      - tools/teamai-config.mjs
+      - tools/sources.mjs
+      - tools/skill-resources.mjs
+      - tools/distribution.mjs
+      - tools/repository.mjs
+      - scripts/teamai-runtime.mjs
+      - scripts/teamai-sync.mjs
+      - scripts/ci-check.mjs
+      - docs/teamai-runtime.md
+      - skills/common/teamai-cli/SKILL.md
+    identity: "均以冻结 production-snapshot-v6 为依据。"
+
+unblock_conditions:
+  - "修复两条 finding，提供冻结增量及独立故障回归证据。"
+  - "最终审核另行绑定完整候选 SHA、测试代码及封存的独立执行报告。"

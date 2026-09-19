@@ -1,0 +1,121 @@
+{
+  "schema_version": 2,
+  "implementation_id": "IMPL-20260917-002-009",
+  "supersedes": "IMPL-20260917-002-008 for the repaired candidate only; all v7 assets remain immutable",
+  "root_issue_id": "REQ-20260917-002",
+  "task_id": "TASK-001",
+  "task_revision": 5,
+  "author": "ric_devflow_implementer",
+  "recipient_role": "ric_devflow_planner",
+  "status": "IMPLEMENTER_VERIFIED_LOCAL_CANDIDATE",
+  "finding_addressed": "PROD-TA-RUNTIME-003",
+  "reviewer_closure": "pending independent review; this report does not close the finding",
+  "inputs": {
+    "spec_version": 4,
+    "spec_sha256": "2aa07065100b48bc97e02d8edb02b83ce959ccc5c9687d6ca582280e16a05b83",
+    "test_plan_sha256": "91b6de0e395fdccf631701511a3bb7db491e83728ab31e7e0cdd8486937d220a",
+    "defect_evidence_sha256": "481078057238bfec7a7e8606a97d9354f042f82bcedddd4eee7201f413bb14d3",
+    "runtime_test_sha256": "eb366ac113f062a50b9b56b3e10c12f41fe880713904a5296f68cc6a12533676",
+    "runtime_fixture_sha256": "6420b709c158420b7c59e83bb062bc9edb963a4b59ea24f2aefe30572b592193"
+  },
+  "git": {
+    "base_ref": "main",
+    "base_sha": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+    "head_sha": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+    "semantics": "Main HEAD and index unchanged; the frozen uncommitted snapshot identifies this production repair, not a new commit."
+  },
+  "candidate": {
+    "snapshot": "production-snapshot-v8",
+    "manifest": "production-manifest-v8.json",
+    "manifest_sha256": "28ae10c0160bcd990e575b0794fc70f721664abdb2290695a2bfa4edaef158e3",
+    "files": 1374,
+    "prior_manifest_sha256": "ca49201954c23179d5b54af9a339dd6693891875c19c4a361990999d051097ef",
+    "identity": {
+      "sourceLockDigest": "7ee19aac52e73df6748b0192518de8eefda1d84e3854effa8d478d0d8e128530",
+      "sourcePackagesDigest": "ef995776beb2cb1be1ece62d96a14c99bbd551da5edb5bf1f782ab1adc4ac3a5",
+      "sourceDigest": "a860540bfc74709c6d47f7ae609a210dec01483075203a6d3000d570c9fe710b",
+      "distributionDigest": "400272c0e4f09c132412de96782801564aa07ceb7e3aa845fe3ea7de9cbf4b8c",
+      "standardVersion": "44040143c90c3d669397441e111611614f10cc4bb218ffb0de853f3ca7efa765",
+      "artifactSha256": "951f64b0e306db7b301787b72198d9d54c10c270808da72b243344c994c9547b"
+    },
+    "narrow_delta": "repair-delta-v8.json",
+    "narrow_delta_sha256": "71cc52a86f6f214d3c0ac7818cab4c96fcb3e94b2282bbfd91c738a717273537",
+    "source_diff": "runtime-repair-v8.diff",
+    "source_diff_sha256": "40d06ac50ca1d546eb652783629ba18268689c542fc598a3c57462357bd22aa4"
+  },
+  "changed_paths": [
+    "tools/teamai-runtime.mjs",
+    "skills/common/collaborative-foundation-infra/scripts/governance.mjs"
+  ],
+  "implementation": [
+    "Public resolveTeamaiRuntime rejects every outstanding prepare.lock before reading and again before returning. It rechecks namespace ancestor/object identity and the selected current pointer identity and bytes.",
+    "Installation selection is a private function with no exported skip-lock parameter. Prepare reuses it only within a local held-runtime helper that asserts its own lock and original current before and after verification.",
+    "A reader overlapping an unfinished prepare cannot receive a tentative candidate. Pointer drift during verification is conservatively rejected; an already returned committed installation is retained across later upgrades.",
+    "Existing cleanup ownership, pointer recovery, independent descriptor close and lock release handling remain unchanged. No dependency, upstream, receipt schema or session behavior is changed.",
+    "The only compatibility tightening is refusal of pending or stale preparation locks by the public resolver; no automatic lock cleanup or invented ownership is added."
+  ],
+  "validation": [
+    {
+      "command": "node --test tests/teamai-runtime.test.mjs with the independently verified archive and isolated prepared seed",
+      "exit_code": 0,
+      "tests": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "log": "runtime-reader-repair-tests.log",
+      "log_sha256": "64841d333158a279410b50dc2bebaf535bd9e1d5f2c22fc9342d1d336b338c48",
+      "result": "Independent reader exits 2 at post-work-cleanup/pre-unlock boundary. Writer close EIO restores the old pointer. Prior cleanup failure and candidate/work replacement protections remain passing."
+    },
+    {
+      "command": "node reader-repair-smoke.mjs with the independently verified archive",
+      "exit_code": 0,
+      "author_assertion_cases": 3,
+      "result_file": "reader-repair-smoke-results.json",
+      "result_sha256": "7b4f6b312ef45a86bde30372b280c74d707d975532685ef7430fc97a882b7ac1",
+      "log": "reader-repair-smoke.log",
+      "result": "Stable public selection and offline reuse; successful actual CLI install/three-harness verification on explicit upgrade with prior installation preserved; successful ten-package Codex distribution via public resolver. Registry boundary uses fixed verified fixture, not a new live latest query."
+    },
+    {
+      "command": "npm run prepare:skills",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run build",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run check",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check; git diff --cached --check",
+      "exit_code": 0
+    },
+    {
+      "command": "full production/test/index comparison and restored snapshot verification",
+      "exit_code": 0,
+      "result": {
+        "productionFiles": 1374,
+        "manifestSha256": "28ae10c0160bcd990e575b0794fc70f721664abdb2290695a2bfa4edaef158e3",
+        "changedPaths": [
+          "skills/common/collaborative-foundation-infra/scripts/governance.mjs",
+          "tools/teamai-runtime.mjs"
+        ],
+        "testsUnchanged": 11,
+        "indexUnchanged": true,
+        "mainHeadUnchanged": true,
+        "snapshotRestorationMatches": true
+      }
+    }
+  ],
+  "not_run": [
+    "Independent complete adapted suite and final candidate SHA are Tester/Planner work after release.",
+    "Independent final CODE_REVIEW and finding closure are not replaced by author checks.",
+    "Native model loading, native role invocation, remote CI and formal Git G5-G10 were not performed."
+  ],
+  "residual_behavior": [
+    "A retained stale preparation lock now blocks public runtime selection until explicit recovery; the resolver does not infer whether another transaction is alive.",
+    "Readers may retry after an overlapping transaction or current-pointer change. Already returned committed installation paths remain available."
+  ],
+  "production_window": "released; no further production writes without an explicit bounded handoff"
+}

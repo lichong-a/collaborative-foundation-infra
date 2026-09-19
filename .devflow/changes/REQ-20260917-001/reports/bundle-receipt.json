@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "report_id": "TEST-BUNDLE-001",
+  "external_evidence": "migration-20260917T033224Z",
+  "timestamp": "2026-09-17T03:59:42.816651+00:00",
+  "candidate_sha": "c0830203fbb5a00b3a76f9e3e69d439e5320dd09",
+  "bundle_artifact": "tester-final/candidate.bundle",
+  "bundle_sha256": "18118ea878c53472e0fb8488641aa125e25112c8db4d63c21d9135c44d61adce",
+  "bundle_verify_exit_code": 0,
+  "actual_restore": true,
+  "restored_head": "c0830203fbb5a00b3a76f9e3e69d439e5320dd09",
+  "tree_id": "efefa4830b2eda97fb22d8909a8d4d0cd4573537",
+  "tree_listing_sha256": "f8619ee66b41370b0a6317dd65aab1358dcaf54cd5fb34175f16b628903bd20a",
+  "verified_blob_count": 784,
+  "fsck_exit_code": 0,
+  "candidate_clean": true,
+  "source_repository_git_untouched": true,
+  "scope": "External isolated Git preservation. Historical parent objects remain in the private external bundle; this is not a claim that history was purged. Full POSIX mode preservation is established by the separate workspace archive.",
+  "verdict": "PASS"
+}

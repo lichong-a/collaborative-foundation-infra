@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+runtime=node
+cache="${XDG_CACHE_HOME:-${HOME}/.cache}/collaborative-foundation-infra/runtimes"
+while (($#)); do
+  case "$1" in
+    --runtime) runtime="$2"; shift 2;;
+    --cache) cache="$2"; shift 2;;
+    --) shift; break;;
+    *) printf 'Unknown runtime argument: %s\n' "$1" >&2; exit 2;;
+  esac
+done
+fallback() {
+  printf 'Runtime preparation failed: %s\nMarkdown fallback: read the distributed collaborative-foundation-infra/SKILL.md and references/manual.md. Automated checks did NOT pass.\n' "$1" >&2
+  exit 2
+}
+trap 'fallback "command failed at line $LINENO"' ERR
+case "$runtime" in node|uv|python) ;; *) fallback 'runtime must be node, uv, or python';; esac
+check_node() { "$1" -e 'process.exit(Number(process.versions.node.split(".")[0]) === 24 ? 0 : 1)' >/dev/null 2>&1; }
+check_python() { "$1" -c 'import sys; sys.exit(0 if sys.version_info >= (3,11) else 1)' >/dev/null 2>&1; }
+resolved=''
+if [[ "$runtime" == node ]] && command -v node >/dev/null 2>&1 && check_node "$(command -v node)"; then resolved="$(command -v node)"; fi
+if [[ "$runtime" == uv ]] && command -v uv >/dev/null 2>&1 && [[ "$(uv --version)" == 'uv 0.12.9 '* ]]; then resolved="$(command -v uv)"; fi
+if [[ "$runtime" == python ]] && command -v python3 >/dev/null 2>&1 && check_python "$(command -v python3)"; then resolved="$(command -v python3)"; fi
+if [[ -z "$resolved" ]]; then
+  printf 'Attempting verified user-directory installation of %s.\n' "$runtime" >&2
+  [[ "$cache" == /* ]] || fallback 'cache must be an absolute user-owned path'
+  probe="$cache"
+  while [[ "$probe" != / ]]; do [[ ! -L "$probe" ]] || fallback 'cache contains symlink'; probe="$(dirname "$probe")"; done
+  mkdir -p -- "$cache"
+  [[ -O "$cache" && -w "$cache" ]] || fallback 'cache is not owned and writable by current user'
+  if [[ "$runtime" == python ]]; then
+    uv_bin="$("$(dirname "$0")/runtime" --runtime uv --cache "$cache")"
+    if resolved="$(UV_PYTHON_INSTALL_DIR="$cache/python" "$uv_bin" --cache-dir "$cache/uv-cache" python find --managed-python --no-python-downloads 3.12.14 2>/dev/null)" && [[ -n "$resolved" ]] && check_python "$resolved"; then
+      :
+    else
+      if [[ "${COLLABORATIVE_FOUNDATION_INFRA_RUNTIME_OFFLINE:-0}" == 1 ]]; then fallback 'offline: Python is unavailable locally'; fi
+      "$uv_bin" --cache-dir "$cache/uv-cache" python install 3.12.14 --install-dir "$cache/python" --no-bin --no-registry >&2
+      resolved="$(UV_PYTHON_INSTALL_DIR="$cache/python" "$uv_bin" --cache-dir "$cache/uv-cache" python find --managed-python --no-python-downloads 3.12.14)"
+    fi
+    check_python "$resolved" || fallback 'Python version verification failed'
+  else
+    [[ "$(uname -s)" == Linux ]] || fallback 'automatic installer supports Linux only'
+    case "$(uname -m)" in
+      x86_64)
+        node_arch=x64; uv_arch=x86_64
+        node_hash=2f2c0da162318f0de47665410c7c8c2ed3d36c8f3105de4bbc61176c70a7cbf2
+        uv_hash=ec7a99cd05e0cd7f80243f135ce1361c76835cb0ee60055d14d20eba8eba1460;;
+      aarch64)
+        node_arch=arm64; uv_arch=aarch64
+        node_hash=5f4ddab610c1ab2016b3c227cebdbf6d9495161487e4739c7b90090595f465f7
+        uv_hash=c36fe17937ff6bd16dc42fc13854b5465999fcab2efe0af559381e945e3c6001;;
+      *) fallback 'unsupported architecture';;
+    esac
+    if [[ "$runtime" == node ]]; then
+      folder="node-v24.20.0-linux-$node_arch"; archive="$folder.tar.xz"; expected="$node_hash"; url="https://nodejs.org/dist/v24.20.0/$archive"; executable=bin/node
+    else
+      folder="uv-$uv_arch-unknown-linux-gnu"; archive="$folder.tar.gz"; expected="$uv_hash"; url="https://github.com/astral-sh/uv/releases/download/0.12.9/$archive"; executable=uv
+    fi
+    destination="$cache/$folder"
+    if [[ -e "$destination" ]]; then
+      [[ ! -L "$destination" && ! -L "$destination/$executable" ]] || fallback 'cached runtime contains symlink'
+      [[ -x "$destination/$executable" ]] || fallback 'existing cache is incomplete; preserve it for inspection'
+    else
+      [[ "${COLLABORATIVE_FOUNDATION_INFRA_RUNTIME_OFFLINE:-0}" != 1 ]] || fallback 'offline: runtime is unavailable locally'
+      command -v curl >/dev/null || fallback 'curl is unavailable; installation attempted but cannot download'
+      staging="$(mktemp -d "$cache/install.XXXXXXXX")"
+      trap 'if [[ -n "${staging:-}" ]]; then printf "Incomplete installation preserved at %s\n" "$staging" >&2; fi' EXIT
+      curl --proto '=https' --tlsv1.2 --fail --location --connect-timeout 10 --max-time 120 --output "$staging/$archive" "$url" >&2
+      printf '%s  %s\n' "$expected" "$staging/$archive" | sha256sum --check --status || fallback 'archive checksum mismatch'
+      tar -xf "$staging/$archive" -C "$staging"
+      [[ -x "$staging/$folder/$executable" ]] || fallback 'download lacks expected executable'
+      if [[ "$runtime" == node ]]; then check_node "$staging/$folder/$executable" || fallback 'downloaded Node has wrong version';
+      else [[ "$("$staging/$folder/$executable" --version)" == 'uv 0.12.9 '* ]] || fallback 'downloaded uv has wrong version'; fi
+      mv -T -- "$staging/$folder" "$destination"
+      printf '%s  %s\n' "$expected" "$archive" > "$destination/collaborative-foundation-infra-download.sha256"
+      unlink "$staging/$archive"
+      rmdir "$staging"
+      staging=''
+    fi
+    resolved="$destination/$executable"
+    if [[ "$runtime" == node ]]; then check_node "$resolved" || fallback 'cached Node has wrong version'; fi
+    if [[ "$runtime" == uv ]]; then [[ "$("$resolved" --version)" == 'uv 0.12.9 '* ]] || fallback 'cached uv has wrong version'; fi
+  fi
+fi
+if (($#)); then exec "$resolved" "$@"; else printf '%s\n' "$resolved"; fi

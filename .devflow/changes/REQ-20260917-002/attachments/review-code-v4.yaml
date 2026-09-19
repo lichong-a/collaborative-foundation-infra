@@ -1,0 +1,80 @@
+schema_version: 1
+review_id: REVIEW-CODE-20260917-002-004
+supersedes: REVIEW-CODE-20260917-002-003
+mode: CODE_REVIEW
+reviewer: ric_devflow_reviewer
+created_at: "2026-09-17T10:16:17Z"
+
+target:
+  root_issue_id: REQ-20260917-002
+  task_id: TASK-001
+  task_revision: 4
+  spec_version: 3
+  test_plan_version: 3
+  technical_revision: 4
+  base_sha: c02f51cfe8c2e5cd1bd59b5b41228ebc1f6904fe
+  head_sha: 53d29b7fc9906aa5556bb66e476568dc8a446815
+  tested_sha: 53d29b7fc9906aa5556bb66e476568dc8a446815
+  main_baseline_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  scope: "仅批准 technical revision 4 授权的路径迁移及相关本地交付；隔离候选不是主仓新提交。"
+
+verdict: APPROVE
+summary: >-
+  复用 REVIEW-CODE-20260917-002-003 对未变化实现的审核结论，
+  本轮独立核查完整窄增量、实际 Git 元数据、三个测试文件增量及封存执行证据。
+  子模块移动至 skills/upstreams 后，固定来源、源码导航、分发映射、
+  保护路径和可信 CI 保持一致；没有新增阻断发现。
+
+review_results:
+  - "实际 HEAD 与 parent 均符合 target；审核结束时隔离候选工作树干净。"
+  - "1145 个生产条目的类型、完整权限模式和摘要与冻结 v5 清单一致。"
+  - "两个 gitlink、实际子模块 HEAD、gitfile 与 core.worktree 对应新位置；固定提交及上游内容未变。"
+  - "四处源码导航、README 目录树和来源严格映射一致；安装后的同级 Skill 引用语义保持。"
+  - "可信 CI 识别新 gitlink，也继续拦截旧根 upstreams 重新引入；未通过路径迁移扩大治理豁免。"
+  - "三个测试文件仅作批准的路径适配并增加边界断言；62 个原测试组标题保留，未弱化有效 Oracle。"
+  - "新 skills 与 skills/upstreams 父目录符号链接拒绝路径保留外部内容不变；临时团队树排除两种来源目录。"
+  - "正式报告的字段、摘要和作者引用一致；30 个封存资产逐一重算摘要全部匹配。"
+
+validation:
+  repository_tests: "62/62，通过；失败、跳过、取消均为 0。"
+  external_supplements: "原 6 组脚本在本轮候选重新执行，6/6 通过；不冒充提交内测试。"
+  commands: "离线 npm ci、prepare:skills、build、check 和 git diff --check 均退出 0。"
+  documentation: "18/18 可达，0 finding。"
+  preservation: "证据确认主仓与候选 1145 个生产条目、9 个测试文件对应；725 个来源文件及两棵完整上游树保持。"
+  recovery: "本轮候选及两个上游 bundle 已验证并实际恢复；恢复后的 HEAD、tree 和来源核验符合。"
+  reviewer_execution: "审核者仅执行只读比较及摘要核验；执行结果来自独立测试者本轮封存日志。"
+
+evidence_reviewed:
+  - id: REVIEW-TECHNICAL-20260917-002-004
+    path: .devflow/changes/REQ-20260917-002/attachments/technical-v4.md
+    sha256: 1877bfddde81eabae6fa05e739e9b5cc22ab1ffb1440d95835eb4e277b235f76
+  - id: IMPL-20260917-002-006
+    path: .devflow/changes/REQ-20260917-002/attachments/implementation-v6.yaml
+    sha256: fad72ac284cfc7e700a9ade26c50806b4332d3d230af40e203cde02f65d7317a
+  - id: production-snapshot-v5
+    manifest_sha256: 088cd444b393eaa020ad1af5c0b140f9c36f78facd93990ed8c3eb2ab05c4820
+    tree_digest: 9c06f673ceafcfc9ab06ce686d6a849795c59f8a3c238b3a7171b080fb2a25fa
+  - id: TEST-20260917-002-003
+    schema_version: 1
+    external_archive: nested-upstreams-20260917T100025Z
+    path: tester/test-report-v3.yaml
+    sha256: 78e213823260fae517958c95cbcc22daf9f0bc5cae9d81822a8f8eaff7a0be1e
+  - id: IMPL-20260917-002-TEST-003
+    schema_version: 1
+    external_archive: nested-upstreams-20260917T100025Z
+    path: tester/test-code-report-v3.yaml
+    sha256: cd51db6dedee5755e1ac1b176e29ed1fa0858431e849f4f1bd1ace022b7064ee
+  - id: sealed-test-assets
+    external_archive: nested-upstreams-20260917T100025Z
+    path: tester/artifacts.sha256.json
+    sha256: f42e5e25d9c33ea1fa2e55749b9c2afd646fda2a15da0e4a736b34c03b44e513
+    verified_assets: 30
+
+findings: []
+non_blocking_notes:
+  - "此前已关闭的入口与文档导航问题未在本次增量中重新出现。"
+  - "本审核不授权迁移既有成员安装；旧版本回执或定制内容仍按既有保护拒绝并保留。"
+residual_risks:
+  - "原生宿主加载、实际角色调用及模型遵循协议未运行；文件分发成功不能替代这些证据。"
+  - "其他操作系统、远端 CI、主仓提交推送与正式 G5–G10 未执行；APPROVE 仅适用于上述本地候选切片。"
+unblock_conditions: []

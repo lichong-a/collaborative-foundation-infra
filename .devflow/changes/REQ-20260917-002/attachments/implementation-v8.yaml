@@ -1,0 +1,131 @@
+{
+  "schema_version": 2,
+  "implementation_id": "IMPL-20260917-002-008",
+  "supersedes": "IMPL-20260917-002-007 for the repaired candidate only; all v6 assets remain immutable",
+  "root_issue_id": "REQ-20260917-002",
+  "task_id": "TASK-001",
+  "task_revision": 5,
+  "author": "ric_devflow_implementer",
+  "recipient_role": "ric_devflow_planner",
+  "status": "IMPLEMENTER_VERIFIED_LOCAL_CANDIDATE",
+  "findings_addressed": [
+    "PROD-TA-RUNTIME-001",
+    "PROD-TA-RUNTIME-002"
+  ],
+  "reviewer_closure": "pending independent review; this report does not close findings",
+  "inputs": {
+    "spec_version": 4,
+    "spec_sha256": "2aa07065100b48bc97e02d8edb02b83ce959ccc5c9687d6ca582280e16a05b83",
+    "technical_sha256": "03fed80eb0bbad59fdf34ef59bbbe48c0c5ad7476a313c54a8651019688cadac",
+    "test_plan_sha256": "91b6de0e395fdccf631701511a3bb7db491e83728ab31e7e0cdd8486937d220a",
+    "defect_evidence_sha256": "dc13b0bbaa9e020bf5895ffad3ecde7d63d7b7971b0f0938bc19aa5c22e4f188",
+    "regression_test_sha256": "d6eceb6f3e034609f0f887f1e444996ac714dc1a34e4a2cb16f20bad70c2bcba",
+    "fixture_sha256": "e8f35d59bdc46306ef306865fc5912f23b8803c5041dbb0384cfffdd4272a405"
+  },
+  "git": {
+    "base_ref": "main",
+    "base_sha": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+    "head_sha": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+    "semantics": "Main HEAD and index unchanged. Candidate is the frozen uncommitted snapshot, not a new main commit."
+  },
+  "candidate": {
+    "snapshot": "production-snapshot-v7",
+    "manifest": "production-manifest-v7.json",
+    "manifest_sha256": "ca49201954c23179d5b54af9a339dd6693891875c19c4a361990999d051097ef",
+    "files": 1374,
+    "identity": {
+      "sourceLockDigest": "7ee19aac52e73df6748b0192518de8eefda1d84e3854effa8d478d0d8e128530",
+      "sourcePackagesDigest": "ef995776beb2cb1be1ece62d96a14c99bbd551da5edb5bf1f782ab1adc4ac3a5",
+      "sourceDigest": "734a236e178954ec16a2fbe2d9a7690ec29ab0a36ae3eb5cfc44142456a5e49d",
+      "distributionDigest": "743a784d729dbb3eba73244b5b93dbe5f4c7cdcf46bc1a6f68f7dbc4fb903bd8",
+      "standardVersion": "86c77ec3ec153cfd3b8e8feb893d175dbea52306094f29ad806a3fdaa9be08f1",
+      "artifactSha256": "fcd398972a57b413463c5891808835ef9bbf2199d58e96c2b7abf7e445c00bf1"
+    },
+    "narrow_delta": "repair-delta-v7.json",
+    "narrow_delta_sha256": "0b1415cf1bfedeca9a3e566980a53ec97cc6bbf296e006560caefad95d23508e",
+    "source_diff": "runtime-repair-v7.diff",
+    "source_diff_sha256": "235a5f39480100d9bef2371ac7374c0e4b52dcb9b47bc1d074e944c9a1f4d9e7"
+  },
+  "changed_paths": [
+    "tools/teamai-runtime.mjs",
+    "skills/common/collaborative-foundation-infra/scripts/governance.mjs"
+  ],
+  "implementation": [
+    "Preparation returns only after body, cleanup, descriptor close and unlock have completed successfully. Errors retain their cause and are aggregated rather than masking the original operation.",
+    "Work/candidate ownership records object identity and every parent directory at creation. Cleanup validates the original lock and the recorded chain before recursive deletion; unknown replacements are preserved.",
+    "Each npm boundary also verifies owned directories and lock before and after execution, rejecting identity drift before proceeding.",
+    "Pointer recovery covers work-cleanup and unlock failures as well as body errors. It requires unchanged namespace, original lock and the exact published pointer identity/bytes; restore files are independent from work.",
+    "If recovery is not safe, candidate and residual objects remain, and the returned error reports observed current state and the recovery failure. No failure is converted to success.",
+    "Descriptor close and lock release are independent from earlier cleanup errors. Descriptor close is attempted once because OS close errors can mean the descriptor was already released; an ambiguous close is reported rather than retried against a potentially reused descriptor.",
+    "Public APIs, receipt schemas, dependency versions, source selection, actual CLI verification and session/distribution behavior remain unchanged. Existing function composition is retained; no class framework or new test bypass is added."
+  ],
+  "validation": [
+    {
+      "command": "COLLABORATIVE_FOUNDATION_INFRA_TEST_TEAMAI_ARCHIVE=<independently verified official archive> node --test tests/teamai-runtime.test.mjs",
+      "exit_code": 0,
+      "result": "3 tests passed; 0 failed, skipped or cancelled. These three tests failed against v6 in independent reproduction.",
+      "log": "runtime-repair-minimal.log",
+      "log_sha256": "d8f31130b78d6a01a83ae8621915410522b5ad2837c283498293bb830f38d469"
+    },
+    {
+      "command": "node runtime-repair-lock-smoke.mjs with the verified archive environment",
+      "exit_code": 0,
+      "result": "2 author cases passed: actual complete candidate followed by unlock EIO restores prior current; replaced lock preserves sentinel/work and prior pointer.",
+      "log": "runtime-repair-lock-smoke-v3.log",
+      "result_file": "runtime-repair-lock-results.json",
+      "result_sha256": "5458294db6ceb9e7df77e743aa43d8e01606aca5def24887b1c858b05e1bebd2"
+    },
+    {
+      "command": "npm run prepare:skills",
+      "exit_code": 0,
+      "log": "runtime-repair-prepare.log",
+      "result": "Three fixed sources, eight upstream packages and official references verified"
+    },
+    {
+      "command": "npm run build",
+      "exit_code": 0,
+      "log": "runtime-repair-build.log",
+      "result": "Only normal generated governance artifact changes in addition to runtime source"
+    },
+    {
+      "command": "npm run check",
+      "exit_code": 0,
+      "log": "runtime-repair-check.log",
+      "result": "20 reachable documents, 0 findings; syntax and reproducible artifact checks pass"
+    },
+    {
+      "command": "git diff --check; git diff --cached --check",
+      "exit_code": 0
+    },
+    {
+      "command": "production manifest / test / index comparison and restored snapshot verification",
+      "exit_code": 0,
+      "result": {
+        "productionFiles": 1374,
+        "manifestSha256": "ca49201954c23179d5b54af9a339dd6693891875c19c4a361990999d051097ef",
+        "changedPaths": [
+          "skills/common/collaborative-foundation-infra/scripts/governance.mjs",
+          "tools/teamai-runtime.mjs"
+        ],
+        "testsUnchanged": 11,
+        "indexUnchanged": true,
+        "mainHeadUnchanged": true,
+        "snapshotRestorationMatches": true
+      }
+    }
+  ],
+  "author_fixture_corrections": [
+    "First supplementary smoke copied directories without restoring source modes; the runtime correctly refused non-private namespace. The external fixture was corrected to preserve full modes, without changing production permission checks.",
+    "Second supplementary smoke expected default resolution to succeed with a deliberately retained unknown work directory after lock replacement. Strict namespace refusal is required; the external fixture now checks that refusal and separately verifies the unchanged old installation. Production was not modified for this fixture correction. Failed logs are retained."
+  ],
+  "not_run": [
+    "Independent full adapted suite: Tester resumes after release.",
+    "Independent final CODE_REVIEW and finding closure: Reviewer/Planner ownership.",
+    "Native host loading, role calls, remote CI and formal Git G5-G10: not inferred from this local repair."
+  ],
+  "residual_behavior": [
+    "Unreleasable or replaced locks and unsafe directories are preserved for explicit inspection; future prepare may refuse those residues.",
+    "When pointer or lock ownership drifts, the command reports the observed pointer state and failed recovery instead of overwriting concurrent content."
+  ],
+  "production_window": "released; no further production writes without an explicit bounded handoff"
+}

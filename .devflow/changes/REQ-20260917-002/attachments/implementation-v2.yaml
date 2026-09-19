@@ -1,0 +1,193 @@
+schema_version: 1
+implementation_id: IMPL-20260917-002-002
+supersedes: IMPL-20260917-002-001
+root_issue_id: REQ-20260917-002
+task_id: TASK-001
+defect_id: null
+spec_version: 2
+test_plan_version: 2
+author_role: ric_devflow_implementer
+base_ref: main / origin/main
+base_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+head_sha: null
+observed_main_head_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+head_explanation: No main commit is authorized. This report binds the immutable local production snapshot, not a new commit or formal G5–G10 approval.
+spec_sha256: c73d9a274b7c3a645fe340061a9584886689958e2d5be3c1a4f60e54a13c6203
+test_plan_sha256: 9f5ababb25d516cc454cc7e0ec860bab28fe80e3fa6237b01ccecdb59c8b01b4
+snapshot:
+  directory: production-snapshot-v1
+  manifest_sha256: 3c868383bf2919dc2571a9e9cca2004a12b6b6e4ea8f88a165a7f50e6f3bb2c7
+  tree_digest: 3332c7e2379dd85c6c9fb9d8e53729cec241f9eb45ae2c0da59b62dc02ae2eeb
+  entries: 2209
+  restored_entries: 2209
+  scope: Production files only; excludes root tests, root .devflow, node_modules, and Git metadata. Separate verified bundles preserve baseline and upstream Git objects.
+  bundles:
+    - file: baseline.bundle
+      sha256: 057f52063614323a064c893f8ee91ca31feb84be5d29084a55e70ad8bdf3ce5a
+      head: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+    - file: ric-devflow.bundle
+      sha256: 7df643d96a4a7b63cabf6f2addd3527705c52b6cea0dd35e9695d7afb35df9b4
+      head: 9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb
+    - file: ric-design-patterns.bundle
+      sha256: 391e313c279b11837c1a95e38abc4d554cb866cc91286fe3ccc19adc3d61e061
+      head: 46b183615afbfe3b1fffcbc9425ac3aea2c36d99
+change_budget_compliance:
+  allowed_paths_only: true
+  protected_paths_untouched: true
+  dependency_changes: none; package-lock and existing versions/integrities unchanged
+  public_contract_changes: sources.lock schema 2, explicit prepare:skills, session subcommands, optional sync --install-entry, installation receipt schema 2
+  database_changes: none
+changed_files:
+  - .gitignore
+  - AGENTS.md
+  - README.md
+  - docs/integration.md
+  - docs/maintenance.md
+  - docs/onboarding.md
+  - docs/validation.md
+  - manifest/governance.json
+  - manifest/roles.yaml
+  - package.json
+  - rules/collaborative-foundation-infra.md
+  - scripts/build.mjs
+  - scripts/ci-check.mjs
+  - scripts/teamai-sync.mjs
+  - skills/common/collaborative-foundation-infra/SKILL.md
+  - skills/common/collaborative-foundation-infra/references/adoption.md
+  - skills/common/collaborative-foundation-infra/references/delivery.md
+  - skills/common/collaborative-foundation-infra/references/evidence.md
+  - skills/common/collaborative-foundation-infra/references/manual.md
+  - skills/common/collaborative-foundation-infra/references/structure.md
+  - skills/common/collaborative-foundation-infra/references/tools.md
+  - skills/common/collaborative-foundation-infra/scripts/governance.mjs
+  - skills/common/collaborative-foundation-infra/templates/handoff.md.txt
+  - skills/common/collaborative-foundation-infra/templates/project-profile.md.txt
+  - sources.lock.json
+  - tools/cli.mjs
+  - tools/distribution.mjs
+  - scripts/prepare-skills.mjs
+  - skills/common/collaborative-foundation-infra/references/session.md
+  - tools/session.mjs
+  - tools/sources.mjs
+  - .gitmodules
+  - upstreams/ric-devflow
+  - upstreams/ric-design-patterns
+generated_package_tracking:
+  action: exact index removal of six expanded package directories; complete generated outputs remain present and verified
+  removed_tracked_files: 725
+  precise_index_diff: production-snapshot-v1/staged.patch
+  other_index_additions: 3
+summary: Pinned real upstream submodules, deterministic owned exports, explicit root-session selection, atomic project entry publication, and shared engineering standards for devflow/basic are implemented locally.
+reused_existing_patterns:
+  - Existing ESM functions and repository path/hash/Git helpers; no new runtime or production dependencies.
+  - Existing isolated real TeamAI pull, exclusive resource publication, build generator and trusted-baseline CI.
+  - Read the installed design-pattern Skill and JavaScript routing before implementation; functions and composition cover these bounded source/session adapters without a State hierarchy.
+design_decisions:
+  - Index gitlink, initialized clean upstream HEAD and source lock must agree; no auto-fetch, auto-checkout or upstream code execution.
+  - Unknown even byte-identical export directories are never adopted. Own unchanged exports require a full valid receipt; interrupted publication remains visible and refused.
+  - A session identity combines project common-dir/root digest, actual harness and root-session digest. Child calls can only read/inherit; no dialogue or task state is persisted.
+  - Status is read-only; root selection uses private directories/files, exclusive locks, atomic publication, full history and version binding. Manual fallback records require explicit history-preserving reconciliation.
+  - Resources, entry and receipt are checked together before publication. Equal complete entry blocks are matched/no-write; append requires clean tracked existing text. Complete temporary entry bytes are synced and original inode/bytes rechecked before atomic replacement.
+  - Installation, matching entry bytes and actual host loading are separate facts. No real session choice has been fabricated for this implementation conversation.
+  - Both modes share module and documentation standards. Only devflow loads the upstream delivery Skill bodies and native roles; basic retains old state read-only.
+  - CI reads trusted baseline policy/artifact/source locks and flags submodule, preparer, Skill and AGENTS/CLAUDE changes for independent review.
+tests:
+  - command: npm run prepare:skills
+    exit_code: 0
+    result: noop; complete six exports match source
+    evidence: final-checks.json
+  - command: npm run build
+    exit_code: 0
+    result: passed
+    evidence: final-checks.json
+  - command: npm run check
+    exit_code: 0
+    result: 18/18 reachable documents; 0 findings
+    evidence: final-checks.json
+  - command: git diff --check
+    exit_code: 0
+    result: passed
+    evidence: final-checks.json
+  - command: git diff --cached --check
+    exit_code: 0
+    result: passed
+    evidence: final-checks.json
+  - command: node $EVIDENCE/smoke.mjs
+    exit_code: 0
+    result: "12 groups passed: session persistence/switch/inheritance/worktree, record failures, all three real TeamAI harness distributions, entry preview/no-write/idempotence/conflicts, short-write EIO preservation, 725 source identities"
+    evidence: smoke-results.json
+  - command: node $EVIDENCE/source-smoke.mjs
+    exit_code: 0
+    result: "7 groups passed: missing initialization, unknown byte-identical export, offline preparation/noop, dirty source, custom output, interrupted state, source-lock mismatch"
+    evidence: source-smoke-results.json
+  - command: node $EVIDENCE/ci-smoke.mjs
+    exit_code: 0
+    result: "3 groups passed: trusted pinned-source baseline, both instruction files require review, candidate policy cannot hide trusted-check violations"
+    evidence: ci-smoke-results.json
+  - command: node $EVIDENCE/complete-freeze.mjs
+    exit_code: 0
+    result: 2209 production entries match live/tree/restored types, modes and bytes; three Git bundles verified
+    evidence: freeze-final.log
+documentation:
+  - README and onboarding describe explicit init/prepare, resource-only versus entry installation, and independent mode choice.
+  - Self Skill session/manual references define identity, user selection, fork/resume/child rules, basic scope, switching, failures and manual handoff recovery.
+  - Engineering structure, delivery, evidence, adoption and templates apply the same boundaries in both modes.
+  - Maintenance records owned-export upgrades, interrupted publication recovery, CI boundaries and private backup practices; validation links current evidence without asserting unexecuted approvals.
+migrations:
+  - Verified archived legacy expanded packages were moved outside the repository before first prepare. Their original 725 file manifests remain byte-for-byte and mode-for-mode unchanged in sources.lock.
+  - Only .gitmodules, two gitlinks and 725 package tracking removals were staged. No main commit, push, branch change or remote change was performed.
+  - Prior schema/version installation receipts and customized targets remain preserved and require separate reviewed migration.
+rollback:
+  - Original full-tree recovery archive remains with the Planner; no rollback of active work was performed.
+  - Local production snapshot contains complete production file bytes and mode manifest, verified baseline/upstream bundles, and staged/working patches. Restore only into a new isolated target; include Tester/Planner artifacts separately from their owners.
+  - Partial export/publication output is preserved for explicit evidence-guided recovery; do not clear unknown content or force-overwrite to pass checks.
+known_risks:
+  - Filesystem publication uses cooperative serial locks; it is not a transaction across every distributed resource nor an OS sandbox against hostile writers.
+  - Manual session recovery is an explicit operator/Agent protocol with history verification, not an automatic import CLI.
+  - Native host loading and native-role behavior remain unverified by these file/process self-checks.
+not_run:
+  - check: Complete npm test and new task-level suite
+    reason: Tester owns tests and will adapt fixture preparation and add independent cases after this released production window.
+  - check: Independent CODE_REVIEW and formal G5–G10
+    reason: Planner coordinates independent review; local snapshot is not a substitute for required commit-bound formal gates.
+  - check: Real Codex/ZCode/Claude host loading and native four-role invocation
+    reason: Self-validation exercised actual TeamAI CLI distribution only; no host loading or new global role installation was authorized or claimed.
+  - check: Remote CI, branch protection, remote push and production rollout
+    reason: Local-only task scope.
+pre_existing_failures_observed: []
+resolved_local_validation_issues:
+  - issue: First document check found two links aimed at absent review files.
+    resolution: Links now target the actual immutable review sections in current evidence; final check has zero findings.
+  - issue: Snapshot helper initial copy did not restore directory mode, then default Git stdout buffer limited large staged patch capture.
+    resolution: Restoration now applies each recorded directory/file mode explicitly and compares it; patch capture streams directly to a private file. Failed helper logs remain preserved, final 2209-entry comparison and bundles passed.
+    evidence:
+      - freeze-attempt-1.log
+      - freeze-attempt-2.log
+      - freeze-final.log
+  - issue: The first progress summary and report overcounted smoke groups by one.
+    resolution: "Counted the actual result arrays: smoke 12, source 7, CI 3, total 22. No test status or candidate bytes changed."
+source_identity:
+  upstreams:
+    - id: ric-devflow
+      path: upstreams/ric-devflow
+      url: https://github.com/lichong-a/ric-dev-workflow-skills
+      commit: 9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb
+    - id: ric-design-patterns
+      path: upstreams/ric-design-patterns
+      url: https://github.com/lichong-a/ric-design-patterns-skill
+      commit: 46b183615afbfe3b1fffcbc9425ac3aea2c36d99
+  source_digest: ba9ac0ad1233e72d71050cb357dfdf238a7f84a258a4123acabcfc2316280ded
+  source_lock_digest: adcfa4ce96daa2b791f07c950171d5391f3f521fdbb787b172e1ef1767dfa2bc
+  exports_digest: 6a945f580b4c4233758c10ccffff354ab1c33f5b5fa317f196bd07427d20c136
+  artifact_sha256: f88e8801fbe498acdb579e8c8d43f233d89f34fb7aee51259ad7653fb8d1fb1e
+  standard_version: 4f16f4d3b890e09ec60fec57070c77d7e50108dc434e30df4033c6c322af965d
+protected_checks:
+  original725ManifestsUnchanged: true
+  dependenciesUnchanged: true
+  testFilesUnchanged: true
+  historicalFlowUnchanged: true
+  mainHeadUnchanged: true
+handoff:
+  receiver: ric_devflow_planner
+  production_window: released; no further production writes
+  next: Tester serial test ownership, then independent complete-candidate CODE_REVIEW

@@ -1,0 +1,410 @@
+{
+  "schema_version": 1,
+  "test_report_id": "TEST-20260917-002-003",
+  "supersedes": "TEST-20260917-002-002",
+  "root_issue_id": "REQ-20260917-002",
+  "tested_sha": "53d29b7fc9906aa5556bb66e476568dc8a446815",
+  "spec_version": 3,
+  "test_plan_version": 3,
+  "environment": {
+    "scope": "PASS only for current local Linux automated and bounded protocol-diff review slice. Technical revision4 changes source location only; no prior execution reused.",
+    "node": "v24.20.0",
+    "npm": "11.19.0",
+    "git": "2.53.0",
+    "platform": "Linux x86_64",
+    "uid_class": "non-root",
+    "teamai": "0.24.0",
+    "isolated_home_xdg": true,
+    "candidate_directory": "candidate",
+    "candidate_parent": "c02f51cfe8c2e5cd1bd59b5b41228ebc1f6904fe",
+    "main_head": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+    "task_revision": 4,
+    "technical_revision": 4,
+    "technical_sha256": "1877bfddde81eabae6fa05e739e9b5cc22ab1ffb1440d95835eb4e277b235f76",
+    "technical_review": "REVIEW-TECHNICAL-20260917-002-004",
+    "spec_sha256": "cb01d871b49d9f6b46ec8056c573d667af60f666de69866f31cc7e5004e579b9",
+    "test_plan_sha256": "5783c10777c9695a1a337e2ee59bec846ce69450e3aad8fdd78325090f177f11",
+    "production_snapshot": "../implementer/production-snapshot-v5",
+    "production_manifest_sha256": "088cd444b393eaa020ad1af5c0b140f9c36f78facd93990ed8c3eb2ab05c4820",
+    "production_tree_digest": "9c06f673ceafcfc9ab06ce686d6a849795c59f8a3c238b3a7171b080fb2a25fa",
+    "standardVersion": "5e7e6f992baeac30cc6be01788201be107d7e57db2eec925e039404c1d995b7d",
+    "artifact_sha256": "25bc55abe31d445a7093fa76aa4a31d5697e85e25596a62f9809b5839b60fe88",
+    "sourceDigest": "88f242e8813b8b2e6013bc5de5cb61079cd64da3a75d21283e8dafe2855290fe",
+    "sourcePackagesDigest": "217f8d3b53169b723df106a0cf1a75e8c05f084a8ba3f9c3191199b2daaef23b",
+    "distributionDigest": "d25f8358382a5ae7acbc360245b9313f7d812c54fa3c72c8d2765ebbe95bd6ae",
+    "sourceLockDigest": "7058fdbffc796f5dff7ef277084d9152778d5566d79e7df38a40713738f4eec6",
+    "gitlinks": {
+      "skills/upstreams/ric-devflow": "9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb",
+      "skills/upstreams/ric-design-patterns": "46b183615afbfe3b1fffcbc9425ac3aea2c36d99"
+    },
+    "execution_evidence": {
+      "path": "execution-records.json",
+      "sha256": "b4f67f96c0576c6f1a9e505a226739715367db3646173c0ffe7c16b0bb2a4542"
+    },
+    "correspondence": {
+      "path": "correspondence-final.json",
+      "sha256": "3b93043f533df402c482ca62490d93b037bdcd381db60bcef4a0bd8c10d1eb8c"
+    },
+    "historical_protection": {
+      "path": "historical-protection.json",
+      "sha256": "57748a8e788597c0bf9843351d8ad8f4898eeaae190050ac41b1b24ab9b6e8c2"
+    },
+    "recovery": {
+      "path": "recovery-receipt.json",
+      "sha256": "3a4b2bb4216967a3510a82208e4377a5210a215be3d978c8bb57f886a9a4b8cb"
+    },
+    "protocol_review": {
+      "path": "protocol-review-v4.json",
+      "sha256": "355efb0864077df04780a20b6f58171a44d50b057a0e771971b6f2ac3a4bf222"
+    },
+    "path_adaptation": {
+      "path": "path-adaptation.json",
+      "sha256": "a03eccdcf8d50edda980d3478b908aa5e0930baa178e1d73e4ab0ea80adaaf8b"
+    },
+    "supplement_script": {
+      "path": "supplemental.test.mjs",
+      "sha256": "6f410c45b7c970367d8b8035462c5f639e611b9e7ff3444328222a9be95d8628"
+    }
+  },
+  "started_at": "2026-09-17T10:11:25.978793+00:00",
+  "finished_at": "2026-09-17T10:15:25.095258+00:00",
+  "summary": {
+    "passed": 68,
+    "failed": 0,
+    "blocked": 0
+  },
+  "commands": [
+    {
+      "command": [
+        "npm",
+        "ci",
+        "--ignore-scripts",
+        "--offline"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "53d29b7fc9906aa5556bb66e476568dc8a446815",
+      "started_at": "2026-09-17T10:11:25.978793+00:00",
+      "finished_at": "2026-09-17T10:11:26.909369+00:00",
+      "exit_code": 0,
+      "stdout": "install.stdout.log",
+      "stdout_sha256": "7957ea73ae3530846f8425d9fc45386826c56b503f982a717fc0064e1fe70403",
+      "stderr": "install.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSkillDirectories": [
+        "collaborative-foundation-infra"
+      ],
+      "oldRootExists": false,
+      "legacyPreparationStateExists": false
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "prepare:skills"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "53d29b7fc9906aa5556bb66e476568dc8a446815",
+      "started_at": "2026-09-17T10:11:26.909648+00:00",
+      "finished_at": "2026-09-17T10:11:27.221245+00:00",
+      "exit_code": 0,
+      "stdout": "prepare.stdout.log",
+      "stdout_sha256": "6c92121446a6237d1fe590c0bc82bea006ed7e864378aa831235f4bd1b1c5fb1",
+      "stderr": "prepare.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSkillDirectories": [
+        "collaborative-foundation-infra"
+      ],
+      "oldRootExists": false,
+      "legacyPreparationStateExists": false
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "53d29b7fc9906aa5556bb66e476568dc8a446815",
+      "started_at": "2026-09-17T10:11:27.221535+00:00",
+      "finished_at": "2026-09-17T10:11:27.537300+00:00",
+      "exit_code": 0,
+      "stdout": "build.stdout.log",
+      "stdout_sha256": "8f784fa46629784ee0d32505b443c473e27d7edcb25e03ce9f35d49e475f91f0",
+      "stderr": "build.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSkillDirectories": [
+        "collaborative-foundation-infra"
+      ],
+      "oldRootExists": false,
+      "legacyPreparationStateExists": false
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "53d29b7fc9906aa5556bb66e476568dc8a446815",
+      "started_at": "2026-09-17T10:11:27.537543+00:00",
+      "finished_at": "2026-09-17T10:12:25.983112+00:00",
+      "exit_code": 0,
+      "stdout": "full-test.stdout.log",
+      "stdout_sha256": "e42d7642bcc6f4e5d26ca3d80857ac4be18d93b6869926be33fa2e205b1ce918",
+      "stderr": "full-test.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSkillDirectories": [
+        "collaborative-foundation-infra"
+      ],
+      "oldRootExists": false,
+      "legacyPreparationStateExists": false
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "supplemental.test.mjs"
+      ],
+      "cwd": ".",
+      "tested_sha": "53d29b7fc9906aa5556bb66e476568dc8a446815",
+      "started_at": "2026-09-17T10:12:25.983425+00:00",
+      "finished_at": "2026-09-17T10:12:31.183851+00:00",
+      "exit_code": 0,
+      "stdout": "supplemental.stdout.log",
+      "stdout_sha256": "e894f2e01d70eea5c8338d71574433d3e1b26317c5dd48aac4a617a84aad17fa",
+      "stderr": "supplemental.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSkillDirectories": [
+        "collaborative-foundation-infra"
+      ],
+      "oldRootExists": false,
+      "legacyPreparationStateExists": false
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "check"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "53d29b7fc9906aa5556bb66e476568dc8a446815",
+      "started_at": "2026-09-17T10:12:31.184157+00:00",
+      "finished_at": "2026-09-17T10:12:32.233540+00:00",
+      "exit_code": 0,
+      "stdout": "check.stdout.log",
+      "stdout_sha256": "681a8f17549d07dbe1c2274bd1d13e8444e727c2944b4ec71cf9ff3c35e63121",
+      "stderr": "check.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSkillDirectories": [
+        "collaborative-foundation-infra"
+      ],
+      "oldRootExists": false,
+      "legacyPreparationStateExists": false
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": "candidate",
+      "tested_sha": "53d29b7fc9906aa5556bb66e476568dc8a446815",
+      "started_at": "2026-09-17T10:12:32.233823+00:00",
+      "finished_at": "2026-09-17T10:12:32.241500+00:00",
+      "exit_code": 0,
+      "stdout": "diff-check.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "diff-check.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceSkillDirectories": [
+        "collaborative-foundation-infra"
+      ],
+      "oldRootExists": false,
+      "legacyPreparationStateExists": false
+    }
+  ],
+  "acceptance_criteria_results": [
+    {
+      "acceptance_criterion": "AC-SOURCE",
+      "result": "PASS",
+      "test_cases": [
+        "TC-SRC-001",
+        "TC-SRC-002",
+        "TC-SRC-003",
+        "TC-SRC-004",
+        "TC-SRC-005",
+        "TC-SRC-006",
+        "TC-SRC-007",
+        "TC-SRC-008",
+        "TC-REG-001"
+      ],
+      "evidence": "Direct locked gitlinks/HEAD/manifest, missing/conflicted/dirty/ignored/special/link refusal, offline no-fetch/no-hooks verification, upgraded synthetic commit, legacy remnants preserved, no source copies/state recreated. Current nested gitlinks/.gitmodules/HEAD/Git pointer/core.worktree and both complete upstream tree identities checked. Root upstreams absent. New skills and skills/upstreams ancestor symlinks fail without outside mutation.",
+      "artifacts": [
+        "sources.test.mjs",
+        "distribution.test.mjs",
+        "supplemental.test.mjs",
+        "correspondence-final.json"
+      ]
+    },
+    {
+      "acceptance_criterion": "AC-DISTRIBUTION",
+      "result": "PASS",
+      "test_cases": [
+        "TC-SRC-007",
+        "TC-SRC-008",
+        "TC-DIST-001",
+        "TC-DIST-002",
+        "TC-DIST-003",
+        "TC-DIST-004",
+        "TC-DIST-005",
+        "TC-DIST-006",
+        "TC-MODE-001",
+        "TC-DOC-001",
+        "TC-REG-001"
+      ],
+      "evidence": "Actual TeamAI0.24.0 seven-package distribution and repeat runs for codex/zcode/claude; private staging bytes/modes, independent own four-link transformation, schema3 receipt digests, preview and explicit entry flags, custom/disabled/stale receipt protection, publication faults and concurrent private trees. Private team excludes both root upstreams and skills/upstreams. Fresh actual seven-package runs pass for all three targets.",
+      "artifacts": [
+        "distribution.test.mjs",
+        "entry.test.mjs",
+        "sources.test.mjs",
+        "supplemental.test.mjs"
+      ]
+    },
+    {
+      "acceptance_criterion": "AC-SESSION",
+      "result": "PASS",
+      "test_cases": [
+        "TC-SESSION-001",
+        "TC-SESSION-002",
+        "TC-SESSION-003",
+        "TC-SESSION-004",
+        "TC-SESSION-005",
+        "TC-SESSION-006",
+        "TC-SESSION-007",
+        "TC-SESSION-008",
+        "TC-REG-001"
+      ],
+      "evidence": "Actual CLI/API processes validate 0/3/2 contract, root identity/worktrees/forks/harness isolation/child read-only, history/version switches, corruption/manual refusal, 0700/0600, EACCES/link protection and concurrent/atomic-write faults.",
+      "artifacts": [
+        "session.test.mjs",
+        "supplemental.test.mjs"
+      ]
+    },
+    {
+      "acceptance_criterion": "AC-MODE",
+      "result": "PASS",
+      "test_cases": [
+        "TC-DIST-003",
+        "TC-DIST-004",
+        "TC-SESSION-003",
+        "TC-SESSION-004",
+        "TC-SESSION-005",
+        "TC-MODE-001",
+        "TC-MODE-002",
+        "TC-DOC-001",
+        "TC-REG-001"
+      ],
+      "evidence": "Protocol review plus real session CLI: consent/resume/new root/child/basic/devflow/switch semantics. Source and distributed links work; no native host/model behavior claimed. For technical4, unchanged protocol bodies and narrowly changed navigation reviewed against parent; CLI tests executed anew.",
+      "artifacts": [
+        "session.test.mjs",
+        "entry.test.mjs",
+        "protocol-review-v4.json"
+      ]
+    },
+    {
+      "acceptance_criterion": "AC-STRUCTURE",
+      "result": "PASS",
+      "test_cases": [
+        "TC-MODE-002",
+        "TC-STRUCT-001",
+        "TC-REG-001"
+      ],
+      "evidence": "Both modes share repository/profile/module boundaries; old project suggestions remain bounded; new structure stays within existing design confirmation and does not create extra roles or state. For technical4, unchanged protocol bodies and narrowly changed navigation reviewed against parent; CLI tests executed anew.",
+      "artifacts": [
+        "protocol-review-v4.json",
+        "governance.test.mjs"
+      ]
+    },
+    {
+      "acceptance_criterion": "AC-CI-DOC",
+      "result": "PASS",
+      "test_cases": [
+        "TC-DIST-006",
+        "TC-CI-001",
+        "TC-DOC-001",
+        "TC-REG-001"
+      ],
+      "evidence": "Trusted baseline CI rejects candidate governance weakening and detects gitlinks/new source/entry changes. Source check18/18 reachable with0 findings; installed Skill navigation and missing-topic failure tested; source and installed links checked separately. Nested source gitlink changes and reintroduction of legacy root upstreams are both explicitly flagged.",
+      "artifacts": [
+        "ci-runtime.test.mjs",
+        "entry.test.mjs",
+        "distribution.test.mjs",
+        "sources.test.mjs",
+        "check.stdout.log"
+      ]
+    }
+  ],
+  "regression_results": [
+    {
+      "name": "Original npm test",
+      "result": "PASS",
+      "repository_groups": 62,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "duration_ms": 58293.183475,
+      "detail": "All62 prior groups retained; only three test files mapped to new paths, with added ancestor-link and old-root CI subcases. No retries or timeout widening."
+    },
+    {
+      "name": "Independent supplements",
+      "result": "PASS",
+      "groups": 6,
+      "duration_ms": 5167.466509,
+      "detail": "Original script byte-identical and separately hashed, rerun on current candidate; not part of candidate commit."
+    },
+    {
+      "name": "Exact source and workspace identity",
+      "result": "PASS",
+      "detail": "1145 production entries and9 test files match main;725 upstream file bytes/executable bits and both complete Git trees preserved; source lock package differences limited to paths. Four production protection paths and15 historical Root files unchanged."
+    },
+    {
+      "name": "Git migration and read-only prepare",
+      "result": "PASS",
+      "detail": "Migration index changes exactly .gitmodules, two old gitlinks and two new gitlinks; unrelated index entries preserved. Tester window mainHEAD/index unchanged. Actual gitfiles/core.worktree resolve new directories. Each command leaves only own source Skill, no root upstreams, no preparation state."
+    },
+    {
+      "name": "Recovery",
+      "result": "PASS",
+      "detail": "New root bundle and both upstream bundles verified; fresh restoration matches candidate HEAD/tree, prepare verified, old root/state absent and restored tracked tree clean."
+    }
+  ],
+  "baseline_comparison": {
+    "baseline_sha": "e094623ea9dd21b5d5ac69fcbaec093220cbb5e1",
+    "pre_existing_failures": [],
+    "new_failures": []
+  },
+  "open_defects": [],
+  "not_run": [
+    {
+      "check": "Native harness startup/loading and new/resumed/forked session UI/model interaction for Codex, ZCode and Claude Code",
+      "reason": "This local slice validates actual TeamAI file distribution and isolated CLI records only; no native invocation was performed."
+    },
+    {
+      "check": "Real DevFlow Planner/Reviewer/Tester/Implementer calls from newly installed packages",
+      "reason": "Resource integrity and protocol semantics are verified separately; native loading/invocation is not inferred from installation."
+    },
+    {
+      "check": "Human-operated manual-state migration, Windows/macOS behavior and remote hosted CI/branch protection",
+      "reason": "No such operation or environment is part of this authorized local Linux slice."
+    },
+    {
+      "check": "Main-repository commit/push/release and formal G5-G10 completion",
+      "reason": "User permits local changes only. Tested SHA is a recoverable isolated synthetic candidate, not main HEAD; test PASS does not grant those gates."
+    }
+  ],
+  "residual_risks": [
+    "Local protocol/CLI/file evidence cannot prove that any native harness will load or obey an entry; those checks remain not_run.",
+    "Old installed schema2 or customized resources are intentionally preserved and refused; source-layout migration does not grant implicit migration of member installations.",
+    "Mode identity parameters are cooperation contracts, not an OS sandbox against arbitrary shell calls or forged IDs."
+  ],
+  "verdict": "PASS"
+}

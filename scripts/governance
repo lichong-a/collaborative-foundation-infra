@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+script_directory="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+exec "$script_directory/runtime" --runtime node -- "$script_directory/../skills/common/collaborative-foundation-infra/scripts/governance.mjs" "$@"

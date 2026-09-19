@@ -1,0 +1,88 @@
+schema_version: 1
+review_id: REVIEW-TECHNICAL-20260917-002-004
+supersedes: null
+mode: SPEC_REVIEW
+reviewer: ric_devflow_reviewer
+created_at: "2026-09-17T10:01:05Z"
+target:
+  root_issue_id: REQ-20260917-002
+  task_id: TASK-001
+  task_revision: 4
+  spec_version: 3
+  test_plan_version: 3
+  technical_revision: 4
+  base_sha: e094623ea9dd21b5d5ac69fcbaec093220cbb5e1
+  head_sha: null
+  tested_sha: null
+  prior_candidate_sha: c02f51cfe8c2e5cd1bd59b5b41228ebc1f6904fe
+  document: .devflow/changes/REQ-20260917-002/attachments/technical-v4.md
+  document_sha256: 1877bfddde81eabae6fa05e739e9b5cc22ab1ffb1440d95835eb4e277b235f76
+verdict: APPROVE
+summary: >-
+  批准此有界路径迁移技术修订。
+  两个上游由根 upstreams 移至 skills/upstreams，相关来源映射、
+  保护路径、源码导航、可信 CI 和测试常量同步调整；
+  固定版本、七包安装布局、权限和会话行为保持。
+  原 Spec3 与 TestPlan3 的未变行为及保护性 Oracle 继续适用，
+  不需要重建 Task 或重审完整规格和测试计划。
+  未发现实际阻断。
+findings: []
+non_blocking_notes: []
+applicability:
+  prior_spec_review: REVIEW-SPEC-20260917-002-003
+  prior_test_review: REVIEW-TEST-20260917-002-002
+  g2_delta: >-
+    仅覆盖子模块位置、.gitmodules/index/Git指针及core.worktree、
+    来源锁严格路径、治理保护、四处源码导航和当前文档。
+    两个固定SHA、725文件身份、schema3语义及分发侧同级包布局保持。
+  g4_mapping: >-
+    原28个追踪ID及其行为Oracle保持；
+    来源与CI用例改为新实际路径，导航期望独立调整相对深度，
+    新父目录适用既有祖先软链/越界保护，
+    根upstreams消失及旧路径重新引入的治理识别纳入相关路径断言。
+    这属于受影响位置与测试输入映射复核，不代表新的测试执行通过。
+residual_risks:
+  - >-
+    子模块移动必须同时验证主仓gitlink、.gitmodules、子模块实际HEAD、
+    工作树Git指针及内部core.worktree，不能用普通目录移动成功替代Git身份验证。
+  - >-
+    根upstreams消失后，历史已封存记录仍保留原文；
+    新位置下上游指令仅属于上游范围，不应复制或引入主仓指令。
+  - >-
+    路径调整会改变来源锁、规范版本或构建摘要；
+    必须按实际产物记录，不能沿用旧摘要宣称新布局同源。
+    旧安装的保守拒绝与显式迁移授权边界保持。
+  - >-
+    旧62+6执行结果仍仅绑定前一候选。
+    实际增量、测试代码与新执行结果须绑定新的完整隔离候选并复审，
+    不表示主仓提交、正式G5–G10、原生加载或远端发布通过。
+evidence_reviewed:
+  - identity: Technical revision 4
+    path: .devflow/changes/REQ-20260917-002/attachments/technical-v4.md
+    sha256: 1877bfddde81eabae6fa05e739e9b5cc22ab1ffb1440d95835eb4e277b235f76
+    result: >-
+      从同一份字节计算摘要并读取全文；
+      授权、精确差异、所有权、恢复及新候选验收边界明确。
+  - identity: Existing implementation mapping points
+    paths:
+      - .gitmodules
+      - tools/sources.mjs
+      - tools/skill-resources.mjs
+      - scripts/ci-check.mjs
+      - manifest/governance.json
+      - tests/source-fixtures.mjs
+      - tests/sources.test.mjs
+      - tests/entry.test.mjs
+    result: >-
+      定向核对现有路径使用点，技术说明覆盖实际受影响的严格路径、
+      导航映射及可信CI输入；无需新增功能或弱化既有保护。
+  - identity: Retained approved contracts
+    result: >-
+      沿用已审Spec3/TestPlan3的只读prepare、临时组装、原包字节保护、
+      独立链接Oracle、真实TeamAI分发和原会话/入口语义；
+      未变对象保持原批准绑定。
+  - identity: Main baseline and reviewer boundary
+    result: >-
+      只读核验主仓HEAD仍为e094623ea9dd21b5d5ac69fcbaec093220cbb5e1。
+      未修改文件、执行迁移、运行写入性测试或派生代理。
+unblock_conditions: []

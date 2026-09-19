@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "implementation_id": "IMPL-20260917-002-TEST-004",
+  "supersedes": "IMPL-20260917-002-TEST-003",
+  "root_issue_id": "REQ-20260917-002",
+  "task_id": "TASK-001",
+  "defect_id": null,
+  "spec_version": 4,
+  "base_sha": "53d29b7fc9906aa5556bb66e476568dc8a446815",
+  "head_sha": "8c1edc969f1264b6ffa147238457b65358904b5c",
+  "change_budget_compliance": {
+    "allowed_paths_only": true,
+    "protected_paths_untouched": true,
+    "dependency_changes": "none by Tester",
+    "public_contract_changes": "none by Tester",
+    "database_changes": "none"
+  },
+  "changed_files": [
+    "tests/acceptance-plan.md",
+    "tests/ci-runtime.test.mjs",
+    "tests/distribution.test.mjs",
+    "tests/entry.test.mjs",
+    "tests/helpers.mjs",
+    "tests/source-fixtures.mjs",
+    "tests/sources.test.mjs",
+    "tests/teamai-fixtures.mjs",
+    "tests/teamai-resources.test.mjs",
+    "tests/teamai-runtime.test.mjs"
+  ],
+  "summary": "Tester-only ten-file adaptation and independent integration/fault coverage for Spec4/TestPlan4. Candidate also contains separately authored production and Planner records; this report claims only tests ownership. Execution report TEST-20260917-002-004, SHA256 c5b5f8c35b27fcd7785382462d1b1e428759cd6945b250c13427dfacbc9bdabf.",
+  "reused_existing_patterns": [
+    "Node native test runner, isolated Git/worktree fixtures and independent byte/mode manifests.",
+    "Preserved original62 groups; original6 supplements retain behavior.",
+    "Real npm archive/CLI/pull with injection limited to explicitly labeled external or filesystem boundaries."
+  ],
+  "design_decisions": [
+    {
+      "decision": "Source fixtures",
+      "reason": "Third official source is an actual pinned clone; RIC synthetic cases stay bounded. Independent own entry and four-target guide transformations build expected bytes without production transformer."
+    },
+    {
+      "decision": "Prepared-runtime fixture",
+      "reason": "All distribution consumers use verified private provenance. Optional isolated archive/data inputs avoid duplicate acquisition; archive SRI, actual package, full receipt and real pull still validate."
+    },
+    {
+      "decision": "Defect protection",
+      "reason": "Retained failures for cleanup/current transaction, directory identity replacement and independent reader publication race; no assertion weakening."
+    },
+    {
+      "decision": "External assets",
+      "reason": "Original6 supplements plus five additional approved branches are independently hashed beside candidate; they do not modify production/main or the frozen candidate."
+    }
+  ],
+  "tests": [
+    {
+      "report": "test-report-v4.yaml",
+      "test_report_id": "TEST-20260917-002-004",
+      "sha256": "c5b5f8c35b27fcd7785382462d1b1e428759cd6945b250c13427dfacbc9bdabf",
+      "result": "PASS",
+      "groups": {
+        "repository": 81,
+        "original_supplement": 6,
+        "runtime_supplement": 5
+      },
+      "skipped": 0,
+      "cancelled": 0
+    },
+    {
+      "checks": "prepare:skills, runtime offline reuse, build, check, diff, tenSkill validations, 738source oracle, actual bundle restoration",
+      "result": "PASS"
+    }
+  ],
+  "documentation": [
+    "tests/acceptance-plan.md routes to authoritative current plan/evidence and documents fixture acquisition/layer limits."
+  ],
+  "migrations": [],
+  "rollback": [
+    "Tests can be compared/restored from the recorded isolated parent; no rollback command ran against main.",
+    "Four immutable bundles preserve full candidate and three fixed upstream histories."
+  ],
+  "known_risks": [
+    "Native host/model and future CLI compatibility remain explicitly not_run."
+  ],
+  "not_run": [
+    {
+      "check": "Native Codex/ZCode/Claude host loading, new/forked UI/model conversations and actual native DevFlow role calls",
+      "reason": "Actual TeamAI file distribution and synthetic CLI session records do not prove host/model behavior."
+    },
+    {
+      "check": "Real wiki generation and remote knowledge sharing/publication",
+      "reason": "Only authorization/protocol routing is within this local slice; no actual output/publication task was authorized."
+    },
+    {
+      "check": "A distinct future published CLI release, Windows/macOS and remote CI/branch protection",
+      "reason": "Compatibility claims bind actual0.24.0; future releases and other environments were not supplied or run."
+    },
+    {
+      "check": "Main repository commit/push/release and formal G5-G10",
+      "reason": "Main remains uncommitted as authorized; tested SHA is a recoverable isolated candidate."
+    }
+  ],
+  "pre_existing_failures_observed": [],
+  "external_test_assets": [
+    {
+      "path": "supplemental.test.mjs",
+      "sha256": "6fd3b69697b3dae4ad3cc62a12d9fe2445146073c9fb2be0bada86c6a87246af"
+    },
+    {
+      "path": "runtime-additional.test.mjs",
+      "sha256": "927776d983c8b40637680f9aa8aceca2b3c79b56abafa7c9b56eaa262cfb8442"
+    }
+  ],
+  "oracle_adaptation": [
+    "Six RIC packages725 unchanged; source now8 packages738 plus two own Skill packages.",
+    "Layout/schema3 expectations changed to4; historical schema2/3 explicitly rejected.",
+    "Bare node_modules entry replaced by actual private prepared installation; bare entry retained as negative test.",
+    "Old four RIC navigation mappings retained; ownCLI guide/license/twoofficial routes and DEC005 exact repair added.",
+    "Ten-package real Git refresh still compares full POSIX modes and bytes; cross-copy verification retains executable-bit identity."
+  ]
+}

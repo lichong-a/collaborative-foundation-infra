@@ -1,0 +1,128 @@
+schema_version: 1
+review_id: REVIEW-CODE-20260917-001
+supersedes: null
+mode: CODE_REVIEW
+reviewer: ric_devflow_reviewer
+created_at: "2026-09-17T03:59:06Z"
+
+target:
+  root_issue_id: REQ-20260917-001
+  task_id: TASK-001
+  spec_version: 1
+  spec_sha256: c3f3bef80efe3a2e1a1312f8f3db654c3f305ebfd0dc78e56a62b2ec42e63f7a
+  test_plan_version: 1
+  test_plan_sha256: f61a45e4d2d74c7972b746af0ad848da62203741c2afd21e207b90843fd97881
+  base_sha: d78b68779899fa9167ec24599a301902c91724cb
+  production_sha: 5be7d0c5e943bcb6d4233a51e2f74516f295bf69
+  head_sha: c0830203fbb5a00b3a76f9e3e69d439e5320dd09
+  tested_sha: c0830203fbb5a00b3a76f9e3e69d439e5320dd09
+  external_evidence: migration-20260917T033224Z
+  scope: 完整生产、生成物、必要文档及独立测试代码的隔离候选
+
+verdict: APPROVE
+summary: >-
+  完整候选符合已批准的命名统一与通用性维护范围。
+  新命名贯穿包、Skill、规则、回执、CI、缓存、环境变量和生成标记，
+  未发现未声明的行为扩展或保护机制回归。
+  独立测试绑定同一完整 SHA，37 项全部通过；最终扫描和保护范围比对通过。
+  本批准仅适用于隔离本地交付候选，不表示原仓已有提交或正式 G5–G10 完成。
+
+findings: []
+
+reviewed:
+  - 真实 base、production、head 的血缘、完整净差异和候选干净状态。
+  - 构建入口与 bundle 使用合法 JavaScript 标识符，源码和生成物变更相符。
+  - TeamAI 分发资源、规则、回执及可信 CI 提取路径使用一致命名。
+  - 运行时默认缓存、离线变量、下载摘要文件和人工降级入口同步。
+  - 受管理导航、待分类标识及并行流程检测按批准的新命名空间工作。
+  - 既有安装文档明确当前预检只覆盖当前目标，不自动发现、覆盖、删除或迁移此前安装。
+  - 渐进式导航及分发后引用保持相对关系，接入指引没有扩大授权。
+  - 验证文档引用当前任务证据，没有将历史成功数字或候选身份改绑到新版本。
+  - 六份导入 Skill 与来源锁在 base..head 无差异；依赖锁仅根项目名称字段变化。
+  - 原 34 个测试全部保留，未弱化保护断言；新增 3 项验证可观察行为。
+
+independent_validation:
+  test_report_id: TEST-FINAL-001
+  tested_sha: c0830203fbb5a00b3a76f9e3e69d439e5320dd09
+  commands:
+    npm_ci_offline: 0
+    npm_run_build: 0
+    npm_test: 0
+    npm_run_check: 0
+    git_diff_check: 0
+  tests:
+    original_retained: 34
+    new: 3
+    passed: 37
+    failed: 0
+    skipped: 0
+  navigation:
+    documents: 17
+    reachable: 17
+    findings: 0
+  final_tree:
+    regular_files: 3830
+    directories: 887
+    symlinks: 9
+    current_delivery_matches: 0
+    candidate_matches: 0
+    protected_entries: 2612
+    protected_differences: 0
+    core_delivery_candidate_differences: 0
+  scan_scope: >-
+    包含仓内相对路径、普通文件字节、链接目标、隐藏及忽略条目；
+    不跟随链接访问其他工程。保留工作目录定位前缀，
+    Git 元数据保持原样，不解包清洗或重写历史对象。
+
+reviewer_checks:
+  - 独立读取代码、生成物和测试差异，核对测试标题保留情况及断言变化。
+  - JavaScript 语法检查和 Shell 语法检查均通过。
+  - 独立比较依赖锁 JSON，确认除根项目名称外完全相同。
+  - 读取实际执行日志、最终树报告及仓外扫描脚本，未重复运行完整测试套件。
+
+evidence_reviewed:
+  - id: IMPL-002
+    path: .devflow/changes/REQ-20260917-001/reports/implementation.yaml
+    sha256: 4ba80a473c5d7e747171acdfb2409e318ebe182cf73c4a1aaeeab73bcbb01dfe
+    attribution: 生产作者；不替代独立测试结果。
+  - id: IMPL-TEST-001
+    external_path: tester-final/test-implementation-report.json
+    sha256: 791c50a4bd0d2f0bf32f4e72465ce34fdf62e5b50ad1071ac6eb02aa7be7a53a
+    attribution: 测试作者；仅五份 tests 文件。
+  - id: TEST-FINAL-001
+    external_path: tester-final/test-report.json
+    sha256: 45d472526d164816a1cea924c27f07a835f6b6b6f918ed5d2a3db78b70c40b03
+  - id: TEST-TREE-001
+    external_path: tester-final/tree-report.json
+  - external_path: tester-final/test.stdout
+  - external_path: tester-final/build.result.json
+  - external_path: tester-final/check.result.json
+  - external_path: tester-final/dependency-comparison.json
+  - external_path: tester-final/verify-tree.py
+    sha256: e0aaeb5528f5feb9593f23cdb85b707e6f3e3d8451309a75292fe8c5d8542c2f
+
+supplementary_process_review:
+  scope: 候选固定后主仓流程记录的独立追加，不属于上述 tested_sha。
+  observed_files: 9
+  restricted_identity_matches: 0
+  personal_absolute_path_file_matches: 0
+  evidence_index_sha256: a4d73f3917faed17d347f872b542d1bee773382f34cfa554fa88689d1a6126ff
+  state_sha256: b205ea416040b3ab22c5e3273d16a1529699d09c48d59e8304901e463a08303c
+  conclusion: >-
+    已观察的追加内容区分生产、测试及 Planner 归属；
+    repository.current_sha 保持 null，隔离 SHA 仅记录为外部候选，
+    未冒称主仓提交。后续追加须另按其实际摘要与内容记录。
+
+non_blocking_notes:
+  - 基线文档检查的隔离装配缺口未被称作原仓历史失败；最终候选在原严格检查下零发现。
+  - 生产自测、测试作者报告和独立执行报告分别绑定其真实身份。
+  - 历史资料保全与 Git 历史保护边界明确，没有要求篡改原始记录以消除名称。
+
+residual_risks:
+  - 既有外部安装不能直接视为兼容升级，仍需按迁移指引逐项审查及授权。
+  - 新安装资源的原生宿主加载与真实角色调用未运行，三种文件分发通过不能替代该层证据。
+  - 验证限于本地 Linux x86_64；其他平台、远端 CI 配置及业务验收未运行。
+  - 原仓 HEAD 尚未建立，提交、推送、发布及正式 G5–G10 不在本批准范围。
+  - 后续流程报告和交付证据追加不自动归入已冻结候选 SHA。
+
+unblock_conditions: []
