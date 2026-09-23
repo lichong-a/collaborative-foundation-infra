@@ -22,6 +22,6 @@
   },
   "devDependencies": {
     "esbuild": "0.28.2",
-    "teamai-cli": "0.24.0"
+    "teamai-cli": "0.25.0"
   }
 }

@@ -8,19 +8,28 @@ import {packageInventory} from './sources.mjs';
 import {verifyTeamConfiguration} from './teamai-config.mjs';
 import {stageTeamResources,resourceIdentity} from './skill-resources.mjs';
 
-export const OFFICIAL_SKILLS=['team-wiki-codebase','teamai-share-learnings'];
+export const OFFICIAL_SKILLS=['team-wiki-codebase','teamai-share-learnings','teamai'];
 export function isolatedEnvironment(home) {
   const env={...process.env};
   for(const key of Object.keys(env))if(/^(?:npm_config_|TEAMAI_)/i.test(key) || ['NODE_OPTIONS','NODE_PATH'].includes(key))delete env[key];
   return {...env,HOME:home,USERPROFILE:home,XDG_CONFIG_HOME:path.join(home,'.config'),XDG_CACHE_HOME:path.join(home,'.cache'),XDG_DATA_HOME:path.join(home,'.local/share'),XDG_STATE_HOME:path.join(home,'.local/state'),TEAMAI_HOOKS_DISABLED:'1',TEAMAI_RECALL_DISABLED:'1',TEAMAI_CONTRIBUTE_HINT_DISABLED:'1',TEAMAI_PACKAGE_HINT_DISABLED:'1',TEAMAI_MR_HINT_DISABLED:'1',TEAMAI_DISABLE_REMOTE_CMD:'1',CI:'1'};
 }
-export function verifyBuiltinSkills(prepared,packageRoot) {
+export function builtinSkillsInventory(packageRoot) {
   const root=safePath(packageRoot,'skills');
-  if(stable(fs.readdirSync(root).sort())!==stable([...OFFICIAL_SKILLS].sort()))throw new Error('CLI has missing or additional built-in Skills; source update requires separate review');
+  return Object.fromEntries(fs.readdirSync(root).sort().map(name=>[name,packageInventory(safePath(root,name))]));
+}
+export function verifyBuiltinSkills(prepared,packageRoot,version='unknown') {
+  const root=safePath(packageRoot,'skills'),actual=fs.readdirSync(root).sort();
+  const missing=OFFICIAL_SKILLS.filter(name=>!actual.includes(name)),additional=actual.filter(name=>!OFFICIAL_SKILLS.includes(name));
+  if(missing.length || additional.length)throw new Error(`TeamAI ${version}: CLI has missing or additional built-in Skills; missing=[${missing.join(', ')}], additional=[${additional.join(', ')}]; source update requires separate review`);
   const files={};
   for(const name of OFFICIAL_SKILLS) {
     files[name]=packageInventory(safePath(root,name));
-    if(stable(files[name])!==stable(prepared.skills[name].files))throw new Error(`CLI built-in Skill differs from fixed source: ${name}`);
+    const expected=prepared.skills[name].files;
+    if(stable(files[name])!==stable(expected)) {
+      const first=[...new Set([...Object.keys(files[name]),...Object.keys(expected)])].sort().find(file=>stable(files[name][file])!==stable(expected[file]));
+      throw new Error(`TeamAI ${version}: CLI built-in Skill differs from fixed source: ${name}/${first}; source update requires separate review`);
+    }
   }
   return hash(stable(files));
 }

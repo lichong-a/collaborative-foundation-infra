@@ -7,7 +7,7 @@ import {execFileSync} from 'node:child_process';
 import {safePath,repositoryRoot,relativeName,hash,stable,exists} from './repository.mjs';
 import {packageInventory} from './sources.mjs';
 import {skillResources,resourceIdentity} from './skill-resources.mjs';
-import {isolatedEnvironment,verifyBuiltinSkills,cliVersion,verifyCompatibility} from './teamai-execution.mjs';
+import {isolatedEnvironment,builtinSkillsInventory,verifyBuiltinSkills,cliVersion,verifyCompatibility} from './teamai-execution.mjs';
 
 const ENTRY='install/node_modules/teamai-cli/dist/index.js',ID=/^[a-f0-9-]{36}$/,HEX=/^[a-f0-9]{64}$/;
 const version=value=>typeof value==='string' && /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(value);
@@ -70,19 +70,27 @@ function validatePackage(installation,identity,prepared) {
   const archive=ordinary(safePath(installation,'archive.tgz'),128*1024*1024),expected=archiveFiles(archive,identity),packageRoot=safePath(installation,'install/node_modules/teamai-cli');
   if(stable(packageInventory(packageRoot))!==stable(expected))throw new Error('Installed TeamAI package differs from its verified archive');
   const manifest=readJson(packageRoot,'package.json');if(manifest.name!==identity.name || manifest.version!==identity.version || manifest.bin?.teamai!=='dist/index.js')throw new Error('CLI package identity or bin ownership mismatch');
-  const builtinSkillsDigest=verifyBuiltinSkills(prepared,packageRoot),entry=safePath(installation,ENTRY);
+  // A historical installation is checked against its archive and saved digest.
+  // Only a candidate or a runtime selected for use must match today's sources.
+  const builtinSkillsDigest=prepared?verifyBuiltinSkills(prepared,packageRoot,identity.version):hash(stable(builtinSkillsInventory(packageRoot))),entry=safePath(installation,ENTRY);
   if(cliVersion(entry)!==identity.version)throw new Error('Actual CLI version differs from package identity');
   return {entry,builtinSkillsDigest};
 }
-export function verifyTeamaiInstallation({source,installation}) {
-  source=repositoryRoot(source);installation=privateDirectory(installation);const receipt=readJson(installation,'receipt.json');
+function verifyRecordedInstallation({installation}) {
+  installation=privateDirectory(installation);const receipt=readJson(installation,'receipt.json');
   if(stable(fs.readdirSync(installation).sort())!==stable(['archive.tgz','install','receipt.json']))throw new Error('Unknown runtime installation content preserved');
   if(receipt.schemaVersion!==1 || !ID.test(receipt.installationId) || path.basename(installation)!==receipt.installationId || receipt.entry!==ENTRY || !HEX.test(receipt.installManifestDigest??'') || !HEX.test(receipt.packageLockDigest??'') || !HEX.test(receipt.builtinSkillsDigest??''))throw new Error('Invalid runtime installation receipt');
   const actual=files(safePath(installation,'install'));if(stable(actual)!==stable(receipt.files) || hash(stable(actual))!==receipt.installManifestDigest || hash(ordinary(safePath(installation,'install/package-lock.json'),16*1024*1024))!==receipt.packageLockDigest)throw new Error('Runtime installation content changed; preserve and review');
-  const prepared=skillResources(source),verified=validatePackage(installation,receipt.package,prepared);
+  const verified=validatePackage(installation,receipt.package);
   if(verified.builtinSkillsDigest!==receipt.builtinSkillsDigest || receipt.compatibility?.status!=='verified' || !HEX.test(receipt.compatibility.sourceLockDigest??'') || !HEX.test(receipt.compatibility.distributionDigest??'') || stable(Object.keys(receipt.compatibility.agents??{}).sort())!==stable(['claude','codex','zcode']) || Object.values(receipt.compatibility.agents).some(item=>item.status!=='verified' || !HEX.test(item.logsSha256??'')))throw new Error('Invalid runtime compatibility receipt');
   const keys=['schemaVersion','installationId','package','entry','files','installManifestDigest','packageLockDigest','builtinSkillsDigest','compatibility'];if(Object.keys(receipt).some(key=>!keys.includes(key)))throw new Error('Unknown runtime receipt fields');
   return {...verified,installation,receipt,receiptDigest:hash(ordinary(safePath(installation,'receipt.json'))),package:{...receipt.package,manifestDigest:receipt.installManifestDigest,receiptDigest:hash(ordinary(safePath(installation,'receipt.json')))}};
+}
+export function verifyTeamaiInstallation({source,installation}) {
+  const prepared=skillResources(repositoryRoot(source)),runtime=verifyRecordedInstallation({installation});
+  try {verifyBuiltinSkills(prepared,safePath(runtime.installation,'install/node_modules/teamai-cli'),runtime.package.version);}
+  catch(error) {throw new Error(`${error.message}; prepared runtime is incompatible with this source; run npm run upgrade:teamai explicitly, preserving the current installation on failure`,{cause:error});}
+  return runtime;
 }
 function namespaceState(namespace) {
   const names=fs.readdirSync(namespace);if(names.some(name=>!['installations','current.json','prepare.lock'].includes(name)))throw new Error('Unknown runtime namespace content preserved');
@@ -96,14 +104,14 @@ function namespaceState(namespace) {
   return current;
 }
 // Internal selection is separate from the public transaction visibility barrier.
-function resolveInstallation(source,namespace,current,teamaiEntry) {
+function resolveInstallation(source,namespace,current,teamaiEntry,verifyInstallation=verifyTeamaiInstallation) {
   let installation;
   if(teamaiEntry) {
     if(!path.isAbsolute(teamaiEntry))throw new Error('--teamai-entry must be absolute and belong to a prepared runtime');
     const relative=path.relative(namespace,path.resolve(teamaiEntry)).split(path.sep).join('/'),match=/^installations\/([a-f0-9-]{36})\/install\/node_modules\/teamai-cli\/dist\/index\.js$/.exec(relative);
     if(!match)throw new Error('Explicit CLI entry lacks prepared runtime provenance; run npm run prepare:teamai');installation=safePath(namespace,`installations/${match[1]}`);
   } else {if(!current)throw new Error('Prepared TeamAI CLI is missing; run npm run prepare:teamai');installation=safePath(namespace,`installations/${current.installationId}`);}
-  const runtime=verifyTeamaiInstallation({source,installation});
+  const runtime=verifyInstallation({source,installation});
   if((!teamaiEntry || runtime.receipt.installationId===current?.installationId) && runtime.receiptDigest!==current?.receiptSha256)throw new Error('Current runtime receipt binding changed');
   return runtime;
 }
@@ -151,10 +159,10 @@ export function prepareTeamai({source=process.cwd(),dataHome,offline=false,upgra
     if(!lockIdentity || !stat.isFile() || stat.nlink!==1 || stable(objectIdentity(stat))!==stable(lockIdentity))throw new Error('Preparation lock replaced; preserve unknown resources');
     if(!closeAttempted && stable(objectIdentity(fs.fstatSync(fd)))!==stable(lockIdentity))throw new Error('Preparation lock descriptor changed');
   };
-  const resolveHeldRuntime=()=>{
+  const resolveHeldRuntime=(verifyInstallation)=>{
     assertLock();
     if(stable(namespaceState(namespace))!==stable(prior) || !ordinary(pointer).equals(before))throw new Error('Current runtime changed before held verification');
-    const runtime=resolveInstallation(source,namespace,prior);
+    const runtime=resolveInstallation(source,namespace,prior,undefined,verifyInstallation);
     assertLock();if(!ordinary(pointer).equals(before))throw new Error('Current runtime changed during held verification');
     return runtime;
   };
@@ -187,7 +195,9 @@ export function prepareTeamai({source=process.cwd(),dataHome,offline=false,upgra
       if(!ordinary(pointer).equals(before))throw new Error('Current runtime changed during verification');
       return {status:'reused',entry:runtime.entry,package:runtime.package,installationId:runtime.receipt.installationId,compatibility,receiptDigest:runtime.receiptDigest};
     }
-    if(prior)resolveHeldRuntime();
+    // An explicit upgrade may replace a valid old runtime whose Skills no longer
+    // match the new source. It may never bypass old installation integrity.
+    if(prior)resolveHeldRuntime(verifyRecordedInstallation);
     if(offline)throw new Error('Offline: explicit upgrade or first preparation requires registry access');
     const id=randomUUID();work=fs.mkdtempSync(path.join(namespace,'.prepare-'));workOwner=directoryIdentity(work);const home=path.join(work,'home');fs.mkdirSync(home,{mode:0o700});
     const userconfig=path.join(work,'user.npmrc'),globalconfig=path.join(work,'global.npmrc');writeNew(userconfig,'');writeNew(globalconfig,'');

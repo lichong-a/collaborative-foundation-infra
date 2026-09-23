@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { inventory, digest, hash, stable, safePath, relativeName, repositoryRoot, exists, git } from './repository.mjs';
 
-export const IMPORTED_SKILLS=['ric-devflow','ric-devflow-planner','ric-devflow-reviewer','ric-devflow-tester','ric-devflow-implementer','ric-design-patterns-skill','team-wiki-codebase','teamai-share-learnings'];
+export const IMPORTED_SKILLS=['ric-devflow','ric-devflow-planner','ric-devflow-reviewer','ric-devflow-tester','ric-devflow-implementer','ric-design-patterns-skill','team-wiki-codebase','teamai-share-learnings','teamai'];
 export const OWN_SKILL='collaborative-foundation-infra';
 export const OWN_SKILLS=[OWN_SKILL,'teamai-cli'];
 const modeFor=mode=>(mode&0o100)?0o755:0o644;
@@ -37,9 +37,9 @@ export function loadSources(root) {
   if(!stat.isFile() || stat.nlink!==1 || stat.size>4*1024*1024)throw new Error('Source lock must be an ordinary bounded unlinked file');
   const bytes=fs.readFileSync(filename);
   const lock=JSON.parse(bytes);
-  if(lock.schemaVersion!==4 || stable(lock.teamai)!==stable({package:'teamai-cli',selection:'latest-on-first-prepare-or-explicit-upgrade',registry:'https://registry.npmjs.org'}) || !Array.isArray(lock.upstreams) || lock.upstreams.length!==3 || !Array.isArray(lock.packages) || lock.packages.length!==8)throw new Error('Expected source schema 4, three upstreams and eight pinned packages');
+  if(lock.schemaVersion!==4 || stable(lock.teamai)!==stable({package:'teamai-cli',selection:'latest-on-first-prepare-or-explicit-upgrade',registry:'https://registry.npmjs.org'}) || !Array.isArray(lock.upstreams) || lock.upstreams.length!==3 || !Array.isArray(lock.packages) || lock.packages.length!==IMPORTED_SKILLS.length)throw new Error('Expected source schema 4, three upstreams and nine pinned packages');
   const expectedPaths={'ric-devflow':'skills/upstreams/ric-devflow','ric-design-patterns':'skills/upstreams/ric-design-patterns','teamai-cli':'skills/upstreams/teamai-cli'};
-  if(new Set(lock.upstreams.map(item=>item.id)).size!==3 || new Set(lock.packages.map(item=>item.name)).size!==8)throw new Error('Duplicate source mapping');
+  if(new Set(lock.upstreams.map(item=>item.id)).size!==3 || new Set(lock.packages.map(item=>item.name)).size!==IMPORTED_SKILLS.length)throw new Error('Duplicate source mapping');
   for(const upstream of lock.upstreams)if(upstream.path!==expectedPaths[upstream.id] || !/^[a-f0-9]{40}$/.test(upstream.commit) || typeof upstream.url!=='string' || !upstream.url)throw new Error('Invalid upstream mapping');
   for(const pkg of lock.packages) {
     const id=pkg.name==='ric-design-patterns-skill'?'ric-design-patterns':pkg.name.startsWith('ric-devflow')?'ric-devflow':'teamai-cli';
@@ -71,14 +71,19 @@ export function verifyUpstreams(root,source=loadSources(root)) {
   if(!exists(modules) || !fs.lstatSync(modules).isFile() || fs.lstatSync(modules).nlink!==1)throw new Error('Missing or invalid .gitmodules file; restore the reviewed declarations, run git submodule update --init --recursive --checkout explicitly, then npm run prepare:skills');
   const declared=git(root,['config','--file',modules,'--get-regexp','^submodule\\..*\\.path$']).split('\n').sort();
   if(stable(declared)!==stable(lock.upstreams.map(item=>`submodule.${item.id}.path ${item.path}`).sort()))throw new Error('Unexpected .gitmodules declarations');
+  // Check the complete index before suggesting initialization: Git cannot
+  // initialize a declared submodule when its gitlink is absent from the source.
+  for(const upstream of lock.upstreams) {
+    const entries=git(root,['ls-files','--stage','-z','--',upstream.path]).split('\0').filter(Boolean);
+    if(!entries.length)throw new Error(`Source is incomplete: missing index gitlink for ${upstream.path}; obtain a reviewed source containing all locked gitlinks before initializing submodules`);
+    if(entries.length!==1 || entries[0]!==`160000 ${upstream.commit} 0\t${upstream.path}`)throw new Error(`Index gitlink does not match source lock: ${upstream.path}; expected ${upstream.commit}`);
+  }
   for(const upstream of lock.upstreams) {
     const location=safePath(root,upstream.path);
     const instruction='Run git submodule update --init --recursive --checkout explicitly, then npm run prepare:skills';
     if(!exists(location) || !exists(path.join(location,'.git')))throw new Error(`Submodule is not initialized: ${upstream.path}. ${instruction}`);
     const metadata=fs.lstatSync(safePath(root,`${upstream.path}/.git`));
     if(!metadata.isDirectory() && (!metadata.isFile() || metadata.nlink!==1))throw new Error('Submodule Git metadata must be a regular unlinked file or real directory');
-    const entries=git(root,['ls-files','--stage','-z','--',upstream.path]).split('\0').filter(Boolean);
-    if(entries.length!==1 || entries[0]!==`160000 ${upstream.commit} 0\t${upstream.path}`)throw new Error(`Index gitlink does not match source lock: ${upstream.path}`);
     if(git(root,['config','--file',modules,'--get',`submodule.${upstream.id}.path`])!==upstream.path || git(root,['config','--file',modules,'--get',`submodule.${upstream.id}.url`])!==upstream.url)throw new Error(`Submodule configuration mismatch: ${upstream.id}`);
     if(git(location,['rev-parse','--show-toplevel'])!==location || git(location,['rev-parse','HEAD'])!==upstream.commit)throw new Error(`Submodule HEAD mismatch: ${upstream.path}`);
     if(git(location,['status','--porcelain=v1','--untracked-files=all','--ignored']))throw new Error(`Dirty submodule preserved: ${upstream.path}`);

@@ -2963,56 +2963,56 @@
     {
       "name": "team-wiki-codebase",
       "source": "https://github.com/Tencent/teamai-cli",
-      "commit": "0c059b2da6fe0fa3206ab1ce33978601a2a832e6",
+      "commit": "f7b4141c46f8143f3f6bca52f6389ac21e474b2d",
       "path": "skills/upstreams/teamai-cli/skills/team-wiki-codebase",
       "files": {
         "README.md": {
           "sha256": "4e1ab336bfa6d78085572b4e0fc0e345bda0ec2be065279f189a8f2939f242b8",
-          "mode": 436
+          "mode": 420
         },
         "SKILL.md": {
           "sha256": "4d7e728e0c821404d760a63f994e6d0fe81519bd875e2d4297d178bffd292266",
-          "mode": 436
+          "mode": 420
         },
         "references/agents/graph-rag-agent.md": {
           "sha256": "d79e52cfec1e131877f7fa28bb14993b937fb643ed6778fde6bf569dbd0ba2d3",
-          "mode": 436
+          "mode": 420
         },
         "references/agents/kb-doc-generator.md": {
           "sha256": "8dc1f1ef5e5d270223586567629b66333a07c42ae103ac5cdef6c755364587d5",
-          "mode": 436
+          "mode": 420
         },
         "references/methodology/phase0-collection.md": {
           "sha256": "89caa5e6e5135b19e39ebf48224a31ae6ea80bbef84c7c2e4cf50b6391220cf6",
-          "mode": 436
+          "mode": 420
         },
         "references/methodology/phase1-reverse-engineering.md": {
           "sha256": "9d709e09a30ca198020fe7f2470980a4d2f4889a685dc33f71c79f6433110a59",
-          "mode": 436
+          "mode": 420
         },
         "references/methodology/phase2-document-types.md": {
           "sha256": "62eee3e3290cbc1a4a7c40bcac5e7d8f2100989b438726b867af448dfda67b7b",
-          "mode": 436
+          "mode": 420
         },
         "references/methodology/phase3-ai-enhancement.md": {
           "sha256": "efe1536f1ea4a2ffeb9ab69409ce1cb172fe8a5b8efb583a46ed69ed976bc6d0",
-          "mode": 436
+          "mode": 420
         },
         "references/methodology/phase4-quality.md": {
           "sha256": "a7b536ab120a8c4bc3fbd53256675309a399e53b4d0d202abd5df1b82c985754",
-          "mode": 436
+          "mode": 420
         },
         "references/templates/project-overview.md": {
           "sha256": "296c15c827ae7798bf9f3112b84d1bdd69b0807bb80286cfc78f1a0d956e66ec",
-          "mode": 436
+          "mode": 420
         },
         "scripts/scan_repo.py": {
           "sha256": "a941f3ac9a260c860cfeded26eb6c6f3d55cc5af748e1e5f673a94278c6a9c36",
-          "mode": 436
+          "mode": 420
         },
         "scripts/validate_kb.py": {
           "sha256": "c6e08b03b80a60048374637b4de20afdd21b552892e915b8301efb368316522f",
-          "mode": 436
+          "mode": 420
         }
       },
       "upstream": "teamai-cli"
@@ -3020,12 +3020,53 @@
     {
       "name": "teamai-share-learnings",
       "source": "https://github.com/Tencent/teamai-cli",
-      "commit": "0c059b2da6fe0fa3206ab1ce33978601a2a832e6",
+      "commit": "f7b4141c46f8143f3f6bca52f6389ac21e474b2d",
       "path": "skills/upstreams/teamai-cli/skills/teamai-share-learnings",
       "files": {
         "SKILL.md": {
-          "sha256": "f2d7c437520d8707182fbd3b4ca0dd453315d5210d924abb7dfa25aee651a94f",
-          "mode": 436
+          "sha256": "676da346cf38c3d40d681a28bd2330abf825ec534ed774996362b3a91d20981a",
+          "mode": 420
+        }
+      },
+      "upstream": "teamai-cli"
+    },
+    {
+      "name": "teamai",
+      "source": "https://github.com/Tencent/teamai-cli",
+      "commit": "f7b4141c46f8143f3f6bca52f6389ac21e474b2d",
+      "path": "skills/upstreams/teamai-cli/skills/teamai",
+      "files": {
+        "SKILL.md": {
+          "sha256": "a523cfc79aca5870f6f35ff639229777f4f506457666560ec21f57176cf7f78e",
+          "mode": 420
+        },
+        "references/contribute-member.md": {
+          "sha256": "2a6a8c3eeee7424f79cb6d3f97d14f8588720f1d570028f5afdd12d6db458355",
+          "mode": 420
+        },
+        "references/join-member.md": {
+          "sha256": "ed2ab1c92680b3412e2ce60d5900f6baba0da896ad92158945ac6115ac939fc2",
+          "mode": 420
+        },
+        "references/manage-admin.md": {
+          "sha256": "fd31d78724fb35d3bfecf606299c9e907f2a10da275bf06f840780c674584158",
+          "mode": 420
+        },
+        "references/provider-tgit.md": {
+          "sha256": "df7faedb8beeafeb55a23c2b3d2b99d1421548cf4f8172ed7da0752ef6aeda39",
+          "mode": 420
+        },
+        "references/setup-admin.md": {
+          "sha256": "4e58bae91bcb3831fd7d2dc0c9f086bb0e985f7d51dd7bc7e753bce1b380816e",
+          "mode": 420
+        },
+        "references/troubleshooting.md": {
+          "sha256": "78ad122c14f1c5081ef698c880c4a250a99eb7a6ccbb1b39674359e712261fc6",
+          "mode": 420
+        },
+        "references/uninstall.md": {
+          "sha256": "10a97318e8bc6a94a0413e6d1b1b516b24ab8fd7f52d118cfc0d92c97394b892",
+          "mode": 420
         }
       },
       "upstream": "teamai-cli"
@@ -3048,7 +3089,7 @@
       "id": "teamai-cli",
       "path": "skills/upstreams/teamai-cli",
       "url": "https://github.com/Tencent/teamai-cli",
-      "commit": "0c059b2da6fe0fa3206ab1ce33978601a2a832e6"
+      "commit": "f7b4141c46f8143f3f6bca52f6389ac21e474b2d"
     }
   ],
   "references": [
@@ -3057,9 +3098,9 @@
       "upstream": "teamai-cli",
       "path": "skills/upstreams/teamai-cli/docs/usage-guide.zh-CN.md",
       "source": "https://github.com/Tencent/teamai-cli",
-      "commit": "0c059b2da6fe0fa3206ab1ce33978601a2a832e6",
-      "sha256": "7395e242c3d267906cdd200595d78e423483493f19c5a4f9bb0970f4566cac99",
-      "mode": 436,
+      "commit": "f7b4141c46f8143f3f6bca52f6389ac21e474b2d",
+      "sha256": "68de9e76561c5edc2dbf98b768333e7632da2fea4c76dd9bf3ad33e4cf9cf923",
+      "mode": 420,
       "destination": {
         "skill": "teamai-cli",
         "path": "references/usage-guide.zh-CN.md"
@@ -3074,9 +3115,9 @@
       "upstream": "teamai-cli",
       "path": "skills/upstreams/teamai-cli/LICENSE",
       "source": "https://github.com/Tencent/teamai-cli",
-      "commit": "0c059b2da6fe0fa3206ab1ce33978601a2a832e6",
+      "commit": "f7b4141c46f8143f3f6bca52f6389ac21e474b2d",
       "sha256": "31154d9c1a8bd8d37b449bdbb8a04f9b4618e5d330b52b0fdb7c452414d75a41",
-      "mode": 436,
+      "mode": 420,
       "destination": {
         "skill": "teamai-cli",
         "path": "LICENSE"

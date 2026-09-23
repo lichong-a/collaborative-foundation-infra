@@ -33,9 +33,9 @@ node scripts/teamai-sync.mjs --repo /path/to/business --source /path/to/collabor
 
 没有 --apply 时只预检，包含 --install-entry 也不写目标。--apply 单独仍只分发；--apply --install-entry 才追加项目入口。所有资源、入口和既有回执必须整体预检通过，才开始发布。显式 apply 后运行已准备并核验身份的实际 TeamAI CLI 在临时用户环境中的真实 pull，TeamAI 自己解析团队资源、engineering 订阅和生成目标。适配器只核验结果、冲突和限定发布；不会用复制源文件冒充 TeamAI 分发。Codex/ZCode 发布到项目 `.agents/skills`，Claude 到 `.claude/skills`。ZCode 实际宿主是否发现该入口仍需加载验证。
 
-上游目录初始化后可显式 prepare 核验；prepare 是只读检查，构建、检查和同步每次重新验证实际来源，不依赖持久副本或旧准备回执。十份 Skills 必须完整安装。安装五份 DevFlow Skill 不表示用户选择了 devflow，basic 也不要求原生四角色已经可用。已有同名包必须与本次完整分发期望逐字一致；其中八上游包与子模块原字节一致，自有两包只允许受控导航和官方指南相对目标重定位。定制、版本差异、未知文件、软链或明确禁用一律保留并报错，不能先覆盖再提示。首次接入不更新既有全局 Skill，不反转禁用配置。冲突需独立 review 并人工制定迁移，不提供 force 覆盖。
+上游目录初始化后可显式 prepare 核验；prepare 是只读检查，构建、检查和同步每次重新验证实际来源，不依赖持久副本或旧准备回执。十一份 Skills 必须完整安装。安装五份 DevFlow Skill 不表示用户选择了 devflow，basic 也不要求原生四角色已经可用。已有同名包必须与本次完整分发期望逐字一致；其中九上游包与子模块原字节一致，自有两包只允许受控导航和官方指南相对目标重定位。定制、版本差异、未知文件、软链或明确禁用一律保留并报错，不能先覆盖再提示。首次接入不更新既有全局 Skill，不反转禁用配置。冲突需独立 review 并人工制定迁移，不提供 force 覆盖。
 
-源码自有包引用真实 skills/upstreams；临时组装只转换已登记的自有包导航和指南相对目标，不改正文、代码示例、外部 URL 或八上游包。默认预检在内存计算期望清单，不创建源码副本；实际 TeamAI pull 仅使用本次私有临时树。未知/缺失映射在目标发布前拒绝。
+源码自有包引用真实 skills/upstreams；临时组装只转换已登记的自有包导航和指南相对目标，不改正文、代码示例、外部 URL 或九上游包。默认预检在内存计算期望清单，不创建源码副本；实际 TeamAI pull 仅使用本次私有临时树。未知/缺失映射在目标发布前拒绝。
 
 Skill 同源身份包含文件类型、完整字节和 Git 可恢复的执行位。普通文件按 owner-executable 归一为 0644 或 0755；不同用户 umask 造成的读写权限差异不表示版本不同。已有匹配目标保留实际权限，新创建文件使用上述规范权限。sources.lock 的原始 mode 保留为来源归档记录，核验时使用相同归一规则；字节、执行位变化和未知文件仍会拒绝。
 
@@ -45,7 +45,7 @@ Skill 同源身份包含文件类型、完整字节和 Git 可恢复的执行位
 
 任务开始前显式同步并记录安装回执中的 sourceDigest；任务期间不再运行同步。回执在项目 `.collaborative-foundation-infra/teamai-installation.json`，不存任务状态。无原生自动事件被发布，因此规范不会在会话中后台变化。
 
-schemaVersion 4 安装回执声明 sourceLayoutVersion:4；sourcePackagesDigest 绑定八份真实上游包与官方指南/许可，distributionDigest 绑定十份包的转换后完整清单及团队资源，sourceDigest 同时绑定实际源资源、确定性转换结果与 sources.lock、package-lock、.gitmodules。upstreams 明列三个固定 SHA，artifact 绑定实际工具；teamaiPackage 记录实际 CLI 版本、tarball、integrity 和可验证安装摘要。本机 Git 元数据、临时路径及用户会话状态不进入这些摘要。它不是远端 Git SHA。备份和治理 plan 使用的本地完整权限快照保持原义，不采用分发身份的权限归一。
+schemaVersion 4 安装回执声明 sourceLayoutVersion:4；sourcePackagesDigest 绑定九份真实上游包与官方指南/许可，distributionDigest 绑定十一份包的转换后完整清单及团队资源，sourceDigest 同时绑定实际源资源、确定性转换结果与 sources.lock、package-lock、.gitmodules。upstreams 明列三个固定 SHA，artifact 绑定实际工具；teamaiPackage 记录实际 CLI 版本、tarball、integrity 和可验证安装摘要。本机 Git 元数据、临时路径及用户会话状态不进入这些摘要。它不是远端 Git SHA。备份和治理 plan 使用的本地完整权限快照保持原义，不采用分发身份的权限归一。
 
 Codex/ZCode 使用相同的 AGENTS.md 区块，Claude 单独使用 CLAUDE.md；正文按原字节保留。追加已有入口要求受跟踪且干净；未跟踪同名、不同/重复/残缺区块拒绝。已有完整相同块返回 matched 且不写入口，因此可保留块外未提交内容。matched 只表示该块字节相同。每次同步都会只读核验回执中所有已登记入口，包括本次未请求的另一个入口；已删除、移除或修改的区块使同步保守拒绝，不传播历史 matched，也不会为补证据恢复正文。不带 --install-entry 继续保持入口零写入。新块完整写入同目录私有临时文件并同步后，重查原 inode/字节再原子发布；失败保留现场，不就地截断正文。
 
@@ -61,7 +61,7 @@ CLI 首次准备、显式升级、离线复用、--data-home 与 --teamai-entry 
 
 ## 既有安装的迁移
 
-当前 schemaVersion 4 与十包及实际 CLI 身份建立新的安装基线；schema2/3 回执不能直接复用；旧回执或来源版本不同一律保留并拒绝原地更新。规范源、自有 Skill 和 npm 包名均为 `collaborative-foundation-infra`；自有规则为 `collaborative-foundation-infra.md`，安装回执在 `.collaborative-foundation-infra/`。工具不提供旧命名别名，也不扫描、移动或删除以前命名空间下的安装；预检成功仅覆盖当前目标路径，不能据此判定旧安装与新安装可以并行生效。
+当前 schemaVersion 4 与十一包及实际 CLI 身份建立新的安装基线；schema2/3 回执不能直接复用；旧回执或来源版本不同一律保留并拒绝原地更新。规范源、自有 Skill 和 npm 包名均为 `collaborative-foundation-infra`；自有规则为 `collaborative-foundation-infra.md`，安装回执在 `.collaborative-foundation-infra/`。工具不提供旧命名别名，也不扫描、移动或删除以前命名空间下的安装；预检成功仅覆盖当前目标路径，不能据此判定旧安装与新安装可以并行生效。
 
 检测到项目已经接入团队规范时，先读取其实际入口、安装回执、活动任务绑定的来源版本、规则与 CI 基线，确认有效事实源。若安装布局或版本不同，普通首次接入在这个步骤停下；输出逐项迁移清单与冲突，继续可确定的只读诊断。不能直接加装新包造成双重入口，也不能把删除旧目录作为解决冲突的默认办法。
 

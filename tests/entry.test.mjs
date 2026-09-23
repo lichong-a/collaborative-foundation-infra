@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, NODE, fixture, write, run, json, snapshot, git, policy } from './helpers.mjs';
 import { preparedRuntime, runtimePackage } from './teamai-fixtures.mjs';
-import { sourceFixture } from './source-fixtures.mjs';
+import { sourceFixture, expectedSkillSnapshot } from './source-fixtures.mjs';
 
 const start = '<!-- collaborative-foundation-infra:session:start -->';
 const end = '<!-- collaborative-foundation-infra:session:end -->';
@@ -34,6 +34,35 @@ test('TC-DIST-006: Codex and ZCode share one unchanged AGENTS block in either or
     const f = fixture(t); install(f, agents[0]); const file = path.join(f.repo, 'AGENTS.md'), before = fs.readFileSync(file), stat = fs.statSync(file, { bigint: true });
     install(f, agents[1]); assert.deepEqual(fs.readFileSync(file), before); assert.equal(fs.statSync(file, { bigint: true }).mtimeNs, stat.mtimeNs); assert.doesNotMatch(before.toString(), /--agent (?:codex|zcode)/);
     const receipt = JSON.parse(fs.readFileSync(path.join(f.repo, '.collaborative-foundation-infra/teamai-installation.json'))); assert.deepEqual(receipt.agents, ['codex', 'zcode']);
+  }
+});
+
+test('TC-DIST-007: all three clients share one project with eleven exact packages, preserved entries and repeatable installation', t => {
+  for (const agents of [['codex', 'claude', 'zcode'], ['zcode', 'codex', 'claude'], ['claude', 'zcode', 'codex']]) {
+    const f = fixture(t, { 'AGENTS.md': '# Existing shared policy\n', 'CLAUDE.md': '# Existing Claude policy\n' });
+    const home = snapshot(f.home), entries = new Map();
+    for (const agent of agents) {
+      const before = snapshot(f.repo), preview = sync(f, agent, ['--install-entry']);
+      assert.equal(preview.code, 0, preview.stdout + preview.stderr); assert.deepEqual(snapshot(f.repo), before);
+      install(f, agent);
+      const filename = path.join(f.repo, entry(agent)), content = fs.readFileSync(filename);
+      if (entries.has(entry(agent))) assert.deepEqual(content, entries.get(entry(agent)), 'shared entry must not be rewritten');
+      entries.set(entry(agent), content);
+      const folder = path.join(f.repo, agent === 'claude' ? '.claude/skills' : '.agents/skills');
+      assert.equal(fs.readdirSync(folder).length, 11);
+      for (const name of fs.readdirSync(folder)) {
+        const actual = Object.fromEntries(Object.entries(snapshot(path.join(folder, name))).map(([file, { mode, ...item }]) => [file, { ...item, ...(item.type === 'file' ? { executable: Boolean(mode & 0o100) } : {}) }]));
+        assert.deepEqual(actual, expectedSkillSnapshot(ROOT, name), `${agent}/${name}`);
+      }
+    }
+    const receipt = JSON.parse(fs.readFileSync(path.join(f.repo, '.collaborative-foundation-infra/teamai-installation.json')));
+    assert.deepEqual(receipt.agents, ['claude', 'codex', 'zcode']); assert.equal(receipt.skills.length, 11); assert.equal(receipt.teamai, '0.25.0');
+    assert.deepEqual(Object.keys(receipt.projectEntries).sort(), ['AGENTS.md', 'CLAUDE.md']);
+    const complete = snapshot(f.repo);
+    for (const agent of [...agents].reverse()) { assert.equal(install(f, agent).status, 'noop'); assert.deepEqual(snapshot(f.repo), complete); }
+    for (const name of ['AGENTS.md', 'CLAUDE.md']) { const text = fs.readFileSync(path.join(f.repo, name), 'utf8'); assert.equal(text.split(start).length, 2); assert.equal(text.split(end).length, 2); }
+    assert.deepEqual(snapshot(f.home), home);
+    for (const name of ['.codex/agents', '.claude/agents', '.zcode/agents', '.codex/hooks.json', '.claude/settings.json', '.zcode/cli/config.json']) assert.equal(fs.existsSync(path.join(f.repo, name)), false);
   }
 });
 

@@ -22,7 +22,7 @@ export function expectedSkillBytes(source, name, file) {
   const bytes = fs.readFileSync(path.join(skillSource(source, name), file));
   if (name === 'teamai-cli' && file === 'SKILL.md') {
     let text = bytes.toString();
-    for (const [from, to] of [['docs/usage-guide.zh-CN.md', 'references/usage-guide.zh-CN.md'], ['LICENSE', 'LICENSE'], ['skills/team-wiki-codebase/SKILL.md', '../team-wiki-codebase/SKILL.md'], ['skills/teamai-share-learnings/SKILL.md', '../teamai-share-learnings/SKILL.md']]) {
+    for (const [from, to] of [['docs/usage-guide.zh-CN.md', 'references/usage-guide.zh-CN.md'], ['LICENSE', 'LICENSE'], ['skills/teamai/SKILL.md', '../teamai/SKILL.md'], ['skills/team-wiki-codebase/SKILL.md', '../team-wiki-codebase/SKILL.md'], ['skills/teamai-share-learnings/SKILL.md', '../teamai-share-learnings/SKILL.md']]) {
       const target = `](../../upstreams/teamai-cli/${from})`;
       assert.equal(text.split(target).length, 2); text = text.replace(target, `](${to})`);
     }

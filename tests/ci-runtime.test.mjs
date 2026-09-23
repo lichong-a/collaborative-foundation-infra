@@ -40,6 +40,18 @@ function runtime(f, kind, environment, args = [], timeout = 150000) {
   return run('/bin/bash', [path.join(ROOT, 'scripts/runtime'), '--runtime', kind, '--cache', path.join(f.home, 'runtimes'), ...args], { env: environment, timeout });
 }
 
+test('TC-ENV-004: documented wrappers and generated governance entry preserve executable command contracts', t => {
+  const f = fixture(t), env = { ...process.env, PATH: `${path.dirname(NODE)}:${process.env.PATH}`, HOME: f.home, USERPROFILE: f.home };
+  for (const file of ['scripts/runtime', 'scripts/governance', 'skills/common/collaborative-foundation-infra/scripts/governance.mjs']) assert(fs.statSync(path.join(ROOT, file)).mode & 0o100, file);
+  const runtimeResult = run(path.join(ROOT, 'scripts/runtime'), ['--runtime', 'node', '--', '--version'], { env });
+  assert.equal(runtimeResult.code, 0, runtimeResult.stderr); assert.match(runtimeResult.stdout, /^v24\./);
+  for (const executable of [path.join(ROOT, 'scripts/governance'), path.join(ROOT, 'skills/common/collaborative-foundation-infra/scripts/governance.mjs')]) {
+    const result = run(executable, ['check', '--repo', f.repo, '--policy', f.policyFile, '--format', 'json'], { env });
+    assert.equal(result.code, 0, result.stdout + result.stderr); assert.equal(json(result).status, 'pass');
+  }
+  assert.equal(fs.existsSync(path.join(f.home, '.cache')), false);
+});
+
 test('TC-ENV-001: existing Node 24 is reused without cache or dependency writes', t => {
   const f = fixture(t); const before = snapshot(f.repo); const environment = { ...process.env, PATH: `${path.dirname(NODE)}:${process.env.PATH}`, HOME: f.home };
   const result = runtime(f, 'node', environment, ['--', '--version']); assert.equal(result.code, 0, result.stderr); assert.match(result.stdout, /^v24\./); assert.equal(fs.existsSync(path.join(f.home, 'runtimes')), false); assert.deepEqual(snapshot(f.repo), before);

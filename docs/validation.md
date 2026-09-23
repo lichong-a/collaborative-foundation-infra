@@ -10,9 +10,9 @@ status: current
 
 ## 当前维护记录
 
-本次直接子模块来源、临时分发与会话规范维护的权威入口是 [当前任务与 Spec](../.devflow/changes/REQ-20260917-002/current.md)，由 [测试计划](../.devflow/changes/REQ-20260917-002/test-plan.md)定义验收范围，[证据索引](../.devflow/changes/REQ-20260917-002/evidence.md)记录真实执行结果与精确身份。规格和计划分别经过 [Spec Review](../.devflow/changes/REQ-20260917-002/attachments/review-spec-v4.yaml)与 [Test Review](../.devflow/changes/REQ-20260917-002/attachments/review-test-v4.yaml)；这些批准不表示代码或测试已经通过。
+历史子模块来源、临时分发与会话规范维护记录保留在 [原任务与 Spec](../.devflow/changes/REQ-20260917-002/current.md)、[原测试计划](../.devflow/changes/REQ-20260917-002/test-plan.md)及[原证据索引](../.devflow/changes/REQ-20260917-002/evidence.md)。当时的 [Spec Review](../.devflow/changes/REQ-20260917-002/attachments/review-spec-v4.yaml)与 [Test Review](../.devflow/changes/REQ-20260917-002/attachments/review-test-v4.yaml)只适用于各自绑定的历史候选，不作为本轮基础模式修复的批准或验收依据。
 
-历史证据保持原义，当前按 [Spec4](../.devflow/changes/REQ-20260917-002/attachments/spec-v4.md)及[技术接口](../.devflow/changes/REQ-20260917-002/attachments/technical-v5.md)实施三源、十包和显式 CLI 准备。之前两源/七包、固定 CLI 和路径迁移的报告只属于各自候选。当前实现、实际 latest、内置包、三宿主真实 pull、独立测试与审核分别绑定精确身份，不以来源存在或模板完备声明执行已通过。
+历史 [Spec4](../.devflow/changes/REQ-20260917-002/attachments/spec-v4.md)及[技术接口](../.devflow/changes/REQ-20260917-002/attachments/technical-v5.md)绑定当时三源、十包和 0.24.0 的候选。当前三源、十一包与 0.25.0 的资源变化见[集成边界](integration.md)，旧 runtime 的显式升级见[运行时说明](teamai-runtime.md)。历史报告保持原义，不能作为新版本验收。当前实现、实际 latest、内置包、三宿主真实 pull、独立测试与审核分别绑定精确身份，不以来源存在或模板完备声明执行已通过。
 
 ## 分开报告的验证层级
 

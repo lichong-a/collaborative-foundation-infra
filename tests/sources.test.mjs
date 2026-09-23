@@ -12,7 +12,7 @@ function privateTeam(f, name = 'team') { const team = path.join(f.base, name); f
 
 test('TC-SRC-001/002/004/006: direct sources validate read-only, including reviewed index migration and upgrade', t => {
   const f = sourceFixture(t); const before = snapshot(f.repo), head = git(f.repo, 'rev-parse', 'HEAD');
-  for (let i = 0; i < 2; i++) { const result = prepareSkills(f.repo); assert.equal(result.status, 'verified'); assert.equal(result.layoutVersion, 4); assert.equal(result.packages.length, 8); assert.deepEqual(snapshot(f.repo), before); noSourceCopies(f.repo); }
+  for (let i = 0; i < 2; i++) { const result = prepareSkills(f.repo); assert.equal(result.status, 'verified'); assert.equal(result.layoutVersion, 4); assert.equal(result.packages.length, 9); assert.deepEqual(snapshot(f.repo), before); noSourceCopies(f.repo); }
   const verified = verifyUpstreams(f.repo); assert.equal(f.lock.schemaVersion, 4);
   for (const pkg of f.lock.packages) { assert.equal(Object.hasOwn(pkg, 'sourcePath'), false); assert(pkg.path.startsWith('skills/upstreams/')); assert.deepEqual(Object.keys(verified.packages[pkg.name].files), Object.keys(pkg.files)); }
   const oldDigest = skillResources(f.repo).distributionDigest; const staged = advanceSource(f);
@@ -34,6 +34,24 @@ test('TC-SRC-002/003: missing initialization, index mismatch and dirty inputs fa
   }
 });
 
+test('TC-SRC-009: absent gitlinks report incomplete source before initialization and preserve the index', t => {
+  for (const directoryPresent of [true, false]) {
+    const f = sourceFixture(t), upstream = f.lock.upstreams[0];
+    git(f.repo, 'update-index', '--force-remove', '--', upstream.path);
+    if (!directoryPresent) fs.renameSync(path.join(f.repo, upstream.path), path.join(f.base, 'saved-upstream'));
+    const before = snapshot(f.repo), index = git(f.repo, 'ls-files', '--stage');
+    for (const operation of [prepareSkills, verifyUpstreams, skillResources]) {
+      assert.throws(() => operation(f.repo), error => {
+        assert.match(error.message, /(?:missing|absent|incomplete).*gitlink|gitlink.*(?:missing|absent|incomplete)/i);
+        assert(error.message.includes(upstream.path));
+        assert.doesNotMatch(error.message, /Submodule is not initialized/);
+        return true;
+      });
+    }
+    assert.deepEqual(snapshot(f.repo), before); assert.equal(git(f.repo, 'ls-files', '--stage'), index); noSourceCopies(f.repo);
+  }
+});
+
 test('TC-SRC-005: legacy or unknown copies and preparation records are preserved and never used as authority', t => {
   for (const name of ['skills/common/ric-devflow/SKILL.md', 'skills/common/unrelated/SKILL.md', '.collaborative-foundation-infra/exports.json', '.collaborative-foundation-infra/prepare.lock', '.collaborative-foundation-infra/prepare-pending.json', '.collaborative-foundation-infra/prepare-old/partial']) {
     const f = sourceFixture(t); write(f.repo, name, 'unknown user bytes'); const before = snapshot(f.repo);
@@ -42,9 +60,9 @@ test('TC-SRC-005: legacy or unknown copies and preparation records are preserved
   }
 });
 
-test('TC-DIST-001/002: private assembly exactly matches independent ten-package expectations without source copies', t => {
+test('TC-DIST-001/002: private assembly exactly matches independent eleven-package expectations without source copies', t => {
   const f = sourceFixture(t, { real: true }); const before = snapshot(f.repo), team = privateTeam(f); const resources = skillResources(f.repo); stageTeamResources(f.repo, team, resources);
-  assert.equal(Object.keys(resources.skills).length, 10); assert.deepEqual(fs.readdirSync(path.join(team, 'skills/common')).sort(), [...f.lock.packages.map(p => p.name), ...ownSkills].sort());
+  assert.equal(Object.keys(resources.skills).length, 11); assert.deepEqual(fs.readdirSync(path.join(team, 'skills/common')).sort(), [...f.lock.packages.map(p => p.name), ...ownSkills].sort());
   for (const name of Object.keys(resources.skills)) assert.deepEqual(portable(path.join(team, 'skills/common', name)), expectedSkillSnapshot(f.repo, name), name);
   assert.equal(fs.existsSync(path.join(team, '.git')), false); assert.equal(fs.existsSync(path.join(team, 'upstreams')), false); assert.equal(fs.existsSync(path.join(team, 'skills/upstreams')), false); assert.equal(fs.existsSync(path.join(team, 'skills/common/ric-devflow/.devflow')), false);
   assert.deepEqual(snapshot(f.repo), before); noSourceCopies(f.repo);

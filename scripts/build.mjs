@@ -5,6 +5,8 @@ import { standardVersion, verifyUpstreams } from '../tools/sources.mjs';
 verifyUpstreams(process.cwd());
 const check=process.argv.includes('--check'), outfile='skills/common/collaborative-foundation-infra/scripts/governance.mjs';
 const result=await build({entryPoints:['tools/cli.mjs'],outfile,write:!check,metafile:true,bundle:true,platform:'node',target:'node24',format:'esm',define:{CFI_STANDARD_VERSION:JSON.stringify(standardVersion(process.cwd()))},banner:{js:"import { createRequire as __collaborativeFoundationInfraCreateRequire } from 'node:module'; const require = __collaborativeFoundationInfraCreateRequire(import.meta.url);"},legalComments:'eof'});
+if(!check)fs.chmodSync(outfile,0o755);
+if((fs.statSync(outfile).mode&0o111)!==0o111)throw new Error('Generated governance artifact must be executable; run npm run build');
 if(check && !Buffer.from(result.outputFiles[0].contents).equals(fs.readFileSync(outfile)))throw new Error('Generated governance artifact is stale; run npm run build');
 const packages=new Set();
 for(const input of Object.keys(result.metafile.inputs)) {

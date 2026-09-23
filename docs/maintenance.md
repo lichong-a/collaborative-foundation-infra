@@ -24,7 +24,7 @@ Node 24 Linux x64/arm64 使用官方 v24.20.0 固定下载摘要。脚本只向�
 
 ## 直接上游、升级与历史布局迁移
 
-schemaVersion 4 的来源锁、.gitmodules、index gitlink 和三个子模块 HEAD 共同绑定唯一上游来源。packages.path 指向 skills/upstreams 下真实目录；RIC725文件、官方13文件及指南/许可的字节及执行位仍逐项核验。build/check/sync不依赖历史导出状态，不 fetch、不 checkout、不自动修复。skills/common 仅保留自有规范。
+schemaVersion 4 的来源锁、.gitmodules、index gitlink 和三个子模块 HEAD 共同绑定唯一上游来源。packages.path 指向 skills/upstreams 下真实目录；RIC725文件、官方21文件及指南/许可的字节及执行位仍逐项核验。build/check/sync不依赖历史导出状态，不 fetch、不 checkout、不自动修复。skills/common 仅保留自有规范。
 
 prepare:skills 现在严格只读，成功返回 verified，重复或并发执行不产生导出、准备锁或归属回执。缺少已初始化来源时给出明确初始化命令；已有副本、定制/未知同级目录、旧导出回执或 pending/lock 残留均保持原样并报告，不消费其内容证明来源有效，也不自动清理。
 
@@ -32,7 +32,7 @@ prepare:skills 现在严格只读，成功返回 verified，重复或并发执�
 
 版本升级仍先独立审查上游提交、五 Skill 闭包、配置权限、引用和许可证，再按批准范围显式调整子模块提交、gitlink 与 schema4 来源清单。prepare/build/check 每次读取新真实来源，不通过重建源码副本完成升级；主仓是否提交仍由当次授权决定。
 
-TeamAI适配器只在各次调用独占的私有临时目录组装十包。八上游包原字节不变，自有包导航转换为安装侧同级包，官方指南相对目标绑定固定提交；精确坏锚映射见[集成边界](integration.md)。源码锁、复制前后来源、转换后完整清单和真实 TeamAI 输出均需一致；未知链接映射或来源变化拒绝发布。临时失败清理只涉及本调用创建的目录，不清理成员安装或其他调用。安装回执schema4绑定来源与分发摘要；旧安装回执按迁移流程保留拒绝，不擅自升级。
+TeamAI适配器只在各次调用独占的私有临时目录组装十一包。九上游包原字节不变，自有包导航转换为安装侧同级包，官方指南相对目标绑定固定提交；精确坏锚映射见[集成边界](integration.md)。源码锁、复制前后来源、转换后完整清单和真实 TeamAI 输出均需一致；未知链接映射或来源变化拒绝发布。临时失败清理只涉及本调用创建的目录，不清理成员安装或其他调用。安装回执schema4绑定来源与分发摘要；旧安装回执按迁移流程保留拒绝，不擅自升级。
 
 源码侧和安装侧导航分别检查，不能为了让源码链接通过先创建六份副本。候选对转换表、准备/分发工具、来源锁和gitlink的变化仍需独立治理审核。
 
@@ -65,4 +65,4 @@ node /trusted-checkout/scripts/ci-check.mjs --repo /candidate/business --base FU
 
 回执只绑定工具版本与分发证据，不表示宿主已加载或业务验收完成。既有回执缺少 artifact 摘要或安装布局不同，CI 保守拒绝；按[既有安装的迁移](onboarding.md#既有安装的迁移)独立审查，不手写摘要绕过来源核验，也不把旧基线当成当前布局已验证。
 
-分发产物的 [THIRD_PARTY_NOTICES](../skills/common/collaborative-foundation-infra/THIRD_PARTY_NOTICES.txt) 由 esbuild 实际输入图生成，随包保留每个实际打包依赖的完整 LICENSE/NOTICE。直接上游八包仍保留原字节，不将整个 node_modules 分发。
+分发产物的 [THIRD_PARTY_NOTICES](../skills/common/collaborative-foundation-infra/THIRD_PARTY_NOTICES.txt) 由 esbuild 实际输入图生成，随包保留每个实际打包依赖的完整 LICENSE/NOTICE。直接上游九包仍保留原字节，不将整个 node_modules 分发。

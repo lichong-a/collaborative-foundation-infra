@@ -67,13 +67,13 @@ status: current
 
 ### 2. 预检并分发项目级资源
 
-规范源初次 clone 后显式运行 git submodule update --init --recursive --checkout，再 npm run prepare:skills 只读校验；八上游包直接位于 skills/upstreams，源码树不保留其副本。build/check/sync 每次核验真实来源，不执行网络更新；历史副本或准备状态保持报错，须经明确授权核验归档。
+规范源初次 clone 后显式运行 git submodule update --init --recursive --checkout，再 npm run prepare:skills 只读校验；九上游包直接位于 skills/upstreams，源码树不保留其副本。build/check/sync 每次核验真实来源，不执行网络更新；历史副本或准备状态保持报错，须经明确授权核验归档。
 
 仅在接入档位和明确项目级范围内，从核验后的规范源运行 `scripts/teamai-sync.mjs --repo <目标> --source <规范源> --agent <实际宿主>` 预检，预览资源时不加入口选项；已授权局部追加会话入口时加 `--install-entry` 一起预检，通过后再用相同参数加 `--apply`。没有 --apply 一律零写入；--apply 单独仍不改项目指令入口。使用实际脚本的参数；不要把委托档位当成命令选项。版本来自规范源的锁文件，不跟随“最新版本”临时升级。
 
 在规范仓先显式 npm run prepare:teamai，首次解析 latest 并隔离验证；已有安装离线重核。不要将开发依赖或裸 node_modules 当成运行时来源，也不在普通预览中自动联网安装。
 
-该适配器支持 `codex`、`zcode`、`claude`，在隔离环境调用 TeamAI，在私有临时团队目录组装十包，将受控自有导航转换为安装后的同级链接，并按固定提交重定位官方指南，再逐字核验真实输出并向目标发布完整十份 Skills、适用规则和 schema4 安装回执。Codex/ZCode 的 Skill 目录是 `.agents/skills/`，Claude 是 `.claude/skills/`；目录相同不证明发现规则相同。不要手动只复制某个角色包，不直接在业务仓运行 TeamAI init/pull 绕过冲突预检。
+该适配器支持 `codex`、`zcode`、`claude`，在隔离环境调用 TeamAI，在私有临时团队目录组装十一包，将受控自有导航转换为安装后的同级链接，并按固定提交重定位官方指南，再逐字核验真实输出并向目标发布完整十一份 Skills、适用规则和 schema4 安装回执。Codex/ZCode 的 Skill 目录是 `.agents/skills/`，Claude 是 `.claude/skills/`；目录相同不证明发现规则相同。不要手动只复制某个角色包，不直接在业务仓运行 TeamAI init/pull 绕过冲突预检。
 
 同名定制、不同版本、未知文件、明确禁用、既有自动同步 hook 或不支持的宿主都应保持原样并报告。不要使用 force 覆盖，也不要把编辑回执或删除冲突文件当成修复。规范更新按独立差异审查进行；本指引没有承诺自动升级既有安装。
 

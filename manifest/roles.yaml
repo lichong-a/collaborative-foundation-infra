@@ -1,7 +1,7 @@
 version: 1
 roles:
   - id: engineering
-    description: 完整十份资源；订阅不启用模式或授予交付权限，会话必须独立选择
+    description: 完整十一份资源；订阅不启用模式或授予交付权限，会话必须独立选择
     resources:
       knowledge: [common]
       skills: [common]

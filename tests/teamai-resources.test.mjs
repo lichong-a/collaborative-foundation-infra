@@ -70,18 +70,24 @@ test('TC-TA-SKILLS-002: official guide reference links and images relocate, whil
   assert(content.includes('```md\n[pseudo](missing.md)\n```')); assert(content.includes('[remote](https://example.invalid/document.md)'));
 });
 
-test('TC-TA-SKILLS-003: real CLI builtin packages match the thirteen fixed source files; additional or customized bytes fail', t => {
+test('TC-TA-SKILLS-003: real CLI builtin packages match the twenty-one fixed source files; additional or customized bytes fail', t => {
   const runtime = preparedRuntime(), packageRoot = path.dirname(path.dirname(runtime.entry)), prepared = skillResources(ROOT);
   assert.match(verifyBuiltinSkills(prepared, packageRoot), /^[a-f0-9]{64}$/);
-  for (const kind of ['extra-skill', 'extra-file', 'missing', 'bytes', 'mode']) {
+  for (const kind of ['extra-skill', 'missing-skill', 'extra-file', 'missing', 'bytes', 'mode']) {
     const f = fixture(t), copy = path.join(f.base, 'cli'); fs.mkdirSync(copy); fs.cpSync(path.join(packageRoot, 'skills'), path.join(copy, 'skills'), { recursive: true });
     const entry = path.join(copy, 'skills/team-wiki-codebase/SKILL.md');
     if (kind === 'extra-skill') write(copy, 'skills/unexpected/SKILL.md', '# Unknown');
+    if (kind === 'missing-skill') fs.renameSync(path.join(copy, 'skills/teamai'), path.join(f.base, 'saved-teamai'));
     if (kind === 'extra-file') write(copy, 'skills/team-wiki-codebase/unknown.txt', 'unknown');
     if (kind === 'missing') fs.unlinkSync(entry);
     if (kind === 'bytes') fs.appendFileSync(entry, 'change');
     if (kind === 'mode') fs.chmodSync(entry, 0o755);
-    const before = snapshot(copy); assert.throws(() => verifyBuiltinSkills(prepared, copy)); assert.deepEqual(snapshot(copy), before);
+    const before = snapshot(copy); assert.throws(() => verifyBuiltinSkills(prepared, copy), error => {
+      if (kind === 'extra-skill') assert.match(error.message, /unexpected/);
+      if (kind === 'missing-skill') assert.match(error.message, /teamai/);
+      if (['extra-file', 'missing', 'bytes', 'mode'].includes(kind)) assert.match(error.message, /team-wiki-codebase\/(?:SKILL\.md|unknown\.txt)/);
+      return true;
+    }); assert.deepEqual(snapshot(copy), before);
   }
 });
 

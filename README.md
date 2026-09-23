@@ -46,7 +46,7 @@
 | **工程规范 Skill** | 模块边界、代码约定、文档导航、项目画像与治理检查 | 复用原项目事实来源；自动整理只执行明确、可判定的动作 |
 | **设计模式 Skill** | 按语言和真实变化点选择必要的抽象 | 决策进入既有 Spec / Decision，遵循原有交付流程 |
 
-工程订阅一次分发 **10 份 Skills**：自有工程规范与 CLI 入口、DevFlow 入口及四角色、设计模式参考、两份 TeamAI 官方方法。两种模式均使用工程结构、代码、文档和验证规范；只有 devflow 模式才加载五份交付 Skill、准备四角色。固定来源和完整文件摘要见 [sources.lock.json](sources.lock.json)，集成细节见[职责边界说明](docs/integration.md)。
+工程订阅一次分发 **11 份 Skills**：自有工程规范与 CLI 入口、DevFlow 入口及四角色、设计模式参考、三份 TeamAI 官方方法。两种模式均使用工程结构、代码、文档和验证规范；只有 devflow 模式才加载五份交付 Skill、准备四角色。固定来源和完整文件摘要见 [sources.lock.json](sources.lock.json)，集成细节见[职责边界说明](docs/integration.md)。
 
 已有工程采用其他交付流程时，先建立映射并保留原状态。TeamAI 的资源安装、宿主发现与加载、原生角色真实调用，分别验证和记录。
 
@@ -80,7 +80,7 @@ npm run check
 npm run prepare:teamai # 首次显式准备实际 latest；已有安装离线重核
 ```
 
-八份上游 Skill 直接位于三个固定提交的 `skills/upstreams/` 子模块中，初始化后即可读取；源码树不另建副本。`prepare:skills` 只离线核验来源，不写导出、回执或缓存，不 fetch、切换提交或执行上游代码。
+九份上游 Skill 直接位于三个固定提交的 `skills/upstreams/` 子模块中，初始化后即可读取；源码树不另建副本。`prepare:skills` 只离线核验来源，不写导出、回执或缓存，不 fetch、切换提交或执行上游代码。
 
 缺少运行时时，先运行 `scripts/runtime --runtime node`。它会尝试在用户缓存中安装并核验，输出可用的 Node 路径；将该路径所在目录加入当前命令的 `PATH` 后再执行上述命令。安装失败后按[人工协议](skills/common/collaborative-foundation-infra/references/manual.md)继续，自动检查仍记为未完成。Python / uv 仅在辅助动作确有需要时准备，采用相同的“先尝试安装，再降级”规则。
 
@@ -113,7 +113,7 @@ node scripts/teamai-sync.mjs \
 
 `--install-entry` 仅提出追加入口；没有 `--apply` 一律只预览。`--apply` 单独只分发资源，二者同时指定才在 Codex/ZCode 的 `AGENTS.md` 或 Claude 的 `CLAUDE.md` 追加短会话入口，保留既有正文。相同完整块为 `matched` 且不写入口，不代表加载或选择已完成。
 
-适配器仅在私有临时团队目录组装十包并转换自有包的受控导航，在隔离用户环境中调用已准备且核验的实际 TeamAI CLI；逐字核验转换后的期望结果后发布 Skills、适用规则和安装回执。它不会向源码树重建上游副本。同名定制内容、不同版本、未知文件和禁用配置会保留并报告冲突。**已有安装须先按[迁移指引](docs/onboarding.md#既有安装的迁移)核对**；当前预检不自动发现或迁移其他命名空间下的旧安装。
+适配器仅在私有临时团队目录组装十一包并转换自有包的受控导航，在隔离用户环境中调用已准备且核验的实际 TeamAI CLI；逐字核验转换后的期望结果后发布 Skills、适用规则和安装回执。它不会向源码树重建上游副本。同名定制内容、不同版本、未知文件和禁用配置会保留并报告冲突。**已有安装须先按[迁移指引](docs/onboarding.md#既有安装的迁移)核对**；当前预检不自动发现或迁移其他命名空间下的旧安装。
 
 | Harness | 项目级 Skill 路径 |
 | --- | --- |
@@ -202,10 +202,10 @@ CI 使用可信目标基线中的检查器、锁文件和策略；候选对治�
 
 ## 开发与贡献
 
-先阅读 [AGENTS.md](AGENTS.md) 和[工程 Skill](skills/common/collaborative-foundation-infra/SKILL.md)，确认修改范围与验证方式。自有工具修改在 `tools/` 完成，通过构建更新分发产物；固定来源的 `skills/upstreams/` 保持原包，是唯一上游来源；十包扁平结构仅由适配器在私有临时团队目录组装。自有包导航及官方指南的相对目标在分发时确定性转换，源码引用直接指向子模块。版本与映射升级独立审查。
+先阅读 [AGENTS.md](AGENTS.md) 和[工程 Skill](skills/common/collaborative-foundation-infra/SKILL.md)，确认修改范围与验证方式。自有工具修改在 `tools/` 完成，通过构建更新分发产物；固定来源的 `skills/upstreams/` 保持原包，是唯一上游来源；十一包扁平结构仅由适配器在私有临时团队目录组装。自有包导航及官方指南的相对目标在分发时确定性转换，源码引用直接指向子模块。版本与映射升级独立审查。
 
 ```sh
-npm run prepare:skills # 只读检查子模块、index gitlink、锁与完整八包
+npm run prepare:skills # 只读检查子模块、index gitlink、锁与完整九包
 npm run build    # 生成随 Skill 分发的治理工具与依赖许可记录
 npm run check    # 核验来源、构建一致性、语法与文档治理
 npm test         # 运行行为测试；测试维护遵循独立测试者职责

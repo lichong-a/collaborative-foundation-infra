@@ -2,9 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { ROOT, NODE, fixture, snapshot, run, write } from './helpers.mjs';
+import { execFileSync } from 'node:child_process';
+import { ROOT, NODE, fixture, snapshot, run, write, hash } from './helpers.mjs';
 import { prepareTeamai, resolveTeamaiRuntime, verifyTeamaiInstallation } from '../tools/teamai-runtime.mjs';
 import { npmFixture, runtimeNamespace, cloneRuntime, preparedRuntime, runtimeMetadata, runtimePackage } from './teamai-fixtures.mjs';
+import { cloneLegacyRuntime } from './teamai-legacy-fixtures.mjs';
 import { sourceFixture } from './source-fixtures.mjs';
 
 test('TC-TA-RUNTIME-006 / PROD-TA-RUNTIME-001: a failed cleanup preserves the prior current pointer and installation', t => {
@@ -194,4 +196,65 @@ test('TC-TA-RUNTIME-002/008: changed standards reverify the same CLI offline and
   const defaultCall = run(NODE, [path.join(ROOT, 'scripts/teamai-runtime.mjs'), 'prepare', '--source', ROOT, '--offline'], { env: { ...process.env, HOME: f.home, USERPROFILE: f.home, XDG_DATA_HOME: options.dataHome } });
   assert.equal(defaultCall.code, 0, defaultCall.stdout + defaultCall.stderr); assert.equal(JSON.parse(defaultCall.stdout).entry, initial.entry);
   assert.equal(fs.readdirSync(f.home).length, 0);
+});
+
+
+test('TC-TA-RUNTIME-009: real 0.24 installation remains unchanged until explicit upgrade verifies 0.25 and all three clients', t => {
+  const f = fixture(t), legacy = cloneLegacyRuntime(f), namespace = runtimeNamespace(legacy.dataHome);
+  const before = snapshot(legacy.dataHome), old = snapshot(legacy.installation), pointer = fs.readFileSync(path.join(namespace, 'current.json'));
+  const noNpm = { runNpm() { assert.fail('ordinary preparation must not query npm to replace an incompatible runtime'); } };
+  for (const offline of [true, false]) {
+    assert.throws(() => prepareTeamai({ ...legacy, offline }, noNpm), error => {
+      assert.match(error.message, /0\.24\.0/); assert.match(error.message, /teamai/); assert.match(error.message, /upgrade:teamai/); return true;
+    });
+    assert.deepEqual(snapshot(legacy.dataHome), before);
+  }
+  assert.throws(() => resolveTeamaiRuntime(legacy), /upgrade:teamai/);
+  const npm = npmFixture(), upgraded = prepareTeamai({ ...legacy, upgrade: true }, npm);
+  assert.deepEqual(npm.calls, ['resolve', 'pack', 'install']); assert.equal(upgraded.status, 'upgraded'); assert.equal(upgraded.package.version, '0.25.0');
+  assert.deepEqual(Object.keys(upgraded.compatibility.agents).sort(), ['claude', 'codex', 'zcode']);
+  for (const agent of Object.values(upgraded.compatibility.agents)) assert.equal(agent.status, 'verified');
+  assert.deepEqual(snapshot(legacy.installation), old); assert.notDeepEqual(fs.readFileSync(path.join(namespace, 'current.json')), pointer);
+  assert.equal(resolveTeamaiRuntime(legacy).entry, upgraded.entry); assert.equal(prepareTeamai({ ...legacy, offline: true }, noNpm).entry, upgraded.entry);
+});
+
+test('TC-TA-RUNTIME-010: failed cross-source upgrade preserves real 0.24 pointer and all prior installation bytes', t => {
+  for (const kind of ['registry', 'candidate-content', 'cleanup']) {
+    const f = fixture(t), legacy = cloneLegacyRuntime(f), namespace = runtimeNamespace(legacy.dataHome), pointer = path.join(namespace, 'current.json');
+    const oldPointer = fs.readFileSync(pointer), oldInstallation = snapshot(legacy.installation), original = fs.rmSync;
+    let injected = false;
+    const npm = npmFixture({ intercept: request => {
+      if (kind === 'registry' && request.operation === 'resolve') { injected = true; throw new Error('Synthetic registry outage'); }
+      if (kind === 'candidate-content' && request.operation === 'install') {
+        const output = execFileSync('npm', request.args, { cwd: request.cwd, env: request.env, timeout: request.timeout, encoding: 'utf8' });
+        fs.appendFileSync(path.join(request.cwd, 'node_modules/teamai-cli/skills/teamai/SKILL.md'), '\nUnreviewed candidate bytes\n'); injected = true; return output;
+      }
+    } });
+    if (kind === 'cleanup') fs.rmSync = (target, ...args) => {
+      if (!injected && path.dirname(String(target)) === namespace && path.basename(String(target)).startsWith('.prepare-')) { injected = true; throw new Error('Synthetic cross-source cleanup failure'); }
+      return original(target, ...args);
+    };
+    try { assert.throws(() => prepareTeamai({ ...legacy, upgrade: true }, npm)); } finally { fs.rmSync = original; }
+    assert(injected, `must reach ${kind} after old installation integrity validation`);
+    assert.deepEqual(fs.readFileSync(pointer), oldPointer); assert.deepEqual(snapshot(legacy.installation), oldInstallation);
+    assert.deepEqual(npm.calls, kind === 'registry' ? ['resolve'] : ['resolve', 'pack', 'install']);
+    assert.equal(fs.existsSync(path.join(namespace, 'prepare.lock')), false);
+  }
+});
+
+test('TC-TA-RUNTIME-011: legacy source incompatibility never bypasses saved archive, receipt, files or lock integrity', t => {
+  for (const kind of ['receipt-binding', 'builtin-digest', 'archive', 'file', 'lock']) {
+    const f = fixture(t), legacy = cloneLegacyRuntime(f), namespace = runtimeNamespace(legacy.dataHome), receiptPath = path.join(legacy.installation, 'receipt.json');
+    if (kind === 'receipt-binding') fs.appendFileSync(receiptPath, ' ');
+    if (kind === 'archive') fs.appendFileSync(path.join(legacy.installation, 'archive.tgz'), 'tampered');
+    if (kind === 'file') fs.appendFileSync(legacy.entry, '// tampered');
+    if (kind === 'lock') fs.writeFileSync(path.join(namespace, 'prepare.lock'), 'another writer', { mode: 0o600 });
+    if (kind === 'builtin-digest') {
+      const receipt = JSON.parse(fs.readFileSync(receiptPath)); receipt.builtinSkillsDigest = '0'.repeat(64);
+      const bytes = JSON.stringify(receipt); fs.writeFileSync(receiptPath, bytes);
+      fs.writeFileSync(path.join(namespace, 'current.json'), JSON.stringify({ installationId: receipt.installationId, receiptSha256: hash(bytes) }));
+    }
+    const before = snapshot(legacy.dataHome), npm = { runNpm() { assert.fail('corrupt or locked prior runtime must fail before registry access'); } };
+    assert.throws(() => prepareTeamai({ ...legacy, upgrade: true }, npm)); assert.deepEqual(snapshot(legacy.dataHome), before, kind);
+  }
 });

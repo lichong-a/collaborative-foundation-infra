@@ -6,7 +6,7 @@ status: current
 
 [项目入口](../README.md) · [团队接入](onboarding.md) · [官方方法边界](../skills/common/teamai-cli/SKILL.md)
 
-固定子模块决定八份上游 Skill、中文指南和许可证的来源；CLI 的 npm 版本是另一条版本线。运行时升级不改来源锁或 gitlink。官方指南绑定子模块提交，与已安装 CLI 版本不必相同；使用具体命令或参数前核对实际 CLI 的 `--help`，指南中的新适配能力不能充当本次宿主加载或调用的验证。开发依赖中的 0.24.0 仅用于可复现测试，生产不会因 npm ci 安装了它就跳过下面的准备过程，也不承诺任意未来 latest 兼容。
+固定子模块决定九份上游 Skill、中文指南和许可证的来源；CLI 的 npm 版本是另一条版本线。运行时升级不改来源锁或 gitlink。官方指南绑定子模块提交，与已安装 CLI 版本不必相同；使用具体命令或参数前核对实际 CLI 的 `--help`，指南中的新适配能力不能充当本次宿主加载或调用的验证。开发依赖中的 0.25.0 仅用于可复现测试，生产不会因 npm ci 安装了它就跳过下面的准备过程，也不承诺任意未来 latest 兼容。
 
 ## 首次准备、复用和升级
 
@@ -21,9 +21,13 @@ npm run upgrade:teamai
 
 首次准备只解析一次 `teamai-cli@latest`，固定该次实际版本、tarball、SHA512 integrity；隔离下载并核验归档，禁止 npm 生命周期脚本、audit、fund 和 bin links。HOME、npm user/global 配置与缓存均在本次私有准备目录，不写真实用户配置、缓存、全局安装或业务依赖。
 
-安装包名称、bin 归属、归档与安装字节、实际版本及两份内置 Skill 必须一致；额外或变化的内置 Skill 会拒绝。随后对 Codex、ZCode、Claude 运行真实隔离 pull，逐一核对十包和规则。全部成功才原子切换 current 回执。失败保留原 CLI 和回执并报错，不自动降级后报升级成功。
+安装包名称、bin 归属、归档与安装字节、实际版本及三份内置 Skill 必须一致；额外或变化的内置 Skill 会拒绝。随后对 Codex、ZCode、Claude 运行真实隔离 pull，逐一核对十一包和规则。全部成功才原子切换 current 回执。失败保留原 CLI 和回执并报错，不自动降级后报升级成功。
 
 已有完整安装的 prepare 不查询 registry、不重装。自有规范变化后使用原 CLI 离线重新验证当前来源的兼容性，旧安装回执保留原验证身份；新执行结果单独返回。明确 upgrade 才再次查询 latest，并使用独立候选。`--offline` 在没有可验证安装或请求升级时拒绝联网。未知锁和他人候选不自动清理。
+
+来源从两份官方 Skills 升至三份后，旧 0.24.0 的普通 prepare、离线复用和分发会拒绝并提示显式升级。执行 upgrade 时，先按旧安装自身的归档 SRI、包身份、完整文件清单、内置资源摘要和 schema1 回执核验完整性；旧安装无需匹配新来源。新候选仍须匹配当前来源并通过三宿主真实 pull 才能切换 current。旧安装损坏或候选验证失败均保留旧指针；成功升级也保留旧安装和回执。
+
+当前审查基线为 0.25.0，其 `teamai`、`team-wiki-codebase`、`teamai-share-learnings` 三包共 21 个文件绑定 TeamAI 固定提交。首次准备仍查询实际 latest；未来版本新增或修改资源时，错误会列出 CLI 版本、缺失/新增名称或首个不匹配文件，不自动接受新内容或降级。开发测试固定版本与真实 latest 验收分别记录。
 
 ## 分发和显式入口
 
@@ -48,4 +52,4 @@ node scripts/teamai-sync.mjs --repo /absolute/project --source /absolute/source 
 
 运行时安装 receipt schema1 记录 package、相对 entry、完整安装文件清单与摘要、package-lock、内置包摘要、三宿主兼容证据及 installationId。current 仅引用 installationId 和 receiptSha256；不能拿旧兼容证据声明新来源已经通过。
 
-业务安装回执 schema4 / sourceLayoutVersion4 记录实际 teamaiPackage、三个上游固定提交、十包清单、来源/分发/工具摘要以及资源、入口和宿主加载层级。旧 schema2/3 或不同身份保留拒绝，需要另行评审迁移。文件安装和实际 pull 仍不证明模型加载或原生角色调用。
+业务安装回执 schema4 / sourceLayoutVersion4 记录实际 teamaiPackage、三个上游固定提交、十一包清单、来源/分发/工具摘要以及资源、入口和宿主加载层级。旧 schema2/3 或不同身份保留拒绝，需要另行评审迁移。文件安装和实际 pull 仍不证明模型加载或原生角色调用。

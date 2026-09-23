@@ -13149,7 +13149,7 @@ import { execFileSync as execFileSync2 } from "node:child_process";
 var MODES = ["devflow", "basic"];
 var AGENTS = ["codex", "zcode", "claude"];
 var HASH = /^[a-f0-9]{64}$/;
-var installedVersion = () => false ? standardVersion(path5.resolve(path5.dirname(fileURLToPath(import.meta.url)), "..")) : "44040143c90c3d669397441e111611614f10cc4bb218ffb0de853f3ca7efa765";
+var installedVersion = () => false ? standardVersion(path5.resolve(path5.dirname(fileURLToPath(import.meta.url)), "..")) : "a05f1461250fcc92bf4e3d568303e8fb7fd9f2a922757f5bea38810987c8777e";
 function assertIdentifier(value, label) {
   if (typeof value !== "string" || !/^[A-Za-z0-9][A-Za-z0-9._:-]{0,255}$/.test(value) || value === "." || value === "..") throw new Error(`Invalid ${label}; use a stable explicit session identifier`);
 }

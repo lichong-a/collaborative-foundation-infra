@@ -9,7 +9,7 @@ import { prepareSkills } from '../tools/sources.mjs';
 import { preparedRuntime, runtimePackage } from './teamai-fixtures.mjs';
 import { sourceFixture, skillSource, expectedSkillSnapshot, stageFixtureTeam, noSourceCopies } from './source-fixtures.mjs';
 
-const names = ['ric-devflow', 'ric-devflow-planner', 'ric-devflow-reviewer', 'ric-devflow-tester', 'ric-devflow-implementer', 'ric-design-patterns-skill', 'team-wiki-codebase', 'teamai-share-learnings', 'collaborative-foundation-infra', 'teamai-cli'];
+const names = ['ric-devflow', 'ric-devflow-planner', 'ric-devflow-reviewer', 'ric-devflow-tester', 'ric-devflow-implementer', 'ric-design-patterns-skill', 'team-wiki-codebase', 'teamai-share-learnings', 'teamai', 'collaborative-foundation-infra', 'teamai-cli'];
 function sync(f, agent = 'codex', apply = false) {
   return run(NODE, [path.join(ROOT, 'scripts/teamai-sync.mjs'), '--repo', f.repo, '--source', ROOT, '--agent', agent, '--user-home', f.home, '--data-home', preparedRuntime().dataHome, '--teamai-entry', preparedRuntime().entry, ...(apply ? ['--apply'] : [])], { timeout: 60000, env: { ...process.env, HOME: f.home, USERPROFILE: f.home, XDG_CONFIG_HOME: path.join(f.home, '.config'), CI: '1' } });
 }
@@ -45,16 +45,16 @@ test('TC-IDENTITY-001: package, dependency metadata, team and discoverable skill
 test('TC-SOURCE-001: source lock covers every imported file and only approved pinned packages', () => {
   const lock = JSON.parse(fs.readFileSync(path.join(ROOT, 'sources.lock.json')));
   assert.deepEqual(lock.teamai, { package: 'teamai-cli', selection: 'latest-on-first-prepare-or-explicit-upgrade', registry: 'https://registry.npmjs.org' });
-  assert.equal(lock.packages.length, 8); assert.equal(lock.upstreams.length, 3);
+  assert.equal(lock.packages.length, 9); assert.equal(lock.upstreams.length, 3);
   const counts = [];
   for (const pkg of lock.packages) {
-    assert.equal(pkg.commit, pkg.upstream === 'teamai-cli' ? '0c059b2da6fe0fa3206ab1ce33978601a2a832e6' : pkg.name === 'ric-design-patterns-skill' ? '46b183615afbfe3b1fffcbc9425ac3aea2c36d99' : '9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb');
+    assert.equal(pkg.commit, pkg.upstream === 'teamai-cli' ? 'f7b4141c46f8143f3f6bca52f6389ac21e474b2d' : pkg.name === 'ric-design-patterns-skill' ? '46b183615afbfe3b1fffcbc9425ac3aea2c36d99' : '9ce34a0e9e6e06cbda2f6c4d76951248c7d27fcb');
     const tree = snapshot(path.join(ROOT, pkg.path)); const files = Object.fromEntries(Object.entries(tree).filter(([, item]) => item.type === 'file'));
     assert.deepEqual(Object.keys(files).sort(), Object.keys(pkg.files).sort());
     for (const [name, expected] of Object.entries(pkg.files)) { assert.equal(files[name].sha256, expected.sha256); assert.equal(Boolean(files[name].mode & 0o100), Boolean(expected.mode & 0o100)); }
     counts.push(Object.keys(files).length);
   }
-  assert.equal(counts.slice(0, 5).reduce((a, b) => a + b), 100); assert.equal(counts[5], 625); assert.equal(counts.slice(6).reduce((a, b) => a + b), 13);
+  assert.equal(counts.slice(0, 5).reduce((a, b) => a + b), 100); assert.equal(counts[5], 625); assert.equal(counts.slice(6).reduce((a, b) => a + b), 21);
 });
 
 test('TC-DISTRIBUTE-001/002: true TeamAI self distribution for all three harnesses, preview and idempotence', t => {
@@ -92,6 +92,8 @@ test('TC-NAVIGATION-001: actual distributed skill remains navigable after reloca
 test('TC-CONFLICT-001: custom source, extra file, legacy/user disables and allowed-agent whitelist are preserved', t => {
   const cases = [
     ['custom-skill', 'repo', '.agents/skills/ric-devflow/SKILL.md', '# My customized skill\n'],
+    ['teamai-custom', 'repo', '.agents/skills/teamai/SKILL.md', '# User TeamAI method\n'],
+    ['teamai-excluded', 'repo', '.teamai/config.yaml', 'excludedSkills: [teamai]\n'],
     ['official-custom', 'repo', '.agents/skills/team-wiki-codebase/SKILL.md', '# User wiki method\n'],
     ['official-unknown', 'repo', '.agents/skills/teamai-share-learnings/unknown.txt', 'user bytes\n'],
     ['official-excluded', 'repo', '.teamai/config.yaml', 'excludedSkills: [team-wiki-codebase]\n'],
